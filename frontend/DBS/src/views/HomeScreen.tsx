@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, ScrollView, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import { homeScreenStyles } from '../components/styles/HomeScreenStyles';
 import TopNavigator from '../navigation/TopNavigation';
 
-
 const Homescreen: React.FC = () => {
+  
   return (
     <View style={homeScreenStyles.container}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -123,8 +123,8 @@ const Homescreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        
         <TopNavigator/>
+
       </ScrollView>
     </View>
   );

@@ -45,6 +45,14 @@ export const topNavigatorStyles = StyleSheet.create({
         marginTop:8,
         transform: [{rotate:'90deg'}]
     },
+    expandrotated2:{
+        resizeMode:'contain',
+        width:20,
+        height:15,
+        marginLeft: 270,
+        marginTop:8,
+        transform: [{rotate:'-90deg'}]
+    },
     containertwo:{
         paddingHorizontal:20,
         paddingBottom:10,

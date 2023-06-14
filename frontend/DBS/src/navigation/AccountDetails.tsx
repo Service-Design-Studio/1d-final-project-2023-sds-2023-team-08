@@ -1,0 +1,38 @@
+import React from 'react';
+import { View, Image, Text } from 'react-native';
+import { accountDetailsStyles } from '../components/styles/AccountDetailsStyles';
+import accountJson from '../testdata/account.json';
+
+const AccountDetails: React.FC = () => {
+    const userAccounts = accountJson[0].account;
+    
+    return (
+        <View>
+          {userAccounts.map((account, index) => (
+            <View style={accountDetailsStyles.account} key={index}>
+              <View style={accountDetailsStyles.accountheader}>
+                <Text style={accountDetailsStyles.accountname}>
+                  {account['account type']}
+                </Text>
+                <Image
+                  source={require('../../src/components/assets/expand.png')}
+                  style={accountDetailsStyles.accountexpand}
+                />
+              </View>
+              <Text style={accountDetailsStyles.accountnumber}>
+                {account['account number']}
+              </Text>
+              <View style={accountDetailsStyles.textcontainer}>
+                <Text style={accountDetailsStyles.sgd}>SGD</Text>
+                <Text style={accountDetailsStyles.money}>
+                  {account['total amount'].toFixed(2)}
+                </Text>
+              </View>
+              <View style={accountDetailsStyles.line}></View>
+            </View>
+          ))}
+        </View>
+      );
+    };
+
+export default AccountDetails;

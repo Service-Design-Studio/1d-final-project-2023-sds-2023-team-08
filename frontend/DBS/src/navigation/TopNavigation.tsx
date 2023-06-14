@@ -1,52 +1,69 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { View, Text, Image , ScrollView} from 'react-native';
+import { View, Text, Image , ScrollView, TouchableOpacity} from 'react-native';
 import { topNavigatorStyles } from '../components/styles/TopNavigationStyles';
+import AccountDetails from './AccountDetails';
+import accountJson from '../testdata/account.json';
 
 const Tab = createMaterialTopTabNavigator();
 
-const Accounts = () => (
-  <View style={topNavigatorStyles.container}>
-    <View>
-        <View style={topNavigatorStyles.header}>
-            <View style={topNavigatorStyles.blueline}>
+const Accounts = () => {
+    const [showMore, setShowMore] = useState(false);
+    const userAccounts = accountJson[0].account;
+    const totalAmounts = userAccounts.map(account => account['total amount']);
+    const totalAmountSum = userAccounts.reduce((sum, account) => sum + account['total amount'], 0).toFixed(2);
+
+    return(
+    <ScrollView>
+        <View style={topNavigatorStyles.container}>
+            <View>
+                <View style={topNavigatorStyles.header}>
+                    <View style={topNavigatorStyles.blueline}>
+                    </View>
+                    <Text style={topNavigatorStyles.text}>Your Net Worth</Text>
+                    <Image source={require('../../src/components/assets/expand.png')} style={topNavigatorStyles.expand}/>
+                </View>
+
+                <View style={topNavigatorStyles.containertwo}>
+                    <Text style={topNavigatorStyles.value}>Value</Text>
+                    <View style={topNavigatorStyles.textcontainer}>
+                        <Text style={topNavigatorStyles.sgd}>SGD</Text>
+                        <Text style={topNavigatorStyles.money}>{totalAmountSum}</Text>
+                    </View>
+                </View>
+
+                <View style={topNavigatorStyles.line}>
+                </View>
             </View>
-            <Text style={topNavigatorStyles.text}>Your Net Worth</Text>
-            <Image source={require('../../src/components/assets/expand.png')} style={topNavigatorStyles.expand}/>
-        </View>
 
-        <View style={topNavigatorStyles.containertwo}>
-            <Text style={topNavigatorStyles.value}>Value</Text>
-            <View style={topNavigatorStyles.textcontainer}>
-                <Text style={topNavigatorStyles.sgd}>SGD</Text>
-                <Text style={topNavigatorStyles.money}>XXX.XX</Text>
-            </View>
-        </View>
+            <TouchableOpacity onPress={() => setShowMore(!showMore)}>
+                <View>
+                    <View style={topNavigatorStyles.header}>
+                        <View style={topNavigatorStyles.yellowline}>
+                        </View>
+                        <Text style={topNavigatorStyles.text}>Deposits</Text>
+                        <Image source={require('../../src/components/assets/expand.png')} style={[topNavigatorStyles.expandrotated, showMore && topNavigatorStyles.expandrotated2]}/>
+                    </View>
 
-        <View style={topNavigatorStyles.line}>
-        </View>
-    </View>
+                    <View style={topNavigatorStyles.containertwo}>
+                        <Text style={topNavigatorStyles.value}>Balance</Text>
+                        <Text style={topNavigatorStyles.money}>{totalAmountSum}</Text>
+                    </View>
 
-    <View>
-        <View style={topNavigatorStyles.header}>
-            <View style={topNavigatorStyles.yellowline}>
-            </View>
-            <Text style={topNavigatorStyles.text}>Deposits</Text>
-            <Image source={require('../../src/components/assets/expand.png')} style={topNavigatorStyles.expandrotated}/>
+                    <View style={topNavigatorStyles.line}>
+                    </View>
+                </View>
+            </TouchableOpacity>
+            {showMore && (
+                <AccountDetails/>
+            )}
         </View>
-
-        <View style={topNavigatorStyles.containertwo}>
-            <Text style={topNavigatorStyles.value}>Balance</Text>
-            <Text style={topNavigatorStyles.money}>XXY.XX</Text>
-        </View>
-
-        <View style={topNavigatorStyles.line}>
-        </View>
-    </View>
-  </View>
-);
+    </ScrollView>
+    );
+};
 
 const Insights = () => (
+    <ScrollView>
         <View style={topNavigatorStyles.insightscontainer}>
             <View style={topNavigatorStyles.rectangle}>
                 <Text style={topNavigatorStyles.date}>14 JUN</Text>
@@ -66,6 +83,7 @@ const Insights = () => (
                 <Text style={topNavigatorStyles.body}>You don't often receive money from this source.</Text>
             </View>
         </View>
+    </ScrollView>
 );
 
 const TopNavigator = () => {
@@ -80,10 +98,9 @@ const TopNavigator = () => {
             fontWeight: 'bold',
         },
         tabBarIndicatorStyle: {backgroundColor:'#EBAA4E'},
-        })}
-    >      
+        })}>      
         <Tab.Screen name="ACCOUNTS" component={Accounts} />
-      <Tab.Screen name="INSIGHTS" component={Insights} />
+        <Tab.Screen name="INSIGHTS" component={Insights} />
     </Tab.Navigator>
   );
 };

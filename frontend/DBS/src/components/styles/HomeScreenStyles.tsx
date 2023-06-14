@@ -101,7 +101,6 @@ export const homeScreenStyles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingTop: 10,
         backgroundColor: 'white',
-
     },
     text:{
         fontFamily: 'Lato-Regular',
