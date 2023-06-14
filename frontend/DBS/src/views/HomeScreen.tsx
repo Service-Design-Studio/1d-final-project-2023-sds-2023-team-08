@@ -33,9 +33,11 @@ const Homescreen: React.FC = () => {
           </View>
 
           <View style ={homeScreenStyles.alertbutton}>
-            <View style={homeScreenStyles.buttonContainer}>
-                <Text style={homeScreenStyles.buttonText}>LET'S TALK</Text>
-            </View>      
+            <TouchableOpacity>
+              <View style={homeScreenStyles.buttonContainer}>
+                  <Text style={homeScreenStyles.buttonText}>LET'S TALK</Text>
+              </View>
+            </TouchableOpacity>      
           </View>
         </View>
 
@@ -123,7 +125,6 @@ const Homescreen: React.FC = () => {
 
         
         <TopNavigator/>
-        
       </ScrollView>
     </View>
   );
