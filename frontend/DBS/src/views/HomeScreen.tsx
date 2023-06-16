@@ -10,20 +10,25 @@ const Homescreen: React.FC = () => {
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View>
           <View style={homeScreenStyles.header}>
-            <TouchableOpacity onPress={() => {}}>
-              <Image source={require('../../src/components/assets/bellwhite.png')} style={homeScreenStyles.bell} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
-              <Image source={require('../../src/components/assets/eye.png')} style={homeScreenStyles.eye} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
-              <Image source={require('../../src/components/assets/help.png')} style={homeScreenStyles.help} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {}}>
-              <View style={homeScreenStyles.logoutContainer}>
-                <Text style={homeScreenStyles.logoutText}>LOG OUT!</Text>
-              </View>
-            </TouchableOpacity>
+            <View style={homeScreenStyles.leftcontainer}>
+              <TouchableOpacity onPress={() => {}}>
+                <Image source={require('../../src/components/assets/bellwhite.png')} style={homeScreenStyles.bell} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Image source={require('../../src/components/assets/eye.png')} style={homeScreenStyles.eye} />
+              </TouchableOpacity>
+            </View>
+
+            <View style={homeScreenStyles.rightcontainer}>
+              <TouchableOpacity onPress={() => {}}>
+                <Image source={require('../../src/components/assets/help.png')} style={homeScreenStyles.help} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <View style={homeScreenStyles.logoutContainer}>
+                  <Text style={homeScreenStyles.logoutText}>LOG OUT</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
           
           <View style={homeScreenStyles.alertbody}>
