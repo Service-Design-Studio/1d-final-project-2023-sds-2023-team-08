@@ -1,49 +1,62 @@
 import { StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 
+const Windowheight = Dimensions.get('window').height
+const WindowsWidth = Dimensions.get('window').width
 export const homeScreenStyles = StyleSheet.create({
     container: {
         flex:1,
-        flexDirection:'column',
-        backgroundColor: 'blue',
+        backgroundColor: '#066DAF',
       },
     header: {
         flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        paddingHorizontal: 10,
-        paddingTop: 10,
+        alignItems: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#066DAF',
+        height: Windowheight*0.040,
+        marginVertical:'3%',
+    },
+    leftcontainer:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        flex:1,
+        paddingLeft: '3%',
+    },
+    rightcontainer:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        flex:1,
+        paddingRight: '3%',
+
     },
     bell:{ 
-        marginRight: 10, 
         resizeMode:'contain',
-        height:24,
-        marginLeft:-40,
+        aspectRatio:1,
+        height:'80%',
+        marginLeft:'5%',
     },
     eye:{
-        marginRight: 10, 
         resizeMode:'contain',
-        width:24,
-        marginLeft:-40,
-        marginTop:-30,
+        aspectRatio:1,
+        height:'80%',
     },
-    help:{        
-        marginRight:2, 
+    help:{      
         resizeMode:'contain',
-        width:24,
-        marginLeft:200,
-        marginTop:-60,
+        aspectRatio:1,
+        height:'80%',
+        marginLeft:'20%',
+        alignSelf: 'center',
+        marginTop:'1%'
     },
     logoutContainer:{
         backgroundColor: 'transparent',
         borderColor:'white',
         borderWidth: 1,
         borderRadius: 15,
-        paddingHorizontal: 10,
-        paddingVertical:2,
-        marginTop:3,
-        marginLeft: 10,
-
+        paddingHorizontal: '6%',
+        paddingVertical:'4%',
     },
     logoutText:{
         fontFamily: 'Lato-Regular',
@@ -52,42 +65,38 @@ export const homeScreenStyles = StyleSheet.create({
         marginHorizontal:4,
         fontSize:10,
         marginVertical:2,
+        textAlign: 'center'
     },
     alertbody:{
-        paddingHorizontal: 10,
+        paddingHorizontal: '4%',
         backgroundColor: '#066DAF',
-        marginTop:-55,        
     },
     textheader:{
         fontFamily: 'Lato-Regular',
         fontWeight: '700',
         color:'white',
         fontSize:22,
-        marginLeft:5,
-        marginBottom:2,
+        marginBottom:'2%',
     },
     textbody:{
         fontFamily: 'Lato-Regular',
         fontWeight: 'normal',
         color: 'white',
         fontSize: 15,
-        marginLeft:7,
-        letterSpacing:-0.8,
-        marginBottom: -1,
+        letterSpacing:-0.5,
     },
     alertbutton:{
-        paddingHorizontal: 10,
-        paddingTop:10,
+        paddingHorizontal: '5%',
+        paddingTop:'4%',
         backgroundColor: '#066DAF',
-        paddingBottom: 30,
+        paddingBottom: '6%',
     },
     buttonContainer:{
         backgroundColor: '#444444',
-        borderRadius: 15,
+        borderRadius: 20,
         alignSelf: 'flex-end',
-        paddingHorizontal: 14,
-        paddingVertical:5,
-        marginLeft: 10,
+        paddingHorizontal: '5%',
+        paddingVertical:'2%',
     },
     buttonText:{
         color:'white',
@@ -98,8 +107,9 @@ export const homeScreenStyles = StyleSheet.create({
     containertwo:{
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        paddingHorizontal: 10,
-        paddingTop: 10,
+        alignContent: 'center',
+        paddingHorizontal: '3%',
+        paddingTop: '2%',
         backgroundColor: 'white',
     },
     text:{
@@ -107,31 +117,30 @@ export const homeScreenStyles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color:'#444444',
-        marginTop:10,
-        marginLeft:8,
+        marginTop:'2%',
+        marginLeft:'2%',
     },
     setting:{
         resizeMode:'contain',
-        width:20,
-        height:20,
-        marginLeft: 8,
-        marginTop:15,
+        height:'50%',
+        marginTop:'3.5%',
+        marginLeft: '-10%'
     },
     containerthree:{
         backgroundColor: 'white',
-        paddingTop:10,
-        paddingBottom: 20,
+        paddingTop:'4%',
+        paddingBottom: '5%',
+        paddingLeft:'3%'
     },
     iconcontainer: {
         alignItems: "center",
         justifyContent: "center",
-        paddingHorizontal:3,
+        width: WindowsWidth/5
     },
     icons: {
-        width: 50,
-        height: 50,
+        width: 55,
+        height: 55,
         resizeMode: "contain",
-        paddingHorizontal:40
     },
     shortcut: {
         flexShrink: 1,
@@ -140,32 +149,32 @@ export const homeScreenStyles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#444444',
-        marginTop: 5,
-        maxWidth: 90,
+        marginTop:'12%',
     },
-
     containerfour:{
         backgroundColor: "#EFEFEF",
+        paddingVertical:'4%'
     },
     recenttransaction:{
-        backgroundColor:'white',
-        marginVertical:20,
-        flexDirection:'row',
+        flexDirection: 'row',
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        backgroundColor: 'white',
+        paddingHorizontal: '2%',
     },
     recenttransactiontext:{
         fontFamily:'Lato-Regular',
         fontSize: 20,
         color: '#444444',
         fontWeight: 'bold',
-        paddingLeft: 15,
-        paddingVertical: 15,        
+        paddingVertical: '4%',
+        paddingLeft: '4%'        
     },
     expand:{
         resizeMode:'contain',
-        width:20,
-        height:15,
-        marginLeft: 180,
-        marginTop:20
+        height:'25%',
+        marginLeft: 'auto',
+        marginTop: '2%' 
     }
       
   });
