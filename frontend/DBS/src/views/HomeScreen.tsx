@@ -21,7 +21,7 @@ const Homescreen: React.FC = () => {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {}}>
               <View style={homeScreenStyles.logoutContainer}>
-                <Text style={homeScreenStyles.logoutText}>LOG OUT</Text>
+                <Text style={homeScreenStyles.logoutText}>LOG OUT!</Text>
               </View>
             </TouchableOpacity>
           </View>
