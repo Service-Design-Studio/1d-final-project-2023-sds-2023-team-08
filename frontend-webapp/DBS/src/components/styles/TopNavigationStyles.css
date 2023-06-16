@@ -1,0 +1,152 @@
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: row;
+    padding-top: 4%;
+    align-items: center;
+    padding-right: 1%;
+  }
+  
+  .blueline {
+    width: 0.7%;
+    height: 80%;
+    margin-top: 0.7%;
+    margin-right: 2.5%;
+    background-color: #066DAF;
+  }
+  
+  .yellowline {
+    width: 0.7%;
+    height: 80%;
+    margin-top: 0.7%;
+    margin-right: 2.5%;
+    background-color: #EBAA4E;
+  }
+  
+  .text {
+    font-family: 'Lato-Regular';
+    font-size: 18px;
+    font-weight: bold;
+    color: #444444;
+  }
+  
+  .expand {
+    object-fit: contain;
+    height: 60%;
+    margin-left: auto;
+    margin-top: 1%;
+  }
+  
+  .expandrotated {
+    object-fit: contain;
+    height: 60%;
+    margin-left: auto;
+    margin-top: 1%;
+    transform: rotate(90deg);
+  }
+  
+  .expandrotated2 {
+    object-fit: contain;
+    height: 60%;
+    margin-left: auto;
+    margin-top: 1%;
+    transform: rotate(-90deg);
+  }
+  
+  .containertwo {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+  }
+  
+  .value {
+    font-family: 'Lato-Regular';
+    font-size: 16px;
+    font-weight: bold;
+    color: #A3A3A3;
+    text-align: right;
+    padding-top: 7%;
+  }
+  
+  .textcontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  
+  .sgd {
+    font-family: 'Lato-Regular';
+    font-size: 14px;
+    font-weight: bold;
+    color: #A3A3A3;
+    text-align: right;
+    padding-top: 1.75%;
+  }
+  
+  .money {
+    font-family: 'Lato-Regular';
+    font-size: 20px;
+    font-weight: bold;
+    color: #444444;
+    text-align: right;
+    padding-left: 1%;
+  }
+  
+  .line {
+    border-bottom-color: #A3A3A3;
+    border-bottom-width: 1px;
+    width: 95%;
+    align-self: center;
+    opacity: 0.4;
+  }
+  
+  .insightscontainer {
+    background-color: #EFEFEF;
+    margin-bottom: 10%;
+  }
+  
+  .rectangle {
+    background-color: white;
+    width: 92%;
+    align-self: center;
+    margin-top: 8%;
+    border-radius: 7px;
+  }
+  
+  .date {
+    font-family: 'Lato-Regular';
+    font-size: 10px;
+    font-weight: bold;
+    color: #444444;
+    padding-left: 4%;
+    padding-top: 4%;
+    padding-bottom: 1%;
+  }
+  
+  .title {
+    font-family: 'Lato-Regular';
+    font-size: 20px;
+    font-weight: bold;
+    color: #444444;
+    padding-left: 3.5%;
+    max-width: 65%;
+  }
+  
+  .body {
+    font-family: 'Lato-Regular';
+    font-size: 13px;
+    font-weight: normal;
+    color: #444444;
+    padding-left: 4%;
+    max-width: 65%;
+    padding-top: 3px;
+    padding-bottom: 30px;
+  }
+  
