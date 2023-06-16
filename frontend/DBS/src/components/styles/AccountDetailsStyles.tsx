@@ -3,49 +3,48 @@ import { StyleSheet } from 'react-native';
 export const accountDetailsStyles = StyleSheet.create({
     account:{
         backgroundColor:'white',
-        paddingHorizontal:20,
-        paddingTop:15,
+        paddingTop:'4%',
     },
     accountheader:{
         flexDirection:'row',
         justifyContent: 'space-between',
-        paddingBottom:5
+        paddingBottom:'1%'
     },
     accountname:{
         fontFamily:'Lato-Regular',
         fontSize: 18,
         fontWeight:'bold',
         color:"#444444",
-        paddingLeft:5,
-        MarginTop:-5,
+        paddingLeft:'5%',
     },
     accountexpand:{
         resizeMode:'contain',
-        width:20,
-        height:15,
-        alignSelf: 'flex-end',
+        height:'60%',
+        marginLeft: 'auto',
+        marginTop: '2%'
     },
     accountnumber:{
         fontFamily:'Lato-Regular',
         fontSize: 16,
         fontWeight:'bold',
         color:"#A3A3A3",
-        paddingLeft:5,
-        paddingBottom: 30,
+        paddingLeft:'5%',
+        paddingBottom: '10%',
     },
     textcontainer:{
         flexDirection: 'row',
         alignItems: 'flex-start',  
         justifyContent:'flex-end',
-        paddingBottom:15,
+        paddingBottom:'3%',
+        paddingRight:'5%'
     },
     sgd:{
         fontFamily:'Lato-Regular',
         fontSize: 14,
         fontWeight:'bold',
         color:"#A3A3A3",
-        textAlign: 'right',
-        paddingTop:6,
+        textAlign:'right',
+        paddingTop:'2%',
         
     },
     money:{
@@ -54,12 +53,12 @@ export const accountDetailsStyles = StyleSheet.create({
         fontWeight:'bold',
         color:"#444444",
         textAlign: 'right',
-        paddingLeft: 5, 
+        paddingLeft: '1%', 
     },
     line:{
         borderBottomColor: '#A3A3A3',
         borderBottomWidth: 1,
-        width: '104%',
+        width: '94%',
         alignSelf:'center',
         opacity: 0.4
     },

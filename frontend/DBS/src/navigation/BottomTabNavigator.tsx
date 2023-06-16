@@ -1,8 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Image } from 'react-native';
-import { navigationBarStyles } from '../components/styles/NavigationBarStyles';
+import { navigationBarStyles } from '../components/styles/BottomTabNavigatorStyles.tsx';
 import HomeScreen from '../views/HomeScreen';
+import Recenttransaction from '../views/RecentTransaction';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +48,7 @@ const BottomTabNavigator: React.FC = () => {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Invest" component={HomeScreen} />
+      <Tab.Screen name="Invest" component={Recenttransaction} />
       <Tab.Screen name="Pay & Transfer" component={HomeScreen} />
       <Tab.Screen name="Plan" component={HomeScreen} />
       <Tab.Screen name="More" component={HomeScreen} />

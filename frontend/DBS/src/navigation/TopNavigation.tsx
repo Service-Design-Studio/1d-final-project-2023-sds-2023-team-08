@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View, Text, Image , ScrollView, TouchableOpacity} from 'react-native';
 import { topNavigatorStyles } from '../components/styles/TopNavigationStyles';
-import AccountDetails from './AccountDetails';
+import AccountDetails from '../components/codeblocks/AccountDetails';
 import accountJson from '../testdata/account.json';
 
 const Tab = createMaterialTopTabNavigator();

@@ -8,20 +8,22 @@ export const topNavigatorStyles = StyleSheet.create({
     },
     header:{
         flexDirection:'row',
-        paddingTop:10,
+        paddingTop:'4%',
+        alignContent: 'center',
+        paddingRight: '1%'
     },
     blueline:{
-        width:3,
+        width:'0.7%',
         height:'80%',
-        marginTop:4,
-        marginHorizontal:10,
+        marginTop:'0.7%',
+        marginHorizontal:'2.5%',
         backgroundColor:'#066DAF',
     },
     yellowline:{
-        width:3,
+        width:'0.7%',
         height:'80%',
-        marginTop:4,
-        marginHorizontal:10,
+        marginTop:'0.7%',
+        marginHorizontal:'2.5%',
         backgroundColor:'#EBAA4E',
     },
     text:{
@@ -32,30 +34,27 @@ export const topNavigatorStyles = StyleSheet.create({
     },
     expand:{
         resizeMode:'contain',
-        width:20,
-        height:15,
-        marginLeft: 225,
-        marginTop:8
+        height:'60%',
+        marginLeft: 'auto',
+        marginTop: '1%'
     },
     expandrotated:{
         resizeMode:'contain',
-        width:20,
-        height:15,
-        marginLeft: 270,
-        marginTop:8,
+        height:'60%',
+        marginLeft: 'auto',
+        marginTop: '1%',
         transform: [{rotate:'90deg'}]
     },
     expandrotated2:{
         resizeMode:'contain',
-        width:20,
-        height:15,
-        marginLeft: 270,
-        marginTop:8,
+        height:'60%',
+        marginLeft: 'auto',
+        marginTop: '1%',
         transform: [{rotate:'-90deg'}]
     },
     containertwo:{
-        paddingHorizontal:20,
-        paddingBottom:10,
+        paddingHorizontal:'5%',
+        paddingBottom:'3%',
     },
     value:{
         fontFamily:'Lato-Regular',
@@ -63,7 +62,7 @@ export const topNavigatorStyles = StyleSheet.create({
         fontWeight:'bold',
         color:"#A3A3A3",
         textAlign: 'right',
-        paddingTop: 20,
+        paddingTop: '7%',
     },
     textcontainer:{
         flexDirection: 'row',
@@ -76,7 +75,7 @@ export const topNavigatorStyles = StyleSheet.create({
         fontWeight:'bold',
         color:"#A3A3A3",
         textAlign: 'right',
-        paddingTop:6,
+        paddingTop:'1.75%',
         
     },
     money:{
@@ -85,7 +84,7 @@ export const topNavigatorStyles = StyleSheet.create({
         fontWeight:'bold',
         color:"#444444",
         textAlign: 'right',
-        paddingLeft: 5, 
+        paddingLeft: '1%', 
     },
     line:{
         borderBottomColor: '#A3A3A3',
@@ -96,13 +95,13 @@ export const topNavigatorStyles = StyleSheet.create({
     },
     insightscontainer:{
         backgroundColor: "#EFEFEF",
-        marginBottom:20,
+        marginBottom:'10%',
     },
     rectangle:{
         backgroundColor: 'white',
         width:'92%',
         alignSelf:'center',
-        marginTop:25,
+        marginTop:'8%',
         borderRadius:7,
     },
     date:{
@@ -110,16 +109,16 @@ export const topNavigatorStyles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 'bold',
         color: "#444444",
-        paddingHorizontal:12,
-        paddingTop:12,
-        paddingBottom:2
+        paddingHorizontal:'4%',
+        paddingTop:'4%',
+        paddingBottom:'1%'
     },
     title:{
         fontFamily: 'Lato-Regular',
         fontSize: 20,
         fontWeight: 'bold',
         color: "#444444",
-        paddingLeft:12,
+        paddingLeft:'3.5%',
         maxWidth: '65%',
 
     },
@@ -128,7 +127,7 @@ export const topNavigatorStyles = StyleSheet.create({
         fontSize: 13,
         fontWeight: 'normal',
         color: "#444444",
-        paddingLeft:12,
+        paddingLeft:'4%',
         maxWidth: '65%',
         paddingTop:3,
         paddingBottom: 30,

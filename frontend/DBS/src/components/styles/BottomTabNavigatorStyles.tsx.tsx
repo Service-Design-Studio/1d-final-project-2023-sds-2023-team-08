@@ -9,13 +9,14 @@ export const navigationBarStyles = StyleSheet.create({
 
   },
   icon: {
-    width: 24,
-    height: 24,
+    resizeMode: 'contain',
+    width: '50%',
+    height: '50%',
   },
   labels:{
     fontFamily: 'Lato-Regular',
     fontWeight: 'bold',
-    marginBottom:10,
-    marginTop:-10
+    marginBottom:'8%',
+    marginTop:'-10%'
   }
 });

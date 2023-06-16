@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { accountDetailsStyles } from '../components/styles/AccountDetailsStyles';
-import accountJson from '../testdata/account.json';
+import { accountDetailsStyles } from '../styles/AccountDetailsStyles';
+import accountJson from '../../testdata/account.json';
 
 const AccountDetails: React.FC = () => {
     const userAccounts = accountJson[0].account;
@@ -16,7 +16,7 @@ const AccountDetails: React.FC = () => {
                     {account['account type']}
                     </Text>
                     <Image
-                    source={require('../../src/components/assets/expand.png')}
+                    source={require('../assets/expand.png')}
                     style={accountDetailsStyles.accountexpand}
                     />
                 </View>

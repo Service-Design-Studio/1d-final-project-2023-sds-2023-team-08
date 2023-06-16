@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, ScrollView, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, ScrollView, Image, Text, TouchableOpacity } from 'react-native';
 import { homeScreenStyles } from '../components/styles/HomeScreenStyles';
 import TopNavigator from '../navigation/TopNavigation';
 

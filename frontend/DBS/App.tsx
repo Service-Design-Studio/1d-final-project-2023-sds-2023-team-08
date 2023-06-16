@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './src/navigation/NavigationBar';
+import BottomTabNavigator from './src/navigation/BottomTabNavigator';
 
 const App: React.FC = () => {
   return (
