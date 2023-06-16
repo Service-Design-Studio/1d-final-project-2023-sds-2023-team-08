@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import '../components/styles/TopNavigationStyles.css';
 import accountJson from '../testdata/account.json';
+import AccountDetails from '../components/codeblocks/AccountDetails';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -51,6 +52,7 @@ const Accounts = () => {
                     </div>
                 </div>
             </button>
+            {showMore && <AccountDetails />}
         </div>
     );
 };
