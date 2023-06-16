@@ -14,15 +14,15 @@ const Accounts = () => {
     return(
         <div className='container'>
             <div>
-                <div className='header'>
+                <div className='header1'>
                     <div className='blueline'>
                     </div>
                     <p className='text'>Your Net Worth</p>
-                    <img src='/assets/expand.png' className='expand'/>
+                    <img src='/assets/expand.png' className='expand2'/>
                 </div>
 
-                <div className='containertwo'>
-                    <p className='value'>Value</p>
+                <div className='container2'>
+                    <div className='value'>Value</div>
                     <div className='textcontainer'>
                         <p className='sgd'>SGD</p>
                         <p className='money'>{totalAmountSum}</p>
@@ -33,17 +33,17 @@ const Accounts = () => {
                 </div>
             </div>
 
-            <button onClick={() => setShowMore(!showMore)}>
+            <button className='buttontransparent'onClick={() => setShowMore(!showMore)}>
                 <div>
-                    <div className='header'>
+                    <div className='header1'>
                         <div className='yellowline'>
                         </div>
                         <p className='text'>Deposits</p>
                         <img src='/assets/expand.png' className={showMore ? 'expandrotated' : 'expandrotated2'} />
                     </div>
 
-                    <div className='containertwo'>
-                        <p className='value'>Balance</p>
+                    <div className='container2'>
+                        <div className='value'>Balance</div>
                         <p className='money'>{totalAmountSum}</p>
                     </div>
 
@@ -85,8 +85,8 @@ const TopNavigator = () => {
         tabBarInactiveTintColor: "#A3A3A3",
         tabBarLabelStyle: {
             fontSize: 16,
-            fontFamily: 'Lato-Regular',
-            fontWeight: 'bold',
+            fontFamily: 'Lato',
+            fontWeight: 600,
         },
         tabBarIndicatorStyle: {backgroundColor:'#EBAA4E'},
         })}>      

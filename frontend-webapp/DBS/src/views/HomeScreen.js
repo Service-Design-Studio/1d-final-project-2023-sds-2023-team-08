@@ -127,6 +127,10 @@ const Homescreen = () => {
             </div>
           </button>
         </div>
+
+        <NavigationContainer>
+          <TopNavigator></TopNavigator>
+        </NavigationContainer>
     </div>
   );
 };
