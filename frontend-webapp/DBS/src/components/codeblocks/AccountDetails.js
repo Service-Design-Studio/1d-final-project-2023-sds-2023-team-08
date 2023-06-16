@@ -14,10 +14,7 @@ const AccountDetails = () => {
                     <p className='accountname'>
                     {account['account type']}
                     </p>
-                    <img
-                    src='/assets/expand.png'
-                    className='accountexpand'
-                    />
+                    <img src={require('../assets/expand.png')} className='accountexpand' />
                 </div>
                 <p className='accountnumber'>
                     {account['account number']}
