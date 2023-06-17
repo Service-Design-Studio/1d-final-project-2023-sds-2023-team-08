@@ -6,7 +6,7 @@ const AccountDetails = () => {
     const userAccounts = accountJson[0].account;
     
     return (
-        <div className='container'>
+        <div className='containeracc'>
           {userAccounts.map((account, index) => (
             <button onClick={() => {}} className='transparent'>
                 <div className='account' key={index}>
@@ -19,7 +19,7 @@ const AccountDetails = () => {
                 <p className='accountnumber'>
                     {account['account number']}
                 </p>
-                <div className='textcontainer'>
+                <div className='textcontainer2'>
                     <p className='sgd'>SGD</p>
                     <p className='money'>
                     {account['total amount'].toFixed(2)}

@@ -6,11 +6,12 @@
   padding: 0;
 }
 .sticky {
-  height: 18.5vh; /* Set the height of container 2 to the desired value */
+  height: 21vh; /* Set the height of container 2 to the desired value */
   position: sticky;
   top: 0;
+  background-color:#f6f6f6 ;
 }
-.header {
+.headertransaction {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,7 +126,6 @@
     flex-direction: column;
     margin: 0;
     padding: 0;
-    border-top: 1px solid #d2d2d2;
     border-bottom: 1px solid #d2d2d2;
   }
   
@@ -134,7 +134,7 @@
     font-size: 16px;
     font-weight: bold;
     color: #616161;
-    margin: 2vw 1vw;
+    margin: 2vw 3vw;
   }
   .transaction {
     background-color: white;

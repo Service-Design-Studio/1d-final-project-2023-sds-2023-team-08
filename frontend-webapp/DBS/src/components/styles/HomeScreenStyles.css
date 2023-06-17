@@ -1,11 +1,23 @@
 .container {
-    width: 100vw;
-    overflow-y:scroll ;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
-
+.scrollable {
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+.bottomnav {
+  position: fixed;
+  bottom: 0;
+  height: 8vh;
+  width: 100vw;
+  background-color: #162633;
+  padding: 0;
+  margin: 0;
+}
 .header {
   display: flex;
   align-items: center;
@@ -43,6 +55,7 @@
   margin-left: 2vw;
   margin-top: 1vh;
   align-self: center;
+  padding: 0 2vw;
 }
 .eye{
   max-height: 2vh;

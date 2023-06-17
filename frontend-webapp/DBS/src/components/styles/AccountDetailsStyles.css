@@ -1,4 +1,4 @@
-.textcontainer {
+.textcontainer2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -71,7 +71,7 @@
     margin-left: 6vw;
   }
   
-  .container {
+  .containeracc {
     width: 100vw;
     overflow-y:scroll ;
     overflow-x: hidden;

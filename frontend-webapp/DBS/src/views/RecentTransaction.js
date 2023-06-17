@@ -1,13 +1,15 @@
 import React from 'react';
 import '../components/styles/RecentTransaction.css';
+import { useNavigate } from 'react-router-dom';
 
 const Recenttransaction = () => {
-  
+  const navigate = useNavigate();
+
   return (
     <div className='maincontainer'>
       <div className='sticky'>
-        <div className='header'>
-          <button onClick={() => {}} className='transparent'>
+        <div className='headertransaction'>
+          <button onClick={() => navigate('/')} className='transparent'>
             <img src={require('../../src/components/assets/back.png')} className='back' />
           </button>
           <p className='headertext'>Recent Transactions</p>
