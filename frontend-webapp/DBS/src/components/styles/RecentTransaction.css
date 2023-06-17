@@ -6,7 +6,8 @@
   padding: 0;
 }
 .sticky {
-  height: 21vh; /* Set the height of container 2 to the desired value */
+  display: flex;
+  flex-direction: column;
   position: sticky;
   top: 0;
   background-color:#f6f6f6 ;
@@ -61,7 +62,6 @@
     display: flex;
     flex-direction: row;
     border-top: 1px solid #d2d2d2;
-    border-bottom: 1px solid #d2d2d2;
     padding: 0;
     margin: 0;
 }
@@ -105,7 +105,7 @@
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #d2d2d2;
-
+    border-top: 1px solid #d2d2d2;
   }
   
   .ftdtext {
@@ -228,4 +228,44 @@
     margin: 0;
     padding: 0 0 1.5vw 0;
   }
+
+
+  .yellowline2 {
+    width: 0.5vw;
+    height: 3vh;
+    background-color: #EBAA4E;
+    margin: 0 2vw 0 0 ;
+    padding: 0;
+  }
+
+  .transaction2 {
+    background-color: #f6f6f6;
+    margin: -2vw 0 0 0;
+    padding: 0;
+  }
+  .transactionheader2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f6f6;
+    padding: 0 3vw;
+    margin: 0;
+  }
   
+  .transactiontitle2 {
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #444444;
+    width: 84vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .expandtransaction{
+    object-fit: contain;
+    padding: 0vw 2vw;
+    width: 2.5vw;
+
+  }

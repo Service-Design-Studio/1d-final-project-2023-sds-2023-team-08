@@ -33,7 +33,7 @@ const Recenttransaction = () => {
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
             {uniqueAccountNumbers.map((account, index) => (
-            <button className='transparent' onClick={() => navigate(`/recenttransaction/${encodeURIComponent(account)}`)}>
+            <button className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
               <div className={account === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
                 <p className='name'>{account}</p>
               </div>
@@ -41,6 +41,17 @@ const Recenttransaction = () => {
             ))}
           </div>
         </div>
+
+        {accountNumber &&        
+          <button className='transparent' onClick={() => {}}>
+              <div className='transaction2'>
+                <div className='transactionheader2'>
+                  <div className='yellowline2'></div>
+                  <p className='transactiontitle2'>All Transactions for {accountNumber}</p>
+                  <img src={require('../../src/components/assets/expand.png')} className='expandtransaction'/>
+                </div>
+              </div>
+          </button> }
 
         <button className='transparent' onClick={() => {}}>
           <div className='ftd'>
@@ -77,7 +88,7 @@ const Recenttransaction = () => {
                     <p className='account'>{transactiondata.transaction["account number"]}</p>
                     <div className='rightcontainer2'>
                       <p className='sgd1'>SGD</p>
-                      <p className={transactiondata.transaction["total amount"] < 0 ? "moneyout" : "moneyin"}>{transactiondata.transaction["total amount"]}</p>
+                      <p className={transactiondata.transaction["total amount"] < 0 ? "moneyout" : "moneyin"}>{transactiondata.transaction["total amount"].toFixed(2)}</p>
                     </div>
                   </div>
                 </div>
