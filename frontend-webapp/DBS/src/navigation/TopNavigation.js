@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import '../components/styles/TopNavigationStyles.css';
 import accountJson from '../testdata/account.json';
+import AccountDetails from '../components/codeblocks/AccountDetails';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -51,6 +52,7 @@ const Accounts = () => {
                     </div>
                 </div>
             </button>
+            {showMore && <AccountDetails />}
         </div>
     );
 };
@@ -58,19 +60,19 @@ const Accounts = () => {
 const Insights = () => (
         <div className='insightscontainer'>
             <div className='rectangle'>
-                <p className='date'>14 JUN</p>
+                <p className='date2'>14 JUN</p>
                 <p className='title'>Review your budget</p>
                 <p className='body'>You've maintained your monthly spending average.</p>
             </div>
 
             <div className='rectangle'>
-                <p className='date'>14 JUN</p>
+                <p className='date2'>14 JUN</p>
                 <p className='title'>Resolve unexpected transactions quickly!</p>
                 <p className='body'>Here are some tips for you.</p>
             </div>
 
             <div className='rectangle'>
-                <p className='date'>14 JUN</p>
+                <p className='date2'>14 JUN</p>
                 <p className='title'>Was this deposit expected?</p>
                 <p className='body'>You don't often receive money from this source.</p>
             </div>

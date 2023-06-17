@@ -12,21 +12,21 @@
     flex-direction: row;
     align-items: center;
     background-color: white;
-    padding: 2vw 0;
+    padding: 1vw 0;
   }
   
   .blueline {
     background-color: #066DAF;
     width: 0.5vw;
     height: 3vh;
-    margin: 4vw;
+    margin: 4vw 2vw 4vw 4vw;
     
   }
   
   .yellowline {
     width: 0.5vw;
     height: 3vh;
-    margin: 4vw;
+    margin: 4vw 2vw 4vw 4vw;
     background-color: #EBAA4E;
   }
   
@@ -131,7 +131,7 @@
     margin: 2.5vh 0 0 0;
   }
   
-  .date {
+  .date2 {
     font-family: 'Lato';
     font-size: 10px;
     font-weight: bold;

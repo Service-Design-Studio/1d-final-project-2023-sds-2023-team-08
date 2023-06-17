@@ -1,58 +1,39 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image } from 'react-native';
-import { navigationBarStyles } from '../components/styles/BottomTabNavigatorStyles.tsx.js';
-import HomeScreen from '../views/HomeScreen.js';
-import Recenttransaction from '../views/RecentTransaction.js';
+import React, {useState} from 'react';
+import '../components/styles/BottomTabNavigatorStyles.css';
+import { BrowserRouter as Router, Route, Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Tab = createBottomTabNavigator();
+const BottomTabNavigator = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const BottomTabNavigator: React.FC = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerShown: false, 
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconSource;
+    <div className='bottomtabnavigatorcontainer'>
+      <button className='transparent' onClick={() => navigate('/')}>
+        <img src={location.pathname === '/' ? '/assets/navbar/home_bottomfilled.png' : '/assets/navbar/home_bottom.png'} alt="home" className='navicon'/>
+        <p  className={location.pathname === '/' ? 'navtextselected' : 'navtext'}>Home</p>
+      </button>
 
-          if (route.name === 'Home') {
-            iconSource = focused
-              ? require('../components/assets/navbar/home_bottomfilled.png')
-              : require('../components/assets/navbar/home_bottom.png');
-          } else if (route.name === 'Invest') {
-            iconSource = focused
-              ? require('../components/assets/navbar/invest_bottom.png')
-              : require('../components/assets/navbar/invest_bottom.png');
-          } else if (route.name === 'Pay & Transfer') {
-            iconSource = focused
-              ? require('../components/assets/navbar/pay&transfer_bottomfilled.png')
-              : require('../components/assets/navbar/pay&transfer_bottom.png');
-          } else if (route.name === 'Plan') {
-            iconSource = focused
-              ? require('../components/assets/navbar/plan_bottom.png')
-              : require('../components/assets/navbar/plan_bottom.png');
-          } else if (route.name === 'More') {
-            iconSource = focused
-              ? require('../components/assets/navbar/more_bottom.png')
-              : require('../components/assets/navbar/more_bottom.png');
-          }
+      <button className='transparent' onClick={() => navigate('/invest')}>
+        <img src={location.pathname === '/invest' ? '/assets/navbar/invest_bottom.png' : '/assets/navbar/invest_bottom.png'} alt="home" className='navicon'/>
+        <p  className={location.pathname === '/invest' ? 'navtextselected' : 'navtext'}>Invest</p>
+      </button>
 
-          return <Image source={iconSource} style={navigationBarStyles.icon} />;
-        },
+      <button className='transparent' onClick={() => navigate('/pay')}>
+        <img src={location.pathname === '/pay' ? '/assets/navbar/pay&transfer_bottomfilled.png' : '/assets/navbar/pay&transfer_bottom.png'} alt="home" className='navicon'/>
+        <p className={location.pathname === '/pay' ? 'navtextselected' : 'navtext'}>Pay & Transfer</p>
+      </button>
 
-        tabBarStyle: navigationBarStyles.tabBar,
-        tabBarActiveTintColor: "white",
-        tabBarInactiveTintColor:"#96A5B0",
-        tabBarLabelStyle: navigationBarStyles.labels,
+      <button className='transparent' onClick={() => navigate('/plan')}>
+        <img src={location.pathname === '/plan' ? '/assets/navbar/plan_bottom.png' : '/assets/navbar/plan_bottom.png'} alt="home" className='navicon'/>
+        <p  className={location.pathname === '/plan' ? 'navtextselected' : 'navtext'}>Plan</p>
+      </button>
 
-      })}
-    >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Invest" component={Recenttransaction} />
-      <Tab.Screen name="Pay & Transfer" component={HomeScreen} />
-      <Tab.Screen name="Plan" component={HomeScreen} />
-      <Tab.Screen name="More" component={HomeScreen} />
-    </Tab.Navigator>
+      <button className='transparent' onClick={() => navigate('/more')}>
+        <img src={location.pathname === '/more' ? '/assets/navbar/more_bottom.png' : '/assets/navbar/more_bottom.png'} alt="home" className='navicon'/>
+        <p  className={location.pathname === '/more' ? 'navtextselected' : 'navtext'}>More</p>
+      </button>
+    </div>
   );
 };
 
