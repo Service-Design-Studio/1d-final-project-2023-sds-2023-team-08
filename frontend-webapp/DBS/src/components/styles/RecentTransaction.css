@@ -1,0 +1,214 @@
+.maincontainer {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+.sticky {
+  height: 18.5vh; /* Set the height of container 2 to the desired value */
+  position: sticky;
+  top: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1vw 0;
+}
+
+.transparent {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.transparent img {
+  transition: opacity 0.2s;
+}
+
+.transparent:active img {
+  opacity: 0.5;
+  transition: none;
+}
+.transparent:active {
+  opacity: 0.5;
+  transition: none;
+}
+
+.back {
+  object-fit: contain;
+  width: 3vw;
+  padding-left: 2vw;
+  margin-top: 1vw;
+}
+
+.headertext {
+  flex:1;
+  font-family: 'Lato';
+  font-weight: bold;
+  font-size: 18px;
+  color: #444444;
+  text-align: center;
+}
+
+  
+.filtercontainer {
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
+    padding: 0;
+    margin: 0;
+}
+
+.scrollhorizontal {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 3vw 1.5vw;
+}
+
+  .filterrectangleunselected {
+    outline: 1px solid #d2d2d2;
+    background-color: white;
+    border-radius: 50px;
+    margin: 0 1vw;
+  }
+  
+  .name {
+    font-family: 'Lato';
+    color: #a3a3a3;
+    text-align: center;
+    margin: 0;
+    padding: 2vw 3vw;
+  }
+  
+  .ftd {
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #d2d2d2;
+
+  }
+  
+  .ftdtext {
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
+    margin:2vw 3vw;
+    font-weight: 500;
+  }
+  .scrollview {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+  }
+  .expand {
+    object-fit: contain;
+    padding: 0vw 5vw;
+    width: 2.5vw;
+  }
+  .datecontainer {
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
+  }
+  
+  .date {
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: bold;
+    color: #616161;
+    margin: 2vw 1vw;
+  }
+  .transaction {
+    background-color: white;
+    border-bottom: 1px solid #d2d2d2;
+  }
+  
+  .transactionheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0 3vw;
+    margin: 0;
+  }
+  
+  .transactiontitle {
+    font-family: 'Lato';
+    font-size: 17px;
+    color: #444444;
+    width: 84vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .transactiontype {
+    font-family: 'Lato';
+    font-size: 14px;
+    color: #a3a3a3;
+    text-align: left;
+    margin-top: -3vw;
+    padding: 0 3vw;
+  }
+  
+  .transactiondetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 3vw;
+  }
+  
+  .rightcontainer2 {
+    display:flex;
+    flex-direction: row;
+  }
+  .sgd1 {
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: bold;
+    color: #a3a3a3;
+    text-align: right;
+    margin: 0;
+    padding: 2.5vw 1vw 0 0;
+  }
+  
+  .money1 {
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: bold;
+    color: #444444;
+    text-align: right;
+    margin: 0;
+    padding: 1vw 5vw 1.5vw 0;
+  }
+  
+  .account {
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
+    text-align: left;
+    margin: 0;
+    padding: 0 0 1.5vw 0;
+  }
+  

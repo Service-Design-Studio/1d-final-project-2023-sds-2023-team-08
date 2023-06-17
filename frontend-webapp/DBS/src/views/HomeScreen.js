@@ -4,7 +4,6 @@ import TopNavigator from '../navigation/TopNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Homescreen = () => {
-  
   return (
     <div className="container">
         <div className='header'>

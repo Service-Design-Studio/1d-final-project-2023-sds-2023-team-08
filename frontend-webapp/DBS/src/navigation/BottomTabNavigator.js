@@ -1,13 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image } from 'react-native';
-import { navigationBarStyles } from '../components/styles/BottomTabNavigatorStyles.tsx.js';
+import '../components/styles/BottomTabNavigatorStyles.css';
 import HomeScreen from '../views/HomeScreen.js';
-import Recenttransaction from '../views/RecentTransaction.js';
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator: React.FC = () => {
+const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -37,18 +35,18 @@ const BottomTabNavigator: React.FC = () => {
               : require('../components/assets/navbar/more_bottom.png');
           }
 
-          return <Image source={iconSource} style={navigationBarStyles.icon} />;
+          return <img src={iconSource} className='headericon'/>;
         },
 
-        tabBarStyle: navigationBarStyles.tabBar,
+        tabBarStyle: 'tabBar',
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor:"#96A5B0",
-        tabBarLabelStyle: navigationBarStyles.labels,
+        tabBarLabelStyle: 'labels',
 
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Invest" component={Recenttransaction} />
+      <Tab.Screen name="Invest" component={HomeScreen} />
       <Tab.Screen name="Pay & Transfer" component={HomeScreen} />
       <Tab.Screen name="Plan" component={HomeScreen} />
       <Tab.Screen name="More" component={HomeScreen} />
