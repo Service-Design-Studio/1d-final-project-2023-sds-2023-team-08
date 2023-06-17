@@ -22,7 +22,7 @@
 .transparent {
   background-color: transparent;
   border: none;
-  cursor: pointer;
+  cursor: poLato;
   padding: 0;
   margin: 0;
 }
@@ -74,15 +74,21 @@
 }
 
   .filterrectangleunselected {
-    outline: 1px solid #d2d2d2;
+    outline: 1.2px solid #d2d2d2;
     background-color: white;
     border-radius: 50px;
     margin: 0 1vw;
   }
-  
+  .filterrectangleselected {
+    outline: 1.2px solid #d2d2d2;
+    background-color: #d2d2d2;
+    border-radius: 50px;
+    margin: 0 1vw;
+  }
   .name {
     font-family: 'Lato';
     color: #a3a3a3;
+    font-weight: bold;
     text-align: center;
     margin: 0;
     padding: 2vw 3vw;
@@ -114,6 +120,8 @@
     overflow-y: auto;
     padding: 0;
     margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
   }
   .expand {
     object-fit: contain;
@@ -158,6 +166,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: left;
   }
   
   .transactiontype {
@@ -190,23 +199,31 @@
     color: #a3a3a3;
     text-align: right;
     margin: 0;
-    padding: 2.5vw 1vw 0 0;
+    padding: 1.5vw 1vw 0 0;
   }
   
-  .money1 {
+  .moneyout {
     font-family: 'Lato';
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
     color: #444444;
+    font-weight: bold;
     text-align: right;
     margin: 0;
-    padding: 1vw 5vw 1.5vw 0;
+    padding: 0vw 5vw 1.5vw 0;
   }
-  
+  .moneyin {
+    font-family: 'Lato';
+    font-size: 19px;
+    color: #007D23;
+    text-align: right;
+    font-weight: bold;
+    margin: 0;
+    padding: 0vw 5vw 1.5vw 0;
+  }
   .account {
     font-family: 'Lato';
     font-size: 16px;
-    color: #444444;
+    color: #a3a3a3;
     text-align: left;
     margin: 0;
     padding: 0 0 1.5vw 0;

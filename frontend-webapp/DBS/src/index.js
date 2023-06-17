@@ -19,6 +19,6 @@ reportWebVitals();
 
 WebFont.load({
   google: {
-    families: ['Lato'],
+    families: ['Lato', 'Inter'],
   },
 });

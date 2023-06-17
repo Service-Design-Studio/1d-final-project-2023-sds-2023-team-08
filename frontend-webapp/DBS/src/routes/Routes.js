@@ -13,6 +13,7 @@ const Routing = () => {
         <Route path="/plan" element={<HomeScreen />} />
         <Route path="/more" element={<HomeScreen />} />
         <Route path="/recenttransaction" element={<Recenttransaction />} />
+        <Route path="/recenttransaction/:accountNumber" element={<Recenttransaction />} />
       </Routes>
     </Router>
   );
