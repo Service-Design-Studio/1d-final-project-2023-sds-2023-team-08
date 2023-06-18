@@ -35,7 +35,7 @@ const Recenttransaction = () => {
             {uniqueAccountNumbers.map((account, index) => (
             <button className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
               <div className={account === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
-                <p className='name'>{account}</p>
+                <p className={account === accountNumber  ? 'nameselected' : 'nameunselected'}>{account}</p>
               </div>
             </button>
             ))}
