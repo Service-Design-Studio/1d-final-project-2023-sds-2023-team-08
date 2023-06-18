@@ -80,14 +80,22 @@
     margin: 0 1vw;
   }
   .filterrectangleselected {
-    outline: 1.2px solid #d2d2d2;
-    background-color: #d2d2d2;
+    outline: 1.2px solid #8E8E8E;
+    background-color: #8E8E8E;
     border-radius: 50px;
     margin: 0 1vw;
   }
-  .name {
+  .nameunselected {
     font-family: 'Lato';
     color: #a3a3a3;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 2vw 3vw;
+  }  
+  .nameselected {
+    font-family: 'Lato';
+    color: white;
     font-weight: bold;
     text-align: center;
     margin: 0;
@@ -139,7 +147,7 @@
   
   .date {
     font-family: 'Lato';
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     color: #616161;
     margin: 2vw 3vw;
