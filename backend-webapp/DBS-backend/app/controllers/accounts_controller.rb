@@ -95,9 +95,9 @@ class AccountsController < ApplicationController
           {
             "date":transaction.datetime.strftime("%a, %d %b %Y"),
             "transaction": {
-              "transaction name": transaction.transaction_name,
+              "transaction name": transaction.account.user.id==@account.user.id ? transaction.transaction_name+" TO: "+transaction.get_other_party_name: transaction.transaction_name+" from: "+transaction.account.user.username,
               "transaction type": transaction.transaction_type,
-              "account number": transaction.account.user.id==@account.user.id ? transaction.recipient_account_number : transaction.account,
+              "account number": transaction.account.user.id==@account.user.id ? transaction.account.account_number : transaction.recipient_account_number,
               #if the account which made this transaction belongs to the user, it means outgoing funds thus other party is recipient acc, else sender's acc 
               "total amount": transaction.account.user.id==@account.user.id ? -transaction.amount : transaction.amount
               #if the account which made this transaction belongs to the user, it means outgoing funds thus -ve, else +ve
