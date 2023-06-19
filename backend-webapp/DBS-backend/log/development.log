@@ -2120,3 +2120,259 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 37ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 4808)
 
 
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/" for 127.0.0.1 at 2023-06-19 18:47:11 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.3ms | Allocations: 522)
+Completed 200 OK in 33ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-06-19 18:47:17 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:6
+  Rendered users/_user.html.erb (Duration: 0.7ms | Allocations: 160)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered users/_user.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered users/index.html.erb within layouts/application (Duration: 33.5ms | Allocations: 7020)
+  Rendered layout layouts/application.html.erb (Duration: 1051.7ms | Allocations: 90274)
+Completed 500 Internal Server Error in 1072ms (ActiveRecord: 1.1ms | Allocations: 93619)
+
+
+  
+ActionView::Template::Error (Permission denied @ rb_file_s_rename - (C:/Users/Vinny/Desktop/SDS-final/backend-webapp/DBS-backend/tmp/cache/assets/sprockets/v4.0.0/Yw/YwfR6eX7gmk0EreN1g4gKhkkZJOAKt_ugkrEgs6iAeQ.cache.24880.17684.697535, C:/Users/Vinny/Desktop/SDS-final/backend-webapp/DBS-backend/tmp/cache/assets/sprockets/v4.0.0/Yw/YwfR6eX7gmk0EreN1g4gKhkkZJOAKt_ugkrEgs6iAeQ.cache)):
+  
+sprockets (4.2.0) lib/sprockets/path_utils.rb:362:in `rename'
+sprockets (4.2.0) lib/sprockets/path_utils.rb:362:in `atomic_write'
+sprockets (4.2.0) lib/sprockets/cache/file_store.rb:112:in `set'
+sprockets (4.2.0) lib/sprockets/cache.rb:227:in `set'
+sprockets (4.2.0) lib/sprockets/cache.rb:143:in `set'
+sprockets (4.2.0) lib/sprockets/loader.rb:263:in `store_asset'
+sprockets (4.2.0) lib/sprockets/loader.rb:226:in `load_from_unloaded'
+sprockets (4.2.0) lib/sprockets/loader.rb:59:in `block in load'
+sprockets (4.2.0) lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+sprockets (4.2.0) lib/sprockets/loader.rb:43:in `load'
+sprockets (4.2.0) lib/sprockets/cached_environment.rb:44:in `block in load'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:207:in `block in fetch_or_store'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:187:in `fetch'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:206:in `fetch_or_store'
+sprockets (4.2.0) lib/sprockets/cached_environment.rb:44:in `load'
+sprockets (4.2.0) lib/sprockets/bundle.rb:27:in `call'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:84:in `call_processor'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:65:in `reverse_each'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:65:in `call_processors'
+sprockets (4.2.0) lib/sprockets/loader.rb:182:in `load_from_unloaded'
+sprockets (4.2.0) lib/sprockets/loader.rb:59:in `block in load'
+sprockets (4.2.0) lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+sprockets (4.2.0) lib/sprockets/loader.rb:43:in `load'
+sprockets (4.2.0) lib/sprockets/cached_environment.rb:44:in `block in load'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:207:in `block in fetch_or_store'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:187:in `fetch'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:206:in `fetch_or_store'
+sprockets (4.2.0) lib/sprockets/cached_environment.rb:44:in `load'
+sprockets (4.2.0) lib/sprockets/bundle.rb:32:in `block in call'
+C:/Ruby32-x64/lib/ruby/3.2.0/set.rb:511:in `each_key'
+C:/Ruby32-x64/lib/ruby/3.2.0/set.rb:511:in `each'
+sprockets (4.2.0) lib/sprockets/bundle.rb:31:in `call'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:84:in `call_processor'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:66:in `block in call_processors'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:65:in `reverse_each'
+sprockets (4.2.0) lib/sprockets/processor_utils.rb:65:in `call_processors'
+sprockets (4.2.0) lib/sprockets/loader.rb:182:in `load_from_unloaded'
+sprockets (4.2.0) lib/sprockets/loader.rb:59:in `block in load'
+sprockets (4.2.0) lib/sprockets/loader.rb:337:in `fetch_asset_from_dependency_cache'
+sprockets (4.2.0) lib/sprockets/loader.rb:43:in `load'
+sprockets (4.2.0) lib/sprockets/cached_environment.rb:44:in `block in load'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:207:in `block in fetch_or_store'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:187:in `fetch'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/map.rb:206:in `fetch_or_store'
+sprockets (4.2.0) lib/sprockets/cached_environment.rb:44:in `load'
+sprockets (4.2.0) lib/sprockets/base.rb:81:in `find_asset'
+sprockets (4.2.0) lib/sprockets/base.rb:88:in `find_all_linked_assets'
+sprockets (4.2.0) lib/sprockets/manifest.rb:125:in `each'
+sprockets (4.2.0) lib/sprockets/manifest.rb:125:in `to_a'
+sprockets (4.2.0) lib/sprockets/manifest.rb:125:in `block (2 levels) in find'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:48:in `block in synchronize'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:48:in `synchronize'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:48:in `synchronize'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:22:in `execute'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/promise.rb:564:in `block in realize'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+concurrent-ruby (1.2.2) lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started GET "/users/11/all_transactions" for 127.0.0.1 at 2023-06-19 18:47:29 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:106:in `set_user'
+  [1m[36mAccount Pluck (0.1ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:19:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/controllers/users_controller.rb:118:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-5"]]
+  ↳ app/controllers/users_controller.rb:118:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:128:in `block in all_transactions_desc'
+Completed 200 OK in 177ms (Views: 1.5ms | ActiveRecord: 3.1ms | Allocations: 24117)
+
+
+Started GET "/" for 127.0.0.1 at 2023-06-19 23:12:22 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.2ms | Allocations: 522)
+Completed 200 OK in 30ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:12:31 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 582)
+
+
+  
+NoMethodError (undefined method `accounts' for nil:NilClass):
+  
+app/controllers/users_controller.rb:10:in `home'
+Started GET "/users/1/home" for 127.0.0.1 at 2023-06-19 23:12:46 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 457)
+
+
+  
+NoMethodError (undefined method `accounts' for nil:NilClass):
+  
+app/controllers/users_controller.rb:10:in `home'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:13:45 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 457)
+
+
+  
+NoMethodError (undefined method `accounts' for nil:NilClass):
+  
+app/controllers/users_controller.rb:10:in `home'
+Started GET "/users/11/all_transactions" for 127.0.0.1 at 2023-06-19 23:16:25 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:105:in `set_user'
+  [1m[36mAccount Pluck (0.1ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:19:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/controllers/users_controller.rb:117:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-5"]]
+  ↳ app/controllers/users_controller.rb:117:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:127:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:127:in `block in all_transactions_desc'
+Completed 200 OK in 176ms (Views: 1.3ms | ActiveRecord: 3.6ms | Allocations: 39957)
+
+
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:16:35 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 457)
+
+
+  
+NoMethodError (undefined method `accounts' for nil:NilClass):
+  
+app/controllers/users_controller.rb:10:in `home'
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:20:40 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 1810)
+
+
+  
+NoMethodError (undefined method `username' for nil:NilClass):
+  
+app/controllers/users_controller.rb:11:in `home'
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:21:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 1810)
+
+
+  
+NoMethodError (undefined method `list_of_acc_infos' for nil:NilClass):
+  
+app/controllers/users_controller.rb:11:in `home'
+Started GET "/users/11/all_transactions" for 127.0.0.1 at 2023-06-19 23:22:01 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.4ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:35:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-5"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:116:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:116:in `block in all_transactions_desc'
+Completed 200 OK in 201ms (Views: 1.3ms | ActiveRecord: 3.8ms | Allocations: 40242)
+
+
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:22:46 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.9ms | Allocations: 11220)
+
+
+  
+NoMethodError (undefined method `accounts' for nil:NilClass):
+  
+app/models/user.rb:10:in `list_of_acc_infos'
+app/controllers/users_controller.rb:11:in `home'
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:23:36 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 4]]
+  ↳ app/models/account.rb:7:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-5"]]
+  ↳ app/models/account.rb:10:in `net_deposits'
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 3.2ms | Allocations: 21702)
+
+
+Started GET "/users/11/home" for 127.0.0.1 at 2023-06-19 23:23:59 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.3ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 4]]
+  ↳ app/models/account.rb:7:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-5"]]
+  ↳ app/models/account.rb:10:in `net_deposits'
+Completed 200 OK in 39ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 15058)
+
+
