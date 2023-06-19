@@ -1,16 +1,40 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import '../components/styles/TopNavigationStyles.css';
-import accountJson from '../testdata/account.json';
 import AccountDetails from '../components/codeblocks/AccountDetails';
+import axios from 'axios';
+
+//import accountJson from '../testdata/account.json';
+//const userAccounts = accountJson[0].account;
+//const totalAmounts = userAccounts.map(account => account['total amount']);
+// const totalAmountSum = userAccounts.reduce((sum, account) => sum + account['total amount'], 0).toFixed(2);
 
 const Tab = createMaterialTopTabNavigator();
 
 const Accounts = () => {
     const [showMore, setShowMore] = useState(false);
-    const userAccounts = accountJson[0].account;
-    const totalAmounts = userAccounts.map(account => account['total amount']);
-    const totalAmountSum = userAccounts.reduce((sum, account) => sum + account['total amount'], 0).toFixed(2);
+    const [userData, setUserData] = useState([]);
+    const [totalAmountSum, setTotalAmountSum] = useState(0);
+  
+    useEffect(() => {
+      const fetchAccountData = async () => {
+        try {
+          const response = await axios.get('https://api.example.com/account');
+          const accountData = response.data;
+          
+          setUserData(accountData[0].account);
+  
+          const sum = accountData[0].account.reduce((total, account) => total + account['total amount'], 0);
+          setTotalAmountSum(sum.toFixed(2));
+        } 
+        
+        catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchAccountData();
+    }, []);
 
     return(
         <div className='container'>

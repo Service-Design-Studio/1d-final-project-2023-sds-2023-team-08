@@ -1,9 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../styles/AccountDetailsStyles.css';
-import accountJson from '../../testdata/account.json';
+import axios from 'axios';
+
+//import accountJson from '../../testdata/account.json';
+//const userAccounts = accountJson[0].account;
+
 
 const AccountDetails = () => {
-    const userAccounts = accountJson[0].account;
+
+  const [userAccounts, setUserAccounts] = useState([]);
+  useEffect(() => {
+    const fetchuserAccounts = async () => {
+      try {
+        const response = await axios.get('https://api.example.com/account');
+        const accountData = response.data;
+        
+        setUserAccounts(accountData[0].account);
+      } 
+      
+      catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchuserAccounts();
+  }, []);
+
     
     return (
         <div className='containeracc'>
