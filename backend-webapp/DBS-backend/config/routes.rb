@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   
   #custom routes
-  get 'users/:id/total_deposit', to: 'users#total_deposit'
-  get 'users/:id/list_accounts', to: 'users#list_accounts'
+  get 'users/:id/home', to: 'users#home'
   get 'users/:id/all_transactions', to: 'users#all_transactions'
   get 'accounts/:id/all_transactions', to: 'accounts#all_transactions'
+  
 end

@@ -1,28 +1,16 @@
 
 class UsersController < ApplicationController
   
-  before_action :set_user, only: %i[ show edit update destroy list_accounts total_deposit all_transactions]
+  before_action :set_user, only: %i[ show edit update destroy list_accounts total_deposit all_transactions home]
 
-  def total_deposit
-    total_deposits_all_accounts=@user.total_deposits
-    data = {
-      "deposit": total_deposits_all_accounts
-    }
   
-    render json: data, status: :ok #http 200
-  end
-  def list_accounts
-
-    accounts=[]
-    account_ids=[]
-    @user.accounts.each do |account|
-      accounts.push(account.account_number)
-      account_ids.push(account.id)
-    end
+  def home
+    
 
     data = {
-      "account_numbers": accounts,
-      "account_IDs": account_ids  #required for future get request in button callbacks
+      "user": @user.username,
+      "account": @user.list_of_acc_infos
+      
 
     }
   

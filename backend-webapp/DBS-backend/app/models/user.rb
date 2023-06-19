@@ -4,6 +4,22 @@ class User < ApplicationRecord
     has_many :transactions, :through => :accounts
     validates :username, :password, :phone, :email, presence: true
     
+    def list_of_acc_infos
+        accountinfo=[]
+    
+        accounts.each do |account|
+        accountinfo.push(
+            {
+            "account type": account.account_type,
+            "account number": account.account_number,
+            "total amount": account.net_deposits,
+            "account id":account.id
+            }
+        )
+        end
+        accountinfo
+
+    end
 
     def total_deposits #checked
         total=0

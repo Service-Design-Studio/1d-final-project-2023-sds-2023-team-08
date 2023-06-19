@@ -41,4 +41,5 @@ RUN bundle exec rake db:migrate
 RUN bundle exec rake db:seed
 
 EXPOSE 8080
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+#CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+CMD bundle exec puma -C config/puma.rb
