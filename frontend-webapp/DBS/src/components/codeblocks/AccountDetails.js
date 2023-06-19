@@ -12,7 +12,7 @@ const AccountDetails = () => {
   useEffect(() => {
     const fetchuserAccounts = async () => {
       try {
-        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/1/home');
+        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
         const accountData = JSON.stringify(response.data);
         const parsedData = JSON.parse(accountData);
 
