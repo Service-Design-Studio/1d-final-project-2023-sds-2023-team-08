@@ -2104,3 +2104,19 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 504ms (Views: 174.3ms | ActiveRecord: 0.0ms | Allocations: 4873)
 
 
+Started GET "/" for 127.0.0.1 at 2023-06-19 17:46:23 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 37.9ms | Allocations: 522)
+Completed 200 OK in 187ms (Views: 68.2ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
+Started GET "/" for 127.0.0.1 at 2023-06-19 18:18:14 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.0ms | Allocations: 522)
+Completed 200 OK in 37ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
