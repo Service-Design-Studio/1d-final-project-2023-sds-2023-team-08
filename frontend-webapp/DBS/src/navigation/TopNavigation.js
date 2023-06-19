@@ -17,24 +17,28 @@ const Accounts = () => {
     const [totalAmountSum, setTotalAmountSum] = useState(0);
   
     useEffect(() => {
-      const fetchAccountData = async () => {
-        try {
-          const response = await axios.get('https://api.example.com/account');
-          const accountData = response.data;
-          
-          setUserData(accountData[0].account);
-  
-          const sum = accountData[0].account.reduce((total, account) => total + account['total amount'], 0);
-          setTotalAmountSum(sum.toFixed(2));
-        } 
-        
-        catch (error) {
-          console.log(error);
-        }
-      };
-  
-      fetchAccountData();
-    }, []);
+        const fetchAccountData = async () => {
+          try {
+            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/1/home');
+            const accountData = JSON.stringify(response.data);
+            const parsedData = JSON.parse(accountData);
+                          
+            setUserData(parsedData.account);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+      
+        fetchAccountData();
+      }, []);
+      
+      useEffect(() => {
+        const sum = userData.reduce((total, account) => total + account['total amount'], 0);
+        setTotalAmountSum(sum.toFixed(2));
+      }, [userData]);
+      
+      console.log(totalAmountSum, userData);
+      
 
     return(
         <div className='container'>

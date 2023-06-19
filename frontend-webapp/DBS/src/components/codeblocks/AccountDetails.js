@@ -12,20 +12,19 @@ const AccountDetails = () => {
   useEffect(() => {
     const fetchuserAccounts = async () => {
       try {
-        const response = await axios.get('https://api.example.com/account');
-        const accountData = response.data;
-        
-        setUserAccounts(accountData[0].account);
-      } 
-      
-      catch (error) {
+        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/1/home');
+        const accountData = JSON.stringify(response.data);
+        const parsedData = JSON.parse(accountData);
+
+        setUserAccounts(parsedData.account);
+      } catch (error) {
         console.log(error);
       }
     };
-
+    
     fetchuserAccounts();
   }, []);
-
+  
     
     return (
         <div className='containeracc'>

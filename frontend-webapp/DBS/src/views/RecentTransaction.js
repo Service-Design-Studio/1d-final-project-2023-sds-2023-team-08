@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../components/styles/RecentTransaction.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
@@ -12,22 +12,20 @@ function getTransactionsByDate(transactions, specificDate) {
 const Recenttransaction = () => {
   const navigate = useNavigate();
   const { accountNumber  } = useParams();
-  const [transaction, setTransaction] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   
   useEffect(() => {
     const fetchtransactions = async () => {
       try {
-        const response = await axios.get('https://api.example.com/account');
-        const accountData = response.data;
-        
-        setTransaction(accountData[0].account);
-      } 
-      
-      catch (error) {
+        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/1/all_transactions');
+        const accountData = JSON.stringify(response.data);
+        const parsedData = JSON.parse(accountData)
+        console.log(parsedData, parsedData)
+        setTransactions(parsedData);
+      } catch (error) {
         console.log(error);
       }
     };
-
     fetchtransactions();
   }, []);
   
