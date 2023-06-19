@@ -83,8 +83,8 @@ brighton_multiplier_acc.transactions.create(
   amount: 15
 )
 jx_multiplier_acc.transactions.create(
-  transaction_name: "PayNow Transfer", #: jx mult to tristan OTHR PayNow Transfer
-  transaction_type: "FAST / PayNow Transfer",
+  transaction_name: "Account Transfer", #: jx mult to tristan via account
+  transaction_type: "Account Transfer",
   recipient_account_number: '539-23421-7',
   datetime: DateTime.strptime("Mon, 12 Jun 2023", "%a, %d %b %Y"),
   amount: 7.45

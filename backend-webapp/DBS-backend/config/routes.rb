@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   #custom routes
   get 'users/:id/home', to: 'users#home'
   get 'users/:id/all_transactions', to: 'users#all_transactions'
+
+  #for filter
   get 'accounts/:id/all_transactions', to: 'accounts#all_transactions'
   
 end
