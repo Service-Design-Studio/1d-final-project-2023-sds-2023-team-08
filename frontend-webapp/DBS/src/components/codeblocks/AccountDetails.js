@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../styles/AccountDetailsStyles.css';
-import accountJson from '../../testdata/account.json';
+import axios from 'axios';
+
+//import accountJson from '../../testdata/account.json';
+//const userAccounts = accountJson[0].account;
+
 
 const AccountDetails = () => {
-    const userAccounts = accountJson[0].account;
+
+  const [userAccounts, setUserAccounts] = useState([]);
+  useEffect(() => {
+    const fetchuserAccounts = async () => {
+      try {
+        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
+        const accountData = JSON.stringify(response.data);
+        const parsedData = JSON.parse(accountData);
+
+        setUserAccounts(parsedData.account);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+    fetchuserAccounts();
+  }, []);
+  
     
     return (
         <div className='containeracc'>
