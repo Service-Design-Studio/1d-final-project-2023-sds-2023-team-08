@@ -9,21 +9,28 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
     "@types/cucumber": "^7.0.0",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
     "cucumber-html-reporter": "^7.1.0",
     "jsdom-global": "^3.0.2",
     "axios": "^1.4.0",
+    "@types/cucumber": "^7.0.0",
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
+    "cucumber-html-reporter": "^7.1.0",
+    "jsdom-global": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "^0.71.11",
     "react-native-tab-view": "^3.5.1",
     "react-native-web": "^0.19.5",
     "react-router-dom": "^6.13.0",
-    "react-scripts": "5.0.1",
+    "ts-node": "^10.9.1",
     "ts-node": "^10.9.1",
     "web-vitals": "^2.1.4",
+    "webfontloader": "^1.6.28",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
@@ -50,6 +57,25 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/register": "^7.22.5",
+    "@cucumber/cucumber": "^9.1.2",
+    "cucumber": "^6.0.7",
+    "cucumber-jest": "^0.3.1",
+    "jest": "^27.5.1",
+    "react-cucumber": "^1.0.7",
+    "react-scripts": "^5.0.1"
+  },
+  "jest": {
+    "preset": "react-scripts",
+    "testMatch": [
+      "**/__tests__/**/*.js?(x)",
+      "**/?(*.)+(spec|test).js?(x)"
+    ],
+    "testRunner": "cucumber-jest"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",

@@ -1,0 +1,8 @@
+W, [2023-06-19T21:17:10.989056 #3084]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2023-06-19T21:17:11.089369 #3084]  INFO -- : Migrating to CreateUsers (20230617181609)
+I, [2023-06-19T21:17:11.115687 #3084]  INFO -- : Migrating to CreateTransactions (20230617181656)
+I, [2023-06-19T21:17:11.128340 #3084]  INFO -- : Migrating to CreateAccounts (20230617181730)
+I, [2023-06-19T21:17:11.139857 #3084]  INFO -- : Migrating to AddUserIdToAccounts (20230617182309)
+I, [2023-06-19T21:17:11.169669 #3084]  INFO -- : Migrating to AddAccountIdToTransactions (20230617182343)
+I, [2023-06-19T21:17:11.188616 #3084]  INFO -- : Migrating to CorrectColNameTransaction (20230617184332)
+W, [2023-06-19T21:17:42.140722 #6840]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
