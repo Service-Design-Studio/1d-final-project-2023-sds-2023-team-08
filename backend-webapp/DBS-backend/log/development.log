@@ -3779,3 +3779,24 @@ Processing by AccountsController#all_transactions as HTML
 Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2458)
 
 
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-20 18:07:28 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.4ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.3ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 335ms (Views: 1.2ms | ActiveRecord: 6.7ms | Allocations: 35447)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
