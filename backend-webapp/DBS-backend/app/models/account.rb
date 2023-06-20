@@ -4,10 +4,14 @@ class Account < ApplicationRecord
  
 
     def net_deposits #checked
+        
+        
         outgoing =transactions.sum(:amount)
+        
         net=self.initial_deposit-outgoing
 
         self.incoming_transactions.each do|t|
+            
             net+=t.amount
         end
 
