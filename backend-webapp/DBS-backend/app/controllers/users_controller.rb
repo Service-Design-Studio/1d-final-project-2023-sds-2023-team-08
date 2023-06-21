@@ -20,12 +20,12 @@ class UsersController < ApplicationController
 
   def all_transactions
     #outgoing
-    outgoing=@user.transactions
+    outgoing_7_days=@user.transactions.where("datetime >= ?", 7.days.ago.to_date)
     
     #incoming
-    incoming=@user.incoming_transactions
+    incoming_7_days=@user.incoming_transactions.where("datetime >= ?", 7.days.ago.to_date)
 
-    data=self.all_transactions_desc(outgoing,incoming)
+    data=self.all_transactions_desc(outgoing_7_days,incoming_7_days)
     render json: data, status: :ok #http 200
 
 
@@ -92,6 +92,9 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      raise ActionController::RoutingError, 'User Not Found'
+      #render json: { error: "user not found" }, status: :not_found  #404 Not Found
     end
 
     # Only allow a list of trusted parameters through.
