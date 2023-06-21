@@ -5630,3 +5630,645 @@ Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 8014
 
   [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
   [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:08:18 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 36ms (Views: 1.4ms | ActiveRecord: 2.6ms | Allocations: 3975)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:08:18 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 8094)
+
+
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:18:59 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 3975)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:18:59 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 33ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 8094)
+
+
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:50:40 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 19ms (Views: 0.7ms | ActiveRecord: 1.6ms | Allocations: 3975)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:50:40 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 8094)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 14:50:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 14:50:41 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.2ms | Allocations: 954)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:51:30 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 3745)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:51:30 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 8014)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 14:51:30 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 14:51:30 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:53:27 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3744)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:53:27 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 8014)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 14:53:28 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 14:53:28 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:54:57 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3744)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:54:57 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 8014)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 14:54:57 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 14:54:57 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/100/home" for 127.0.0.1 at 2023-06-21 14:57:55 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=100):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:58:10 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 3740)
+
+
+Started GET "/users/17/homer" for 127.0.0.1 at 2023-06-21 14:58:27 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/homer"):
+  
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:59:23 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 3744)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:59:23 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 8014)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 14:59:23 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 14:59:24 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 14:59:46 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3744)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 14:59:46 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 8014)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 14:59:46 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 14:59:47 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 15:00:25 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.1ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3744)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 15:00:25 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 8013)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 15:00:25 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 15:00:25 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started GET "/users/17/home" for 127.0.0.1 at 2023-06-21 15:01:22 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 2]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 3744)
+
+
+Started GET "/users/17/all_transactions" for 127.0.0.1 at 2023-06-21 15:01:22 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 17]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-14')[0m  [["user_id", 17]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-14')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "539-23421-0"]]
+  ↳ app/controllers/users_controller.rb:106:in `all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:110:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 8014)
+
+
+Started GET "/users/17/home10" for 127.0.0.1 at 2023-06-21 15:01:22 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/17/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-06-21 15:01:22 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 924)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=999):
+  
+app/controllers/users_controller.rb:94:in `set_user'
