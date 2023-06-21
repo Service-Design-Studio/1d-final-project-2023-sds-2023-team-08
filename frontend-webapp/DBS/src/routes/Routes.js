@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomeScreen from '../views/HomeScreen.js';
 import Recenttransaction from '../views/RecentTransaction.js';
+import FTDetails from '../views/FTDetails.js';
 //import RouterSpy from './path-to-router-spy'
 
 const Routing = () => {
@@ -12,7 +13,7 @@ const Routing = () => {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/invest" element={<HomeScreen />} />
         <Route path="/pay" element={<HomeScreen />} />
-        <Route path="/plan" element={<HomeScreen />} />
+        <Route path="/plan" element={<FTDetails />} />
         <Route path="/more" element={<HomeScreen />} />
         <Route path="/recenttransaction" element={<Recenttransaction />} />
         <Route path="/recenttransaction/:accountNumber" element={<Recenttransaction />} />
