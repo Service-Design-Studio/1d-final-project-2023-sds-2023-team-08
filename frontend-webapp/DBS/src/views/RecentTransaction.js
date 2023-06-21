@@ -42,7 +42,7 @@ const Recenttransaction = () => {
     <div className='maincontainer'>
       <div className='sticky'>
         <div className='headertransaction'>
-          <button onClick={() => navigate('/')} className='transparent'>
+          <button id = 'backarrow' onClick={() => navigate('/')} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
           <p className='headertext'>Recent Transactions</p>
@@ -51,7 +51,7 @@ const Recenttransaction = () => {
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
             {uniqueAccountNumbers.map((account, index) => (
-            <button className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
+            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
               <div className={account === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
                 <p className={account === accountNumber  ? 'nameselected' : 'nameunselected'}>{account}</p>
               </div>

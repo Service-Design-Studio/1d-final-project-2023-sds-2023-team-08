@@ -12,13 +12,16 @@ After(async function () {
   await this.driver.quit();
 });
 
+
+//////////////// OPENING RECENT TRANSACTIONS PAGE //////////////////////////////////////////////////////////////////////////////////////////////
+
 Given('I am at the homepage', async function () {
   // Navigate to the homepage
   await this.driver.get('http://localhost:3000');
   await this.driver.manage().window().setRect({ width: 393, height: 851 });
 });
 
-When('I clicked "Recent Transactions"', async function () {
+When('I click on "Recent Transactions"', async function () {
   const recentTransactionButton = await this.driver.findElement(By.id('transaction'));
 
   // Add a delay of 1 second before clicking the button
@@ -28,12 +31,147 @@ When('I clicked "Recent Transactions"', async function () {
   await recentTransactionButton.click();
 });
 
-
-Then('I will be redirected to the Recent Transaction Page', async function () {
+Then('I will be redirected to the Recent Transactions page', async function () {
   // Check if the current page is the Sign Up Page
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction');
 });
+
+
+
+/////////////////// FILTER BUTTON 0 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Given('I am at the Recent Trasanctions page and I want to filter by "539-23421-0"', async function () {
+  // Navigate to the homepage
+  await this.driver.get('http://localhost:3000/recenttransaction');
+  await this.driver.manage().window().setRect({ width: 393, height: 851 });
+});
+
+When('I click on the filter button by account number "539-23421-0"', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('539-23421-0'));
+
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Click the button
+  await recentTransactionButton.click();
+});
+
+Then('I will see that only transactions under account "539-23421-0" are shown', async function () {
+  // Check if the current page is the Sign Up Page
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction/539-23421-0');
+});
+
+
+
+/////////////////// FILTER BUTTON 2 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Given('I am at the Recent Trasanctions page and I want to filter by "539-23421-2"', async function () {
+  // Navigate to the homepage
+  await this.driver.get('http://localhost:3000/recenttransaction');
+  await this.driver.manage().window().setRect({ width: 393, height: 851 });
+});
+
+When('I click on the filter button by account number "539-23421-2"', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('539-23421-2'));
+
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Click the button
+  await recentTransactionButton.click();
+});
+
+Then('I will see that only transactions under account "539-23421-2" are shown', async function () {
+  // Check if the current page is the Sign Up Page
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction/539-23421-2');
+});
+
+
+
+/////////////////// UNCLICKING FILTER BUTTON 0 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Given('I have filtered my transactions by "539-23421-0"', async function () {
+  // Navigate to the homepage
+  await this.driver.get('http://localhost:3000/recenttransaction/539-23421-0');
+  await this.driver.manage().window().setRect({ width: 393, height: 851 });
+});
+
+When('I click on the greyed-out filter button by account number "539-23421-0"', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('539-23421-0'));
+
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Click the button
+  await recentTransactionButton.click();
+});
+
+Then('I will see that all my transactions from both accounts will be shown and "539-23421-0" button is white', async function () {
+  // Check if the current page is the Sign Up Page
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction');
+});
+
+
+
+/////////////////// UNCLICKING FILTER BUTTON 2 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Given('I have filtered my transactions by "539-23421-2"', async function () {
+  // Navigate to the homepage
+  await this.driver.get('http://localhost:3000/recenttransaction/539-23421-2');
+  await this.driver.manage().window().setRect({ width: 393, height: 851 });
+});
+
+When('I click on the greyed-out filter button by account number "539-23421-2"', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('539-23421-2'));
+
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Click the button
+  await recentTransactionButton.click();
+});
+
+Then('I will see that all my transactions from both accounts will be shown and "539-23421-2" button is white', async function () {
+  // Check if the current page is the Sign Up Page
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction');
+});
+
+
+
+/////////////////// BACK TO HOME PAGE  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Given('I am at the Recent Transactions page', async function () {
+  // Navigate to the homepage
+  const RT = await this.driver.get('http://localhost:3000/recenttransaction');
+  const RT_0 = await this.driver.get('http://localhost:3000/recenttransaction/539-23421-0');
+  const RT_2 = await this.driver.get('http://localhost:3000/recenttransaction/539-23421-2');
+  await this.driver.manage().window().setRect({ width: 393, height: 851 });
+});
+
+When('I click on the back arrow', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('backarrow'));
+
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Click the button
+  await recentTransactionButton.click();
+});
+
+Then('I will be brought back to the home page', async function () {
+  // Check if the current page is the Sign Up Page
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, 'http://localhost:3000/');
+});
+
+
+
 
 module.exports = {
   Given,
