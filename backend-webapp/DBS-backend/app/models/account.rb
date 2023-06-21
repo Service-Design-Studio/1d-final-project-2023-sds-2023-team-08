@@ -3,7 +3,7 @@ class Account < ApplicationRecord
     has_many :transactions
  
 
-    def net_deposits #checked
+    def net_deposits #checked, used by user model: list_of_acc_infos
         
         
         outgoing =transactions.sum(:amount)
@@ -20,7 +20,7 @@ class Account < ApplicationRecord
 
     end
 
-    def incoming_transactions #checked
+    def incoming_transactions #checked,for acc route
         Transaction.where(recipient_account_number: self.account_number)
     end
 end

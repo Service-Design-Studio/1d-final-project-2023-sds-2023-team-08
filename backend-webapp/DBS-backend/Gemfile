@@ -51,9 +51,10 @@ gem "bootsnap", require: false
 gem 'rack-cors'
 
 
-group :production do
-  #gem 'pg', '~> 0.21' # for gcloud deployment
-end
+# group :production do
+#   gem 'pg', '~> 0.21' # for gcloud deployment
+# end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -77,6 +78,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'cucumber-rails', require: false
-  gem 'cucumber-rails-training-wheels'
+  gem "cucumber"
+
+  # easy way to make HTTP requests in Ruby
+  gem "httparty"
+  #  provides methods to parse JSON strings into Ruby objects and generate JSON strings from Ruby objects
+  gem "json"
 end

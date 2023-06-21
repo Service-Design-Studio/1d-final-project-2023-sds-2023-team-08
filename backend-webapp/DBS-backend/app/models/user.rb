@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :transactions, :through => :accounts
     validates :username, :password, :phone, :email, presence: true
     
-    def list_of_acc_infos
+    def list_of_acc_infos #to be used in user controller
         accountinfo=[]
     
         accounts.each do |account|
@@ -21,17 +21,9 @@ class User < ApplicationRecord
 
     end
 
-    def total_deposits #checked
-        total=0
-        accounts.each do |acc|
-            total+=acc.net_deposits #net_deposits is a method of account model
-        
-        end
-        return total
 
-    end
 
-    def incoming_transactions #checked
+    def incoming_transactions #checked, to be used in user controller
         account_nums = accounts.pluck(:account_number)
         Transaction.where(recipient_account_number: account_nums) 
         #where recipient_account_number is in list of this user's accounts
