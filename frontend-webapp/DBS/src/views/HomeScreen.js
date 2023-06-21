@@ -1,8 +1,8 @@
 import React from 'react';
 import '../components/styles/HomeScreenStyles.css';
-import TopNavigator from '../navigation/TopNavigation.js';
+import TopNavigator from '../navigation/TopNavigation';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from '../navigation/BottomTabNavigator.js';
+import BottomTabNavigator from '../navigation/BottomTabNavigator';
 import { useNavigate } from 'react-router-dom';
 
 const Homescreen = () => {

@@ -1,9 +1,9 @@
-import Homescreen from "./views/HomeScreen.js";
+import Homescreen from "./views/HomeScreen";
 import { NavigationContainer } from '@react-navigation/native';
-import Recenttransaction from "./views/RecentTransaction.js";
-import BottomTabNavigator from "./navigation/BottomTabNavigator.js";
+import Recenttransaction from "./views/RecentTransaction";
+import BottomTabNavigator from "./navigation/BottomTabNavigator";
 import { BrowserRouter as Router, Route, Link, useLocation } from 'react-router-dom';
-import Routing from "./routes/Routes.js";
+import Routing from "./routes/Routes";
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import { GlobalState } from 'path-to-global-state';

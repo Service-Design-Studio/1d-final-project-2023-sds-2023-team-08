@@ -15,23 +15,24 @@ After(async function () {
 Given('I am at the homepage', async function () {
   // Navigate to the homepage
   await this.driver.get('http://localhost:3000');
+  await this.driver.manage().window().setRect({ width: 393, height: 851 });
 });
 
 When('I clicked "Recent Transactions"', async function () {
   const recentTransactionButton = await this.driver.findElement(By.id('transaction'));
-  
+
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   // Click the button
   await recentTransactionButton.click();
-
-  // Wait for the iframe to become stale (disappear)
-  await this.driver.wait(until.stalenessOf(this.driver.findElement(By.id('webpack-dev-server-client-overlay'))));
-
 });
+
 
 Then('I will be redirected to the Recent Transaction Page', async function () {
   // Check if the current page is the Sign Up Page
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, 'http://localhost:3001/recenttransaction');
+  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction');
 });
 
 module.exports = {
