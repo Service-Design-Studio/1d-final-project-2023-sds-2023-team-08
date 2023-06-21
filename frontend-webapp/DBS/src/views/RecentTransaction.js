@@ -42,8 +42,8 @@ const Recenttransaction = () => {
     <div className='maincontainer'>
       <div className='sticky'>
         <div className='headertransaction'>
-          <button onClick={() => navigate('/')} className='transparent'>
-            <img src={require('../../src/components/assets/back.png')} className='back' />
+          <button id = 'backarrow' onClick={() => navigate('/')} className='transparent'>
+            <img src='/assets/back.png' className='back' />
           </button>
           <p className='headertext'>Recent Transactions</p>
         </div>
@@ -51,7 +51,7 @@ const Recenttransaction = () => {
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
             {uniqueAccountNumbers.map((account, index) => (
-            <button className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
+            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
               <div className={account === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
                 <p className={account === accountNumber  ? 'nameselected' : 'nameunselected'}>{account}</p>
               </div>
@@ -66,7 +66,7 @@ const Recenttransaction = () => {
                 <div className='transactionheader2'>
                   <div className='yellowline2'></div>
                   <p className='transactiontitle2'>All Transactions for {accountNumber}</p>
-                  <img src={require('../../src/components/assets/expand.png')} className='expandtransaction'/>
+                  <img src='/assets/expand.png' className='expandtransaction'/>
                 </div>
               </div>
           </button> }
@@ -74,7 +74,7 @@ const Recenttransaction = () => {
         <button className='transparent' onClick={() => {}}>
           <div className='ftd'>
             <p className='ftdtext'>Fund Transfer Dispute Transactions</p>
-            <img src={require('../../src/components/assets/expand.png')} className='expand'/>
+            <img src='/assets/expand.png' className='expand'/>
           </div>
         </button>
 
@@ -97,7 +97,7 @@ const Recenttransaction = () => {
                 <div className='transaction'>
                   <div className='transactionheader'>
                     <p className='transactiontitle'>{transactiondata.transaction["transaction name"]}</p>
-                    <img src={require('../../src/components/assets/expand.png')} className='expand'/>
+                    <img src='/assets/expand.png' className='expand'/>
                   </div>
 
                   <p className='transactiontype'>{transactiondata.transaction["transaction type"]}</p>
