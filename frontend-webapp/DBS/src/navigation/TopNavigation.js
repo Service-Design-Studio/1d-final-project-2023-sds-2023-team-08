@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import '../components/styles/TopNavigationStyles.css';
-import AccountDetails from '../components/codeblocks/AccountDetails';
+import AccountDetails from '../components/codeblocks/AccountDetails.js';
 import axios from 'axios';
 
 //import accountJson from '../testdata/account.json';
