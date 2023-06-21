@@ -124,7 +124,7 @@ const Homescreen = () => {
           </div>
 
           <div className="containerfour">
-            <button className='transparent' onClick={() => navigate('/recenttransaction')}>
+            <button id='transaction' className='transparent' onClick={() => navigate('/recenttransaction')}>
               <div className="recenttransaction">
                 <p className="recenttransactiontext">Recent Transactions</p>
                 <img src='/assets/expand.png' className="expand"/>

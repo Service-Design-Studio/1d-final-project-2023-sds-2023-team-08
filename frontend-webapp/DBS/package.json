@@ -1,15 +1,14 @@
 {
   "name": "kopilo",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "dependencies": {
+    "@cucumber/cucumber":"^9.1.1",
     "@react-navigation/material-top-tabs": "^6.6.2",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/cucumber": "^7.0.0",
     "assert": "^2.0.0",
     "axios": "^1.4.0",
     "chai": "^4.3.7",
