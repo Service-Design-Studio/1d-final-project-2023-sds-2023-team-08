@@ -6,6 +6,12 @@
     background-color: #f6f6f6;
 }
 
+.backtransaction {
+    object-fit: contain;
+    width: 3.5vw;
+    padding-left: 3vw;
+    margin-top: 2vh;
+}
 .transparent {
     background-color: transparent;
     border: none;
@@ -26,97 +32,85 @@
 
 .moneytext{
     font-family: 'Lato';
-    font-size: 20px;
-    color: #a0a0a0;
+    font-size: 18px;
+    color: #a3a3a3;
     font-weight: 600;
     justify-content: center;
-    padding-top: 2%;
+    padding-top: 0.5%;
     padding-right: 1.5%;
 }
 
 .moneytext2{
     font-family: 'Lato';
-    font-size: 50px;
+    font-size: 40px;
     justify-content: center;
-    font-weight: 1000;
+    font-weight: bold;
     padding-bottom: 4%;
 }
 
-.moneytext3{
-    font-family: 'Lato';
-    font-size: 30px;
-    justify-content: center;
-    font-weight: 800;
-}
 
 .txdatetext{
     font-family: 'Lato';
-    font-size: 14px;
+    font-size: 16px;
     color: #a0a0a0;
     font-weight: 600;
-    padding-left: 39%;
-    margin-top: 1%;
+    margin: 0;
+    text-align: center;
 }
 
 .scriptbox{
-    height: 27%;
-    width: 91%;
+    height: 30vh;
+    width: 90vw;
     margin: auto;
     margin-top: 7%;
     background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .descriptext1{
-    padding-top: 6%;
     font-family: 'Lato';
     font-size: 16px;
-    color: #999999;
-    margin:2% 3%;
-    font-weight: 500;
+    color: #a3a3a3;
+    padding: 5vh 8vw 0 8vw;
+    margin: 0;
 }
 
 .descriptext2{
     font-family: 'Lato';
-    font-size: 16px;
-    margin:2% 3%;
+    font-size: 18px;
     font-weight: 500;
-    color: #000000;
+    color: #444444;
+    padding: 1vh 8vw -0 8vw;
+    margin: 0 ;
+
 }
 
-.descriptext2::before {
-    content: "\00a0";
-    margin-left: -1%;
-}
-
-.Transactext1{
+.transactiontext1{
     font-family: 'Lato';
     font-size: 16px;
-    color: #999999;
-    margin:2% 3%;
-    font-weight: 500;
-    margin-top: 9%;
+    color: #a3a3a3;
+    padding: 3vh 8vw 0 8vw;
+    margin: 0;
 }
 
-.Transactext2{
-    font-family: 'Lato';
-    font-size: 16px;
-    margin:2% 3%;
-    font-weight: 500;
-    padding-bottom: 5%;
-    color: #000000;
+.textcontainerdetail{
+    flex: 1;
 }
 
 .sharebutton{
-    height: 7%;
-    width: 91%;
-    margin: auto;
     display: flex;
+    width: 90vw;
+    margin: auto;
     align-items: center;
     justify-content: center;
     background-color:#066DAF;
-    margin-top: 10%;
-    border: none;
-    cursor: pointer;
+    margin: 4vh 4vw 1.5vh 4vw;
+    border-radius: 5px;
 }
 
 .sharebuttontext{
@@ -131,16 +125,14 @@
 }
 
 .FTDbutton{
-    height: 7%;
-    width: 91%;
-    margin: auto;
     display: flex;
+    width: 90vw;
+    margin: auto;
     align-items: center;
     justify-content: center;
     background-color:#1A03A5;
-    margin-top: 7%;
-    border: none;
-    cursor: pointer;
+    margin: 0vh 4vw;
+    border-radius: 5px;
 }
 
 .FTDbuttontext{
