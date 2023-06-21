@@ -92,6 +92,9 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      raise ActionController::RoutingError, 'User Not Found'
+      #render json: { error: "user not found" }, status: :not_found  #404 Not Found
     end
 
     # Only allow a list of trusted parameters through.
