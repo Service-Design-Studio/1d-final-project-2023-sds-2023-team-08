@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomeScreen from '../views/HomeScreen.js';
 import Recenttransaction from '../views/RecentTransaction.js';
+//import RouterSpy from './path-to-router-spy'
 
 const Routing = () => {
+  const world = { currentLocation: null };
   return (
     <Router>
       <Routes>

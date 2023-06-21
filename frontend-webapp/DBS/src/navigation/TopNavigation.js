@@ -1,16 +1,44 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import '../components/styles/TopNavigationStyles.css';
-import accountJson from '../testdata/account.json';
 import AccountDetails from '../components/codeblocks/AccountDetails';
+import axios from 'axios';
+
+//import accountJson from '../testdata/account.json';
+//const userAccounts = accountJson[0].account;
+//const totalAmounts = userAccounts.map(account => account['total amount']);
+// const totalAmountSum = userAccounts.reduce((sum, account) => sum + account['total amount'], 0).toFixed(2);
 
 const Tab = createMaterialTopTabNavigator();
 
 const Accounts = () => {
     const [showMore, setShowMore] = useState(false);
-    const userAccounts = accountJson[0].account;
-    const totalAmounts = userAccounts.map(account => account['total amount']);
-    const totalAmountSum = userAccounts.reduce((sum, account) => sum + account['total amount'], 0).toFixed(2);
+    const [userData, setUserData] = useState([]);
+    const [totalAmountSum, setTotalAmountSum] = useState(0);
+  
+    useEffect(() => {
+        const fetchAccountData = async () => {
+          try {
+            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
+            const accountData = JSON.stringify(response.data);
+            const parsedData = JSON.parse(accountData);
+                          
+            setUserData(parsedData.account);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+      
+        fetchAccountData();
+      }, []);
+      
+      useEffect(() => {
+        const sum = userData.reduce((total, account) => total + account['total amount'], 0);
+        setTotalAmountSum(sum.toFixed(2));
+      }, [userData]);
+      
+      console.log(totalAmountSum, userData);
+      
 
     return(
         <div className='container'>
