@@ -42,14 +42,14 @@ Then('I will be redirected to the Recent Transactions page', async function () {
 /////////////////// FILTER BUTTON 0 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Given('I am at the Recent Trasanctions page and I want to filter by "539-23421-0"', async function () {
+Given('I am at the Recent Trasanctions page and I want to filter by "234-43941-0"', async function () {
   // Navigate to the homepage
   await this.driver.get('http://localhost:3000/recenttransaction');
   await this.driver.manage().window().setRect({ width: 393, height: 851 });
 });
 
-When('I click on the filter button by account number "539-23421-0"', async function () {
-  const recentTransactionButton = await this.driver.findElement(By.id('539-23421-0'));
+When('I click on the filter button by account number "234-43941-0"', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('234-43941-0'));
 
   // Add a delay of 1 second before clicking the button
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -58,10 +58,10 @@ When('I click on the filter button by account number "539-23421-0"', async funct
   await recentTransactionButton.click();
 });
 
-Then('I will see that only transactions under account "539-23421-0" are shown', async function () {
+Then('I will see that only transactions under account "234-43941-0" are shown', async function () {
   // Check if the current page is the Sign Up Page
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction/539-23421-0');
+  assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction/234-43941-0');
 });
 
 
@@ -94,14 +94,14 @@ Then('I will see that only transactions under account "539-23421-2" are shown', 
 
 /////////////////// UNCLICKING FILTER BUTTON 0 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Given('I have filtered my transactions by "539-23421-0"', async function () {
+Given('I have filtered my transactions by "234-43941-0"', async function () {
   // Navigate to the homepage
-  await this.driver.get('http://localhost:3000/recenttransaction/539-23421-0');
+  await this.driver.get('http://localhost:3000/recenttransaction/234-43941-0');
   await this.driver.manage().window().setRect({ width: 393, height: 851 });
 });
 
-When('I click on the greyed-out filter button by account number "539-23421-0"', async function () {
-  const recentTransactionButton = await this.driver.findElement(By.id('539-23421-0'));
+When('I click on the greyed-out filter button by account number "234-43941-0"', async function () {
+  const recentTransactionButton = await this.driver.findElement(By.id('234-43941-0'));
 
   // Add a delay of 1 second before clicking the button
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -110,7 +110,7 @@ When('I click on the greyed-out filter button by account number "539-23421-0"', 
   await recentTransactionButton.click();
 });
 
-Then('I will see that all my transactions from both accounts will be shown and "539-23421-0" button is white', async function () {
+Then('I will see that all my transactions from both accounts will be shown and "234-43941-0" button is white', async function () {
   // Check if the current page is the Sign Up Page
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction');
@@ -149,7 +149,7 @@ Then('I will see that all my transactions from both accounts will be shown and "
 Given('I am at the Recent Transactions page', async function () {
   // Navigate to the homepage
   const RT = await this.driver.get('http://localhost:3000/recenttransaction');
-  const RT_0 = await this.driver.get('http://localhost:3000/recenttransaction/539-23421-0');
+  const RT_0 = await this.driver.get('http://localhost:3000/recenttransaction/234-43941-0');
   const RT_2 = await this.driver.get('http://localhost:3000/recenttransaction/539-23421-2');
   await this.driver.manage().window().setRect({ width: 393, height: 851 });
 });
