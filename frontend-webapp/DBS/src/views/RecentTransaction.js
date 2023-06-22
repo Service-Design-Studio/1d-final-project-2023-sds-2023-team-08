@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../components/styles/RecentTransaction.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
+import BottomTabNavigator from '../navigation/BottomTabNavigator';
 
 // /import transactionJSON from '../testdata/transactiondate.json'
 
@@ -115,6 +116,9 @@ const Recenttransaction = () => {
         );
         })}
 
+      </div>
+      <div className='bottomnav'>
+          <BottomTabNavigator></BottomTabNavigator>
       </div>
     </div>
   );
