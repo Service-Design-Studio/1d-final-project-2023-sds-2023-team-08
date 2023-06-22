@@ -130,6 +130,7 @@
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
+    margin-bottom: 8vh;
   }
   .expand {
     object-fit: contain;
