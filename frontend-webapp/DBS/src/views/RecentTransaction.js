@@ -18,9 +18,7 @@ const Recenttransaction = () => {
     const fetchtransactions = async () => {
       try {
         const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/all_transactions');
-        const accountData = JSON.stringify(response.data);
-        const parsedData = JSON.parse(accountData)
-        console.log(parsedData, parsedData)
+        const parsedData = response.data;
         setTransactions(parsedData);
       } catch (error) {
         console.log(error);
