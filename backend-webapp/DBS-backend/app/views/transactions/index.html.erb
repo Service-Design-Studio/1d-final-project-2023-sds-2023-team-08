@@ -1,14 +1,70 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Transactions</h1>
+<h1>Outgoing Transactions</h1>
 
-<div id="transactions">
-  <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
-  <% end %>
-</div>
 
 <%= link_to "New transaction", new_transaction_path %>
+<table class="table">
+  <thead>
+    <tr>
+    <th>id</th>
+      <th>transaction name</th>
+      <th>transaction type</th>
+      <th>to</th>
+      <th>associated account number</th>
+      <th>date time </th>
+      <th>amount</th>
+
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    <% @transactions.where(account_id:params[:account_id]).each do |t| %>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.transaction_name %></td>
+        <td><%= t.transaction_type %></td>
+        <td><%= t.get_other_party_name %></td>
+        <td><%= t.account.account_number %></td>
+        <td><%= t.datetime %></td>
+        <td><%= t.amount %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Incoming Transactions</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>id</th>
+      <th>transaction name</th>
+      <th>transaction type</th>
+      <th>from</th>
+      <th>associated account number</th>
+      <th>date time </th>
+      <th>amount</th>
+
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    <% @transactions.where(recipient_account_number:Account.find(params[:account_id]).account_number).each do |t| %>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.transaction_name %></td>
+        <td><%= t.transaction_type %></td>
+        <td><%= t.account.user.username %></td>
+        <td><%= t.account.account_number %></td>
+        <td><%= t.datetime %></td>
+        <td><%= t.amount %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

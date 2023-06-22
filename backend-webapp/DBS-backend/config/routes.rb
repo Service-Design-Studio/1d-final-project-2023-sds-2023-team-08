@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :accounts
   resources :transactions
-  resources :users
+  resources :users do
+    resources :accounts do
+      resources :transactions
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
