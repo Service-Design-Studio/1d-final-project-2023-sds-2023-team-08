@@ -88,7 +88,6 @@
   .nameunselected {
     font-family: 'Lato';
     color: #a3a3a3;
-    font-weight: bold;
     text-align: center;
     margin: 0;
     padding: 0 3vw 1vh 3vw;
@@ -96,7 +95,6 @@
   .nameselected {
     font-family: 'Lato';
     color: white;
-    font-weight: bold;
     text-align: center;
     margin: 0;
     padding: 0 3vw 1vh 3vw;
