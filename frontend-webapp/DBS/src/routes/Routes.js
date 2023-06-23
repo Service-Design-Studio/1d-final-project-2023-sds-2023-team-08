@@ -10,7 +10,7 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Loginscreen />} />
+        <Route path="/" element={<HomeScreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/invest" element={<HomeScreen />} />
         <Route path="/pay" element={<HomeScreen />} />

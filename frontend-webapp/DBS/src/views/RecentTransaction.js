@@ -3,6 +3,7 @@ import '../components/styles/RecentTransaction.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
+import AccountDetails from '../components/codeblocks/AccountDetails';
 
 // /import transactionJSON from '../testdata/transactiondate.json'
 
@@ -14,13 +15,19 @@ const Recenttransaction = () => {
   const navigate = useNavigate();
   const { accountNumber  } = useParams();
   const [transactions, setTransactions] = useState([]);
+  const [accountdetails, setAccountDetails] = useState([])
   
   useEffect(() => {
     const fetchtransactions = async () => {
       try {
         const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/all_transactions');
+        const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home')
         const parsedData = response.data;
+        const parsedData2 = response2.data;
+
         setTransactions(parsedData);
+        setAccountDetails(parsedData2.account);
+
       } catch (error) {
         console.log(error);
       }
@@ -49,10 +56,11 @@ const Recenttransaction = () => {
         
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
-            {uniqueAccountNumbers.map((account, index) => (
-            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
-              <div className={account === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
-                <p className={account === accountNumber  ? 'nameselected' : 'nameunselected'}>{account}</p>
+            {accountdetails.map((account, index) => (
+            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account['account number'] ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account['account number'])}`)}>
+              <div className={account['account number'] === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
+                <p className={account['account number'] === accountNumber  ? 'accnameselected' : 'accnameunselected'}>{account['account type']}</p>
+                <p className={account['account number'] === accountNumber  ? 'nameselected' : 'nameunselected'}>{account['account number']}</p>
               </div>
             </button>
             ))}

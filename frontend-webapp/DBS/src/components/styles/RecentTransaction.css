@@ -76,13 +76,13 @@
   .filterrectangleunselected {
     outline: 1.2px solid #d2d2d2;
     background-color: white;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 0 1vw;
   }
   .filterrectangleselected {
     outline: 1.2px solid #8E8E8E;
     background-color: #8E8E8E;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 0 1vw;
   }
   .nameunselected {
@@ -91,7 +91,7 @@
     font-weight: bold;
     text-align: center;
     margin: 0;
-    padding: 2vw 3vw;
+    padding: 0 3vw 1vh 3vw;
   }  
   .nameselected {
     font-family: 'Lato';
@@ -99,7 +99,24 @@
     font-weight: bold;
     text-align: center;
     margin: 0;
-    padding: 2vw 3vw;
+    padding: 0 3vw 1vh 3vw;
+  }
+
+  .accnameunselected {
+    font-family: 'Lato';
+    color: #a3a3a3;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 1vh 3vw 0.2vh 3vw;
+  }  
+  .accnameselected {
+    font-family: 'Lato';
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 1vh 3vw 0.2vh 3vw;
   }
   
   .ftd {
