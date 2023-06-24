@@ -3,7 +3,6 @@ import '../components/styles/RecentTransaction.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
-import AccountDetails from '../components/codeblocks/AccountDetails';
 
 // /import transactionJSON from '../testdata/transactiondate.json'
 
@@ -13,15 +12,15 @@ function getTransactionsByDate(transactions, specificDate) {
 
 const Recenttransaction = () => {
   const navigate = useNavigate();
-  const { accountNumber  } = useParams();
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([])
-  
+  const { userID, accountNumber } = useParams();
+
   useEffect(() => {
     const fetchtransactions = async () => {
       try {
-        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/all_transactions');
-        const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home')
+        const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`);
+        const response2 = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/home`)
         const parsedData = response.data;
         const parsedData2 = response2.data;
 
@@ -48,7 +47,7 @@ const Recenttransaction = () => {
     <div className='maincontainer'>
       <div className='sticky'>
         <div className='headertransaction'>
-          <button id = 'backarrow' onClick={() => navigate('/')} className='transparent'>
+          <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
           <p className='headertext'>Recent Transactions</p>
@@ -57,7 +56,7 @@ const Recenttransaction = () => {
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
             {accountdetails.map((account, index) => (
-            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account['account number'] ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account['account number'])}`)}>
+            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account['account number'] ? `/${userID}/recenttransaction` : `/${userID}/recenttransaction/${encodeURIComponent(account['account number'])}`)}>
               <div className={account['account number'] === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
                 <p className={account['account number'] === accountNumber  ? 'accnameselected' : 'accnameunselected'}>{account['account type']}</p>
                 <p className={account['account number'] === accountNumber  ? 'nameselected' : 'nameunselected'}>{account['account number']}</p>

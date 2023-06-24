@@ -3,10 +3,12 @@ import '../components/styles/HomeScreenStyles.css';
 import TopNavigator from '../navigation/TopNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Homescreen = () => {
   const navigate = useNavigate();
+  const { userID } = useParams();
+  console.log(userID)
   
   return (
     <div className="container">
@@ -124,7 +126,7 @@ const Homescreen = () => {
           </div>
 
           <div className="containerfour">
-            <button id='transaction' className='transparent' onClick={() => navigate('/recenttransaction')}>
+            <button id='transaction' className='transparent' onClick={() => navigate(`/${userID}/recenttransaction`)}>
               <div className="recenttransaction">
                 <p className="recenttransactiontext">Recent Transactions</p>
                 <img src='/assets/expand.png' className="expand"/>

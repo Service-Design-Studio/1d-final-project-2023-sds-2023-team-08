@@ -6,13 +6,13 @@ import axios from 'axios';
 //const userAccounts = accountJson[0].account;
 
 
-const AccountDetails = () => {
-
+const AccountDetails = (props) => {
+  const {userID} = props;
   const [userAccounts, setUserAccounts] = useState([]);
   useEffect(() => {
     const fetchuserAccounts = async () => {
       try {
-        const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
+        const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/home`);
         const parsedData = response.data;
         setUserAccounts(parsedData.account);
       } catch (error) {
@@ -33,7 +33,7 @@ const AccountDetails = () => {
                       <p className='accountname'>
                       {account['account type']}
                       </p>
-                      <img src='assets/expand.png' className='accountexpand' />
+                      <img src='/assets/expand.png' className='accountexpand' />
                   </div>
                   <p className='accountnumber'>
                       {account['account number']}
@@ -44,7 +44,6 @@ const AccountDetails = () => {
                       {account['total amount'].toFixed(2)}
                       </p>
                   </div>
-                  <div className='line'></div>
                 </div>
             </button>
           ))}
