@@ -8218,3 +8218,112 @@ Processing by TransactionsController#index as HTML
 Completed 200 OK in 70ms (Views: 65.7ms | ActiveRecord: 1.7ms | Allocations: 8871)
 
 
+Started GET "/" for 127.0.0.1 at 2023-06-23 09:18:08 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 42.5ms | Allocations: 522)
+Completed 200 OK in 269ms (Views: 85.9ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
+Started GET "/users/11/all_transactions" for 127.0.0.1 at 2023-06-23 09:18:49 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 81ms (ActiveRecord: 1.0ms | Allocations: 6094)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:96:in `rescue in set_user'
+app/controllers/users_controller.rb:93:in `set_user'
+Started GET "/users/11/all_transactions" for 127.0.0.1 at 2023-06-23 09:18:51 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:94:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms | Allocations: 1192)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:96:in `rescue in set_user'
+app/controllers/users_controller.rb:93:in `set_user'
+Started GET "/users" for 127.0.0.1 at 2023-06-23 09:18:54 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:23
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 45]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 46]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 47]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 48]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 49]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 50]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 51]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 52]]
+  ↳ app/views/users/index.html.erb:31
+  Rendered users/index.html.erb within layouts/application (Duration: 222.8ms | Allocations: 20406)
+  Rendered layout layouts/application.html.erb (Duration: 789.4ms | Allocations: 60636)
+Completed 200 OK in 799ms (Views: 792.5ms | ActiveRecord: 2.9ms | Allocations: 61539)
+
+
+Started GET "/users/45/accounts/1/transactions" for 127.0.0.1 at 2023-06-23 09:18:58 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"45", "account_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 129.3ms | Allocations: 20501)
+  Rendered layout layouts/application.html.erb (Duration: 139.1ms | Allocations: 22799)
+Completed 200 OK in 166ms (Views: 140.3ms | ActiveRecord: 5.2ms | Allocations: 24277)
+
+

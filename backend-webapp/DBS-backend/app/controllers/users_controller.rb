@@ -31,11 +31,31 @@ class UsersController < ApplicationController
 
   end
 
+    # POST /login
+  def login
+    
+    
+    begin
+      user_params = params.require([:username, :pin]).permit(:username, :pin)
+    rescue ActionController::ParameterMissing => e
+      render json: { success: false, error: e.message }, status: :unprocessable_entity
+      return
+    end
+    user=User.where(username: user_params[:username], password:user_params[:pin]).first
+    if user
+      
+      render json: { success: true, userid:user.id }, status: :ok
+    else
+      
+      render json: { success: false, error: "no user found" }, status: :unprocessable_entity #http 422 
+    end
 
+  end
   # GET /users or /users.json
   def index
     @users = User.all
   end
+
 
   # GET /users/1 or /users/1.json
   def show
