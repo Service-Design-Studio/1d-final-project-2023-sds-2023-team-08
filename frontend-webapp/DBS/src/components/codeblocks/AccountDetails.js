@@ -28,7 +28,7 @@ const AccountDetails = (props) => {
         <div className='containeracc'>
           {userAccounts.map((account, index) => (
             <button onClick={() => {}} className='transparent'>
-                <div className='account' key={index}>
+                <div className='account1' key={index}>
                   <div className='accountheader'>
                       <p className='accountname'>
                       {account['account type']}
