@@ -3,14 +3,14 @@
 }
 {
         "cuke_step_definition_file_path": [
-            "test/e2e/step_definitions/stepDefinition.js"
+            "./features/step_definitions/*.js"
         ],
 
         "cucumberautocomplete.steps": [
-            "test/features/step_definitions/*.js",
-            "node_modules/qa-lib/src/step_definitions/*.js"
+            "./features/step_definitions/*.js",
+            "./node_modules/qa-lib/src/step_definitions/*.js"
         ],
-        "cucumberautocomplete.syncfeatures": "test/features/*feature",
+        "cucumberautocomplete.syncfeatures": "./features/*.feature",
         "cucumberautocomplete.strictGherkinCompletion": true,
         "cucumberautocomplete.strictGherkinValidation": true,
         "cucumberautocomplete.smartSnippets": true,

@@ -16,8 +16,6 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    padding-top: 1%;
-    padding-left: 1%;
   }
 
 .moneyinarow{
@@ -109,7 +107,7 @@
     align-items: center;
     justify-content: center;
     background-color:#066DAF;
-    margin: 4vh 4vw 1.5vh 4vw;
+    margin: 4vh 5vw 1.5vh 5vw;
     border-radius: 5px;
 }
 
@@ -131,7 +129,7 @@
     align-items: center;
     justify-content: center;
     background-color:#1A03A5;
-    margin: 0vh 4vw;
+    margin: 0vh 5vw;
     border-radius: 5px;
 }
 

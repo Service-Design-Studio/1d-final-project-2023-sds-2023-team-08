@@ -275,5 +275,14 @@
     object-fit: contain;
     padding: 0vw 2vw;
     width: 2.5vw;
+  }
 
+  .bottomnav {
+    position: fixed;
+    bottom: 0;
+    height: 8vh;
+    width: 100vw;
+    background-color: #162633;
+    padding: 0;
+    margin: 0;
   }
