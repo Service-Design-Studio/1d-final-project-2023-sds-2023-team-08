@@ -19,7 +19,6 @@ const Routing = () => {
         <Route path="/recenttransaction" element={<Recenttransaction />} />
         <Route path="/recenttransaction/:accountNumber" element={<Recenttransaction />} />
 
-
         <Route path="/:userID/home" element={<HomeScreen />} />
         <Route path="/:userID/invest" element={<HomeScreen />} />
         <Route path="/:userID/pay" element={<HomeScreen />} />
