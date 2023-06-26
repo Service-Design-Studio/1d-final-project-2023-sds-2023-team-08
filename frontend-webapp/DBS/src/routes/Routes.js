@@ -4,13 +4,14 @@ import HomeScreen from '../views/HomeScreen.js';
 import Recenttransaction from '../views/RecentTransaction.js';
 import FTDetails from '../views/TransactionDetails.js';
 import Loginscreen from '../views/LoginScreen.js';
+import FTDTransaction from '../views/FTDTransaction.js';
 
 const Routing = () => {
   const world = { currentLocation: null };
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomeScreen />} />
+        <Route path="/" element={<Loginscreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/invest" element={<HomeScreen />} />
         <Route path="/pay" element={<HomeScreen />} />
