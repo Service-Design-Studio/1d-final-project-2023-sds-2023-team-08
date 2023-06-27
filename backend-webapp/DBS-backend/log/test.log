@@ -1,0 +1,360 @@
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230617181609)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password" varchar, "phone" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617181609"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTransactions (20230617181656)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "transcation_name" varchar, "transaction_type" varchar, "recipient_account_number" varchar, "datetime" datetime(6), "amount" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617181656"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAccounts (20230617181730)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "account_number" varchar, "initial_deposit" integer, "bank" varchar, "account_type" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617181730"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserIdToAccounts (20230617182309)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aaccounts" ("id" integer NOT NULL PRIMARY KEY, "account_number" varchar DEFAULT NULL, "initial_deposit" integer DEFAULT NULL, "bank" varchar DEFAULT NULL, "account_type" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aaccounts" ("id","account_number","initial_deposit","bank","account_type","created_at","updated_at")
+                     SELECT "id","account_number","initial_deposit","bank","account_type","created_at","updated_at" FROM "accounts"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "accounts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" integer NOT NULL PRIMARY KEY, "account_number" varchar DEFAULT NULL, "initial_deposit" integer DEFAULT NULL, "bank" varchar DEFAULT NULL, "account_type" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("id","account_number","initial_deposit","bank","account_type","created_at","updated_at")
+                     SELECT "id","account_number","initial_deposit","bank","account_type","created_at","updated_at" FROM "aaccounts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aaccounts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aaccounts" ("id" integer NOT NULL PRIMARY KEY, "account_number" varchar DEFAULT NULL, "initial_deposit" integer DEFAULT NULL, "bank" varchar DEFAULT NULL, "account_type" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aaccounts_on_user_id" ON "aaccounts" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aaccounts" ("id","account_number","initial_deposit","bank","account_type","created_at","updated_at","user_id")
+                     SELECT "id","account_number","initial_deposit","bank","account_type","created_at","updated_at","user_id" FROM "accounts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "accounts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" integer NOT NULL PRIMARY KEY, "account_number" varchar DEFAULT NULL, "initial_deposit" integer DEFAULT NULL, "bank" varchar DEFAULT NULL, "account_type" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "accounts" ("id","account_number","initial_deposit","bank","account_type","created_at","updated_at","user_id")
+                     SELECT "id","account_number","initial_deposit","bank","account_type","created_at","updated_at","user_id" FROM "aaccounts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aaccounts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617182309"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAccountIdToTransactions (20230617182343)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transcation_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at")
+                     SELECT "id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at" FROM "transactions"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "transcation_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "transactions" ("id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at")
+                     SELECT "id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at" FROM "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transcation_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atransactions_on_account_id" ON "atransactions" ("account_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id")
+                     SELECT "id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id" FROM "transactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "transcation_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "transactions" ("id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id")
+                     SELECT "id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id" FROM "atransactions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617182343"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CorrectColNameTransaction (20230617184332)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atransactions_on_account_id" ON "atransactions" ("account_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id")
+                     SELECT "id","transcation_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id" FROM "transactions"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "transactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id" FROM "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230617184332"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2023-06-27 02:47:37.668978"], ["updated_at", "2023-06-27 02:47:37.668978"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 10:47:54 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms | Allocations: 1569)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 10:52:19 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 0.0ms | Allocations: 3720)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 10:55:59 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 3720)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 10:57:14 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 21ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 5075)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:00:08 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 27ms (Views: 0.7ms | ActiveRecord: 1.0ms | Allocations: 5079)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:00:42 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 1561)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:01:04 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 23ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 5079)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:03:11 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 23ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 5079)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:05:31 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 23ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 5078)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:06:40 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"]]
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.3ms | Allocations: 4644)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:07:29 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? /* loading for inspect */ LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms | Allocations: 5187)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? /* loading for inspect */ LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 11]]
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:08:33 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 22ms (ActiveRecord: 0.5ms | Allocations: 4905)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:09:45 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? /* loading for inspect */ LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.3ms | Allocations: 4709)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? /* loading for inspect */ LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 11]]
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:10:07 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 25ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 5078)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:10:28 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.9ms | Allocations: 4975)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:11:03 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.9ms | Allocations: 4932)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTransaction Delete All (0.1ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (0.1ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-06-27 03:12:32.762781"], ["updated_at", "2023-06-27 03:12:32.762781"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-06-27 03:12:32.772746"], ["updated_at", "2023-06-27 03:12:32.772746"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-06-27 03:12:32.780124"], ["updated_at", "2023-06-27 03:12:32.780124"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-06-27 03:12:32.787217"], ["updated_at", "2023-06-27 03:12:32.787217"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-06-27 03:12:32.794314"], ["updated_at", "2023-06-27 03:12:32.794314"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-06-27 03:12:32.801258"], ["updated_at", "2023-06-27 03:12:32.801258"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-06-27 03:12:32.808671"], ["updated_at", "2023-06-27 03:12:32.808671"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-06-27 03:12:32.815808"], ["updated_at", "2023-06-27 03:12:32.815808"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-06-27 03:12:32.960896"], ["updated_at", "2023-06-27 03:12:32.960896"], ["user_id", 1]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-06-27 03:12:32.970110"], ["updated_at", "2023-06-27 03:12:32.970110"], ["user_id", 6]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-06-27 03:12:32.979044"], ["updated_at", "2023-06-27 03:12:32.979044"], ["user_id", 7]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-06-27 03:12:32.988290"], ["updated_at", "2023-06-27 03:12:32.988290"], ["user_id", 8]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-06-27 03:12:32.995852"], ["updated_at", "2023-06-27 03:12:32.995852"], ["user_id", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-06-27 03:12:33.003116"], ["updated_at", "2023-06-27 03:12:33.003116"], ["user_id", 2]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-06-27 03:12:33.010910"], ["updated_at", "2023-06-27 03:12:33.010910"], ["user_id", 3]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-06-27 03:12:33.018627"], ["updated_at", "2023-06-27 03:12:33.018627"], ["user_id", 4]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-06-27 03:12:33.025715"], ["updated_at", "2023-06-27 03:12:33.025715"], ["user_id", 5]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", "2023-06-20 00:00:00"], ["amount", 5], ["created_at", "2023-06-27 03:12:33.041451"], ["updated_at", "2023-06-27 03:12:33.041451"], ["account_id", 1]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", "2023-06-21 00:00:00"], ["amount", 12], ["created_at", "2023-06-27 03:12:33.048474"], ["updated_at", "2023-06-27 03:12:33.048474"], ["account_id", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", "2023-06-20 00:00:00"], ["amount", 23], ["created_at", "2023-06-27 03:12:33.055924"], ["updated_at", "2023-06-27 03:12:33.055924"], ["account_id", 1]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", "2023-06-18 00:00:00"], ["amount", 4], ["created_at", "2023-06-27 03:12:33.062945"], ["updated_at", "2023-06-27 03:12:33.062945"], ["account_id", 1]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-06-17 00:00:00"], ["amount", 20], ["created_at", "2023-06-27 03:12:33.070485"], ["updated_at", "2023-06-27 03:12:33.070485"], ["account_id", 6]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-01-15 00:00:00"], ["amount", 15], ["created_at", "2023-06-27 03:12:33.077669"], ["updated_at", "2023-06-27 03:12:33.077669"], ["account_id", 8]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", "2023-06-22 00:00:00"], ["amount", 7], ["created_at", "2023-06-27 03:12:33.084564"], ["updated_at", "2023-06-27 03:12:33.084564"], ["account_id", 5]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", "2023-06-20 00:00:00"], ["amount", 30], ["created_at", "2023-06-27 03:12:33.091551"], ["updated_at", "2023-06-27 03:12:33.091551"], ["account_id", 5]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", "2023-06-23 00:00:00"], ["amount", 150], ["created_at", "2023-06-27 03:12:33.098426"], ["updated_at", "2023-06-27 03:12:33.098426"], ["account_id", 9]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/users/login" for 127.0.0.1 at 2023-06-27 11:12:44 +0800
+Processing by UsersController#login as HTML
+  Parameters: {"username"=>"junxiang", "pin"=>"password123"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."password" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
+Completed 200 OK in 35ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 9198)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m

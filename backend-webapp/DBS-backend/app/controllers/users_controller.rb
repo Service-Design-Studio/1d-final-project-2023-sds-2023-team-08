@@ -36,12 +36,15 @@ class UsersController < ApplicationController
     
     
     begin
-      user_params = params.require([:username, :pin]).permit(:username, :pin)
+      user_params = params.require([:username, :pin])
+      
     rescue ActionController::ParameterMissing => e
       render json: { success: false, error: e.message }, status: :unprocessable_entity
       return
-    end
-    user=User.where(username: user_params[:username], password:user_params[:pin]).first
+    end  
+    
+    user=User.where(username: user_params[0], password: user_params[1]).first
+    
     if user
       
       render json: { success: true, userid:user.id }, status: :ok
