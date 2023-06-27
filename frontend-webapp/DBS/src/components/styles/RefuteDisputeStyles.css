@@ -1,0 +1,86 @@
+.RefuteDisputeMain {
+    width: 100vw;
+    height: 100vh;
+}
+
+.RefuteDisputeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
+    background-color: white;
+    padding: 1vw 0;
+}
+
+.RefuteDisputeHeaderText {
+    flex:1;
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: 18px;
+    color: #444444;
+    text-align: center;
+}
+
+.RefuteDisputeLine {
+    width: 100vw;
+    height: 1px;
+    background-color: #a3a3a3;
+}
+
+.RefuteDisputeBody {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RefuteDisputeWarning {
+    font-size: small;
+    width: 90vw;
+    height: 5vh;
+    color: red;
+}
+
+.RefuteDisputeForm {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items:center
+}
+
+.RefuteDisputeReason {
+    align-self: center;
+    width: 90vw;
+    height: 5vh;
+    border: none;
+    border-bottom: 1px solid #a3a3a3;
+    font-size: 100%;
+}
+
+.RefuteDisputeReason::placeholder {
+    position: relative;
+    bottom:0;
+}
+
+.note1 {
+    width: 90vw;
+    height: 10vw;
+    font-size: small;
+}
+
+.note2 {
+    width: 90vw;
+    height: 10vw;
+    font-size: small;
+}
+
+.SubmitButton {
+    width: 90vw;
+    height: 10vh;
+    background-color: blue;
+    color: white;
+    border: none;
+    font-size:large;
+    margin-bottom:5%;
+    margin-top:95%;
+}

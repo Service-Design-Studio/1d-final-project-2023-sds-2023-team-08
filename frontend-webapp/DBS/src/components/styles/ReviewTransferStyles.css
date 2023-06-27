@@ -1,0 +1,25 @@
+.ReviewTransferMain {
+    width: 100vw;
+    height: 100vh;
+}
+
+.ReviewTransferHeader {
+    display: flex;
+    background-color: white;
+}
+
+.ReviewTransferHeaderText {
+    flex:1;
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: 18px;
+    color: #444444;
+    text-align: left;
+    padding-left: 5%;
+}
+
+.ReviewTransferLine {
+    width: 100vw;
+    height: 1px;
+    background-color: #a3a3a3;
+}
