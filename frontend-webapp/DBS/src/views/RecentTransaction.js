@@ -108,8 +108,8 @@ const Recenttransaction = () => {
 
                   <p className='transactiontype'>{transactiondata.transaction["transaction type"]}</p>
                   
-                  <div className='transactiondetails'>
-                    <p className='account'>{transactiondata.transaction["account number"]}</p>
+                  <div id = 'transactiondetails' className='transactiondetails'>
+                    <p id = 'account' className='account'>{transactiondata.transaction["account number"]}</p>
                     <div className='rightcontainer2'>
                       <p className='sgd1'>SGD</p>
                       <p className={transactiondata.transaction["total amount"] < 0 ? "moneyout" : "moneyin"}>{transactiondata.transaction["total amount"].toFixed(2)}</p>

@@ -1,6 +1,7 @@
 const assert = require('assert');
 const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const { Builder, By, Key, until } = require('selenium-webdriver');
+const { useEffect } = require('react');
 
 Before(async function () {
   // Set up the Selenium WebDriver
@@ -58,12 +59,20 @@ When('I click on the filter button by account number "234-43941-0"', async funct
   await recentTransactionButton.click();
 });
 
-Then('I will see that only transactions under account "234-43941-0" are shown', async function () {
+Then('I will see that the transactions are filtered by account "234-43941-0"', async function () {
   // Check if the current page is the Sign Up Page
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction/234-43941-0');
 });
 
+
+Then('the transaction details tally with account "234-43941-0"', async function () {
+
+  const paragraphElement = await this.driver.findElement(By.id('transactiondetails'));
+  const actualtext = await paragraphElement.getText(By.id('account'));
+  const accountnumber = actualtext.split('\n')[0];
+  assert.strictEqual(accountnumber, "234-43941-0")
+});
 
 
 /////////////////// FILTER BUTTON 2 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,10 +93,19 @@ When('I click on the filter button by account number "539-23421-2"', async funct
   await recentTransactionButton.click();
 });
 
-Then('I will see that only transactions under account "539-23421-2" are shown', async function () {
+Then('I will see that the transactions are filtered by account "539-23421-2"', async function () {
   // Check if the current page is the Sign Up Page
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, 'http://localhost:3000/recenttransaction/539-23421-2');
+});
+
+
+Then('the transaction details tally with account "539-23421-2"', async function () {
+
+  const paragraphElement = await this.driver.findElement(By.id('transactiondetails'));
+  const actualtext = await paragraphElement.getText(By.id('account'));
+  const accountnumber = actualtext.split('\n')[0];
+  assert.strictEqual(accountnumber, "539-23421-2")
 });
 
 
