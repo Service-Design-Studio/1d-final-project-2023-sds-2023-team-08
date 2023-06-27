@@ -1,15 +1,19 @@
 .RefuteDisputeMain {
     width: 100vw;
-    height: 100vh;
+    max-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: white;
 }
 
 .RefuteDisputeHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top:0;
     background-color: white;
-    padding: 1vw 0;
+    padding: 1vw 0 0 0;
+    border-bottom: 1px solid #d2d2d2 ;
 }
 
 .RefuteDisputeHeaderText {
@@ -21,41 +25,47 @@
     text-align: center;
 }
 
-.RefuteDisputeLine {
-    width: 100vw;
-    height: 1px;
-    background-color: #a3a3a3;
-}
-
 .RefuteDisputeBody {
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1vh;
 }
 
 .RefuteDisputeWarning {
-    font-size: small;
+    font-size: 12px;
     width: 90vw;
-    height: 5vh;
-    color: red;
+    color: #FF2C4E;
+    padding: 0;
+    margin: 0;
+    height:3vh
 }
 
 .RefuteDisputeForm {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: flex-end;
-    align-items:center
+    justify-content: flex-start;
+    align-items:center;
+    width: 90vw;
 }
 
 .RefuteDisputeReason {
     align-self: center;
     width: 90vw;
-    height: 5vh;
+    border: none;
+    font-size: 100%;
+    border-bottom: 1px solid #a3a3a3;
+    margin-top: 1.5vh;
+    padding: 1vh 0 3px 0;
+    text-decoration: none;
+}
+
+.RefuteDisputeReason:focus {
+    outline: none;
     border: none;
     border-bottom: 1px solid #a3a3a3;
-    font-size: 100%;
-}
+    text-decoration: none;
+  }
 
 .RefuteDisputeReason::placeholder {
     position: relative;
@@ -63,24 +73,31 @@
 }
 
 .note1 {
-    width: 90vw;
     height: 10vw;
-    font-size: small;
+    font-size: 14px;
+    padding-bottom: 2vh;
+    color: #444444;
 }
 
 .note2 {
-    width: 90vw;
     height: 10vw;
-    font-size: small;
+    font-size: 14px;
+    color: #444444;
+    font-weight: bold;
+    align-self: flex-start;
 }
 
 .SubmitButton {
-    width: 90vw;
-    height: 10vh;
-    background-color: blue;
+    margin: 73vh 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
     color: white;
     border: none;
-    font-size:large;
-    margin-bottom:5%;
-    margin-top:95%;
+    width: 90vw;
+    position: absolute;
 }
+
+

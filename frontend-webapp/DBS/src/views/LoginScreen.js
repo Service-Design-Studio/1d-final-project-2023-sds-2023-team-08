@@ -26,13 +26,13 @@ const Loginscreen = () => {
             username,
             pin
           };
+
+          console.log('Data to be sent to the backend:', data);
+          console.log('Data to be sent to the backend:',  JSON.stringify(data));
+
           try {
 
-            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', JSON.stringify(data),
-            {
-              headers: { "Content-Type": "application/json" },
-              withCredentials: true,
-            })
+            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', {username, pin})
       
             // Assuming your server responds with a success message or a redirect URL
             if (response.data.success) {
@@ -47,7 +47,7 @@ const Loginscreen = () => {
           } 
           
           catch (error) {
-            console.log('Error:', error);
+            console.log('Error:', error.toJSON());
           }
         }
       };
@@ -60,8 +60,8 @@ const Loginscreen = () => {
                 {empty &&                 
                 <p className="alert">{flashmessage}</p>
                 }
-                <input type="text" id="username" class="inputdata" placeholder="ENTER USERNAME" />
-                <input type="password" id="pin" class="inputdata" placeholder="ENTER PIN" />
+                <input type="text" id="username" className="inputdata" placeholder="ENTER USERNAME" />
+                <input type="password" id="pin" className="inputdata" placeholder="ENTER PIN" />
                 <p className='forgot'> Forgot your  <u>PIN</u>?</p>
                 <input type="submit" value="LOGIN" className='login'/>
             </form>
