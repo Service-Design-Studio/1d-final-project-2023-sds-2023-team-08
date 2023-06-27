@@ -3,6 +3,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import '../components/styles/TopNavigationStyles.css';
 import AccountDetails from '../components/codeblocks/AccountDetails';
 import axios from 'axios';
+import {useParams } from 'react-router-dom';
+
 
 //import accountJson from '../testdata/account.json';
 //const userAccounts = accountJson[0].account;
@@ -15,11 +17,12 @@ const Accounts = () => {
     const [showMore, setShowMore] = useState(false);
     const [userData, setUserData] = useState([]);
     const [totalAmountSum, setTotalAmountSum] = useState(0);
+    const {userID} = useParams()
   
     useEffect(() => {
         const fetchAccountData = async () => {
           try {
-            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
+            const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/home`);
             const parsedData = response.data
 
             setUserData(parsedData.account);
@@ -79,7 +82,7 @@ const Accounts = () => {
                     </div>
                 </div>
             </button>
-            {showMore && <AccountDetails />}
+            {showMore && <AccountDetails userID={userID} />}
         </div>
     );
 };

@@ -1,7 +1,7 @@
 [
     {
-      "user": "junxiang",
-      "account": [
+      "transer to wrong account": "true",
+      "wrong amount":  [
         {
           "account type": "DBS Savings Account",
           "account number": "539-23421-2",
