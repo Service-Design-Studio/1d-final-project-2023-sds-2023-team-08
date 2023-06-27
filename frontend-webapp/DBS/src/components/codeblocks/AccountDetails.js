@@ -13,9 +13,7 @@ const AccountDetails = () => {
     const fetchuserAccounts = async () => {
       try {
         const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
-        const accountData = JSON.stringify(response.data);
-        const parsedData = JSON.parse(accountData);
-
+        const parsedData = response.data;
         setUserAccounts(parsedData.account);
       } catch (error) {
         console.log(error);
@@ -31,22 +29,22 @@ const AccountDetails = () => {
           {userAccounts.map((account, index) => (
             <button onClick={() => {}} className='transparent'>
                 <div className='account' key={index}>
-                <div className='accountheader'>
-                    <p className='accountname'>
-                    {account['account type']}
-                    </p>
-                    <img src={require('../assets/expand.png')} className='accountexpand' />
-                </div>
-                <p className='accountnumber'>
-                    {account['account number']}
-                </p>
-                <div className='textcontainer2'>
-                    <p className='sgd'>SGD</p>
-                    <p className='money'>
-                    {account['total amount'].toFixed(2)}
-                    </p>
-                </div>
-                <div className='line'></div>
+                  <div className='accountheader'>
+                      <p className='accountname'>
+                      {account['account type']}
+                      </p>
+                      <img src='assets/expand.png' className='accountexpand' />
+                  </div>
+                  <p className='accountnumber'>
+                      {account['account number']}
+                  </p>
+                  <div className='textcontainer2'>
+                      <p className='sgd'>SGD</p>
+                      <p className='money'>
+                      {account['total amount'].toFixed(2)}
+                      </p>
+                  </div>
+                  <div className='line'></div>
                 </div>
             </button>
           ))}

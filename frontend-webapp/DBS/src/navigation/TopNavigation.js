@@ -20,9 +20,8 @@ const Accounts = () => {
         const fetchAccountData = async () => {
           try {
             const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/home');
-            const accountData = JSON.stringify(response.data);
-            const parsedData = JSON.parse(accountData);
-                          
+            const parsedData = response.data
+
             setUserData(parsedData.account);
           } catch (error) {
             console.log(error);

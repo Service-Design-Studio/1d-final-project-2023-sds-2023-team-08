@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../components/styles/RecentTransaction.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
+import BottomTabNavigator from '../navigation/BottomTabNavigator';
 
 // /import transactionJSON from '../testdata/transactiondate.json'
 
@@ -18,9 +19,7 @@ const Recenttransaction = () => {
     const fetchtransactions = async () => {
       try {
         const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/4/all_transactions');
-        const accountData = JSON.stringify(response.data);
-        const parsedData = JSON.parse(accountData)
-        console.log(parsedData, parsedData)
+        const parsedData = response.data;
         setTransactions(parsedData);
       } catch (error) {
         console.log(error);
@@ -42,8 +41,8 @@ const Recenttransaction = () => {
     <div className='maincontainer'>
       <div className='sticky'>
         <div className='headertransaction'>
-          <button onClick={() => navigate('/')} className='transparent'>
-            <img src={require('../../src/components/assets/back.png')} className='back' />
+          <button id = 'backarrow' onClick={() => navigate('/')} className='transparent'>
+            <img src='/assets/back.png' className='back' />
           </button>
           <p className='headertext'>Recent Transactions</p>
         </div>
@@ -51,7 +50,7 @@ const Recenttransaction = () => {
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
             {uniqueAccountNumbers.map((account, index) => (
-            <button className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
+            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account ? '/recenttransaction' : `/recenttransaction/${encodeURIComponent(account)}`)}>
               <div className={account === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
                 <p className={account === accountNumber  ? 'nameselected' : 'nameunselected'}>{account}</p>
               </div>
@@ -66,7 +65,7 @@ const Recenttransaction = () => {
                 <div className='transactionheader2'>
                   <div className='yellowline2'></div>
                   <p className='transactiontitle2'>All Transactions for {accountNumber}</p>
-                  <img src={require('../../src/components/assets/expand.png')} className='expandtransaction'/>
+                  <img src='/assets/expand.png' className='expandtransaction'/>
                 </div>
               </div>
           </button> }
@@ -74,7 +73,7 @@ const Recenttransaction = () => {
         <button className='transparent' onClick={() => {}}>
           <div className='ftd'>
             <p className='ftdtext'>Fund Transfer Dispute Transactions</p>
-            <img src={require('../../src/components/assets/expand.png')} className='expand'/>
+            <img src='/assets/expand.png' className='expand'/>
           </div>
         </button>
 
@@ -97,7 +96,7 @@ const Recenttransaction = () => {
                 <div className='transaction'>
                   <div className='transactionheader'>
                     <p className='transactiontitle'>{transactiondata.transaction["transaction name"]}</p>
-                    <img src={require('../../src/components/assets/expand.png')} className='expand'/>
+                    <img src='/assets/expand.png' className='expand'/>
                   </div>
 
                   <p className='transactiontype'>{transactiondata.transaction["transaction type"]}</p>
@@ -117,6 +116,9 @@ const Recenttransaction = () => {
         );
         })}
 
+      </div>
+      <div className='bottomnav'>
+          <BottomTabNavigator></BottomTabNavigator>
       </div>
     </div>
   );

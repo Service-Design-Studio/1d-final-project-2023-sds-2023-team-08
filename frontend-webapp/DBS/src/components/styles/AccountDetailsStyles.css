@@ -37,12 +37,16 @@
     
 .account {
     background-color: white;
+    padding: 0;
+    margin: 0;
   }
   
   .accountheader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0;
+    margin: 0;
   }
   
   .accountname {
