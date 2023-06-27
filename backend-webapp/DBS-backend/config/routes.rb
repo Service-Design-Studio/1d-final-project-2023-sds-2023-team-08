@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   
+  #csrf
+  get '/csrf_token', to: 'csrf#fetch_csrf_token'
   #custom routes
   get 'users/:id/home', to: 'users#home'
   get 'users/:id/all_transactions', to: 'users#all_transactions'
