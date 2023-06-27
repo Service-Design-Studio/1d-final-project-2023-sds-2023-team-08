@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import '../components/styles/ReturnFundsStyles.css';
+import '../components/styles/PayNowTxnStyles.css';
 
-const ReturnFunds = () => {
+const PayNowTxn = () => {
     const navigate = useNavigate();
     return(
         <div classname = "overall">
@@ -10,7 +10,7 @@ const ReturnFunds = () => {
                     <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
                         <img src = './assets/back.png' className = 'backarrow'/>
                     </button>
-                    <p className='headertitle'>PayNow to Mobile / Transfer to Bank</p>
+                    <p className='headertitle'>PayNow to Mobile</p>
                 </div>
             </div>
 
@@ -60,6 +60,20 @@ const ReturnFunds = () => {
                 </div>
             </div>
 
+            <div className='balancebox'>
+                <div className='authorisedbox'>
+                    <p className='authorised'>Authorised</p>
+                    <p className='authorisedamount'>SGD 40,000.00</p>
+                </div>
+                <div className='remainingbox'>
+                    <p className='remaining'>Remaining</p>
+                    <p className='remainingamount'>SGD 40,000.00</p>
+                </div>
+                <div className='changelimitbox'>
+                    <p className='changelimit'><u>Change Limit</u></p>
+                </div>
+            </div>
+
             <div className='deetsbox'>
                 <p className='trfdeets'>TRANSFER DETAILS</p>
             </div>
@@ -69,15 +83,15 @@ const ReturnFunds = () => {
                     <p className='addcomments'>Add comments for recipient</p>
                 </div>
                 <div className='comments'>
-                    <p className='comments'>RESOLVING DISPUTE</p>
+                    <p className='comments'>PayNow Transfer</p>
                 </div>
             </div>
 
             <div className='warningnote'>
-                <p className='regular'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
-                <div className='submitbutton'>
-                    <button id='submitrefund' className='transparent' onClick={()=>{}}>
-                        <p className='submit'>SUBMIT</p>
+                <p className='regular'>By clicking "NEXT",you agree to be bound by the <u>Terms and Conditions</u>.</p>
+                <div className='nextbutton'>
+                    <button id='nextbutton' className='transparent' onClick={()=>{}}>
+                        <p className='next'>NEXT</p>
                     </button>
                 </div>
             </div>
@@ -89,4 +103,4 @@ const ReturnFunds = () => {
 
 };
 
-export default ReturnFunds;
+export default PayNowTxn;
