@@ -7,10 +7,28 @@ const Loginscreen = () => {
     const navigate = useNavigate();
     const [empty, SetEmpty] = useState(false);
     const [flashmessage, SetFlashMessage] = useState('');
+    const [csrfToken, setCsrfToken] = useState('');
 
+    useEffect(() => {
+      const fetchCSRFData = async () => {
+        try {
+          const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token');
+          const Token = response.data.csrfToken;
+          setCsrfToken(Token);
+        } 
+        
+        catch (error) {
+          console.log(error)
+        }
+      };
+  
+      fetchCSRFData();
+    }, []);
+
+    console.log(csrfToken)
+    
     const handleSubmit = async (event) => {
-
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); 
     
         const username = document.getElementById('username').value;
         const pin = document.getElementById('pin').value;
@@ -22,31 +40,31 @@ const Loginscreen = () => {
         } 
         
         else {
-          const data = {
-            username,
-            pin
-          };
-
-          console.log('Data to be sent to the backend:', data);
-          console.log('Data to be sent to the backend:',  JSON.stringify(data));
-
           try {
 
-            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', {username, pin})
+            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', {username, pin} ,{
+            params: {
+              username: username,
+              pin: pin
+            },
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': csrfToken,
+              'X-Requested-With': 'XMLHttpRequest',
+            }})
       
-            // Assuming your server responds with a success message or a redirect URL
             if (response.data.success) {
               const UserID = response.data.userid;
               navigate(`/${UserID}/home`);
             } 
             
             else {
-              SetEmpty(true)
-              SetFlashMessage("Incorrect username or pin.")
             }
           } 
           
           catch (error) {
+            SetEmpty(true)
+            SetFlashMessage("Incorrect username or pin.")
             console.log('Error:', error.toJSON());
           }
         }
