@@ -30,7 +30,7 @@
     color: #000;
     font-size: 18px;
     font-family: 'Lato';
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     object-fit: contain;
     padding-bottom: 1vh;
@@ -40,10 +40,10 @@
 .backarrow {
     flex-direction: row;
     padding-left: 4vw;
-    margin-top: 2.5vw;
+    margin-top: 3vw;
     background-color: transparent;
     cursor: poLato;
-    height: 2vh;
+    height: 1.4vh;
     width: 3vw;
     border: none;
     cursor: poLato;
@@ -89,7 +89,7 @@
     flex: 1;
     height: 2vh;
     margin-left: 7vw;
-    font-size: 5vw;
+    font-size: 18px;
     font-family: 'Lato';
     font-weight: bold;
     color: black;
@@ -103,7 +103,7 @@
     margin-left: 1.8vh;
     background-color: transparent;
     color: black;
-    font-size: 1.5vh;
+    font-size: 14px;
 }
 
 .gif{
@@ -136,7 +136,7 @@
     width: 25vw;
     margin-top: 4vh;
     margin-left: 1.5vh;
-    font-size: 1.8vh;
+    font-size: 14px;
     background-color: transparent;
 }
 
@@ -146,7 +146,7 @@
     width: 25vh;
     margin-top: 0vh;
     margin-left: 1.4vh;
-    font-size: 3.5vh;
+    font-size: 26px;
     font-family: 'Lato';
     font-weight: 600;
     background-color: transparent;
@@ -155,8 +155,8 @@
 .rightside{
     height: 10vh;
     width: 100vh;
-    margin-left: 25vh;
-    margin-top: 1.8vh;;
+    margin-left: 27vh;
+    margin-top: 3.3vh;;
     background-color: transparent;
 }
 
@@ -164,7 +164,7 @@
     align-self: right;
     height:50vh;
     width: 100vh;
-    font-size: 4vh;
+    font-size: 26px;
     color:white;
     font-family: 'Lato';
     font-weight: 800;
@@ -179,7 +179,7 @@
 }
 
 .trfdeets{
-    font-size: 1.6vh;
+    font-size: 14px;
     font-family: 'Lato';
     color: #999999;
     font-weight: 800;
@@ -202,7 +202,7 @@
     height: 1vh;
     width: 100vh;
     margin-left: 1.5vh;
-    font-size: 1.6vh;
+    font-size: 14px;
     font-family: 'Lato';
     font-weight: 600;
     color: #999999;
@@ -212,7 +212,7 @@
 .comments{
     height: 10vh;
     width: 100vh;
-    font-size: 2vh;
+    font-size: 16px;
     font-family: 'Lato';
     font-weight: 800;
     margin-left: 1.5vh;;
@@ -233,7 +233,7 @@
     height: 5vh;
     width: 43vh;
     color: #999999;
-    font-size: 1.8vh;
+    font-size: 14px;
     margin-left: 3vh;
     margin-right: 3vh;
     padding-right: 50vh;
@@ -243,23 +243,23 @@
 .submitbutton{
     display:flex;
     background-color: #1D0C86;
-    height: 7vh;
+    height: 6vh;
     width: 44vh;
     margin-left: 3vh;
     transform: translate(-0.9vh);
-    border-radius: 1.5vh;
+    border-radius: 1vh;
 }
 
 
 .submit{
-    font-size: 2.5vh;
+    font-size: 20px;
     color: white;
-    height: 7vh;
+    height: 5vh;
     width: 43vh;
     font-weight: 800vh;
     padding-bottom: 10vh;
     background-color: transparent;
     margin-bottom: 3vh;
     transform: translate(0.7vh, -3vh);
-    padding-top: 2.4vh;
+    padding-top: 2.3vh;
  }
