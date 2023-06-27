@@ -1,0 +1,63 @@
+.loginbackground {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../assets/loginbackground.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.DBS {
+    align-self: center;
+    height: 4vh;
+    display: block;
+    margin: 0 auto;
+    padding: 7vh 0;
+}
+
+.form_styling {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputdata {
+    margin: 1.5vh 5vw 0vh 5vw;
+    padding: 2.2vh 4vw;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-family: "Lato";
+    border: none;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+  }
+
+.forgot {
+    color: white;
+    font-family: Lato;
+    padding: 0;
+    margin: 1vh 8vw;
+}
+
+.login {
+    margin: 5vh 5vw 0vh 5vw;
+    padding: 2vh 4vw;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Lato";
+    background-color:#066DAF ;
+    color: white;
+    border: none;
+}
+
+.alert {
+    color: #FF2C4E;
+    font-family: "Lato";
+    font-size: 15px;
+    margin: 0 5vw 0vh 5vw;
+    padding: 0;
+}
