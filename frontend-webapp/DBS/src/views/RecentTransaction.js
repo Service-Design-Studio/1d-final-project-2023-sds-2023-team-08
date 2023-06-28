@@ -4,7 +4,7 @@ import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
 
-// /import transactionJSON from '../testdata/transactiondate.json'
+// import transactionJSON from '../testdata/transactiondate.json'
 
 function getTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.date === specificDate);

@@ -2,7 +2,7 @@ import React from 'react';
 import '../components/styles/TransactionDetailsStyles.css';
 import { useNavigate } from 'react-router-dom';
 
-const FTDetails = () => {
+const TransactionDetails = () => {
     const navigate = useNavigate();
 
     return (
@@ -48,4 +48,4 @@ const FTDetails = () => {
     );
 };
 
-export default FTDetails;
+export default TransactionDetails;

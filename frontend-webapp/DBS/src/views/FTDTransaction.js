@@ -3,175 +3,103 @@ import '../components/styles/FTDTransactionStyles.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
+import FTDjson from '../testdata/fundtransferdispute.json'
 
-
-function getTransactionsByDate(transactions, specificDate) {
-  return transactions.filter(transaction => transaction.date === specificDate);
+function getFTDTransactionsByDate(transactions, specificDate) {
+  return transactions.filter(transaction => transaction.disputedate === specificDate);
 }
 
 const FTDTransaction = () => {
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
-  const [accountdetails, setAccountDetails] = useState([])
+  const [accountdetails, setAccountDetails] = useState([]);
   const { userID, accountNumber } = useParams();
+  const FTDtransactions = FTDjson;
+
+  const statusDictionary = {
+    "Dispute Filed": {
+      bgcolor: '#1D0C86',
+      statustext: "AWAITING ACTION"
+    },
+    "Pending": {
+      bgcolor: "#066DAF",
+      statustext: "PENDING"
+    },
+    "Resolved": {
+      bgcolor: "#007D23",
+      statustext: "RESOLVED"
+    },
+    "Refuted": {
+      bgcolor: "#950909",
+      statustext: "REFUTED"
+    },
+    "Withdrawed": {
+        bgcolor: "#7A7A7A",
+        statustext: "WITHDRAWED"
+    }
+  };
+
+  const uniqueFTDates = [...new Set(FTDtransactions.map(item => item.disputedate))];
+
 
   return (
     <div className='maincontainer'>
-        <div className='headertransaction'>
+        <div className='header2transaction'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
           <p className='headertext'>Fund Disputes</p>
-      </div>
-
-      <div className='scrollview'>
-        <div>
-            <div className='datecontainer'>
-            <p className='date'>Thurs, 27 Jun 23</p>
-            </div>
-
-           
-            <button className='transparent' onClick={() => {}}>
-                <div className='transaction'>
-                    <div className='transactionheader'>
-                        <p className='transactiontitle'>NETS QR PAYMENT TO: SEA KING SEAFOOD</p>
-                        <img src='/assets/expand.png' className='expandtransaction'/>                    
-                    </div>
-                    
-                    <p className='transactiontype'>FAST / PayNow Transfer</p>                 
-                    
-                    <div className='transactiondetails'>
-                        <p className='account'>234-23242-1</p>
-                        <div className='rightcontainer'>
-                            <p className='sgd2'>SGD</p>
-                            <p className="moneyout2">XX.XX</p>
-                        </div>
-                    </div>
-
-                    <div className='statuscontainer'  style={{backgroundColor: '#1D0C86'}}>
-                        <p className='statustext'>AWAITING ACTION</p>
-                    </div>   
-                </div>
-            </button>
-
-            <button className='transparent' onClick={() => {}}>
-                <div className='transaction'>
-                    <div className='transactionheader'>
-                        <p className='transactiontitle'>NETS QR PAYMENT TO: SEA KING SEAFOOD</p>
-                        <img src='/assets/expand.png' className='expandtransaction'/>                    
-                    </div>
-                    
-                    <p className='transactiontype'>FAST / PayNow Transfer</p>                 
-                    
-                    <div className='transactiondetails'>
-                        <p className='account'>234-23242-1</p>
-                        <div className='rightcontainer'>
-                            <p className='sgd2'>SGD</p>
-                            <p className="moneyout2">XX.XX</p>
-                        </div>
-                    </div>
-
-                    <div className='statuscontainer'  style={{backgroundColor: '#1D0C86'}}>
-                        <p className='statustext'>ACTION REQUIRED</p>
-                    </div>   
-                </div>
-            </button>
-
-            <button className='transparent' onClick={() => {}}>
-                <div className='transaction'>
-                    <div className='transactionheader'>
-                        <p className='transactiontitle'>NETS QR PAYMENT TO: SEA KING SEAFOOD</p>
-                        <img src='/assets/expand.png' className='expandtransaction'/>                    
-                    </div>
-                    
-                    <p className='transactiontype'>FAST / PayNow Transfer</p>                 
-                    
-                    <div className='transactiondetails'>
-                        <p className='account'>234-23242-1</p>
-                        <div className='rightcontainer'>
-                            <p className='sgd2'>SGD</p>
-                            <p className="moneyout2">XX.XX</p>
-                        </div>
-                    </div>
-
-                    <div className='statuscontainer' style={{backgroundColor: '#066DAF'}}>
-                        <p className='statustext'>PENDING</p>
-                    </div>   
-                </div>
-            </button>
-
-            <button className='transparent' onClick={() => {}}>
-                <div className='transaction'>
-                    <div className='transactionheader'>
-                        <p className='transactiontitle'>NETS QR PAYMENT TO: SEA KING SEAFOOD</p>
-                        <img src='/assets/expand.png' className='expandtransaction'/>                    
-                    </div>
-                    
-                    <p className='transactiontype'>FAST / PayNow Transfer</p>                 
-                    
-                    <div className='transactiondetails'>
-                        <p className='account'>234-23242-1</p>
-                        <div className='rightcontainer'>
-                            <p className='sgd2'>SGD</p>
-                            <p className="moneyout2">XX.XX</p>
-                        </div>
-                    </div>
-
-                    <div className='statuscontainer' style={{backgroundColor: '#007D23'}}>
-                        <p className='statustext'>RESOLVED</p>
-                    </div>   
-                </div>
-            </button>
-
-            <button className='transparent' onClick={() => {}}>
-                <div className='transaction'>
-                    <div className='transactionheader'>
-                        <p className='transactiontitle'>NETS QR PAYMENT TO: SEA KING SEAFOOD</p>
-                        <img src='/assets/expand.png' className='expandtransaction'/>                    
-                    </div>
-                    
-                    <p className='transactiontype'>FAST / PayNow Transfer</p>                 
-                    
-                    <div className='transactiondetails'>
-                        <p className='account'>234-23242-1</p>
-                        <div className='rightcontainer'>
-                            <p className='sgd2'>SGD</p>
-                            <p className="moneyout2">XX.XX</p>
-                        </div>
-                    </div>
-
-                    <div className='statuscontainer' style={{backgroundColor: '#950909'}}>
-                        <p className='statustext'>REFUTED</p>
-                    </div>   
-                </div>
-            </button>
-
-
-            <button className='transparent' onClick={() => {}}>
-                <div className='transaction'>
-                    <div className='transactionheader'>
-                        <p className='transactiontitle'>NETS QR PAYMENT TO: SEA KING SEAFOOD</p>
-                        <img src='/assets/expand.png' className='expandtransaction'/>                    
-                    </div>
-                    
-                    <p className='transactiontype'>FAST / PayNow Transfer</p>                 
-                    
-                    <div className='transactiondetails'>
-                        <p className='account'>234-23242-1</p>
-                        <div className='rightcontainer'>
-                            <p className='sgd2'>SGD</p>
-                            <p className="moneyout2">XX.XX</p>
-                        </div>
-                    </div>
-
-                    <div className='statuscontainer' style={{backgroundColor: '#7A7A7A'}}>
-                        <p className='statustext'>WITHDRAWED</p>
-                    </div>   
-                </div>
-            </button>
         </div>
 
+        <div className='scrollview'>
+            {uniqueFTDates.map((date, index) => {
+
+                const FTDTransactionwithSpecificDate = getFTDTransactionsByDate(FTDtransactions, date);
+                return(
+                    <div>
+                        <div className='date2container'>
+                        <p className='date'>{date}</p>
+                        </div>
+
+                        {FTDTransactionwithSpecificDate.map((FTDtransactiondata, index) => {
+                            const {bgcolor, statustext} = statusDictionary[FTDtransactiondata.transaction.FTDdetails["status"]]
+                            const sender = FTDtransactiondata.transaction.FTDdetails["user"] === "Sender";
+                            console.log(bgcolor, statustext)
+
+                            let updatedStatustext = statustext; 
+                            if (bgcolor === '#1D0C86') {
+                                updatedStatustext = sender ? "AWAITING ACTION" : "ACTION REQUIRED";}
+
+                            return(
+                                <button className='transparent' onClick={() => {}}>
+                                    <div className='transaction'>
+                                        <div className='transactionheader'>
+                                            <p className='transactiontitle'>{FTDtransactiondata.transaction.transactiondetails["transaction name"]}</p>
+                                            <img src='/assets/expand.png' className='expandtransaction'/>                    
+                                        </div>
+                                        
+                                        <p className='transactiontype2'>{FTDtransactiondata.transaction.transactiondetails["transaction type"]}</p>                 
+                                        
+                                        <div className='transactiondetails'>
+                                            <p className='account'>{FTDtransactiondata.transaction.transactiondetails["account number"]}</p>
+                                            <div className='rightcontainer'>
+                                                <p className='sgd2'>SGD</p>
+                                                <p className={FTDtransactiondata.transaction.transactiondetails["total amount"] < 0 ? "moneyout2" : "moneyin2"}>{FTDtransactiondata.transaction.transactiondetails["total amount"].toFixed(2)}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className='statuscontainer'  style={{backgroundColor: bgcolor}}>
+                                            <p className='statustext'>{updatedStatustext}</p>
+                                        </div>   
+                                    </div>
+                                </button>
+                        );
+                        })}
+                    </div>
+                    );
+              })}
       </div>
+
       <div className='bottomnav'>
           <BottomTabNavigator></BottomTabNavigator>
       </div>
