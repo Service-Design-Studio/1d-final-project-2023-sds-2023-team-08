@@ -15,7 +15,8 @@
           "user": "Sender",
           "status detailed": "Recipient has 3 working days left before this dispute is automatically raised to DBS",
           "reason": "Transfer to Wrong Account",
-          "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead"
+          "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead",
+          "withdrawable":true
         }
       }
     }, 
@@ -36,7 +37,8 @@
             "user": "Recipient",
             "status detailed": "Action Required by 30 June 2023",
             "reason": "Transfer to Wrong Account",
-            "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead"
+            "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead",
+            "withdrawable":true
           }
         }
       },
@@ -57,7 +59,8 @@
             "user": "Sender",
             "status detailed": "This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by 27 July 2023",
             "reason": "Transfer to Wrong Account",
-            "comments": "Wrote wrong bank account number"
+            "comments": "Wrote wrong bank account number",
+            "withdrawable":true
             }
         }
     },
@@ -76,7 +79,8 @@
             "user": "Sender",
             "status detailed": "Refunded by recipient",
             "reason": "Transfer Wrong Amount",
-            "comments": "Suppose to transfer 27 but transferred 270"
+            "comments": "Suppose to transfer 27 but transferred 270",
+            "withdrawable":false
             }
         }
     },
@@ -96,8 +100,8 @@
             "status detailed": "Refuted by recipient",
             "reason": "Transfer Wrong Amount",
             "comments": "Transfer wrong",
-            "refutereason": "Settled at store privately."
-
+            "refutereason": "Settled at store privately.",
+            "withdrawable":false
             }
         }
     },
@@ -117,7 +121,8 @@
             "user": "Sender",
             "status detailed": "Withdrawed by recipient",
             "reason": "Transfer Wrong Amount",
-            "comments": "Transfer wrong"
+            "comments": "Transfer wrong",
+            "withdrawable":false
             }
         }
     }
