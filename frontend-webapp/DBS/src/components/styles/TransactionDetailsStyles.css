@@ -1,0 +1,145 @@
+.ftdbase{
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6f6f6;
+}
+
+.backtransaction {
+    object-fit: contain;
+    width: 3.5vw;
+    padding-left: 3vw;
+    margin-top: 2vh;
+}
+.transparent {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+.moneyinarow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 7%;
+    padding-right: 2%;
+    margin-top: 5%;
+}
+
+.moneytext{
+    font-family: 'Lato';
+    font-size: 18px;
+    color: #a3a3a3;
+    font-weight: 600;
+    justify-content: center;
+    padding-top: 0.5%;
+    padding-right: 1.5%;
+}
+
+.moneytext2{
+    font-family: 'Lato';
+    font-size: 40px;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 4%;
+}
+
+
+.txdatetext{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a0a0a0;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.scriptbox{
+    height: 30vh;
+    width: 90vw;
+    margin: auto;
+    margin-top: 7%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.descriptext1{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 5vh 8vw 0 8vw;
+    margin: 0;
+}
+
+.descriptext2{
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444;
+    padding: 1vh 8vw -0 8vw;
+    margin: 0 ;
+
+}
+
+.transactiontext1{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 3vh 8vw 0 8vw;
+    margin: 0;
+}
+
+.textcontainerdetail{
+    flex: 1;
+}
+
+.sharebutton{
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color:#066DAF;
+    margin: 4vh 5vw 1.5vh 5vw;
+    border-radius: 5px;
+}
+
+.sharebuttontext{
+    font-family: 'Lato';
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.sharebuttontext:active{
+    opacity: 0.5;
+}
+
+.FTDbutton{
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0vh 5vw;
+    border-radius: 5px;
+}
+
+.FTDbuttontext{
+    font-family: 'Lato';
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: 500;
+    word-spacing: 1vw;
+}
+
+.FTDbuttontext:active{
+    opacity: 0.5;
+}
