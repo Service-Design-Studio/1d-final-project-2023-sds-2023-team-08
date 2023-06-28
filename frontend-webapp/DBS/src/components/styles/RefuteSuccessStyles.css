@@ -1,0 +1,207 @@
+.overall {
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #fefefe;
+}
+
+.closebutton{
+    background-color: transparent;
+    cursor: poLato;
+    padding-left: 6vh;
+    padding-top: 6vh;
+    border: none;
+}
+
+.cross{
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 800;
+    color: #808080;
+    background-color: transparent;
+    margin-top: -4vh;
+    margin-left: -11vw;
+}
+
+.stamp{
+    object-fit: contain;
+    padding-bottom: 2vh;
+    width: 100vh;
+    background-color: transparent;
+}
+
+.greentickrefund{
+    object-fit: contain;
+    height: 7vh;
+    width: 7vh;
+    margin-left: 21vh;
+    margin-top: 1.5vh;
+    background-color: transparent;
+}
+
+.refundstatusRS{
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 600;
+    margin-left: 13vh;;
+    margin-top: 1.5vh;
+    background-color: transparent;
+    color: black;
+}
+
+.refunddateRS{
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: 500;
+    margin-left: 14.5vh;;
+    margin-top: -1vh;
+    color: #5F6267;
+    background-color: transparent;
+}
+
+.popbox{
+    border: 1px solid #999999;
+    padding-top: 1vh;
+    margin-left: 6vw;
+    margin-right: 6vw;
+    background-color: #ffffff;
+}
+
+.subpopbox{
+    margin-left: 5vw;
+    margin-top: 0vh;
+    margin-right: 5vw;
+    margin-bottom: 1vh;
+    background-color: transparent;
+}
+
+.raisedon{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 500;
+    color: #999999;
+    margin-top: 1vh;
+    margin-bottom: 0vh;
+}
+
+.dateofdispute{
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 600;
+    color: black;
+    margin-top: 0.5vh;
+    margin-bottom: 0vh;
+}
+
+.transactiontype{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 500;
+    color: #999999;
+    margin-top: 2vh;
+    margin-bottom: 0vh;
+    margin-left: -3vw;
+}
+
+.fundstransfer{
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 600;
+    color: black;
+    margin-top: 0.5vh;
+    margin-bottom: 0vh;
+}
+
+.reasonoftxfdispute{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 500;
+    color: #999999;
+    margin-top: 2vh;
+    margin-bottom: 0vh;
+    margin-left: 0vw;
+}
+
+.txftowrongacc{
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 600;
+    color: black;
+    margin-top: 0.5vh;
+    margin-bottom: 0vh;
+}
+
+.commentsfromrcp{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 500;
+    color: #999999;
+    margin-top: 2vh;
+    margin-bottom: 0vh;
+    margin-left: 0vw;
+}
+
+.intendedparty{
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 600;
+    color: black;
+    margin-top: 0.5vh;
+    margin-bottom: 0vh;
+}
+
+.whyrefute{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 500;
+    color: #999999;
+    margin-top: 2vh;
+    margin-bottom: 0vh;
+    margin-left: 0vw;
+}
+
+.uwu{
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 600;
+    color: black;
+    margin-top: 0.5vh;
+    margin-bottom: 2vh;
+}
+
+.movingon{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 500;
+    color: #6C6C6C;
+    margin-left: 7vw;
+    margin-right: 7vw;
+    text-align: justify;
+    background-color: transparent;
+    margin-top: 13vh;
+}
+
+
+.RSsharebutton{
+    display:inline-block;
+    background-color: #066DAF;
+    margin-right: 1vw;
+    margin-left: 7vw;
+    border-radius: 1vh;
+}
+
+
+.RSsharetxfdeets{
+    font-size: 18px;
+    font-family: 'Lato';
+    color: white;
+    font-weight: 500;
+    margin-top: 1.5vh;
+    margin-left: 15vw;
+    margin-right: 13vw;
+    margin-bottom: 1.5vh;
+    background-color: transparent;
+}

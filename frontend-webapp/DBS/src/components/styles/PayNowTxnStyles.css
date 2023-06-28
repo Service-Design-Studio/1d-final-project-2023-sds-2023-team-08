@@ -17,7 +17,7 @@
 .headercontainer{
     display: flex;
     flex-direction: row;
-    width: 2000px;
+    width: 100vh;
     height: 6vh;
     background-color: #F6F7F9;
     align-items: top;
@@ -46,7 +46,6 @@
     height: 1.4vh;
     width: 3vw;
     border: none;
-    cursor: poLato;
 }
 
 .container_parties{
