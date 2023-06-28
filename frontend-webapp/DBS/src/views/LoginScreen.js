@@ -7,10 +7,28 @@ const Loginscreen = () => {
     const navigate = useNavigate();
     const [empty, SetEmpty] = useState(false);
     const [flashmessage, SetFlashMessage] = useState('');
+    const [csrfToken, setCsrfToken] = useState('');
 
+    useEffect(() => {
+      const fetchCSRFData = async () => {
+        try {
+          const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token');
+          const Token = response.data.csrfToken;
+          setCsrfToken(Token);
+        } 
+        
+        catch (error) {
+          console.log(error)
+        }
+      };
+  
+      fetchCSRFData();
+    }, []);
+
+    console.log(csrfToken)
+    
     const handleSubmit = async (event) => {
-
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); 
     
         const username = document.getElementById('username').value;
         const pin = document.getElementById('pin').value;
@@ -22,32 +40,32 @@ const Loginscreen = () => {
         } 
         
         else {
-          const data = {
-            username,
-            pin
-          };
           try {
 
-            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', JSON.stringify(data),
-            {
-              headers: { "Content-Type": "application/json" },
-              withCredentials: true,
-            })
+            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', {username, pin} ,{
+            params: {
+              username: username,
+              pin: pin
+            },
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': csrfToken,
+              'X-Requested-With': 'XMLHttpRequest',
+            }})
       
-            // Assuming your server responds with a success message or a redirect URL
             if (response.data.success) {
               const UserID = response.data.userid;
               navigate(`/${UserID}/home`);
             } 
             
             else {
-              SetEmpty(true)
-              SetFlashMessage("Incorrect username or pin.")
             }
           } 
           
           catch (error) {
-            console.log('Error:', error);
+            SetEmpty(true)
+            SetFlashMessage("Incorrect username or pin.")
+            console.log('Error:', error.toJSON());
           }
         }
       };
@@ -60,8 +78,8 @@ const Loginscreen = () => {
                 {empty &&                 
                 <p className="alert">{flashmessage}</p>
                 }
-                <input type="text" id="username" class="inputdata" placeholder="ENTER USERNAME" />
-                <input type="password" id="pin" class="inputdata" placeholder="ENTER PIN" />
+                <input type="text" id="username" className="inputdata" placeholder="ENTER USERNAME" />
+                <input type="password" id="pin" className="inputdata" placeholder="ENTER PIN" />
                 <p className='forgot'> Forgot your  <u>PIN</u>?</p>
                 <input type="submit" value="LOGIN" className='login'/>
             </form>
