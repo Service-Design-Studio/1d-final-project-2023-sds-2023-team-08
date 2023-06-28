@@ -4,11 +4,11 @@ import HomeScreen from '../views/HomeScreen.js';
 import Recenttransaction from '../views/RecentTransaction.js';
 import RefuteDispute from '../views/RefuteDispute.js'
 import ReviewTransfer from '../views/ReviewTransfer.js';
-import ReturnFunds from '../views/ReturnFunds.js';
+import FTDetails from '../views/TransactionDetails.js';
 import Loginscreen from '../views/LoginScreen.js';
 import FTDTransaction from '../views/FTDTransaction.js';
-import PayNowTxn from '../views/PayNowTxn.js';
-import EnterRecipient from '../views/EnterRecipient.js'
+import ReturnFunds from '../views/ReturnFunds.js';
+import PayNowTXn from '../views/ReturnFunds.js';
 import RefuteSuccess from '../views/RefuteSuccess.js'
 
 const Routing = () => {
@@ -16,12 +16,12 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Loginscreen />} />
+        <Route path="/" element={<ReviewTransfer />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/invest" element={<RefuteDispute />} />
         <Route path="/pay" element={<HomeScreen />} />
-        <Route path="/plan" element={<HomeScreen />} />
-        <Route path="/more" element={<RefuteSuccess />} />
+        <Route path="/plan" element={<ReviewTransfer />} />
+        <Route path="/more" element={<HomeScreen />} />
         <Route path="/recenttransaction" element={<Recenttransaction />} />
         <Route path="/recenttransaction/:accountNumber" element={<Recenttransaction />} />
 
