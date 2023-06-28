@@ -1,6 +1,8 @@
 .ReviewTransferMain {
     width: 100vw;
     height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
 }
 
 .ReviewTransferHeader {
@@ -22,4 +24,100 @@
     width: 100vw;
     height: 1px;
     background-color: #a3a3a3;
+}
+
+.ReviewTransferBody {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.ReviewTransferBox {
+    width: 85%;
+    height: 50%;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #162633 0%, #162633 25%, white 25%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+}
+
+.ReviewTransferBoxBlue {
+    height: 20%;
+}
+
+.ReviewTransferBoxBlueText{
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: medium;
+    color: #c3ccd3;
+    margin-left: 5%;
+    padding-top: 3%;
+}
+
+.ReviewTransferBoxBlueSubText{
+    display: flex;
+    flex-direction: row;
+    height: 40%;
+    width: 100%;
+    margin-top: -3%;
+    background-color: transparent;
+}
+
+.ReviewTransferBoxBlueSubTextLeft{
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: bold;
+    color: #c3ccd3;
+    margin-block-start: auto;
+}
+
+.ReviewTransferBoxBlueSubTextRight{
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: bold;
+    color: #c3ccd3;
+    margin-block-start: auto;
+    padding-left: 58%;
+
+}
+
+.ReviewTransferBoxWhite {
+    height: 80%;
+    padding: 5%;
+}
+
+.Chunk {
+    line-height: 20%;
+    margin-bottom: 10%;
+}
+
+.from {
+    font-size: small;
+    color: gray;
+}
+
+.RecipientAccountNo {
+    font-size: small;
+    color: gray;
+}
+
+.to {
+    font-size: small;
+    color: gray;
+}
+
+.SenderAccountNo {
+    font-size: small;
+    color: gray;
+}
+
+.transfertype {
+    font-size: small;
+    color: gray;
+}
+
+.yourcomments {
+    font-size: small;
+    color: gray;
 }
