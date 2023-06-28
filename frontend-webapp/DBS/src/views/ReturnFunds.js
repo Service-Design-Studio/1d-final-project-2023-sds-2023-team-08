@@ -5,7 +5,7 @@ const ReturnFunds = () => {
     const navigate = useNavigate();
     return(
         <div classname = "overall">
-            <div className='padding'>
+            <div className='padforRF'>
                 <div className = 'headercontainer'>
                     <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
                         <img src = './assets/back.png' className = 'backarrow'/>
@@ -60,8 +60,8 @@ const ReturnFunds = () => {
                 </div>
             </div>
 
-            <div className='deetsbox'>
-                <p className='trfdeets'>TRANSFER DETAILS</p>
+            <div className='RFdeetsbox'>
+                <p className='RFtrfdeets'>TRANSFER DETAILS</p>
             </div>
 
             <div className='commentsbox'>
@@ -73,8 +73,8 @@ const ReturnFunds = () => {
                 </div>
             </div>
 
-            <div className='warningnote'>
-                <p className='regular'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
+            <div className='RFwarningnote'>
+                <p className='tncforrefund'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
                 <div className='submitbutton'>
                     <button id='submitrefund' className='transparent' onClick={()=>{}}>
                         <p className='submit'>SUBMIT</p>

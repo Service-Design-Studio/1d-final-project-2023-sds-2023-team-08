@@ -22,7 +22,7 @@
     background-color: #F6F7F9;
     align-items: top;
     padding-bottom: 0.8vh;
-    border-bottom: 1.5px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .headertitle{
@@ -60,7 +60,7 @@
     width: 100vw;
     height :11vh;
     background-color: transparent;
-    border-bottom: 1px solid #d2d2d2;
+    border-bottom: 0.5px solid #d2d2d2;
 }
 
 .sender_container{
@@ -173,7 +173,7 @@
 .balancebox{
     height: 8vh;
     width: 100vh;
-    background-color: transparent;
+    background-color: #F6F7F9;
 }
 
 .authorisedbox{
@@ -230,27 +230,35 @@
     padding-top: 0.5vh;
 }
 
+.changelimitbox{
+    height: 3vh;
+    width: 100vh;
+    padding-left: 3vh;
+    margin-top: 3vh;
+    background-color: #F6F7F9;
+}
+
 .changelimit{
     height: 3vh;
     width: 100vh;
     font-size: 12px;
     font-weight: 300;
     font-family: 'Lato';
-    padding-left: 3vh;
-    padding-top: 1.8vh;
-    background-color: #F6F7F9;
+    background-color: transparent;
+    padding-top: 1vh;
 }
 
 .deetsbox{
     object-fit: contain;
-    height: 5vh;
+    height: 4vh;
     width: 100vh;
-    padding-top: 2.5vh;
+    margin-top: 2vh;
+    padding-top: 2vh;
     background-color: #F6F7F9;
 }
 
 .trfdeets{
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Lato';
     color: #999999;
     font-weight: 800;
@@ -259,7 +267,7 @@
     width: 100vh;
     margin-left: 3vh;
     margin-top: 0vh;
-    padding-top: 2vh;
+    padding-top: 1vh;
 }
 
 .commentsbox{
@@ -273,9 +281,9 @@
     height: 1vh;
     width: 100vh;
     margin-left: 1.5vh;
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Lato';
-    font-weight: 600;
+    font-weight: 800;
     color: #999999;
     background-color: transparent;
 }
@@ -289,10 +297,10 @@
     margin-left: 1.5vh;;
 }
 
-.warningnote{
+.pntwarningnote{
     display:flex;
     background-color: #F6F7F9;
-    height: 5vh;
+    height: 20vh;
     width: 100vh;
     margin-top: 2vh;
     flex-direction: column;
@@ -316,21 +324,18 @@
     background-color: #066DAF;
     height: 6vh;
     width: 44vh;
-    margin-left: 3vh;
-    transform: translate(-0.9vh);
+    margin-left: 2.6vh;
     border-radius: 1vh;
 }
 
 
 .next{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Lato';
     color: white;
-    height: 5vh;
-    width: 43vh;
-    font-weight: 800vh;
-    padding-bottom: 10vh;
+    height: 6vh;
+    width: 44vh;
+    font-weight: 500;
+    margin-top: 1.7vh;
     background-color: transparent;
-    margin-bottom: 3vh;
-    transform: translate(0.7vh, -3vh);
-    padding-top: 2.3vh;
  }
