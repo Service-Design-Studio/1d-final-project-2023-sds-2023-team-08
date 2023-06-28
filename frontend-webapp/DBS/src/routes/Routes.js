@@ -8,17 +8,17 @@ import FTDetails from '../views/TransactionDetails.js';
 import Loginscreen from '../views/LoginScreen.js';
 import FTDTransaction from '../views/FTDTransaction.js';
 import ReturnFunds from '../views/ReturnFunds.js';
-import PayNowTXn from '../views/PayNowTxn.js';
+import PayNowTXn from '../views/ReturnFunds.js';
 
 const Routing = () => {
   const world = { currentLocation: null };
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Loginscreen />} />
-        <Route path="/home" element={<ReturnFunds />} />
+        <Route path="/" element={<ReviewTransfer />} />
+        <Route path="/home" element={<HomeScreen />} />
         <Route path="/invest" element={<RefuteDispute />} />
-        <Route path="/pay" element={<PayNowTXn />} />
+        <Route path="/pay" element={<HomeScreen />} />
         <Route path="/plan" element={<ReviewTransfer />} />
         <Route path="/more" element={<HomeScreen />} />
         <Route path="/recenttransaction" element={<Recenttransaction />} />
