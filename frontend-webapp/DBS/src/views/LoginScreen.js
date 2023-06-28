@@ -32,6 +32,7 @@ const Loginscreen = () => {
     
         const username = document.getElementById('username').value;
         const pin = document.getElementById('pin').value;
+        console.log(username, pin)
     
         if (!username || !pin) {
           SetEmpty(true)

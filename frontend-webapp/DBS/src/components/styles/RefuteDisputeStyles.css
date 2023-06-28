@@ -88,7 +88,7 @@
 }
 
 .SubmitButton {
-    margin: 73vh 5vw 0vh 5vw;
+    margin: 0 5vw 0vh 5vw;
     padding: 2vh;
     border-radius: 5px;
     font-size: 18px;
@@ -98,6 +98,12 @@
     border: none;
     width: 90vw;
     position: absolute;
+    bottom: 4vh;
 }
 
+
+.SubmitButton:active{
+    opacity: 0.5;
+    transition: none;
+}
 
