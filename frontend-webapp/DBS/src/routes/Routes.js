@@ -17,7 +17,7 @@ const Routing = () => {
     <Router>
       <Routes>
         <Route path="/" element={<ReviewTransfer />} />
-        <Route path="/home" element={<HomeScreen />} />
+        <Route path="/home" element={<FTDTransaction />} />
         <Route path="/invest" element={<RefuteDispute />} />
         <Route path="/pay" element={<HomeScreen />} />
         <Route path="/plan" element={<ReviewTransfer />} />
