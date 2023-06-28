@@ -6,7 +6,7 @@
     padding: 0;
 }
 
-.padding{
+.padforRF{
     width: 100vw;
     height: 10vh;
     padding: 0;
@@ -22,7 +22,7 @@
     background-color: #F6F7F9;
     align-items: top;
     padding-bottom: 0.8vh;
-    border-bottom: 1.5px solid #d2d2d2;
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .headertitle{
@@ -60,7 +60,7 @@
     width: 100vw;
     height :11vh;
     background-color: transparent;
-    border-bottom: 1px solid #d2d2d2;
+    border-bottom: 0.5px solid #d2d2d2;
 }
 
 .sender_container{
@@ -170,16 +170,15 @@
     font-weight: 800;
 }
 
-.deetsbox{
+.RFdeetsbox{
     object-fit: contain;
     height: 4vh;
     width: 100vh;
-    padding-top: 2vh;
     background-color: #F6F7F9;
 }
 
-.trfdeets{
-    font-size: 14px;
+.RFtrfdeets{
+    font-size: 12px;
     font-family: 'Lato';
     color: #999999;
     font-weight: 800;
@@ -187,8 +186,7 @@
     height: 100vh;
     width: 100vh;
     margin-left: 3vh;
-    margin-top: 0vh;
-    padding-top: 0.5vh;
+    padding-top: 1vh;
 }
 
 .commentsbox{
@@ -218,26 +216,28 @@
     margin-left: 1.5vh;;
 }
 
-.warningnote{
+.RFwarningnote{
     display:flex;
     background-color: #F6F7F9;
     height: 40vh;
     width: 100vh;
     margin-top: 2vh;
+    padding-top: 2.5vh;
     flex-direction: column;
 }
 
-.regular{
+.tncforrefund{
     background-color: transparent;
-    padding-top: 15vh;
+    padding-top: 16vh;
     height: 5vh;
     width: 43vh;
     color: #999999;
     font-size: 14px;
-    margin-left: 3vh;
-    margin-right: 3vh;
+    font-family: 'Lato';
+    font-weight: 500;
+    margin-left: 2.5vh;
     padding-right: 50vh;
-    padding-bottom: 1vh;
+    text-align: justify;
 }
 
 .submitbutton{
@@ -245,21 +245,18 @@
     background-color: #1D0C86;
     height: 6vh;
     width: 44vh;
-    margin-left: 3vh;
-    transform: translate(-0.9vh);
+    margin-left: 2.6vh;
     border-radius: 1vh;
 }
 
 
 .submit{
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Lato';
     color: white;
-    height: 5vh;
-    width: 43vh;
-    font-weight: 800vh;
-    padding-bottom: 10vh;
+    height: 6vh;
+    width: 44vh;
+    font-weight: 500;
+    margin-top: 1.7vh;
     background-color: transparent;
-    margin-bottom: 3vh;
-    transform: translate(0.7vh, -3vh);
-    padding-top: 2.3vh;
  }
