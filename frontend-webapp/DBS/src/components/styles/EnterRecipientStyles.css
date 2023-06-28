@@ -1,0 +1,174 @@
+.overall {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.pad{
+    width: 100vw;
+    height: 14vh;
+    padding: 0;
+    background-color: #F6F7F9;
+    align-items: top;
+}
+
+.paynowheadercontainer{
+    display: flex;
+    flex-direction: row;
+    width: 2000px;
+    height: 6vh;
+    background-color: white;
+    align-items: top;
+    padding-bottom: 0.8vh;
+}
+
+.headertitle{
+    flex-direction: row;
+    color: #000;
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: 600;
+    text-align: left;
+    object-fit: contain;
+    padding-left: 2vh;
+    background-color: transparent;
+}
+
+.backarrow {
+    flex-direction: row;
+    padding-left: 4vw;
+    margin-top: 3vw;
+    background-color: transparent;
+    cursor: poLato;
+    height: 1.4vh;
+    width: 3vw;
+    border: none;
+    cursor: poLato;
+}
+
+.pntentermobile{
+    font-size: 12px;
+    font-family: 'Lato';
+    font-weight: 800;
+    color: #767676;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    background-color: transparent;
+}
+
+.inputbox{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100vw;
+    height: 10vh;
+}
+
+.prompt{
+    height: 1vh;
+    width: 100vh;
+    background-color: transparent;
+}
+
+.entername{
+    color: #b5b5b5;
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 550;
+    padding-left: 2VH;
+}
+
+.mobilenumber{
+    display: flex;
+    height: 3vh;
+    width: 100vh;
+    background-color:  transparent;
+}
+
+.phonenumber{
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: 800;
+    background-color: transparent;
+    color: black;
+}
+
+.plussixfive{
+    padding-left: 2vh;
+    padding-top: 1.5vh;
+}
+
+.forwardarrowbackground{
+    background-color: transparent;
+    height: 1.5vh;
+    width: 1.5vh;
+    padding-top: 2.1vh;
+    padding-left: 0.5vh;
+}
+
+.forwardarrow{
+    height: 1.5vh;
+    width: 1.5vh;
+    padding-top: 2.1vh;
+    padding-left: 0.5vh;
+}
+
+.eightdigit{
+    padding-left: 1.5vh;
+    padding-top: 1.5vh;
+    background-color: transparent;
+}
+
+.senderbox{
+    display:flex;
+    flex-direction: column;
+    background-color: #F6F7F9;
+    height: 70vh;
+    width: 100vh;
+    margin-top: 2vh;
+    flex-direction: column;
+}
+
+.recipientnick{
+    background-color: transparent;
+    height: 0vh;
+    width: 50vh;
+    color: #b5b5b5;
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 550;
+    margin-left: 2.3vh;
+}
+
+.recipientname{
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: 800;
+    padding-left: 2.4vh;
+    padding-top: 1vh;;
+}
+
+
+.pntsubmitbutton{
+    display:flex;
+    background-color: #066DAF;
+    height: 6vh;
+    width: 44vh;
+    margin-left: 2.6vh;
+    border-radius: 1vh;
+    margin-top: 50vh;
+}
+
+
+.pntsubmit{
+    font-size: 18px;
+    font-family: 'Lato';
+    color: white;
+    height: 6vh;
+    width: 44vh;
+    font-weight: 500;
+    margin-top: 1.7vh;
+    background-color: transparent;
+ }

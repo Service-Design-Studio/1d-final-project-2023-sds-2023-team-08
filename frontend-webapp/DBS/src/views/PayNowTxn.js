@@ -87,7 +87,7 @@ const PayNowTxn = () => {
                 </div>
             </div>
 
-            <div className='warningnote'>
+            <div className='pntwarningnote'>
                 <p className='regular'>By clicking "NEXT",you agree to be bound by the <u>Terms and Conditions</u>.</p>
                 <div className='nextbutton'>
                     <button id='nextbutton' className='transparent' onClick={()=>{}}>
