@@ -1,0 +1,255 @@
+.successtxbase {
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #fefefe;
+}
+
+.successtxcross {
+    color: #808080;
+    font-family: 'Lato';
+    font-size: x-large;
+    font-weight: 500;
+    margin-top: 80%;
+    display: flex;
+}
+
+.successtxcross:active{
+    opacity: 0.5;
+}
+
+.successtxtransparent{
+    display: inline-flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 2%;
+}
+
+.successtxgreenbox{
+    display: flex;
+    background-color: transparent;
+    border: none;
+    margin-top: -18%;
+}
+
+.successtxgreentick{
+    transform: scale(0.4);
+    margin: auto;
+}
+
+.successheadertext{
+    font-family: 'Lato';
+    font-size: 20px;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -10%;
+}
+
+.successtxdate{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a0a0a0;
+    font-weight: 600;
+    margin-top: -1%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.successtxdescriptbox{
+    height: 43%;
+    width: 85%;
+    margin: auto;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-bottom: 5%;
+}
+
+.successtxdescriptboxblack{
+    height: 22%;
+    width: 100%;
+    margin-top: -4%;
+    background-color: #162633;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.successtxdescriptboxblacktextop{
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: medium;
+    color: #c3ccd3;
+    margin-left: 5%;
+    padding-top: 3%;
+}
+
+.successtxdescriptboxtransparent{
+    display: flex;
+    flex-direction: row;
+    height: 40%;
+    width: 100%;
+    margin-top: -1%;
+    background-color: transparent;
+}
+
+.successtxdescriptboxtransparentleft{
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: bold;
+    color: #c3ccd3;
+    margin-block-start: auto;
+    margin-left: 5%;
+}
+
+.successtxdescriptboxtransparentright{
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: bold;
+    color: #c3ccd3;
+    margin-block-start: auto;
+    padding-left: 55%;
+
+}
+
+.successtxgreytextheader{
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: medium;
+    color: #999999;
+    margin-left: 8%;
+    margin-bottom: -3%;
+}
+
+.successtxgreytextheader2{
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: medium;
+    color: #999999;
+    margin-left: 8%;
+    margin-top: -3%;
+}
+
+.successtxblacktextheader{
+    font-family: 'Lato';
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    margin-left: 8%;
+}
+
+.successtxwrongbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -6%;
+    margin-left: 8%;
+}
+
+.successtxwrongtx{
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #a50303;
+}
+
+.successtxclicklink{
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #a50303;
+    margin-left: 2%;
+}
+
+.successtxclicklink:active{
+    opacity: 0.5;
+}
+
+.successtxtransparentbutton{
+    display: inline-flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 6%;
+    margin-top: 7%;
+}
+
+.successtxtransparentbuttonB{
+    display: inline-flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 6%;
+    margin-top: 3%;
+}
+
+.sharetxdetailsbutton{
+    display: flex;
+    width: 85vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color:#066DAF;
+    border-radius: 5px;
+}
+
+.sharetxdetailsbuttontext{
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    word-spacing: 1vw;
+}
+
+.sharetxdetailsbutton:active{
+    opacity: 0.5;
+}
+
+.makertxbutton{
+    display: flex;
+    width: 85vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-color: #066DAF;
+    border: 2px solid #066DAF;
+    border-radius: 5px;
+}
+
+.makertxbutton:active{
+    opacity: 0.5;
+}
+
+.makertxbuttontext{
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #066DAF;
+    font-weight: bold;
+    word-spacing: 1vw;
+}
+
+/* For Successful Transfer 2 (Only button changes for color and margin) */
+
+.successtxtransparentbutton2{
+    display: inline-flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 6%;
+    margin-top: 24%;
+}
+
+.sharetxdetailsbutton2{
+    display: flex;
+    width: 85vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color:#1d0c86;
+    border-radius: 5px;
+}
+
+.sharetxdetailsbutton2:active{
+    opacity: 0.5;
+}

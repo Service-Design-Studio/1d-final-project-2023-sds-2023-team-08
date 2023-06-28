@@ -1,9 +1,29 @@
 import React from 'react';
 import '../components/styles/TransactionDetailsStyles.css';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const FTDetails = () => {
     const navigate = useNavigate();
+    const [clickCount, setClickCount] = useState(0);
+    const [showPopup, setShowPopup] = useState(false);
+  
+    const handleClick = () => {
+      setClickCount(clickCount + 1);
+  
+      if (clickCount + 1 === 3) {
+        setShowPopup(true);
+        resetCounter(); // Reset the counter after triggering the pop-up
+      }
+    };
+  
+    const resetCounter = () => {
+      setClickCount(0); // Reset the clickCount state to 0
+    };
+  
+    const closePopup = () => {
+      setShowPopup(false);
+    };
 
     return (
         <div className='ftdbase'> 
@@ -17,7 +37,7 @@ const FTDetails = () => {
             </div>
 
             <div>
-                <p className='txdatetext'> Today 15 Jun</p>
+                <p className='txdatetext'> 15 Jun</p>
             </div>
 
             <div className='scriptbox'>
@@ -38,11 +58,26 @@ const FTDetails = () => {
                 </div>
             </button>
 
-            <button onClick={() => {}} className='transparent'>
+            <button onClick={handleClick} className='transparent'>
                 <div className='FTDbutton'>
                     <p className='FTDbuttontext'> RAISE A FUND DISPUTE</p>
                 </div>
             </button>
+
+            {showPopup && (
+                <div className='txdgreyout'>
+                <div className='txdetailsPop'>
+            <p className='txdpopicon'> !</p>
+            <p className='txdpopheader'> Limit Exceeded</p>
+            <p className='txdpoptext'>You are unable to make more than 2 fund transfer disputed daily. 
+            Please wait till tomorrow.</p>
+            <button onClick={closePopup} className='txdpopbutton'>
+                <p className='txdpopbuttontext'>Ok</p>
+            </button>
+            </div>
+            </div>
+            )}
+
 
         </div>
     );
