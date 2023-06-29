@@ -51,8 +51,7 @@
     font-size: 12px;
     font-weight: medium;
     color: #c3ccd3;
-    margin-left: 5%;
-    padding-top: 3%;
+    margin-top: -3%;
 }
 
 .ReviewTransferBoxBlueSubText{
@@ -61,6 +60,7 @@
     height: 40%;
     width: 100%;
     margin-top: -3%;
+    margin-left: 3%;
     background-color: transparent;
 }
 
@@ -78,7 +78,7 @@
     font-weight: bold;
     color: #c3ccd3;
     margin-block-start: auto;
-    padding-left: 58%;
+    padding-left: 55%;
 
 }
 
@@ -120,4 +120,25 @@
 .yourcomments {
     font-size: small;
     color: gray;
+}
+
+.ReviewTransferForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    width: 90vw;
+}
+
+.TransferNow {
+    margin-top: 45%;
+    margin-left: -5%;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
 }

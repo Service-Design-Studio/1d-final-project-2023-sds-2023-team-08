@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const ReviewTransfer = () => {
     const navigate = useNavigate();
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+    }
     return (
         <div className='ReviewTransferMain'>
             <div className='ReviewTransferHeader'>
@@ -48,6 +51,9 @@ const ReviewTransfer = () => {
                         </div>
 
                     </div>
+                    <form className='ReviewTransferForm' onSubmit={handleSubmit}>
+                        <button className='TransferNow'>TRANSFER NOW</button>
+                    </form>
                 </div>
             </div>
         </div>
