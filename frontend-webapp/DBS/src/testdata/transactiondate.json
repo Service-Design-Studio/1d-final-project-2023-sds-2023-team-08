@@ -1,0 +1,93 @@
+[
+    {
+      "date": "Sat, 17 Jun 2023",
+      "transaction": {
+        "transaction name": "PayNow Transfer from: Wei Xuan OTHR PayNow Transfer",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number": "539-23421-2",
+        "total amount": 20.15
+      }
+    },
+    {
+      "date": "Sat, 17 Jun 2023",
+      "transaction": {
+        "transaction name": "PayNow Transfer to: Vinny OTHR PayNow Transfer",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number": "539-23421-2",
+        "total amount": -5.00
+      }
+    },
+    {
+      "date": "Sat, 17 Jun 2023",
+      "transaction": {
+        "transaction name": "NETS QR PAYMENT TO: SEA KING SEAFOOD @ HOUGANG",
+        "transaction type": "Point-of-transaction Sale",
+        "account number": "539-23421-2",
+        "total amount": -12.23
+      }
+    },
+    {
+      "date": "Fri, 16 Jun 2023",
+      "transaction": {
+        "transaction name": "PayNow Transfer from: Brighton OTHR PayNow Transfer",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number": "539-23421-2",
+        "total amount": 15.00
+      }
+    },
+    {
+      "date": "Thur, 15 Jun 2023",
+      "transaction": {
+        "transaction name": "I-BANK TRANSFER OTHR MB1242354363",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number":  "234-43941-0",
+        "total amount": 150.00
+      }
+    },
+    {
+      "date": "Thur, 15 Jun 2023",
+      "transaction": {
+        "transaction name": "PayNow Transfer to: Plus82 OTHR PayNow Transfer",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number": "539-23421-2",
+        "total amount": -20.00
+      }
+    },
+    {
+      "date": "Wed, 14 Jun 2023",
+      "transaction": {
+        "transaction name": "004536353,H'GANG A8/631",
+        "transaction type": "Cash Withdrawal",
+        "account number":  "234-43941-0",
+        "total amount": -50.00
+      }
+    },
+    {
+      "date": "Wed, 14 Jun 2023",
+      "transaction": {
+        "transaction name": "PayNow Transfer to: SHOPEEPAY PRIVATE LIMITED OTHR",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number": "539-23421-2",
+        "total amount": -23.20
+      }
+    },
+    {
+      "date": "Mon, 12 Jun 2023",
+      "transaction": {
+        "transaction name": "PayNow Transfer to: Tristan OTHR",
+        "transaction type": "FAST / PayNow Transfer",
+        "account number": "539-23421-2",
+        "total amount": -7.45
+      }
+    },
+    {
+      "date": "Mon, 12 Jun 2023",
+      "transaction": {
+        "transaction name": "NETS QR PAYMENT TO: PRINCE NOODLES",
+        "transaction type": "Point-of-transaction Sale",
+        "account number": "539-23421-2",
+        "total amount": -4.20
+      }
+    }
+  ]
+  
