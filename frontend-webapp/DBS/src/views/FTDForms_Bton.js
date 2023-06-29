@@ -122,9 +122,9 @@ function MyComponent() {
       </div>
 
       <div className='theBoxforTrfDescription'>
-        <p className='description'> DESCRIPTION </p>
+        <p className='description'> Description </p>
         <p className='descriptionText'> PAYNOW TRANSFER: VALENCIA </p>
-        <p className='transactionTypeHeader'>TRANSACTION TYPE</p>
+        <p className='transactionTypeHeader'>Transaction Type</p>
 
         <p className='transactionTypeText'>Funds Transfer</p>
       </div>
