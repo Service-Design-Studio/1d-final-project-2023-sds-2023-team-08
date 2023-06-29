@@ -4,45 +4,43 @@ import '../components/styles/EnterRecipientStyles.css';
 const EnterRecipient = () => {
     const navigate = useNavigate();
     return(
-        <div classname = "overall">
-            <div className='pad'>
-                <div className = 'paynowheadercontainer'>
+        <div classname = "overall1">
+            <div className='padforER1'>
+                <div className = 'paynowheadercontainer1'>
                     <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
-                        <img src = './assets/back.png' className = 'backarrow'></img>
+                        <img src = './assets/back.png' className = 'back'/>
                     </button>
-                    <p className='headertitle'>PayNow to Mobile</p>
+                    <p className='headertitle5'>PayNow to Mobile</p>
                 </div>
-                <p className='pntentermobile'>ENTER MOBILE NO.</p>
+                <p className='pntentermobileER'>ENTER MOBILE NO.</p>
             </div>
 
-            <div className = 'inputbox'>
-                <div className='prompt'>
-                    <p className='entername'>Enter name or mobile no.</p>
+            <div className = 'inputboxER'>
+                <div className='transparent'>
+                    <p className='enternameER'>Enter name or mobile no.</p>
                 </div>
-                <div className='mobilenumber'>
-                    <div className='phonenumber'>
-                        <p className='plussixfive'>+65</p>
+                <div className='mobilenumberER'>
+                    <div className='phonenumberER'>
+                        <p className='plussixfiveER'>+65</p>
                     </div>
-                    <div className='forwardarrowbackground'>
-                        <img src = './assets/expand.png'className='forwardarrow'></img>
+                    <div className='forwardarrowbackgroundER'>
+                        <img src = './assets/expand.png'className='forwardarrowER'></img>
                     </div>
-                    <div className='phonenumber'>
-                        <p className='eightdigit'>XXXXXXXX</p>
+                    <div className='phonenumberER'>
+                        <p className='eightdigitER'>XXXXXXXX</p>
                     </div>
                 </div>
             </div>
 
 
-            <div className='senderbox'>
+            <div className='senderboxER'>
                 <div className='recipientdeets'>
-                    <p className='recipientnick'>Recipient's Nickname</p>
-                    <p className='recipientname'>VINNY KOH</p>
+                    <p className='recipientnickER'>Recipient's Nickname</p>
+                    <p className='recipientnameER'>VINNY KOH</p>
                 </div>
-                <div className='pntsubmitbutton'>
-                    <button id='pntsubmitbutton' className='transparent' onClick={()=>{}}>
-                        <p className='pntsubmit'>SUBMIT</p>
-                    </button>
-                </div>
+                <button id='pntsubmitbutton' className='pntsubmitbuttonER' onClick={()=>{}}>
+                    <p className='pntsubmitER'>SUBMIT</p>
+                </button>
             </div>
         </div>
     );
