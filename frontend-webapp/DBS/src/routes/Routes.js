@@ -11,6 +11,7 @@ import ReturnFunds from '../views/ReturnFunds.js';
 import PayNowTXn from '../views/ReturnFunds.js';
 import RefuteSuccess from '../views/RefuteSuccess.js'
 import FTDTransactionDetails from '../views/FTDTransactionDetails.js';
+import EnterRecipient from '../views/EnterRecipient.js'
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -20,9 +21,9 @@ const Routing = () => {
         <Route path="/" element={<FTDTransactionDetails />} />
         <Route path="/home" element={<FTDTransaction />} />
         <Route path="/invest" element={<RefuteDispute />} />
-        <Route path="/pay" element={<ReturnFunds/>} />
+        <Route path="/pay" element={<HomeScreen/>} />
         <Route path="/plan" element={<ReviewTransfer />} />
-        <Route path="/more" element={<TransactionDetails />} />
+        <Route path="/more" element={<EnterRecipient />} />
         <Route path="/recenttransaction" element={<Recenttransaction />} />
         <Route path="/recenttransaction/:accountNumber" element={<Recenttransaction />} />
 

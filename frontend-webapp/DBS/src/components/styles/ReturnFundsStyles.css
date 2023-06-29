@@ -237,7 +237,7 @@
     border: none;
     width: 90vw;
     position: absolute;
-    bottom: 4vh
+    bottom: 4vh;
 }
 
 .submitbutton1:active {
