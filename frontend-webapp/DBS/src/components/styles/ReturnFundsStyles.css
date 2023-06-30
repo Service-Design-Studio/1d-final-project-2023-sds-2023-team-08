@@ -1,4 +1,4 @@
-.overall1 {
+.overall1{
     width: 100vw;
     height: 100vh;
     max-height: 100vh;
@@ -224,10 +224,11 @@
     font-size: 12px;
     font-family: 'Lato';
     text-align: left;
-    padding-left: 6vw;
+    padding-left: 5vw;
     max-width: 90vw;
     position: absolute;
     bottom: 10vh;
+    text-align: justify;
 }
 
 .submitbutton1{

@@ -1,45 +1,31 @@
-.overall1 {
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-}
-
-.closebutton{
+.closebuttonRS{
     background-color: transparent;
     cursor: poLato;
-    padding-left: 6vh;
-    padding-top: 6vh;
     border: none;
-}
-
-.cross{
     font-size: 24px;
     font-family: 'Lato';
     font-weight: 800;
     color: #808080;
-    background-color: transparent;
-    margin-top: -4vh;
-    margin-left: -11vw;
+    margin: 1vh 0 0 2vw;
 }
 
-.stamp{
+.stampRS{
     object-fit: contain;
-    padding-bottom: 2vh;
-    width: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: transparent;
+    align-items: center;
+    align-content: center;
+    margin: 0 8vw 0 8vw;
+    justify-content:center;
 }
 
-.greentickrefund{
+.greentickrefundRS{
     object-fit: contain;
-    height: 7vh;
-    width: 7vh;
-    margin-left: 21vh;
-    margin-top: 1.5vh;
+    max-height: 7vh;
+    max-width: 7vh;
+    min-height: 7vh;
+    min-width: 7vh;
     background-color: transparent;
 }
 
@@ -47,39 +33,37 @@
     font-size: 24px;
     font-family: 'Lato';
     font-weight: 600;
-    margin-left: 13vh;;
-    margin-top: 1.5vh;
     background-color: transparent;
     color: black;
+    margin: 2vh 0 1vh 0;
 }
 
 .refunddateRS{
     font-size: 18px;
     font-family: 'Lato';
     font-weight: 500;
-    margin-left: 14.5vh;;
-    margin-top: -1vh;
     color: #5F6267;
     background-color: transparent;
+    padding: 0;
+    margin: 0 0 5vh 0;
 }
 
-.popbox{
+.popboxRS{
     border: 1px solid #999999;
     padding-top: 1vh;
     margin-left: 6vw;
     margin-right: 6vw;
     background-color: #ffffff;
+    align-content: left;
 }
 
-.subpopbox{
-    margin-left: 5vw;
-    margin-top: 0vh;
-    margin-right: 5vw;
-    margin-bottom: 1vh;
+.subpopboxRS{
+    margin: 0 5vw 1vh 5vw;
     background-color: transparent;
+    align-content: left;
 }
 
-.raisedon{
+.raisedonRS{
     font-size: 14px;
     font-family: 'Lato';
     font-weight: 500;
@@ -88,7 +72,7 @@
     margin-bottom: 0vh;
 }
 
-.dateofdispute{
+.ansRS{
     font-size: 16px;
     font-family: 'Lato';
     font-weight: 600;
@@ -97,26 +81,7 @@
     margin-bottom: 0vh;
 }
 
-.transactiontype{
-    font-size: 14px;
-    font-family: 'Lato';
-    font-weight: 500;
-    color: #999999;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    margin-left: -3vw;
-}
-
-.fundstransfer{
-    font-size: 16px;
-    font-family: 'Lato';
-    font-weight: 600;
-    color: black;
-    margin-top: 0.5vh;
-    margin-bottom: 0vh;
-}
-
-.reasonoftxfdispute{
+.qnRS{
     font-size: 14px;
     font-family: 'Lato';
     font-weight: 500;
@@ -126,45 +91,7 @@
     margin-left: 0vw;
 }
 
-.txftowrongacc{
-    font-size: 16px;
-    font-family: 'Lato';
-    font-weight: 600;
-    color: black;
-    margin-top: 0.5vh;
-    margin-bottom: 0vh;
-}
-
-.commentsfromrcp{
-    font-size: 14px;
-    font-family: 'Lato';
-    font-weight: 500;
-    color: #999999;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    margin-left: 0vw;
-}
-
-.intendedparty{
-    font-size: 16px;
-    font-family: 'Lato';
-    font-weight: 600;
-    color: black;
-    margin-top: 0.5vh;
-    margin-bottom: 0vh;
-}
-
-.whyrefute{
-    font-size: 14px;
-    font-family: 'Lato';
-    font-weight: 500;
-    color: #999999;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    margin-left: 0vw;
-}
-
-.uwu{
+.uwuRS{
     font-size: 16px;
     font-family: 'Lato';
     font-weight: 600;
@@ -173,7 +100,7 @@
     margin-bottom: 2vh;
 }
 
-.movingon{
+.movingonRS{
     font-size: 14px;
     font-family: 'Lato';
     font-weight: 500;
@@ -195,7 +122,7 @@
 }
 
 
-.RSsharetxfdeets{
+.RSsharetxfdeetsRS{
     font-size: 16px;
     font-family: 'Lato';
     color: white;
