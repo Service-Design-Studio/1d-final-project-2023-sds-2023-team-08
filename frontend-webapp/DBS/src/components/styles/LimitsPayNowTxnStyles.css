@@ -100,7 +100,7 @@
     max-height: 100vh;
     background-color: #F6F7F9;
     top: 0;
-    height: 20vh;
+    height: 28vh;
 }
 
 .addcommentsPNT{
@@ -118,4 +118,23 @@
     font-weight: 800;
     margin: 0vh 0 2vh 5vw;
     background-color: transparent;
+}
+
+.LIMITSbutton1{
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#066DAF ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}
+
+.LIMITSbutton1:active {
+    opacity: 0.5;
+    transition: none;
 }

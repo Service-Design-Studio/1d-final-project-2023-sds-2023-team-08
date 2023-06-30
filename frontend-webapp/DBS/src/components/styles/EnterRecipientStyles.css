@@ -31,6 +31,7 @@
     flex-direction: column;
     background-color: white;
     width: 100vw;
+    margin-bottom: 1vh;
 }
 
 .enternameER{
@@ -84,11 +85,9 @@
 
 .senderboxER{
     flex-direction: column;
-    margin-top: 2vh;
     flex-direction: column;
     width: 100vw;
-    max-height: 100vh;
-    background-color: #F6F7F9;
+    background-color: transparent;
     top: 0;
     max-height: 100vh;
     overflow: hidden;
@@ -124,7 +123,7 @@
     border-radius: 5px;
     font-size: 18px;
     font-family: "Lato";
-    background-color:#1D0C86 ;
+    background-color:#066DAF ;
     color: white;
     border: none;
     width: 90vw;
@@ -135,4 +134,4 @@
 .pntsubmitbuttonER:active {
     opacity: 0.5;
     transition: none;
-  }
+}

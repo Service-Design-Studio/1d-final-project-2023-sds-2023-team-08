@@ -1,0 +1,21 @@
+[
+    {   
+        "date": "Sat, 30 Jun 2023",
+        "senderdetails":{
+            "sender name": "Evelyn Chew",
+            "sender mobile": "81234567",
+            "sender account number": "533-12345-1",
+            "authorised limit": "40,000.00",
+            "remaining limit": "40,000.00"
+        },
+        "recipientdetails":{
+            "recipient name": "Jesslyn Tan",
+            "recipient mobile": "87654321",
+            "recipient account number": "533-12345-2"
+        },
+        "txndetails":{
+            "comments for txn": "Coffee",
+            "amount transacted": "10.00"
+        }
+    }
+]
