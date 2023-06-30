@@ -12,6 +12,7 @@ import PayNowTXn from '../views/ReturnFunds.js';
 import RefuteSuccess from '../views/RefuteSuccess.js'
 import FTDTransactionDetails from '../views/FTDTransactionDetails.js';
 import EnterRecipient from '../views/EnterRecipient.js'
+import PayNowTxn from '../views/PayNowTxn.js';
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -23,7 +24,7 @@ const Routing = () => {
         <Route path="/invest" element={<RefuteDispute />} />
         <Route path="/pay" element={<HomeScreen/>} />
         <Route path="/plan" element={<ReviewTransfer />} />
-        <Route path="/more" element={<EnterRecipient />} />
+        <Route path="/more" element={<PayNowTxn />} />
         <Route path="/recenttransaction" element={<Recenttransaction />} />
         <Route path="/recenttransaction/:accountNumber" element={<Recenttransaction />} />
 

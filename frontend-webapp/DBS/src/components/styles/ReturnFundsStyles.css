@@ -7,6 +7,9 @@
     margin: 0;
     padding: 0;
     background-color: white;
+    max-width: 100vw;
+    min-width: 100vw;
+    
 }
 
 .padforRF1{
@@ -32,25 +35,25 @@
     display: flex;
     flex-direction: column;
     background-color: #f6f6f6;
-    width: 100vw;
+    max-width: 100vw;
 }
 
 .recipient_container1{
     margin-top: 3vh;
     display: flex;
     flex-direction: row;
-    width: 100vw;
     height :9vh;
     padding-left: 3vw;
     padding-top: 2vh;
     background-color: white;
     border-bottom: 0.5px solid #d2d2d2;
+
 }
 
 .sender_container1{
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    max-width: 100vw;
     height :9vh;
     padding-left: 3vw;
     padding-top: 2vh;
@@ -79,10 +82,9 @@
 }
 
 .account_right1{
-    height:100vh;
-    width: 100vh;
     background-color: transparent;
     margin-left: 5vw;
+    overflow: hidden;
 }
 
 .accountname1{
@@ -92,6 +94,7 @@
     font-family: 'Lato';
     font-weight: bold;
     color: #2D2D2D;
+    overflow: hidden;
 }
 
 .accountnumber1{
@@ -103,6 +106,7 @@
     font-size: 14px;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 .gif1{
