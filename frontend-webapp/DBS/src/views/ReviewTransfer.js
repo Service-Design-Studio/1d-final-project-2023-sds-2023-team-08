@@ -1,8 +1,15 @@
-import '../components/styles/ReviewTransferStyles.css'
+import '../components/styles/ReviewTransferStyles.css';
+import jsonData from '../testdata/reviewtransferdata.json';
 import { useNavigate } from 'react-router-dom';
 
 const ReviewTransfer = () => {
     const navigate = useNavigate();
+    const recipientAccount = jsonData[0]['username'];
+    const recipientAccountNo = jsonData[0]['account number'];
+    const senderAccount = jsonData[0].transaction.transactiondetails["transaction name"];
+    const senderAccountNo = jsonData[0].transaction.transactiondetails["account number"];
+    const transferType = jsonData[0].transaction.transactiondetails["transaction type"];
+    const yourComments = jsonData[0].transaction.FTDdetails["comments"];
     const handleSubmit = async(event) => {
         event.preventDefault();
     }
@@ -30,24 +37,24 @@ const ReviewTransfer = () => {
 
                         <div className='Chunk'>
                             <p className='from'>From</p>
-                            <p className='RecipientAccount'>RECIPIENT ACCOUNT</p>
-                            <p className='RecipientAccountNo'>XXX-XXXXX-X</p>
+                            <p className='RecipientAccount'>{recipientAccount}</p>
+                            <p className='RecipientAccountNo'>{recipientAccountNo}</p>
                         </div>
                         
                         <div className='Chunk'>
                             <p className='to'>To</p>
-                            <p className='SenderAccount'>SENDER ACCOUNT</p>
-                            <p className='SenderAccountNo'>XXX-XXXXX-Y</p>
+                            <p className='SenderAccount'>{senderAccount}</p>
+                            <p className='SenderAccountNo'>{senderAccountNo}</p>
                         </div>
 
                         <div className='Chunk'>
                             <p className='transfertype'>Transfer Type</p>
-                            <p className='TransferType'>FAST/IMMEDIATE</p>
+                            <p className='TransferType'>{transferType}</p>
                         </div>
 
                         <div className='Chunk'>
                             <p className='yourcomments'>Your Comments</p>
-                            <p className='YourComments'>Resolving Dispute</p>
+                            <p className='YourComments'>{yourComments}</p>
                         </div>
 
                     </div>
