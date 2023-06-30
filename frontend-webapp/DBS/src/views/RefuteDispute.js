@@ -13,7 +13,10 @@ const RefuteDispute = () => {
         if (reasonValue === '') {
             setRefuteReason(true);
         } else {
-            // Handle form submission
+            const formData = {
+                refutereason: reasonValue
+            };
+            const jsonData = JSON.stringify(formData);
         }
     }
 
