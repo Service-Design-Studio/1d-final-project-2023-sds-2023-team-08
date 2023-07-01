@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../components/styles/RefuteDisputeStyles.css'
+import '../components/styles/RefuteDisputeStyles.css';
 import { useNavigate } from 'react-router-dom';
 
 const RefuteDispute = () => {
