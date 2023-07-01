@@ -13,7 +13,7 @@ const Homescreen = () => {
   
   return (
     <div className="container">
-        <div className='scrollable'>
+        <div className='scrolx`lable'>
           <div className='header'>
             <div className='leftcontainer'>
               <button className='transparent' onClick={() => {}}>

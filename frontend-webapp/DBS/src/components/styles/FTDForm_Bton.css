@@ -1,0 +1,255 @@
+.ftdbase{
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.RFTDbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom-width: 100%;
+    border-bottom: 0.3vw solid #8e8e8e;
+}
+
+.transparentt{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 1vw;
+}
+
+.RaiseFTDHeader {
+    font-family: 'Lato';
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+    /*margin-left: 30%; /* NEED TO CENTER THIS INSTEAD OF USING %% */
+}
+
+
+.transactionDetailsHeader{
+    align-items: start;
+}
+
+.transactionDetailsText{
+    font-family: 'Lato';
+    font-size: medium;
+    color: #000000;
+    font-weight: bold;
+    margin: auto;
+    padding-top: 2vh;
+    text-align: center;
+}
+
+.txnMoney{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    padding-right: 2vw;
+    margin-top: 7vh;
+}
+
+.currencyText{
+    font-family: 'Lato';
+    font-size: medium;
+    color: #a0a0a0;
+    font-weight: bold;
+    justify-content: center;
+    padding-top: 2vh;
+    padding-right: 1.5vw;
+}
+
+.amount1 {
+    font-family: 'Lato';
+    font-size: 8vh;
+    justify-content: center;
+    font-weight: bold;
+    color: #007D23;
+    padding-bottom: 2vh;
+}
+
+.amount2 {
+    font-family: 'Lato';
+    font-size: 4vh;
+    justify-content: center;
+    font-weight: bold;
+    color: #007D23;
+}
+
+.txnDate
+{
+    font-family: 'Lato';
+    font-size: medium;
+    color: #a0a0a0;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2vh
+}
+
+.theBoxforTrfDescription{
+    height: 20vh;
+    width: 90vw;
+    margin: auto;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+}
+
+.description{
+    font-family: 'Lato';
+    font-size: small;
+    color: #999999;
+    margin:2vh 0 1vh 4vw;
+    font-weight: 500;
+    font-size: medium;
+}
+
+.descriptionText{
+    font-family: 'Lato';
+    margin: 0.5vh 0 2vh 4vw;
+    color: #000000;
+    font-size: small;
+    font-weight: 800;
+}
+
+.transactionTypeHeader{
+    font-family: 'Lato';
+    font-size: small;
+    color: #999999;
+    margin:2vh 0vw 0vh 4vw;
+    font-weight: 500;
+    font-size: medium;
+}
+
+.transactionTypeText{
+    font-family: 'Lato';
+    font-size: small;
+    margin: 0.5vh 0 1vh 4vw;
+    color: #000000;
+    font-weight: 800;
+}
+
+.reasonFTD{
+    background-color: #f0f0f0;
+    border-top: 1px solid #a7a7a7;
+    border-bottom: 1px solid #d4d4d4;
+    display: flex;
+    flex-direction: row;
+    padding-left: 3vw;
+}
+
+.reasonFTDtext {
+    font-family: 'Lato';
+    white-space: nowrap;
+    color: #000000;
+    font-weight: 800;
+    font-size: small;
+    justify-content: center;
+
+}
+
+
+.borderless-input {
+    border: none;
+    outline: none;
+    width: 100vw;
+}
+
+.checkbox1,.checkbox2,.checkbox3 {
+    font-family: 'Lato';
+    font-size: small;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 1vh 1vw 1vh 1vw;
+    background-color: #F6F7F9;
+}
+
+.expandable-content-mode-of-payment,
+.expandable-content-correct-no-of-recipient{
+    border: none;
+    outline:none;
+    font-family: 'Lato';
+    width: 90vw;
+    border-bottom: 1px solid #d4d4d4;
+    font-size: medium;
+    padding-top: 1vh;
+    margin-left: 5vw;
+    padding-bottom: 0.5vh;
+    
+}
+
+.expandable-content-correct-amt-to-transfer{
+    border: none;
+    outline: none;
+    font-family: 'Lato';
+    width:100vw;
+    border-bottom: 1px solid #d4d4d4;
+    font-size: medium;
+    padding-top: 1.5vh;
+    padding-left: 5vw;
+    padding-bottom: 0.5vh; 
+}
+
+.commentsBox {
+    background-color: transparent;
+    border-bottom: 1px solid #e6e6e6 ;
+    width: 100vw;
+}
+
+.commentsLiterally {
+    font-family: 'Lato';
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+    padding-left: 5vw;
+}
+
+.remainingCharacters {
+    font-family: 'Lato';
+    font-size: small;
+    justify-content: right;
+    text-align: right;
+    color: #c9c9c9;
+    margin-bottom: -2vw;
+    margin-right: 2vw;
+}
+
+.container6{
+display: flex;
+justify-content: center;
+align-items: center;
+bottom: 0;
+}
+
+.submitButton {
+margin: 0 5vw 0vh 5vw;
+padding: 2vh;
+border-radius: 5px;
+font-size: 18px;
+font-family: "Lato";
+background-color:#1D0C86 ;
+color: white;
+border: none;
+width: 90vw;
+position: absolute;
+bottom: 3vh;
+text-align: center;
+}
+
+.transparent-button {
+font-family: 'Lato';
+background-color: transparent;
+border: none;
+color: #ffffff;
+text-align: center;
+font-size: large;
+}
