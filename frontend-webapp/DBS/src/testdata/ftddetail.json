@@ -3,11 +3,13 @@
         "disputedate": "Fri, 9 Jun 2023",
         "transaction": {
             "transactiondetails": {
+                "transaction date": "23 Jun 03:42",
                 "transaction name": "PayNow Transfer to: Valencia OTHR",
                 "transaction type": "FAST / PayNow Transfer",
                 "account number": "539-23421-2",
                 "total amount": -17.30,
-                "transaction ID": 4353462235
+                "transaction ID": 4353462235,
+                "FTD": false
             },
             "FTDdetails": {
             "status": "Withdrawn",

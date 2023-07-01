@@ -17,6 +17,7 @@ import TransactionDetails from '../views/others/TransactionDetails';
 import EnterRecipient from '../views/paynow/EnterRecipient';
 import PayNowTransactionPage from '../views/paynow/PayNowTransactionPage';
 import TransactionSucess from '../views/paynow/TransactionSuccess';
+import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -31,6 +32,9 @@ const Routing = () => {
         <Route path="/more" element={<HomeScreen />} />
         <Route path="/recenttransaction" element={<HomeScreen />} />
         <Route path="/recenttransaction/:accountNumber" element={<HomeScreen />} />
+        <Route path="/FTDtransactionsall" element={<FTDTransactionScreen />} />
+        <Route path="/transactionID" element={<TransactionDetailsScreen />}/>
+
 
         <Route path="/:userID/home" element={<HomeScreen />} />
         <Route path="/:userID/invest" element={<HomeScreen />} />
@@ -39,6 +43,8 @@ const Routing = () => {
         <Route path="/:userID/more" element={<HomeScreen />} />
         <Route path="/:userID/recenttransaction" element={<RecentTransactionScreen />} />
         <Route path="/:userID/recenttransaction/:accountNumber" element={<RecentTransactionScreen />} />
+        <Route path="/:userID/FTDtransactionsall" element={<FTDTransactionScreen />} />
+        <Route path="/:userID/:transactionID" element={<TransactionDetailsScreen />}/>
       </Routes>
     </Router>
   );

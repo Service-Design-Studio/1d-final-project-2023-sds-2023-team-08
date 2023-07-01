@@ -2,16 +2,15 @@ import React, {useState, useEffect} from 'react';
 import '../../components/styles/fund transfer dispute/FTDTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import FTDdetailjson from '../../testdata/ftddetail.json'
 
 function getFTDTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.disputedate === specificDate);
 }
 
-const FTDTransactionDetails = () => {
+const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
   const { userID, accountNumber } = useParams();
-  const FTDtransactions = FTDdetailjson[0];
+  const { FTDtransactions } = props;
   const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] != undefined;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient"
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed"

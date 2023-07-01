@@ -78,7 +78,7 @@ const RecentTransactionScreen = () => {
               </div>
           </button> }
 
-        <button className='transparent' onClick={() => {}}>
+        <button className='transparent' onClick={() => navigate(`/${userID}/FTDtransactionsall`)}>
           <div className='ftd'>
             <p className='ftdtext'>Fund Transfer Dispute Transactions</p>
             <img src='/assets/expand.png' className='expand'/>
@@ -100,7 +100,7 @@ const RecentTransactionScreen = () => {
 
               {transactionsWithSpecificDate.map((transactiondata, index) => {
                 return(
-                <button className='transparent' onClick={() => {}}>
+                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["account number"]}`)}>
                 <div className='transaction'>
                   <div className='transactionheader'>
                     <p className='transactiontitle'>{transactiondata.transaction["transaction name"]}</p>

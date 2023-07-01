@@ -3,11 +3,12 @@ import '../../components/styles/others/TransactionDetailsStyles.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const TransactionDetails = () => {
+const TransactionDetails = (props) => {
     const navigate = useNavigate();
     const [clickCount, setClickCount] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
-  
+    const {TransactionData} = props
+
     const handleClick = () => {
       setClickCount(clickCount + 1);
   
@@ -33,22 +34,22 @@ const TransactionDetails = () => {
 
             <div className='moneyinarow'>
                 <p className='moneytext'> SGD</p>
-                <p className='moneytext2'> 20.50</p>
+                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount']}</p>
             </div>
 
             <div>
-                <p className='txdatetext'> 15 Jun</p>
+                <p className='txdatetext'> {TransactionData.transaction.transactiondetails['transaction date']}</p>
             </div>
 
             <div className='scriptbox'>
                 <div className='textcontainerdetail'>
                     <p className='descriptext1'> Description</p>
-                    <p className='descriptext2'> NETS QR PAYMENT TO: SEA KING SEAFOOD @ 823A</p>
+                    <p className='descriptext2'> {TransactionData.transaction.transactiondetails['transaction name']}</p>
                 </div>
 
                 <div className='textcontainerdetail'>
                     <p className='transactiontext1'> Transaction Type</p>
-                    <p className='descriptext2'> Point-of-Sale Transaction</p>
+                    <p className='descriptext3'>{TransactionData.transaction.transactiondetails['transaction type']}</p>
                 </div>
             </div>
 
@@ -65,16 +66,18 @@ const TransactionDetails = () => {
             </button>
 
             {showPopup && (
-                <div className='txdgreyout'>
+            <div className='txdgreyout'>
                 <div className='txdetailsPop'>
-            <p className='txdpopicon'> !</p>
-            <p className='txdpopheader'> Limit Exceeded</p>
-            <p className='txdpoptext'>You are unable to make more than 2 fund transfer disputed daily. 
-            Please wait till tomorrow.</p>
-            <button onClick={closePopup} className='txdpopbutton'>
-                <p className='txdpopbuttontext'>Ok</p>
-            </button>
-            </div>
+                    <p className='txdpopicon'> !</p>
+                    <p className='txdpopheader'> Limit Exceeded</p>
+                    <p className='txdpoptext'>You are unable to make more than 2 fund transfer disputed daily. 
+                    Please wait till tomorrow.</p>
+                    <button onClick={closePopup} className='transparent'>
+                        <div className='popupbtn'>
+                            <p className='txdpopbuttontext'>OK</p>
+                        </div>
+                    </button>
+                </div>
             </div>
             )}
 

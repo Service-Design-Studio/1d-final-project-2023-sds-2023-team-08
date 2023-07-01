@@ -13,7 +13,7 @@ const FTDTransactionScreen = () => {
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([]);
-  const { userID, accountNumber } = useParams();
+  const { userID } = useParams();
   const FTDtransactions = FTDjson;
 
   const statusDictionary = {
@@ -71,7 +71,7 @@ const FTDTransactionScreen = () => {
                                 updatedStatustext = sender ? "AWAITING ACTION" : "ACTION REQUIRED";}
 
                             return(
-                                <button className='transparent' onClick={() => {}}>
+                                <button className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transaction.transactiondetails["transaction ID"]}`)}>
                                     <div className='transaction'>
                                         <div className='transactionheader'>
                                             <p className='transactiontitle'>{FTDtransactiondata.transaction.transactiondetails["transaction name"]}</p>
