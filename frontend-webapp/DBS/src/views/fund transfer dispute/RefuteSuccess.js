@@ -1,6 +1,7 @@
-import '../components/styles/RefuteSuccessStyles.css';
+import React, { useState } from 'react';
+import '../../components/styles/fund transfer dispute/RefuteSuccessStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import ftdrecipientjson from '../testdata/ftdrecipient.json';
+import ftdrecipientjson from '../../testdata/ftdrecipient.json';
 
 
 const RefuteSuccess = () => {

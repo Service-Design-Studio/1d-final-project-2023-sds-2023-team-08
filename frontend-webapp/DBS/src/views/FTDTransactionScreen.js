@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import '../components/styles/FTDTransactionStyles.css';
+import '../components/styles/FTDTransactionScreenStyles.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
-import BottomTabNavigator from '../navigation/BottomTabNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 import FTDjson from '../testdata/fundtransferdispute.json'
 
 function getFTDTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.disputedate === specificDate);
 }
 
-const FTDTransaction = () => {
+const FTDTransactionScreen = () => {
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([]);
@@ -107,4 +107,4 @@ const FTDTransaction = () => {
   );
 };
 
-export default FTDTransaction;
+export default FTDTransactionScreen;

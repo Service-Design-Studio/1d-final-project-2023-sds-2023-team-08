@@ -1,5 +1,5 @@
 import React from 'react';
-import '../components/styles/TransactionDetailsStyles.css';
+import '../../components/styles/others/TransactionDetailsStyles.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -28,7 +28,7 @@ const TransactionDetails = () => {
     return (
         <div className='ftdbase'> 
           <button onClick={() => {}} className='transparent'>
-            <img src={require('../../src/components/assets/back.png')} className='backtransaction' />
+            <img src='/assets/back.png' className='backtransaction' />
           </button>
 
             <div className='moneyinarow'>

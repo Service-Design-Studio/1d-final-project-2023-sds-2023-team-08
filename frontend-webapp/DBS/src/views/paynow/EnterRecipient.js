@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import '../components/styles/EnterRecipientStyles.css';
-import paynowdetailsjson from '../testdata/paynowdetails.json';
+import '../../components/styles/paynow/EnterRecipientStyles.css';
+import paynowdetailsjson from '../../testdata/paynowdetails.json';
 
 
 const EnterRecipient = () => {

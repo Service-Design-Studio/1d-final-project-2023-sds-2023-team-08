@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import '../components/styles/ReturnFundsStyles.css';
-import ftdrecipientjson from '../testdata/ftdrecipient.json';
+import '../../components/styles/fund transfer dispute/ResolveDisputeRefundScreenStyles.css';
+import ftdrecipientjson from '../../testdata/ftdrecipient.json';
 
-const ReturnFunds = () => {
+const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, accountNumber } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
@@ -56,7 +56,7 @@ const ReturnFunds = () => {
 
             <div className='commentsbox1'>
                 <p className='addcomments1'>Add comments for recipient</p>
-                <p className='comments1'>{FTDtransactions.transaction.FTDdetails["recipient comments"]}</p>
+                <p className='comments1'>Resolving Dispute</p>
             </div>
 
             <p className='tncforrefund1'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
@@ -66,4 +66,4 @@ const ReturnFunds = () => {
 
 };
 
-export default ReturnFunds;
+export default ResolveDisputeRefundScreen;

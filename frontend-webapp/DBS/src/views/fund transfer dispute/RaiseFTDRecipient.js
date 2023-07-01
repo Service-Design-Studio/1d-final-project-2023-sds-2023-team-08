@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../components/styles/FTDForm_Bton.css';
+import '../../components/styles/fund transfer dispute/RaiseFTDUserRecipientStyles.css';
 
-function MyComponent() {
+function RaiseFTDRecipient() {
   //-------------------------------- Code for State Variables -----------------------------------
   //---------------------------------------------------------------------------------------------
 
@@ -79,7 +79,7 @@ function MyComponent() {
     <div className='ftdbase'>
       <div className='RFTDbox'>
         <button onClick={() => {}} className='transparentt'>
-          <img src={require('../../src/components/assets/back.png')} className='back' />
+          <img src='/assets/back.png' className='back' />
         </button>
           <p className='RaiseFTDHeader'> RAISE A FUND DISPUTE </p>
 
@@ -153,4 +153,4 @@ function MyComponent() {
   );
 }
 
-export default MyComponent;
+export default RaiseFTDRecipient;

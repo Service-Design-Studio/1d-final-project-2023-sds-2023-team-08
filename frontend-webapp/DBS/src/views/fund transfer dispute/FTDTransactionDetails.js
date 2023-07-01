@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import '../components/styles/FTDTransactionDetailsStyles.css';
+import '../../components/styles/fund transfer dispute/FTDTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import FTDdetailjson from '../testdata/ftddetail.json'
+import FTDdetailjson from '../../testdata/ftddetail.json'
 
 function getFTDTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.disputedate === specificDate);

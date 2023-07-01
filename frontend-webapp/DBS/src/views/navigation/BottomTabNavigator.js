@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../components/styles/BottomTabNavigatorStyles.css';
+import '../../components/styles/navigation/BottomTabNavigatorStyles.css';
 import { BrowserRouter as Router, Route, Link, useLocation } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 

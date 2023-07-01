@@ -1,5 +1,5 @@
 import React from 'react';
-import '../components/styles/ReviewRefuteStyles.css';
+import '../../components/styles/fund transfer dispute/ReviewRefuteStyles.css';
 import { useNavigate } from 'react-router-dom';
 
 const ReviewRefute = () => {
@@ -9,7 +9,7 @@ const ReviewRefute = () => {
         <div className='rerebase'> 
             <div className='reretopbar'>
                 <button onClick={() => {}} className='reretransparent'>
-                    <img src={require('../../src/components/assets/back.png')} className='rerebacktx' />
+                    <img src='/assets/back.png' className='rerebacktx' />
                 </button>
                 <p className='reretopbartext'> Review Refute</p>
             </div>

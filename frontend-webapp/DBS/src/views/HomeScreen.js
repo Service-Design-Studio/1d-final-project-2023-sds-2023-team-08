@@ -1,11 +1,11 @@
 import React,  { useState }  from 'react';
 import '../components/styles/HomeScreenStyles.css';
-import TopNavigator from '../navigation/TopNavigation';
+import TopNavigator from './navigation/TopNavigation';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from '../navigation/BottomTabNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const Homescreen = () => {
+const HomeScreen = () => {
   const [anyFTD, setAnyFTD] = useState(false)
   const navigate = useNavigate();
   const { userID } = useParams();
@@ -168,4 +168,4 @@ authorities.</p>
   );
 };
 
-export default Homescreen;
+export default HomeScreen;

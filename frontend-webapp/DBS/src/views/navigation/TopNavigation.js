@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import '../components/styles/TopNavigationStyles.css';
-import AccountDetails from '../components/codeblocks/AccountDetails';
+import '../../components/styles/navigation/TopNavigationStyles.css';
+import AccountDetails from '../others/AccountDetails';
 import axios from 'axios';
 import {useParams } from 'react-router-dom';
 

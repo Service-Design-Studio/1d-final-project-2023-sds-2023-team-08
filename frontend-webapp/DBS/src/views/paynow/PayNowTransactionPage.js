@@ -1,15 +1,15 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import '../components/styles/LimitsPayNowTxnStyles.css';
-import paynowdetailsjson from '../testdata/paynowdetails.json';
+import '../../components/styles/paynow/PayNowTransactionPageStyles.css';
+import paynowdetailsjson from '../../testdata/paynowdetails.json';
 
 
-const LimitsPayNowTxn = () => {
+const PayNowTransactionPage = () => {
     const navigate = useNavigate();
     const { userID, accountNumber } = useParams();
     const paynowtxn = paynowdetailsjson[0];
 
     return(
-        <div classname = "overallPNT">
+        <div className = "overallPNT">
             <div className='padforRF1'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
                     <img src = './assets/back.png' className = 'back'/>
@@ -77,4 +77,4 @@ const LimitsPayNowTxn = () => {
 
 };
 
-export default LimitsPayNowTxn;
+export default PayNowTransactionPage;
