@@ -68,7 +68,15 @@
     justify-content: center;
     font-weight: bold;
     padding-bottom: 4%;
+    sender-color: #007D23;
+}
+
+.reresender-color {
     color: #007D23;
+}
+  
+.rererecipient-color {
+    color: #000000;
 }
 
 .reredescriptionbox{

@@ -11,6 +11,9 @@ import ReturnFunds from '../views/ReturnFunds.js';
 import PayNowTXn from '../views/ReturnFunds.js';
 import RefuteSuccess from '../views/RefuteSuccess.js'
 import FTDTransactionDetails from '../views/FTDTransactionDetails.js';
+import ReviewRefute from '../views/ReviewRefute.js';
+import SuccessfulTransfer1 from '../views/SuccessfulTransfer1.js';
+import SuccessfulTransfer2 from '../views/SuccessfulTransfer2.js';
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -29,7 +32,7 @@ const Routing = () => {
         <Route path="/:userID/home" element={<HomeScreen />} />
         <Route path="/:userID/invest" element={<HomeScreen />} />
         <Route path="/:userID/pay" element={<HomeScreen />} />
-        <Route path="/:userID/plan" element={<HomeScreen />} />
+        <Route path="/:userID/plan" element={<SuccessfulTransfer2 />} />
         <Route path="/:userID/more" element={<HomeScreen />} />
         <Route path="/:userID/recenttransaction" element={<Recenttransaction />} />
         <Route path="/:userID/recenttransaction/:accountNumber" element={<Recenttransaction />} />

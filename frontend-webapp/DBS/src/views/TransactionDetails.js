@@ -1,25 +1,40 @@
 import React from 'react';
 import '../components/styles/TransactionDetailsStyles.css';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import transactiondetailsjson from '../testdata/transactiondetails.json'
 
 const TransactionDetails = () => {
     const navigate = useNavigate();
-    const [clickCount, setClickCount] = useState(0);
+  
+    const [txdxeuser, settxdxuser] = useState("");
+    const [txdxtotalamt, settxdxtotalamt] = useState("");
+    const [txdxdate, settxdxdate] = useState("");
+    const [txdxdescri, settxdxdescri] = useState("");
+    const [txdxtxtype, settxdxtxtype] = useState("");
     const [showPopup, setShowPopup] = useState(false);
   
-    const handleClick = () => {
-      setClickCount(clickCount + 1);
+    // Chnage the constant [0,1,2] to see between sender & recipient & Exceed FTD
+    const txdxuseridx = 1;
   
-      if (clickCount + 1 === 3) {
-        setShowPopup(true);
-        resetCounter(); // Reset the counter after triggering the pop-up
-      }
-    };
+    useEffect(() => {
+      const txdxselectedTransaction = transactiondetailsjson[txdxuseridx];
+      settxdxuser(txdxselectedTransaction.user);
+      settxdxtotalamt(txdxselectedTransaction.transaction['total amount']);
+      settxdxdate(txdxselectedTransaction.transaction['date']);
+      settxdxdescri(txdxselectedTransaction.transaction['description']);
+      settxdxtxtype(txdxselectedTransaction.transaction['transaction type']);
+    }, [txdxuseridx]);
   
-    const resetCounter = () => {
-      setClickCount(0); // Reset the clickCount state to 0
-    };
+      const txdxhandleRaiseDispute = () => {
+        const totalFundDisputeSent = parseInt(
+          transactiondetailsjson[txdxuseridx].transaction['total fund dispute sent']
+        );
+        if (totalFundDisputeSent >= 10) {
+          setShowPopup(true);
+        }
+      };
   
     const closePopup = () => {
       setShowPopup(false);
@@ -33,22 +48,22 @@ const TransactionDetails = () => {
 
             <div className='moneyinarow'>
                 <p className='moneytext'> SGD</p>
-                <p className='moneytext2'> 20.50</p>
+                <p className={`moneytext2 ${txdxeuser === 'Sender' ? 'txdxsender-color' : 'txdxrecipient-color'}`}>{txdxtotalamt}</p>
             </div>
 
             <div>
-                <p className='txdatetext'> 15 Jun</p>
+                <p className='txdatetext'> {txdxdate}</p>
             </div>
 
             <div className='scriptbox'>
                 <div className='textcontainerdetail'>
                     <p className='descriptext1'> Description</p>
-                    <p className='descriptext2'> NETS QR PAYMENT TO: SEA KING SEAFOOD @ 823A</p>
+                    <p className='descriptext2'> {txdxdescri}</p>
                 </div>
 
                 <div className='textcontainerdetail'>
                     <p className='transactiontext1'> Transaction Type</p>
-                    <p className='descriptext2'> Point-of-Sale Transaction</p>
+                    <p className='descriptext2'> {txdxtxtype}</p>
                 </div>
             </div>
 
@@ -58,7 +73,7 @@ const TransactionDetails = () => {
                 </div>
             </button>
 
-            <button onClick={handleClick} className='transparent'>
+            <button onClick={txdxhandleRaiseDispute} className='transparent'>
                 <div className='FTDbutton'>
                     <p className='FTDbuttontext'> RAISE A FUND DISPUTE</p>
                 </div>
@@ -69,8 +84,8 @@ const TransactionDetails = () => {
                 <div className='txdetailsPop'>
             <p className='txdpopicon'> !</p>
             <p className='txdpopheader'> Limit Exceeded</p>
-            <p className='txdpoptext'>You are unable to make more than 2 fund transfer disputed daily. 
-            Please wait till tomorrow.</p>
+            <p className='txdpoptext'>You are unable to make more than 10 fund transfer disputed daily. 
+            Please wait until tomorrow.</p>
             <button onClick={closePopup} className='txdpopbutton'>
                 <p className='txdpopbuttontext'>Ok</p>
             </button>

@@ -1,0 +1,33 @@
+[
+    {
+        "user": "Recipient",
+        "success": "Successful",
+        "transaction":{
+            "date": "26 Jun 2023",
+            "time": "12:35",
+            "total amount": "20.90",
+            "Recipient Account Name": "Maple",
+            "Recipient Account Number": "XXX-XXXXX-X",
+            "Sender Account Name": "Sally",
+            "Sender Account Number": "XXX-XXXXX-Y",
+            "transaction type": "FAST/IMMEDIATE",
+            "comments": "PayNow Transfer"
+        }
+   },
+
+   {
+    "user": "Recipient",
+    "success": "Failure",
+    "transaction":{
+        "date": "26 Jun 2023",
+        "time": "12:35",
+        "total amount": "20.90",
+        "Recipient Account Name": "Maple",
+        "Recipient Account Number": "XXX-XXXXX-X",
+        "Sender Account Name": "Sally",
+        "Sender Account Number": "XXX-XXXXX-Y",
+        "transaction type": "FAST/IMMEDIATE",
+        "comments": "PayNow Transfer"
+    }
+}
+]

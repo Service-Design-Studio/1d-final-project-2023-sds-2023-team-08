@@ -45,7 +45,14 @@
     justify-content: center;
     font-weight: bold;
     padding-bottom: 4%;
-    color: #444444;
+}
+
+.txdxsender-color {
+    color: #007D23;
+}
+  
+.txdxrecipient-color {
+    color: #000000;
 }
 
 
@@ -132,6 +139,7 @@
     justify-content: center;
     margin: 0vh 5vw;
     border-radius: 5px;
+    background-color: #1d0c86;
 }
 
 .FTDbuttontext{
