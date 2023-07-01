@@ -1,12 +1,15 @@
-import React from 'react';
-import '../components/styles/HomeScreenStyles.css'
+import React,  { useState }  from 'react';
+import '../components/styles/HomeScreenStyles.css';
 import TopNavigator from '../navigation/TopNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Homescreen = () => {
+  const [anyFTD, setAnyFTD] = useState(false)
   const navigate = useNavigate();
+  const { userID } = useParams();
+  console.log(userID)
   
   return (
     <div className="container">
@@ -32,19 +35,41 @@ const Homescreen = () => {
               </button>
             </div>
           </div>
-            
-          <div className='alertbody'>
-            <p className='textheader'> Make money work harder!</p>
-            <p className='textbody'> Find out how you can put your cash flows to good use and achieve a sustainable financial future.</p>
-          </div>
+          
+          {anyFTD ? (
+          <div>
+            <div className='alertbody'>
+              <p className='textheaderftd1'>:( ALERT:</p>
+              <p className='textheaderftd2'> YOU HAVE 1 FUND TRANSFER DISPUTE</p>
+              <p className='textbodyftd'> It is encouraged to resolve the issue as soon as possible to prevent any implication with the 
+authorities.</p>
+            </div>
 
-          <div className='alertbutton' onClick={() => {}}>
-            <button className='transparent'>
-              <div className='buttonContainer'>
-                  <p className='buttonText'>LET'S TALK</p>
-              </div>
-            </button>      
+            <div className='alertbutton' onClick={() => {}}>
+              <button className='transparent'>
+                <div className='buttonContainer'>
+                    <p className='buttonText'>RESOLVE NOW</p>
+                </div>
+              </button>      
+            </div>
           </div>
+          ) : (
+          <div>
+            <div className='alertbody'>
+              <p className='textheader'> Make money work harder!</p>
+              <p className='textbody'> Find out how you can put your cash flows to good use and achieve a sustainable financial future.</p>
+            </div>
+            
+            <div className='alertbutton' onClick={() => {}}>
+              <button className='transparent'>
+                <div className='buttonContainer'>
+                    <p className='buttonText'>LET'S TALK</p>
+                </div>
+              </button>      
+            </div>
+          </div>
+          
+          )}
 
           <div className='containertwo'>
             <p className='text'>Smart Shortcuts</p>
@@ -124,7 +149,7 @@ const Homescreen = () => {
           </div>
 
           <div className="containerfour">
-            <button className='transparent' onClick={() => navigate('/recenttransaction')}>
+            <button id='transaction' className='transparent' onClick={() => navigate(`/${userID}/recenttransaction`)}>
               <div className="recenttransaction">
                 <p className="recenttransactiontext">Recent Transactions</p>
                 <img src='/assets/expand.png' className="expand"/>

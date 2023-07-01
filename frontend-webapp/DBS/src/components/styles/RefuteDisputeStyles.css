@@ -1,0 +1,109 @@
+.RefuteDisputeMain {
+    width: 100vw;
+    max-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.RefuteDisputeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 1vw 0 0 0;
+    border-bottom: 1px solid #d2d2d2 ;
+}
+
+.RefuteDisputeHeaderText {
+    flex:1;
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: 18px;
+    color: #444444;
+    text-align: center;
+}
+
+.RefuteDisputeBody {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.RefuteDisputeWarning {
+    font-size: 12px;
+    width: 90vw;
+    color: #FF2C4E;
+    padding: 0;
+    margin: 0;
+    height:3vh
+}
+
+.RefuteDisputeForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    width: 90vw;
+}
+
+.RefuteDisputeReason {
+    align-self: center;
+    width: 90vw;
+    border: none;
+    font-size: 100%;
+    border-bottom: 1px solid #a3a3a3;
+    margin-top: 1.5vh;
+    padding: 1vh 0 3px 0;
+    text-decoration: none;
+}
+
+.RefuteDisputeReason:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #a3a3a3;
+    text-decoration: none;
+  }
+
+.RefuteDisputeReason::placeholder {
+    position: relative;
+    bottom:0;
+}
+
+.note1 {
+    height: 10vw;
+    font-size: 14px;
+    padding-bottom: 2vh;
+    color: #444444;
+}
+
+.note2 {
+    height: 10vw;
+    font-size: 14px;
+    color: #444444;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.SubmitButton {
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}
+
+
+.SubmitButton:active{
+    opacity: 0.5;
+    transition: none;
+}
+
