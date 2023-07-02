@@ -133,3 +133,30 @@
     margin-bottom: 1.5vh;
     background-color: transparent;
 }
+
+.tncforrefund1{
+    background-color: transparent;
+    color: #999999;
+    font-size: 12px;
+    font-family: 'Lato';
+    text-align: left;
+    padding-left: 5vw;
+    max-width: 90vw;
+    position: absolute;
+    bottom: 10vh;
+    text-align: justify;
+}
+
+.submitbutton1{
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}

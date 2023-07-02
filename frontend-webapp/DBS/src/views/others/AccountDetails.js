@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import '../styles/AccountDetailsStyles.css';
+import '../../components/styles/others/AccountDetailsStyles.css';
 import axios from 'axios';
 
 //import accountJson from '../../testdata/account.json';

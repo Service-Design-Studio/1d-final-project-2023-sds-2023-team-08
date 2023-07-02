@@ -1,7 +1,8 @@
-import '../components/styles/SuccessfulTransferStyles.css'
+import React from 'react';
+import '../../components/styles/fund transfer dispute/ResolveSuccessStyles.css'
 import { useNavigate } from 'react-router-dom';
 
-const SuccessfulTransfer1 = () => {
+const ResolveSuccess = () => {
     const navigate = useNavigate();
     return (
         <div className='successtxbase'>
@@ -9,7 +10,7 @@ const SuccessfulTransfer1 = () => {
                 <p className='successtxcross'> X</p>
             </button>
             <div className='successtxgreenbox'>
-                <img src={require('../../src/components/assets/icons/greentick.png')} className='successtxgreentick' />
+                <img src='/assets/greentick.png' className='successtxgreentick' />
             </div>
 
             <p className='successheadertext'> Successful</p>
@@ -32,27 +33,16 @@ const SuccessfulTransfer1 = () => {
                 <p className='successtxgreytextheader'> Transfer Type</p>
                 <p className='successtxblacktextheader'> FAST/IMMEDIATE</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
-                <p className='successtxblacktextheader'> PayNow Transfer</p>
+                <p className='successtxblacktextheader'> Resolving Dispute</p>
             </div>
 
-            <div className='successtxwrongbox'>
-                <p className='successtxwrongtx'> Made a wrong transfer?</p>
-                <a className='successtxclicklink' href=''> Click here</a>
-            </div>
-
-            <button onClick={() => {}} className='successtxtransparentbutton'>
-                <div className='sharetxdetailsbutton'>
+            <button onClick={() => {}} className='successtxtransparentbutton2'>
+                <div className='sharetxdetailsbutton2'>
                     <p className='sharetxdetailsbuttontext'> SHARE TRANSFER DETAILS </p>
                 </div>
             </button>
 
-            <button onClick={() => {}} className='successtxtransparentbuttonB'>
-                <div className='makertxbutton'>
-                    <p className='makertxbuttontext'> MAKE ANOTHER TRANSFER </p>
-                </div>
-            </button>
-            
         </div>
     );
 };
-export default SuccessfulTransfer1;
+export default ResolveSuccess;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../components/styles/RefuteDisputeStyles.css';
+import '../../components/styles/fund transfer dispute/RefuteDisputeReasonStyles.css'
 import { useNavigate } from 'react-router-dom';
 
-const RefuteDispute = () => {
+const RefuteDisputeReason = () => {
     const navigate = useNavigate();
     const [refutereason, setRefuteReason] = useState(false);
 
@@ -24,7 +24,7 @@ const RefuteDispute = () => {
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
                 <button onClick={() => navigate('/')} className='transparent'>
-                    <img src={require('../../src/components/assets/back.png')} className='back' />
+                    <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Refute Dispute</p>
             </div>
@@ -47,4 +47,4 @@ const RefuteDispute = () => {
         </div>
     )
 };
-export default RefuteDispute;
+export default RefuteDisputeReason;

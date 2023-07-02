@@ -8,7 +8,8 @@
           "transaction type": "FAST / PayNow Transfer",
           "account number": "539-23421-2",
           "total amount": -20.15,
-          "transaction ID": 2325436245235346
+          "transaction ID": 2325436245235346,
+          "FTD": true
         },
         "FTDdetails": {
           "status": "Dispute Filed",

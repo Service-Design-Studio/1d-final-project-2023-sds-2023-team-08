@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import '../components/styles/RecentTransactionStyles.css';
+import '../components/styles/RecentTransactionStylesScreen.css';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
-import BottomTabNavigator from '../navigation/BottomTabNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 // import transactionJSON from '../testdata/transactiondate.json'
 
@@ -10,7 +10,7 @@ function getTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.date === specificDate);
 }
 
-const Recenttransaction = () => {
+const RecentTransactionScreen = () => {
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([])
@@ -23,6 +23,7 @@ const Recenttransaction = () => {
         const response2 = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/home`)
         const parsedData = response.data;
         const parsedData2 = response2.data;
+        console.log(parsedData)
 
         setTransactions(parsedData);
         setAccountDetails(parsedData2.account);
@@ -77,7 +78,7 @@ const Recenttransaction = () => {
               </div>
           </button> }
 
-        <button className='transparent' onClick={() => {}}>
+        <button className='transparent' onClick={() => navigate(`/${userID}/FTDtransactionsall`)}>
           <div className='ftd'>
             <p className='ftdtext'>Fund Transfer Dispute Transactions</p>
             <img src='/assets/expand.png' className='expand'/>
@@ -99,7 +100,7 @@ const Recenttransaction = () => {
 
               {transactionsWithSpecificDate.map((transactiondata, index) => {
                 return(
-                <button className='transparent' onClick={() => {}}>
+                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["account number"]}`)}>
                 <div className='transaction'>
                   <div className='transactionheader'>
                     <p className='transactiontitle'>{transactiondata.transaction["transaction name"]}</p>
@@ -131,4 +132,4 @@ const Recenttransaction = () => {
   );
 };
 
-export default Recenttransaction;
+export default RecentTransactionScreen;

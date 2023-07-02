@@ -1,5 +1,5 @@
-import '../components/styles/ReviewTransferStyles.css';
-import jsonData from '../testdata/reviewtransferdata.json';
+import '../../components/styles/others/ReviewTransferStyles.css';
+import jsonData from '../../testdata/reviewtransferdata.json';
 import { useNavigate } from 'react-router-dom';
 
 const ReviewTransfer = () => {
@@ -17,14 +17,14 @@ const ReviewTransfer = () => {
         <div className='ReviewTransferMain'>
             <div className='ReviewTransferHeader'>
                 <button onClick={() => navigate('/')} className='transparent'>
-                    <img src={require('../../src/components/assets/back.png')} className='back' />
+                    <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='ReviewTransferHeaderText'>Review Transfer</p>
             </div>
             <div className='ReviewTransferLine'></div>
             <div className='ReviewTransferBody'>
                 <div className='ReviewTransferBox'>
-                    <div class="ReviewTransferBoxBlue">
+                    <div className="ReviewTransferBoxBlue">
                         <div className='ReviewTransferBoxBlueText'>
                             <p className='amountin'>Amount in</p>
                             <div className='ReviewTransferBoxBlueSubText'>
