@@ -8534,3 +8534,544 @@ Processing by UsersController#login as */*
 Completed 200 OK in 55ms (Views: 0.3ms | ActiveRecord: 4.8ms | Allocations: 7006)
 
 
+Started GET "/" for 127.0.0.1 at 2023-07-01 15:48:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 43.6ms | Allocations: 522)
+Completed 200 OK in 318ms (Views: 95.2ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
+Started GET "/users/4/all_transactions" for 127.0.0.1 at 2023-07-01 15:48:25 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+Completed 404 Not Found in 86ms (ActiveRecord: 1.1ms | Allocations: 6139)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:119:in `rescue in set_user'
+app/controllers/users_controller.rb:116:in `set_user'
+Started GET "/users" for 127.0.0.1 at 2023-07-01 15:48:36 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:23
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 45]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 46]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 47]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 48]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 49]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 50]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 51]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 52]]
+  ↳ app/views/users/index.html.erb:31
+  Rendered users/index.html.erb within layouts/application (Duration: 254.0ms | Allocations: 20411)
+  Rendered layout layouts/application.html.erb (Duration: 772.7ms | Allocations: 55637)
+Completed 200 OK in 784ms (Views: 776.1ms | ActiveRecord: 3.1ms | Allocations: 56553)
+
+
+Started GET "/users/45/all_transactions" for 127.0.0.1 at 2023-07-01 15:48:45 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.3ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 45]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-24')[0m  [["user_id", 45]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-24')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+Completed 200 OK in 182ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 17291)
+
+
+Started GET "/users/45/home" for 127.0.0.1 at 2023-07-01 15:49:35 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 45]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.2ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+  [1m[36mTransaction Sum (0.6ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 5]]
+  ↳ app/models/account.rb:9:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "234-43941-0"]]
+  ↳ app/models/account.rb:13:in `net_deposits'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 8559)
+
+
+Started GET "/users/45/accounts/1/transactions" for 127.0.0.1 at 2023-07-01 15:50:20 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"45", "account_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 67.1ms | Allocations: 15179)
+  Rendered layout layouts/application.html.erb (Duration: 74.5ms | Allocations: 17476)
+Completed 200 OK in 84ms (Views: 76.5ms | ActiveRecord: 3.6ms | Allocations: 18234)
+
+
+Started GET "/users/45/all_transactions" for 127.0.0.1 at 2023-07-01 15:53:40 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 45]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-24')[0m  [["user_id", 45]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+  [1m[36mTransaction Load (1.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-24')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 2818)
+
+
+Started GET "/users/45/accounts/1/transactions" for 127.0.0.1 at 2023-07-01 15:56:40 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"45", "account_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 49.8ms | Allocations: 12281)
+  Rendered layout layouts/application.html.erb (Duration: 59.3ms | Allocations: 14460)
+Completed 200 OK in 64ms (Views: 56.2ms | ActiveRecord: 4.5ms | Allocations: 14763)
+
+
+Started GET "/transactions" for 127.0.0.1 at 2023-07-01 15:56:44 +0800
+Processing by TransactionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" IS NULL[0m
+  ↳ app/views/transactions/index.html.erb:24
+  Rendered transactions/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1880)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1961)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.3ms | Allocations: 2251)
+
+
+  
+ActionView::Template::Error (Couldn't find Account without an ID):
+    54: 
+    55: 
+    56:   <tbody>
+    57:     <% @transactions.where(recipient_account_number:Account.find(params[:account_id]).account_number).each do |t| %>
+    58:       <tr>
+    59:         <td><%= t.id %></td>
+    60:         <td><%= t.transaction_name %></td>
+  
+app/views/transactions/index.html.erb:57
+Started GET "/users/45/accounts/1/transactions" for 127.0.0.1 at 2023-07-01 15:58:13 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"45", "account_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 55.5ms | Allocations: 12329)
+  Rendered layout layouts/application.html.erb (Duration: 67.8ms | Allocations: 14538)
+Completed 200 OK in 72ms (Views: 64.6ms | ActiveRecord: 4.4ms | Allocations: 14836)
+
+
+Started GET "/users/45/accounts/5/transactions" for 127.0.0.1 at 2023-07-01 15:58:26 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"45", "account_id"=>"5"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 5]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "234-43941-0"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 29.9ms | Allocations: 6946)
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 9120)
+Completed 200 OK in 42ms (Views: 37.2ms | ActiveRecord: 1.8ms | Allocations: 9417)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTransaction Delete All (8.5ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (6.7ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (6.9ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-07-01 08:11:54.363746"], ["updated_at", "2023-07-01 08:11:54.363746"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-07-01 08:11:54.377295"], ["updated_at", "2023-07-01 08:11:54.377295"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-07-01 08:11:54.388290"], ["updated_at", "2023-07-01 08:11:54.388290"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-07-01 08:11:54.401433"], ["updated_at", "2023-07-01 08:11:54.401433"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-07-01 08:11:54.414737"], ["updated_at", "2023-07-01 08:11:54.414737"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-07-01 08:11:54.427182"], ["updated_at", "2023-07-01 08:11:54.427182"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-07-01 08:11:54.439535"], ["updated_at", "2023-07-01 08:11:54.439535"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-07-01 08:11:54.452914"], ["updated_at", "2023-07-01 08:11:54.452914"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (2.0ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-01 08:11:54.519576"], ["updated_at", "2023-07-01 08:11:54.519576"], ["user_id", 53]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (2.1ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-01 08:11:54.535790"], ["updated_at", "2023-07-01 08:11:54.535790"], ["user_id", 58]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-01 08:11:54.562926"], ["updated_at", "2023-07-01 08:11:54.562926"], ["user_id", 59]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.6ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-01 08:11:54.576662"], ["updated_at", "2023-07-01 08:11:54.576662"], ["user_id", 60]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-01 08:11:54.596216"], ["updated_at", "2023-07-01 08:11:54.596216"], ["user_id", 53]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (3.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-01 08:11:54.637091"], ["updated_at", "2023-07-01 08:11:54.637091"], ["user_id", 54]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (2.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-01 08:11:54.665261"], ["updated_at", "2023-07-01 08:11:54.665261"], ["user_id", 55]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (2.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-01 08:11:54.700424"], ["updated_at", "2023-07-01 08:11:54.700424"], ["user_id", 56]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (3.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-01 08:11:54.732521"], ["updated_at", "2023-07-01 08:11:54.732521"], ["user_id", 57]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (3.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", "2023-08-15 00:00:00"], ["amount", 5], ["created_at", "2023-07-01 08:11:54.789060"], ["updated_at", "2023-07-01 08:11:54.789060"], ["account_id", 1]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (2.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", "2023-08-18 00:00:00"], ["amount", 12], ["created_at", "2023-07-01 08:11:54.816735"], ["updated_at", "2023-07-01 08:11:54.816735"], ["account_id", 1]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (2.2ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", "2023-08-18 00:00:00"], ["amount", 23], ["created_at", "2023-07-01 08:11:54.834753"], ["updated_at", "2023-07-01 08:11:54.834753"], ["account_id", 1]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", "2023-08-14 00:00:00"], ["amount", 4], ["created_at", "2023-07-01 08:11:54.852410"], ["updated_at", "2023-07-01 08:11:54.852410"], ["account_id", 1]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-08-19 00:00:00"], ["amount", 20], ["created_at", "2023-07-01 08:11:54.869883"], ["updated_at", "2023-07-01 08:11:54.869883"], ["account_id", 6]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-01-15 00:00:00"], ["amount", 15], ["created_at", "2023-07-01 08:11:54.888997"], ["updated_at", "2023-07-01 08:11:54.888997"], ["account_id", 8]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", "2023-08-19 00:00:00"], ["amount", 7], ["created_at", "2023-07-01 08:11:54.905633"], ["updated_at", "2023-07-01 08:11:54.905633"], ["account_id", 5]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", "2023-08-14 00:00:00"], ["amount", 30], ["created_at", "2023-07-01 08:11:54.925449"], ["updated_at", "2023-07-01 08:11:54.925449"], ["account_id", 5]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (3.5ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", "2023-08-13 00:00:00"], ["amount", 150], ["created_at", "2023-07-01 08:11:54.941354"], ["updated_at", "2023-07-01 08:11:54.941354"], ["account_id", 9]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2023-07-01 16:14:06 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.9ms | Allocations: 522)
+Completed 200 OK in 38ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 4808)
+
+
+Started GET "/users/" for 127.0.0.1 at 2023-07-01 16:14:13 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:23
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 53]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 54]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 55]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 56]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 57]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 58]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 59]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 60]]
+  ↳ app/views/users/index.html.erb:31
+  Rendered users/index.html.erb within layouts/application (Duration: 99.1ms | Allocations: 22405)
+  Rendered layout layouts/application.html.erb (Duration: 239.7ms | Allocations: 57662)
+Completed 200 OK in 268ms (Views: 243.8ms | ActiveRecord: 5.1ms | Allocations: 61016)
+
+
+Started GET "/users/53/all_transactions" for 127.0.0.1 at 2023-07-01 16:14:23 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"53"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.4ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 53]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-06-24')[0m  [["user_id", 53]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-06-24')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 60], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 57], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+Completed 200 OK in 128ms (Views: 0.7ms | ActiveRecord: 8.8ms | Allocations: 28200)
+
+
+Started GET "/users/46/accounts/6/transactions" for 127.0.0.1 at 2023-07-01 16:36:02 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"46", "account_id"=>"6"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.6ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 6]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (1.8ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/views/transactions/index.html.erb:57
+  Rendered transactions/index.html.erb within layouts/application (Duration: 56.2ms | Allocations: 5331)
+  Rendered layout layouts/application.html.erb (Duration: 97.8ms | Allocations: 7602)
+Completed 200 OK in 130ms (Views: 116.6ms | ActiveRecord: 6.1ms | Allocations: 8365)
+
+
+Started GET "/users/45/accounts/1/transactions" for 127.0.0.1 at 2023-07-01 16:36:04 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"45", "account_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (1.7ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (1.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:7:in `get_other_party_name'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 60], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:8:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 56], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 170.5ms | Allocations: 12290)
+  Rendered layout layouts/application.html.erb (Duration: 199.2ms | Allocations: 14500)
+Completed 200 OK in 217ms (Views: 191.6ms | ActiveRecord: 12.4ms | Allocations: 14805)
+
+
