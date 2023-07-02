@@ -1,0 +1,131 @@
+[
+    {
+      "disputedate": "Wed, 28 Jun 2023",
+      "transaction": {
+        "transactiondetails": {
+          "date": "Thurs, 17 Jun 2023",
+          "transaction name": "PayNow Transfer to: Wei Xuan OTHR PayNow Transfer",
+          "transaction type": "FAST / PayNow Transfer",
+          "account number": "539-23421-2",
+          "total amount": -20.15,
+          "transaction ID": 2325436245235346,
+          "FTD": true
+        },
+        "FTDdetails": {
+          "status": "Dispute Filed",
+          "user": "Sender",
+          "status detailed": "Recipient has 3 working days left before this dispute is automatically raised to DBS",
+          "reason": "Transfer to Wrong Account",
+          "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead",
+          "withdrawable":true
+        }
+      }
+    }, 
+
+    {
+        "disputedate": "Wed, 28 Jun 2023",
+        "transaction": {
+          "transactiondetails": {
+            "date": "Thurs, 17 Jun 2023",
+            "transaction name": "PayNow Transfer from: Brighton OTHR PayNow Transfer",
+            "transaction type": "FAST / PayNow Transfer",
+            "account number": "539-23421-2",
+            "total amount": 43.00,
+            "transaction ID": 22354656745
+          },
+          "FTDdetails": {
+            "status": "Dispute Filed",
+            "user": "Recipient",
+            "status detailed": "Action Required by 30 June 2023",
+            "reason": "Transfer to Wrong Account",
+            "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead",
+            "withdrawable":true
+          }
+        }
+      },
+      
+    {
+        "disputedate": "Tues, 27 Jun 2023",
+        "transaction": {
+            "transactiondetails": {
+            "date": "Tues, 15 Jun 2023",
+            "transaction name": "I-BANK TRANSFER OTHR MB1242354363",
+            "transaction type": "FAST / PayNow Transfer",
+            "account number":  "234-43941-0",
+            "total amount": -150.00,
+            "transaction ID": 12353463534
+            },
+            "FTDdetails": {
+            "status": "Pending",
+            "user": "Sender",
+            "status detailed": "This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by 27 July 2023",
+            "reason": "Transfer to Wrong Account",
+            "comments": "Wrote wrong bank account number",
+            "withdrawable":true
+            }
+        }
+    },
+    {
+        "disputedate": "Tues, 27 Jun 2023",
+        "transaction": {
+            "transactiondetails": {
+            "transaction name": "PayNow Transfer to: Tristan OTHR",
+            "transaction type": "FAST / PayNow Transfer",
+            "account number": "539-23421-2",
+            "total amount": -270.0,
+            "transaction ID": 2345346343
+            },
+            "FTDdetails": {
+            "status": "Resolved",
+            "user": "Sender",
+            "status detailed": "Refunded by recipient",
+            "reason": "Transfer Wrong Amount",
+            "comments": "Suppose to transfer 27 but transferred 270",
+            "withdrawable":false
+            }
+        }
+    },
+    {
+        "disputedate": "Fri, 9 Jun 2023",
+        "transaction": {
+            "transactiondetails": {
+                "transaction name": "PayNow Transfer to: Plus82 OTHR PayNow Transfer",
+                "transaction type": "FAST / PayNow Transfer",
+                "account number": "539-23421-2",
+                "total amount": -20.00,
+                "transaction ID": 3474634525
+            },
+            "FTDdetails": {
+            "status": "Refuted",
+            "user": "Sender",
+            "status detailed": "Refuted by recipient",
+            "reason": "Transfer Wrong Amount",
+            "comments": "Transfer wrong",
+            "refutereason": "Settled at store privately.",
+            "withdrawable":false
+            }
+        }
+    },
+
+    {
+        "disputedate": "Fri, 9 Jun 2023",
+        "transaction": {
+            "transactiondetails": {
+                "transaction name": "PayNow Transfer to: Valencia OTHR",
+                "transaction type": "FAST / PayNow Transfer",
+                "account number": "539-23421-2",
+                "total amount": -17.30,
+                "transaction ID": 4353462235
+            },
+            "FTDdetails": {
+            "status": "Withdrawed",
+            "user": "Sender",
+            "status detailed": "Withdrawed by recipient",
+            "reason": "Transfer Wrong Amount",
+            "comments": "Transfer wrong",
+            "withdrawable":false
+            }
+        }
+    }
+]
+  

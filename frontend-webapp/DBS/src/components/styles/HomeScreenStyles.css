@@ -95,7 +95,23 @@
     color: white;
     font-size: 22px;
     padding: 0;
-    margin: 5vw 0vw 2vw 0vw;
+    margin: 2vh 0vw 1vh 0vw;
+  }
+.textheaderftd1 {
+  font-family: 'Lato';
+  font-weight: 700;
+  color: white;
+  font-size: 30px;
+  padding: 0;
+  margin: 2vh 0vw 1vh 0vw;
+}
+.textheaderftd2 {
+  font-family: 'Lato';
+  font-weight: 700;
+  color: #FFEB85;
+  font-size: 24px;
+  padding: 0;
+  margin: 0 0vw 1vh 0vw;
 }
   
 .textbody {
@@ -105,6 +121,15 @@
     font-size: 15px;
     padding: 0;
     margin: 0;
+}
+
+.textbodyftd {
+  font-family: 'Lato';
+  font-weight: normal;
+  color: white;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
 }
   
 .alertbutton {

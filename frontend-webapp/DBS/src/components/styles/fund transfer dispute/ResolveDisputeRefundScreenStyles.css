@@ -1,0 +1,251 @@
+.overall1{
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    max-width: 100vw;
+    min-width: 100vw;
+    
+}
+
+.padforRF1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 1vw 0 0 0;
+    border-bottom: 1px solid #d2d2d2 ;
+}
+
+
+.headertitle5{
+    flex:1;
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: 18px;
+    color: #444444;
+    text-align: center;
+}
+
+.container_parties1{
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    max-width: 100vw;
+}
+
+.recipient_container1{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    height :9vh;
+    padding-left: 3vw;
+    padding-top: 2vh;
+    background-color: white;
+    border-bottom: 0.5px solid #d2d2d2;
+
+}
+
+.sender_container1{
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+    height :9vh;
+    padding-left: 3vw;
+    padding-top: 2vh;
+    background-color: white;
+    border-bottom: 0.5px solid #d2d2d2;
+}
+
+.profile1{
+    min-width: 12vw;
+    min-height: 12vw;
+    max-width: 12vw;
+    max-height: 12vw;
+    background-color: #066DAF;
+    border-radius: 50%;
+    margin-top: 1vh;
+}
+
+.profile2{
+    min-width: 12vw;
+    min-height: 12vw;
+    max-width: 12vw;
+    max-height: 12vw;
+    background-color: #E8B567;
+    border-radius: 50%;
+    margin-top: 1vh;
+}
+
+.account_right1{
+    background-color: transparent;
+    margin-left: 5vw;
+    overflow: hidden;
+}
+
+.accountname1{
+    flex: 1;
+    margin: 1.5vh 2vh 0 0;
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: bold;
+    color: #2D2D2D;
+    overflow: hidden;
+}
+
+.accountnumber1{
+    height: 100vh;
+    width: 100vw;
+    align-self: left;
+    background-color: transparent;
+    color: #2D2D2D;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.gif1{
+    background-color: transparent;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+}
+.gifimage {
+    position: absolute;
+    object-fit: contain;
+    height: 10vh;
+    margin-top: -16vh;
+    margin-left: 2vw;
+}
+.txnbox1{
+    background-color: #162633;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leftside1{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: transparent;
+    margin: 4vh 0 0 0;
+    padding-left: 5vw;
+}
+
+.amountin1{
+    color: #C3CCD3;
+    font-size: 13px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.currency1{
+    color: #C3CCD3;
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 600;
+    background-color: transparent;
+    margin: 0.5vh 0 2.5vh 0;
+}
+
+.rightside1{
+    background-color: transparent;
+    padding: 0;
+    margin-right: 5vw;
+}
+
+.refundamount1{
+    align-self: right;
+    font-size: 24px;
+    color:white;
+    font-family: 'Lato';
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+    margin-top: 4vh;
+}
+
+.RFdeetsbox1{
+    background-color: #f6f6f6;
+    margin: -1.5vh;
+}
+
+.RFtrfdeets1{
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Lato';
+    color: #999999;
+    padding-left: 8vw;
+    padding-top: 2.5vh;
+    padding-bottom: 2vh;
+}
+
+.commentsbox1{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    padding-left: 5vw;
+}
+
+.addcomments1{
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Lato';
+    color: #999999;
+    background-color: transparent;
+    padding: 2.5vh 0 1.5vh 0;
+    margin: 0;
+}
+
+.comments1{
+    font-size: 16px;
+    font-family: 'Lato';
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    padding-bottom: 2vh;
+}
+
+.tncforrefund1{
+    background-color: transparent;
+    color: #999999;
+    font-size: 12px;
+    font-family: 'Lato';
+    text-align: left;
+    padding-left: 5vw;
+    max-width: 90vw;
+    position: absolute;
+    bottom: 10vh;
+    text-align: justify;
+}
+
+.submitbutton1{
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}
+
+.submitbutton1:active {
+    opacity: 0.5;
+    transition: none;
+  }

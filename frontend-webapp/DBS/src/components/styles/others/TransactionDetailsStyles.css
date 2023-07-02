@@ -1,0 +1,230 @@
+.ftdbase{
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6f6f6;
+}
+
+.backtransaction {
+    object-fit: contain;
+    width: 3.5vw;
+    padding-left: 3vw;
+    margin-top: 2vh;
+}
+
+.transparent {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.moneyinarow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 7%;
+    padding-right: 2%;
+    margin-top: 5%;
+}
+
+.moneytext{
+    font-family: 'Lato';
+    font-size: 18px;
+    color: #a3a3a3;
+    font-weight: 600;
+    justify-content: center;
+    padding-top: 0.5%;
+    padding-right: 1.5%;
+}
+
+.moneytext2spend{
+    font-family: 'Lato';
+    font-size: 40px;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 4%;
+    color: #444444;
+}
+.moneytext2receive{
+    font-family: 'Lato';
+    font-size: 40px;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 4%;
+    color: #007D23;
+}
+
+.txdatetext{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a0a0a0;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.scriptbox{
+    width: 90vw;
+    margin: auto;
+    margin-top: 7%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.descriptext1{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 5vh 8vw 0 8vw;
+    margin: 0;
+}
+
+.descriptext2{
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444;
+    padding: 1vh 8vw 3vh 8vw;
+    margin: 0 ;
+
+}
+
+
+.transactiontext1{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0vh 8vw 0 8vw;
+    margin: 0;
+}
+
+.descriptext3{
+    font-family: 'Lato';
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444;
+    padding: 1vh 8vw 7vh 8vw;
+    margin: 0 ;
+
+}
+
+.textcontainerdetail{
+    flex: 1;
+}
+
+.sharebutton{
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color:#066DAF;
+    margin: 4vh 5vw 1.5vh 5vw;
+    border-radius: 5px;
+}
+
+.sharebuttontext{
+    font-family: 'Lato';
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.sharebuttontext:active{
+    opacity: 0.5;
+}
+
+.FTDbutton{
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0vh 5vw;
+    border-radius: 5px;
+    background-color: #1D0C86;
+}
+
+.FTDbuttontext{
+    font-family: 'Lato';
+    font-size: 17px;
+    color: #ffffff;
+    font-weight: 500;
+    word-spacing: 1vw;
+}
+
+.FTDbuttontext:active{
+    opacity: 0.5;
+}
+
+.txdgreyout{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+.txdetailsPop{
+    position: fixed;
+    width: 70%;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 10%;
+    border-radius: 10px;
+}
+
+.txdpopicon{
+    font-family: 'Lato';
+    margin-top: -10%;
+    font-size: 80px;
+    font-weight: 1000;
+    color: #A50303;
+    padding-left: 44%;
+}
+
+.txdpopheader{
+    font-family: 'Lato';
+    font-size: 25px;
+    color: #000000;
+    font-weight: bold;
+    margin: auto;
+    margin-left: 20%;
+    margin-top: -27%;
+}
+
+.txdpoptext{
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 7%;
+    font-weight: 500;
+}
+
+.popupbtn{
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    background-color:#066DAf;
+    border-radius: 5px;
+    margin: 0 6vw;
+}
+
+.txdpopbuttontext{
+    font-family: 'Lato';
+    font-size: 15px;
+    color: #ffffff;
+}

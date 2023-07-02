@@ -1,0 +1,137 @@
+
+.padforER1{
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 1vh 0;
+    background-color: #F6F7F9;
+}
+
+.paynowheadercontainer1{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    background-color: white;
+    width: 100vw;
+}
+
+
+.pntentermobileER{
+    font-size: 12px;
+    font-family: 'Lato';
+    font-weight: 800;
+    color: #767676;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    background-color: transparent;
+}
+
+.inputboxER{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100vw;
+    margin-bottom: 1vh;
+}
+
+.enternameER{
+    color: #b5b5b5;
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 600;
+    padding: 0 0 0 4vw;
+    background-color: transparent;
+}
+
+.mobilenumberER{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    background-color: transparent;
+    padding: 0 0 0 1vw;
+}
+
+.phonenumberER{
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: 800;
+    background-color: transparent;
+    color: black;
+    margin: -3vh 0 0 0;
+}
+
+.plussixfiveER{
+    padding: 1.5vh 0 0 2vh;
+}
+
+.forwardarrowbackgroundER{
+    background-color: transparent;
+    margin: -1vh 0 2vh 2vw;
+    padding: 0;
+}
+
+.forwardarrowER{
+    height: 1.5vh;
+    width: 1.5vh;
+    padding-top: 2.1vh;
+    padding-left: 0.5vh;
+}
+
+.eightdigitER{
+    padding-left: 1.5vh;
+    padding-top: 1.5vh;
+    background-color: transparent;
+}
+
+.senderboxER{
+    flex-direction: column;
+    flex-direction: column;
+    width: 100vw;
+    background-color: transparent;
+    top: 0;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.recipientdeets{
+    display: flex;
+    flex-direction: column;
+}
+
+.recipientnickER{
+    background-color: transparent;
+    color: #b5b5b5;
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 600;
+    margin: 1vh 0 0 4vw;
+}
+
+.recipientnameER{
+    font-size: 18px;
+    font-family: 'Lato';
+    font-weight: 800;
+    padding-left: 2.4vh;
+    padding-top: 1vh;
+    background-color: transparent;
+}
+
+
+.pntsubmitbuttonER{
+    margin: 0 5vw 0vh 5vw;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#066DAF ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}
+
+.pntsubmitbuttonER:active {
+    opacity: 0.5;
+    transition: none;
+}

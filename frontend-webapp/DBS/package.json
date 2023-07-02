@@ -27,6 +27,7 @@
     "selenium-webdriver": "^4.10.0",
     "ts-node": "^10.9.1",
     "web-vitals": "^2.1.4",
+    "webfontloader": "^1.6.28",
     "webfontloader": "^1.6.28"
   },
   "scripts": {

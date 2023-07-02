@@ -1,0 +1,140 @@
+.overallPNT{
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    max-width: 100vw;
+    min-width: 100vw;
+    top: 0;
+    position: absolute
+}
+
+.bibibaba{
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F6F7F9;
+}
+
+.leftPNT{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: transparent;
+    margin: 1vh 0 1vh 0;
+    padding-left: 5vw;
+    font-size: 12px;
+    font-family: 'Lato';
+    font-weight: 600;
+    color: #999999;
+}
+
+.rightPNT{
+    background-color: transparent;
+    padding-right: 5vw;
+    margin: 1vh 0 1vh 0;
+    font-size: 12px;
+    font-family: 'Lato';
+    color: black;
+    font-weight: 600;
+}
+
+.authorisedPNT{
+    background-color: transparent;
+    margin: 1vh 0 0 0;
+    padding: 0;
+}
+
+.remainingPNT{
+    background-color: transparent;
+    margin: 1vh 0 0 0;
+    padding: 0;
+}
+
+.AcategoryamountPNT{
+    align-self: right;
+    margin: 1vh 0 0 0;
+    padding: 0;
+}
+
+.RcategoryamountPNT{
+    align-self: right;
+    margin: 1vh 0 0 0;
+    padding: 0;
+}
+
+
+.changelimitPNT{
+    padding: 2vh 0 2vh 5vw;
+    margin: 0 0 0 0;
+    width: 95vw;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Lato';
+    background-color: #F6F7F9;
+}
+
+.trfdeetsPNT{
+    font-size: 12px;
+    font-family: 'Lato';
+    color: #999999;
+    font-weight: 600;
+    background-color: #F6F7F9;
+    padding: 1vh 0 1vh 5vw;
+    margin: 0vh;
+    width: 95vw;
+}
+
+.greyboxPNT{
+    flex-direction: column;
+    margin-top: 2vh;
+    flex-direction: column;
+    width: 100vw;
+    max-height: 100vh;
+    background-color: #F6F7F9;
+    top: 0;
+    height: 28vh;
+}
+
+.addcommentsPNT{
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 800;
+    color: #999999;
+    background-color: transparent;
+    margin: 2vh 0 2vh 5vw;
+}
+
+.commentsPNT{
+    font-size: 16px;
+    font-family: 'Lato';
+    font-weight: 800;
+    margin: 0vh 0 2vh 5vw;
+    background-color: transparent;
+}
+
+.LIMITSbutton1{
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#066DAF ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}
+
+.LIMITSbutton1:active {
+    opacity: 0.5;
+    transition: none;
+}

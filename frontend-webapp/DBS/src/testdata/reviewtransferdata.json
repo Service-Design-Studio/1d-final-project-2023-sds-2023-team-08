@@ -1,0 +1,25 @@
+[
+    {
+        "user": "T00000A",
+        "username": "TRISTAN",
+        "account number": "567-12345-1",
+        "disputedate": "Fri, 9 Jun 2023",
+        "transaction": {
+            "transactiondetails": {
+                "transaction name": "VALENCIA",
+                "transaction type": "FAST / PayNow Transfer",
+                "account number": "539-23421-2",
+                "total amount": -17.30,
+                "transaction ID": 4353462235
+            },
+            "FTDdetails": {
+            "status": "Withdrawn",
+            "user": "Sender",
+            "status detailed": "Withdrawn by recipient",
+            "reason": "Transfer Wrong Amount",
+            "comments": "Transfer wrong",
+            "withdrawable":false
+            }
+        }
+    }
+]
