@@ -6,37 +6,39 @@ const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, accountNumber } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
+    console.log(FTDtransactions)
+    const isPaynow = FTDtransactions['refund details']['recipient name'] !== 'nil'
 
     return(
         <div className = "overall1">
             <div className='padforRF1'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
-                    <img src = './assets/back.png' className = 'back'/>
+                    <img src = '/assets/back.png' className = 'back'/>
                 </button>
-                <p className='headertitle5'>PayNow to Mobile / Transfer to Bank</p>
+                <p className='headertitle5'>Refund Dispute</p>
             </div>
 
             <div className = 'container_parties1'>
                 <div className='recipient_container1'>
                     <div className= 'profile1'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>{FTDtransactions.transaction.transactiondetails["recipient name"]}</p>
+                        <p className= 'accountname1'>{FTDtransactions['refund details']['transfer from acc name'] }</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>{FTDtransactions.transaction.transactiondetails["recipient phone number"]}</p>
+                            <p className= 'accountnumber1'>{FTDtransactions['refund details']['transfer from acc number']}</p>
                         </div>  
                     </div>
                 </div>
                 <div className = 'sender_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>SENDER ACCOUNT</p>
+                        <p className= 'accountname1'>  {isPaynow ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account"}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>{FTDtransactions.transaction.transactiondetails["sender account number"]}</p>
+                            <p className= 'accountnumber1'>{FTDtransactions['refund details']['recipient acc']}</p>
                         </div>  
                     </div>
                 </div>
                 <div className = 'gif1'>
-                    <img src = './assets/gif.gif' className='gifimage'/>
+                    <img src = '/assets/gif.gif' className='gifimage'/>
                 </div>
             </div>
 
@@ -46,7 +48,7 @@ const ResolveDisputeRefundScreen = () => {
                     <p className='currency1'>SGD</p>
                 </div>
                 <div className='rightside1'>
-                    <p className='refundamount1'>{FTDtransactions.transaction.transactiondetails["total amount"]}</p>
+                    <p className='refundamount1'>{FTDtransactions['refund details']['total amount']}</p>
                 </div>
             </div>
 

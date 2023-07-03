@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import '../components/styles/TransactionDetailsScreenStyles.css';
 import FTDTransactionDetails from './fund transfer dispute/FTDTransactionDetails';
 import TransactionDetails from './others/TransactionDetails';
 import { useNavigate, useParams  } from 'react-router-dom';

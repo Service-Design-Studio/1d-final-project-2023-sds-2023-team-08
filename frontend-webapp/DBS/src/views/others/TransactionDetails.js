@@ -1,13 +1,15 @@
 import React from 'react';
 import '../../components/styles/others/TransactionDetailsStyles.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 const TransactionDetails = (props) => {
     const navigate = useNavigate();
     const [clickCount, setClickCount] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
-    const {TransactionData} = props
+    const {TransactionData} = props;
+    const { userID, transactionID } = useParams();
+
 
     const handleClick = () => {
       setClickCount(clickCount + 1);
@@ -28,7 +30,7 @@ const TransactionDetails = (props) => {
 
     return (
         <div className='ftdbase'> 
-          <button onClick={() => {}} className='transparent'>
+          <button onClick={() => navigate(`/${userID}/recenttransaction`)} className='transparent'>
             <img src='/assets/back.png' className='backtransaction' />
           </button>
 
