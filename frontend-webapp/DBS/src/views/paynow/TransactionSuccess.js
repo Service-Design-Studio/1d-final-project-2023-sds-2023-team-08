@@ -1,39 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../components/styles/fund transfer dispute/ResolveSuccessStyles.css'
 import { useNavigate } from 'react-router-dom';
 
+import transactionsucessjson from '../../testdata/transactionsucess.json'
+
 const TransactionSucess = () => {
     const navigate = useNavigate();
+
+    const [stx1user, setstx1user] = useState("");
+    const [stx1success, setstx1success] = useState("");
+    const [stx1date, setstx1date] = useState("");
+    const [stx1time, setstx1time] = useState("");
+    const [stx1totalamt, setstx1totalamt] = useState('');
+    const [stx1reANa, setstx1reANa] = useState("");  // reANa = Recipient Account Name
+    const [stx1reANo, setstx1reANo] = useState("");  // reANo = Recipient Account Number
+    const [stx1seANa, setstx1seANa] = useState("");  // seANa = Sender Account Name
+    const [stx1seANo, setstx1seANo] = useState("");  // seANo = Sender Account Number
+    const [stx1txtype, setstx1txtype] = useState("");
+    const [stx1comment, setstx1comment] = useState("");
+    
+    // Change the constant [0,1] to see between successful & failure difference
+    const stx1useridx = 0;
+
+    useEffect(() => {
+        const stx1selectedTransaction = transactionsucessjson[stx1useridx];
+        setstx1user(stx1selectedTransaction.user);
+        setstx1date(stx1selectedTransaction.transaction['date']);
+        setstx1time(stx1selectedTransaction.transaction['time']);
+        setstx1totalamt(stx1selectedTransaction.transaction['total amount']);
+        setstx1reANa(stx1selectedTransaction.transaction['Recipient Account Name']);
+        setstx1reANo(stx1selectedTransaction.transaction['Recipient Account Number']);
+        setstx1seANa(stx1selectedTransaction.transaction['Sender Account Name']);
+        setstx1seANo(stx1selectedTransaction.transaction['Sender Account Number']);
+        setstx1txtype(stx1selectedTransaction.transaction['transaction type']);
+        setstx1comment(stx1selectedTransaction.transaction['comments']);
+        setstx1success(stx1selectedTransaction.success);
+
+        if (stx1selectedTransaction.success !== "Successful") {
+            navigate('/'); // If not successful, navigate to the home page
+          }
+        }, [stx1useridx, navigate]);
+
+
     return (
         <div className='successtxbase'>
             <button onClick={() => navigate()} className='successtxtransparent'>
                 <p className='successtxcross'> X</p>
             </button>
             <div className='successtxgreenbox'>
-                <img src='/assets/greentick.png' className='successtxgreentick' />
+                <img src={require('../../../src/components/assets/icons/greentick.png')} className='successtxgreentick' />
             </div>
 
             <p className='successheadertext'> Successful</p>
-            <p className='successtxdate'>on 26 Jun 2023 12:35pm</p>
+            <p className='successtxdate'>on {stx1date} {stx1time}</p>
 
             <div className='successtxdescriptbox'>
                 <div className='successtxdescriptboxblack'>
                     <p className='successtxdescriptboxblacktextop'> Amount in</p>
                     <div className='successtxdescriptboxtransparent'>
                         <p className='successtxdescriptboxtransparentleft'> SGD</p>
-                        <p className='successtxdescriptboxtransparentright'> XX.XX</p>
+                        <p className='successtxdescriptboxtransparentright'> {stx1totalamt}</p>
                     </div>
                 </div>
                 <p className='successtxgreytextheader'> From</p>
-                <p className='successtxblacktextheader'> RECIPIENT ACCOUNT</p>
-                <p className='successtxgreytextheader2'> XXX-XXXXX-X</p>
+                <p className='successtxblacktextheader'> {stx1reANa}</p>
+                <p className='successtxgreytextheader2'> {stx1reANo}</p>
                 <p className='successtxgreytextheader'> To</p>
-                <p className='successtxblacktextheader'> SENDER ACCOUNT</p>
-                <p className='successtxgreytextheader2'> XXX-XXXXX-Y</p>
+                <p className='successtxblacktextheader'> {stx1seANa}</p>
+                <p className='successtxgreytextheader2'> {stx1seANo}</p>
                 <p className='successtxgreytextheader'> Transfer Type</p>
-                <p className='successtxblacktextheader'> FAST/IMMEDIATE</p>
+                <p className='successtxblacktextheader'> {stx1txtype}</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
-                <p className='successtxblacktextheader'> PayNow Transfer</p>
+                <p className='successtxblacktextheader'> {stx1comment}</p>
             </div>
 
             <div className='successtxwrongbox'>
