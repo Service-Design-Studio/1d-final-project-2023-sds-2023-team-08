@@ -40,6 +40,7 @@
       "transaction": {
         "transaction name": "I-BANK TRANSFER OTHR MB1242354363",
         "transaction type": "FAST / PayNow Transfer",
+        "mode of payment": "Account Transfer",
         "account number":  "234-43941-0",
         "total amount": 150.00
       }
@@ -67,6 +68,7 @@
       "transaction": {
         "transaction name": "PayNow Transfer to: SHOPEEPAY PRIVATE LIMITED OTHR",
         "transaction type": "FAST / PayNow Transfer",
+        "mode of payment": "FAST / PayNow Transfer",
         "account number": "539-23421-2",
         "total amount": -23.20
       }

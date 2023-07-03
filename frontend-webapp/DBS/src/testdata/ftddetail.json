@@ -10,7 +10,7 @@
                 "account number": "539-23421-2",
                 "total amount": -17.30,
                 "transaction ID": 4353462235,
-                "FTD": true
+                "FTD": false
             },
             "FTDdetails": {
                 "status": "Dispute Filed",
