@@ -4,15 +4,26 @@ import ftdrecipientjson from '../../testdata/ftdrecipient.json';
 
 const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
-    const { userID, accountNumber } = useParams();
+    const { userID, transactionID } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
-    console.log(FTDtransactions)
     const isPaynow = FTDtransactions['refund details']['recipient name'] !== 'nil'
+
+    const transactionData = {
+        "dispute": true,
+        "transaction id":transactionID,
+        "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
+        "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],
+        "recipient name":isPaynow ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account",
+        "recipient acc": FTDtransactions['refund details']['recipient acc'],
+        "total amount":FTDtransactions['refund details']['total amount'],
+        "comments": "Resolving Dispute"
+    }
+
 
     return(
         <div className = "overall1">
             <div className='padforRF1'>
-                <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
+                <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/${transactionID}`)}>
                     <img src = '/assets/back.png' className = 'back'/>
                 </button>
                 <p className='headertitle5'>Refund Dispute</p>
@@ -62,7 +73,7 @@ const ResolveDisputeRefundScreen = () => {
             </div>
 
             <p className='tncforrefund1'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
-            <button id='submitrefund1' className='submitbutton1' onClick={()=>{}}>SUBMIT</button>
+            <button id='submitrefund1' className='submitbutton1' onClick={()=>navigate(`/${userID}/reviewtransaction`, {state : transactionData})}>SUBMIT</button>
         </div>
     );
 

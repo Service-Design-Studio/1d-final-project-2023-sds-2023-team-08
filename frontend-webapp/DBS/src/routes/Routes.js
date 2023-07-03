@@ -46,6 +46,7 @@ const Routing = () => {
         <Route path="/:userID/FTDtransactionsall" element={<FTDTransactionScreen />} />
         <Route path="/:userID/:transactionID" element={<TransactionDetailsScreen />}/>
         <Route path="/:userID/refunddispute/:transactionID" element={<ResolveDisputeRefundScreen />}/>
+        <Route path="/:userID/reviewtransaction" element={<ReviewTransfer />}/>
       </Routes>
     </Router>
   );

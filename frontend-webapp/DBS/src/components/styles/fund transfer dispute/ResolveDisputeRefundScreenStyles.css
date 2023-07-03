@@ -103,25 +103,12 @@
     align-self: left;
     background-color: transparent;
     color: #444444;
-    font-size: 14px;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-
-
-.accountnumber10{
-    height: 100vh;
-    width: 100vw;
-    align-self: left;
-    background-color: transparent;
-    color: #444444;
     font-size: 16px;
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-weight: bold;
 }
+
 
 .gif1{
     background-color: transparent;
@@ -225,7 +212,7 @@
 }
 
 .comments1{
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Lato';
     margin: 0;
     padding: 0;
