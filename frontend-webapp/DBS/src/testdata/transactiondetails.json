@@ -1,0 +1,31 @@
+[
+    {
+        "user": "Sender",
+        "transaction":{
+            "total amount": "20.90",
+            "date": "Thurs, 17 Jun 2023",
+            "description": "TRANSFER using PAYLAH!: XXXX 1234",
+            "transaction type": "Funds Transfer"
+        }
+    },
+    {
+        "user": "Recipient",
+        "transaction":{
+            "total amount": "20.90",
+            "date": "Thurs, 17 Jun 2023",
+            "description": "TRANSFER from PAYLAH!: XXXX 1234",
+            "transaction type": "Funds Transfer",
+            "total fund dispute sent": "10"
+        }
+    },
+    {
+        "user": "Recipient",
+        "transaction":{
+            "total amount": "20.90",
+            "date": "Thurs, 17 Jun 2023",
+            "description": "TRANSFER from PAYLAH!: XXXX 1234",
+            "transaction type": "Funds Transfer",
+            "total fund dispute sent": "5"
+        }
+    }
+]

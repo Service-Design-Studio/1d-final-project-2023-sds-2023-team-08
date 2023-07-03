@@ -24,7 +24,7 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TransactionSucess />} />
+        <Route path="/" element={<TransactionDetails />} />
         <Route path="/home" element={<RaiseFTDRecipient />} />
         <Route path="/invest" element={<RecentTransactionScreen />} />
         <Route path="/pay" element={<FTDTransactionScreen/>} />
