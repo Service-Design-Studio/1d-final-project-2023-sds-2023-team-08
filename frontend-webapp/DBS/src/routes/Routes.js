@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+<<<<<<< Updated upstream
 import HomeScreen from '../views/HomeScreen.js';
 import Recenttransaction from '../views/RecentTransaction.js';
 import RefuteDispute from '../views/RefuteDispute.js'
@@ -14,6 +15,26 @@ import FTDTransactionDetails from '../views/FTDTransactionDetails.js';
 import ReviewRefute from '../views/ReviewRefute.js';
 import SuccessfulTransfer1 from '../views/SuccessfulTransfer1.js';
 import SuccessfulTransfer2 from '../views/SuccessfulTransfer2.js';
+=======
+import HomeScreen from '../views/HomeScreen';
+import LoginScreen from '../views/LoginScreen';
+import RecentTransactionScreen from '../views/RecentTransactionScreen';
+import FTDTransactionScreen from '../views/FTDTransactionScreen';
+import RaiseFTDRecipient from '../views/fund transfer dispute/RaiseFTDRecipient';
+import RaiseFTDUser from '../views/fund transfer dispute/RaiseFTDUser';
+import FTDTransactionDetails from '../views/fund transfer dispute/FTDTransactionDetails';
+import RefuteDisputeReason from '../views/fund transfer dispute/RefuteDisputeReason';
+import RefuteSuccess from '../views/fund transfer dispute/RefuteSuccess';
+import ResolveDisputeRefundScreen from '../views/fund transfer dispute/ResolveDisputeRefundScreen';
+import ReviewRefute from '../views/fund transfer dispute/ReviewRefute';
+import ResolveSuccess from '../views/fund transfer dispute/ResolveSuccess';
+import ReviewTransfer from '../views/others/ReviewTransfer';
+import TransactionDetails from '../views/others/TransactionDetails';
+import EnterRecipient from '../views/paynow/EnterRecipient';
+import PayNowTransactionPage from '../views/paynow/PayNowTransactionPage';
+import TransactionSucess from '../views/paynow/TransactionSucess';
+import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
+>>>>>>> Stashed changes
 
 const Routing = () => {
   const world = { currentLocation: null };
