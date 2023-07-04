@@ -9,7 +9,7 @@ function getFTDTransactionsByDate(transactions, specificDate) {
 
 const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
-  const { userID, accountNumber } = useParams();
+  const { userID, transactionID } = useParams();
   const { FTDtransactions } = props;
   const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] != undefined;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient"
@@ -19,7 +19,7 @@ const FTDTransactionDetails = (props) => {
   return (
     <div className='RefuteDisputeMain'>
         <div className='header2transaction'>
-          <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
+          <button id = 'backarrow' onClick={() => navigate(`/${userID}/FTDtransactionsall`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
           <p className='headertext'>Dispute Details</p>
@@ -29,6 +29,10 @@ const FTDTransactionDetails = (props) => {
             <div className='transactionmoney'>
                 <p className='sgddispute'>SGD</p>
                 <p className={FTDtransactions.transaction.transactiondetails["total amount"] < 0 ? "moneydispute" : "moneydisputein"}>{FTDtransactions.transaction.transactiondetails["total amount"].toFixed(2)}</p>
+            </div>
+
+            <div className='transactdatecontainer'>
+                <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["transaction date"]}</p>
             </div>
 
             <div className='transactiondetailscontainerbox'>
@@ -59,7 +63,7 @@ const FTDTransactionDetails = (props) => {
                         <p className='police'>Note: It is an offence under the Penal Code for the recipient to retain or use the funds after being informed that it was sent by mistake. The sender may consider lodging a police report.</p>
                     </div>
 
-                    <button className='refundbutton'><b>YES</b> - REFUND</button>
+                    <button className='refundbutton' onClick={() => navigate(`/${userID}/refunddispute/${transactionID}`)}><b>YES</b> - REFUND</button>
                     <button className='refutebutton'><b>NO</b> - REFUTE</button>
                 </div>
             ) : isrecipient && refuted ? (

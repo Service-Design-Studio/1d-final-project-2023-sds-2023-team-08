@@ -6,19 +6,20 @@
                 "transaction date": "23 Jun 03:42",
                 "transaction name": "PayNow Transfer to: Valencia OTHR",
                 "transaction type": "FAST / PayNow Transfer",
+                "mode of payment": "FAST / PayNow Transfer",
                 "account number": "539-23421-2",
                 "total amount": -17.30,
                 "transaction ID": 4353462235,
-                "FTD": false
+                "FTD": true
             },
             "FTDdetails": {
-            "status": "Withdrawn",
-            "user": "Sender",
-            "status detailed": "Withdrawn by recipient",
-            "reason": "Transfer Wrong Amount",
-            "comments": "Transfer wrong",
-            "withdrawable":false
-            }
+                "status": "Dispute Filed",
+                "user": "Recipient",
+                "status detailed": "Action Required by 30 June 2023",
+                "reason": "Transfer to Wrong Account",
+                "comments": "Was supposed to transfer to your number neighbor XXXX-9232 instead",
+                "withdrawable":false
+              }
     }
 }
 ]

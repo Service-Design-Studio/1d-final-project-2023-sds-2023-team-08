@@ -1,52 +1,20 @@
 [
     {
-        "disputedate": "Fri, 26 Jun 2023",
-        "transaction": {
-            "transactiondetails": {
-                "transaction name": "PayNow Transfer to: Hubert OTHR",
-                "transaction type": "Funds Transfer",
-                "recipient name": "Huining Boss",
-                "recipient account number": "539-23421-2",
-                "recipient phone number": "87775555",
-                "sender account number": "123-32134-1",
-                "total amount": 12.34,
-                "transaction ID": 20230630
-            },
-            "FTDdetails": {
-            "status": "Refuted",
-            "user": "Recipient",
-            "status detailed": "Refuted by recipient",
-            "sender reason": "Transfer to Wrong Account",
-            "sender comments": "Please give me back, supposed to send to your bro-in-law",
-            "withdrawable":false,
-            "recipient refuted": true,
-            "recipient comments": "This is rightfully my money"
-            }
+        "refund details": {
+            "transfer from acc name": "DBS multiplier account",
+            "transfer from acc number": "342-35325-0",
+            "recipient name": "Jun Xiang",
+            "recipient acc": 97345342,
+            "total amount": 17.30
         }
     },
     {
-        "disputedate": "Fri, 25 Jun 2023",
-        "transaction": {
-            "transactiondetails": {
-                "transaction name": "PayNow Transfer to: Bobob OTHR",
-                "transaction type": "Funds Transfer",
-                "recipient name": "Charlene Boss",
-                "recipient account number": "539-23421-3",
-                "recipient phone number": "86665555",
-                "sender account number": "123-32134-2",
-                "total amount": 43.21,
-                "transaction ID": 20232023
-            },
-            "FTDdetails": {
-            "status": "Resolved",
-            "user": "Recipient",
-            "status detailed": "Recipient has refunded",
-            "sender reason": "Transfer to Wrong Account",
-            "sender comments": "Please give me back, typoed",
-            "withdrawable":false,
-            "recipient refuted": false,
-            "recipient comments": "Don't typo next time"
-            }
+        "refund details": {
+            "transfer from acc name": "DBS multiplier account",
+            "transfer from acc number": "342-35325-0",
+            "recipient name": "nil",
+            "recipient acc": "234-24235-0",
+            "total amount": 17.30
         }
     }
 ]

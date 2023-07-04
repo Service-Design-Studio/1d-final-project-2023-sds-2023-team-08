@@ -1,44 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../components/styles/others/TransactionDetailsStyles.css';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const TransactionDetails = (props) => {
     const navigate = useNavigate();
-    const [clickCount, setClickCount] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
-    const {TransactionData} = props
+    const {TransactionData} = props;
+    const { userID, transactionID } = useParams();
 
-    const handleClick = () => {
-      setClickCount(clickCount + 1);
-  
-      if (clickCount + 1 === 3) {
+    const submitFundDispute = async () => {
+      const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`);
+      const totalFundDisputeSent = response.data
+      if (totalFundDisputeSent['ftd today'] >= 10) {
         setShowPopup(true);
-        resetCounter(); // Reset the counter after triggering the pop-up
+      } else {
+        //navigate to raise fund transfer dispute form
       }
     };
-  
-    const resetCounter = () => {
-      setClickCount(0); // Reset the clickCount state to 0
-    };
-  
-    const closePopup = () => {
-      setShowPopup(false);
-    };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
 
     return (
         <div className='ftdbase'> 
-          <button onClick={() => {}} className='transparent'>
+          <button onClick={() => navigate(`/${userID}/recenttransaction`)} className='transparent'>
             <img src='/assets/back.png' className='backtransaction' />
           </button>
 
             <div className='moneyinarow'>
                 <p className='moneytext'> SGD</p>
-                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount']}</p>
+                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount']}</p>            
             </div>
-
+            
             <div>
-                <p className='txdatetext'> {TransactionData.transaction.transactiondetails['transaction date']}</p>
+              <p className='txdatetext'> {TransactionData.transaction.transactiondetails['transaction date']}</p>
             </div>
 
             <div className='scriptbox'>
@@ -59,26 +56,26 @@ const TransactionDetails = (props) => {
                 </div>
             </button>
 
-            <button onClick={handleClick} className='transparent'>
+            <button className='transparent' onClick={submitFundDispute}>
                 <div className='FTDbutton'>
                     <p className='FTDbuttontext'> RAISE A FUND DISPUTE</p>
                 </div>
             </button>
 
             {showPopup && (
-            <div className='txdgreyout'>
+              <div className='txdgreyout'>
                 <div className='txdetailsPop'>
-                    <p className='txdpopicon'> !</p>
-                    <p className='txdpopheader'> Limit Exceeded</p>
-                    <p className='txdpoptext'>You are unable to make more than 2 fund transfer disputed daily. 
+                  <p className='txdpopicon'> !</p>
+                  <p className='txdpopheader'> Limit Exceeded</p>
+                  <p className='txdpoptext'>You are unable to make more than 2 fund transfer disputed daily. 
                     Please wait till tomorrow.</p>
-                    <button onClick={closePopup} className='transparent'>
-                        <div className='popupbtn'>
-                            <p className='txdpopbuttontext'>OK</p>
-                        </div>
-                    </button>
+                  <button className='transparent' onClick={closePopup}>
+                      <div className='popupbtn'>
+                          <p className='txdpopbuttontext'>OK</p>
+                      </div>
+                  </button>
                 </div>
-            </div>
+              </div>
             )}
 
 

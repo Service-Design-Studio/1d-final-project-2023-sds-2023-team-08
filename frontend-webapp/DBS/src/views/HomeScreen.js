@@ -39,7 +39,7 @@ const HomeScreen = () => {
           {anyFTD ? (
           <div>
             <div className='alertbody'>
-              <p className='textheaderftd1'>:( ALERT:</p>
+              <p className='textheaderftd1'>:( <span> </span>ALERT:</p>
               <p className='textheaderftd2'> YOU HAVE 1 FUND TRANSFER DISPUTE</p>
               <p className='textbodyftd'> It is encouraged to resolve the issue as soon as possible to prevent any implication with the 
 authorities.</p>
