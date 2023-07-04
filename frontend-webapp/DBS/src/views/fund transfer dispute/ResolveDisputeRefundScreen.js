@@ -68,7 +68,7 @@ const ResolveDisputeRefundScreen = () => {
             </div>
 
             <div className='commentsbox1'>
-                <p className='addcomments1'>Add comments for recipient</p>
+                <p className='addcomments1'>Comments for recipient</p>
                 <p className='comments1'>Resolving Dispute</p>
             </div>
 
