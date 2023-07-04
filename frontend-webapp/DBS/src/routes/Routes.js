@@ -18,13 +18,14 @@ import EnterRecipient from '../views/paynow/EnterRecipient';
 import PayNowTransactionPage from '../views/paynow/PayNowTransactionPage';
 import TransactionSucess from '../views/paynow/TransactionSuccess';
 import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
+import WithdrawDisputePopUp from '../views/others/WithdrawDisputePopUp';
 
 const Routing = () => {
   const world = { currentLocation: null };
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TransactionDetails />} />
+        <Route path="/" element={<WithdrawDisputePopUp />} />
         <Route path="/home" element={<RaiseFTDRecipient />} />
         <Route path="/invest" element={<RecentTransactionScreen />} />
         <Route path="/pay" element={<FTDTransactionScreen/>} />
