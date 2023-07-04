@@ -32,7 +32,9 @@ const EnterRecipient = () => {
                         <img src = './assets/expand.png'className='forwardarrowER'></img>
                     </div>
                     <div className='phonenumberER'>
-                        <p className='eightdigitER'>{paynowtxn.recipientdetails["recipient mobile"]}</p>
+                        <input
+                        type ='text' 
+                        className='eightdigitER borderless-input'></input>
                     </div>
                 </div>
             </div>
@@ -41,7 +43,7 @@ const EnterRecipient = () => {
             <div className='senderboxER'>
                 <div className='recipientdeets'>
                     <p className='recipientnickER'>Recipient's Nickname</p>
-                    <p className='recipientnameER'>{paynowtxn.recipientdetails["recipient name"]}</p>
+                    <p className='recipientnameER'>{paynowtxn.recipientdetails["recipient paynow name"]}</p>
                 </div>
                 <button id='pntsubmitbutton' className='pntsubmitbuttonER' onClick={()=>{}}>
                     <p className='pntsubmitER'>SUBMIT</p>

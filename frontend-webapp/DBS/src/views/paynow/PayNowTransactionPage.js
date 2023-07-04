@@ -21,7 +21,7 @@ const PayNowTransactionPage = () => {
                 <div className='recipient_container1'>
                     <div className= 'profile1'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>{paynowtxn.recipientdetails["recipient name"]}</p>
+                        <p className= 'accountname1'>{paynowtxn.recipientdetails["recipient paynow name"]}</p>
                         <div className= 'accountnumber1'>
                             <p className= 'accountnumber1'>{paynowtxn.recipientdetails["recipient account number"]}</p>
                         </div>  
@@ -31,7 +31,7 @@ const PayNowTransactionPage = () => {
                 <div className = 'sender_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>{paynowtxn.senderdetails["sender name"]}</p>
+                        <p className= 'accountname1'>{paynowtxn.senderdetails["sender paynow name"]}</p>
                         <div className= 'accountnumber1'>
                             <p className= 'accountnumber1'>{paynowtxn.senderdetails["sender account number"]}</p>
                         </div>  
@@ -58,8 +58,8 @@ const PayNowTransactionPage = () => {
                     <p className='remainingPNT'>Remaining</p>
                 </div>
                 <div className='rightPNT'>
-                    <p className='AcategoryamountPNT'>SGD {paynowtxn.senderdetails["authorised limit"]}</p>
-                    <p className='RcategoryamountPNT'>SGD {paynowtxn.senderdetails["remaining limit"]}</p>
+                    <p className='AcategoryamountPNT'>SGD 40,000</p>
+                    <p className='RcategoryamountPNT'>SGD 40,000</p>
                 </div>
             </div>
 
