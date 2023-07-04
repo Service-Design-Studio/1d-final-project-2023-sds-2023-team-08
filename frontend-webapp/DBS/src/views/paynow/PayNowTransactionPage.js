@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
 import '../../components/styles/paynow/PayNowTransactionPageStyles.css';
 import paynowdetailsjson from '../../testdata/paynowdetails.json';
 
@@ -7,6 +8,10 @@ const PayNowTransactionPage = () => {
     const navigate = useNavigate();
     const { userID, accountNumber } = useParams();
     const paynowtxn = paynowdetailsjson[0];
+    // State to store the refund amount and comments
+    const [refundAmount, setRefundAmount] = useState('');
+    const [comments, setComments] = useState('');
+    
 
     return(
         <div className = "overallPNT">
@@ -47,8 +52,14 @@ const PayNowTransactionPage = () => {
                     <p className = 'amountin1'>Amount in</p>
                     <p className='currency1'>SGD</p>
                 </div>
-                <div className='rightside1'>
-                    <p className='refundamount1'>{paynowtxn.txndetails["amount transacted"]}</p>
+                <div className='rightSide1'>
+                    <input
+                        type="text"
+                        value={refundAmount}
+                        onChange={(event) => setRefundAmount(event.target.value)}
+                        placeholder="0.00"
+                        className="inputAmount borderless-input"
+                    />
                 </div>
             </div>
 
@@ -65,8 +76,13 @@ const PayNowTransactionPage = () => {
 
             <p className='changelimitPNT'><u>Change Limit</u></p>
             <p className='trfdeetsPNT'>TRANSFER DETAILS</p>
-            <p className='addcommentsPNT'>Add comments for recipient</p>
-            <p className='commentsPNT'>{paynowtxn.txndetails["comments for txn"]}</p>
+            <input
+                    type="text"
+                    value={comments}
+                    onChange={(event) => setComments(event.target.value)}
+                    placeholder="PayNow"
+                    className="commentsPNT borderless-input"
+                />
 
             <div className='greyboxPNT'>
                 <p className='tncforrefund1'>By clicking "NEXT", you agree to be bound by the <u>Terms and Conditions.</u></p>

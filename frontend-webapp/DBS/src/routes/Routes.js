@@ -27,10 +27,10 @@ const Routing = () => {
         <Route path="/" element={<TransactionSucess />} />
         <Route path="/home" element={<RaiseFTDRecipient />} />
         <Route path="/invest" element={<RecentTransactionScreen />} />
-        <Route path="/pay" element={<FTDTransactionScreen/>} />
-        <Route path="/plan" element={<HomeScreen />} />
-        <Route path="/more" element={<HomeScreen />} />
-        <Route path="/recenttransaction" element={<HomeScreen />} />
+        <Route path="/pay" element={<ResolveDisputeRefundScreen/>} />
+        <Route path="/plan" element={<EnterRecipient />} />
+        <Route path="/more" element={<PayNowTransactionPage />} />
+        <Route path="/recenttransaction" element={<TransactionSucess />} />
         <Route path="/recenttransaction/:accountNumber" element={<HomeScreen />} />
         <Route path="/FTDtransactionsall" element={<FTDTransactionScreen />} />
         <Route path="/transactionID" element={<TransactionDetailsScreen />}/>
