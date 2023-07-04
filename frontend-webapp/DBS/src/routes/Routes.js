@@ -24,10 +24,10 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TransactionDetails />} />
-        <Route path="/home" element={<RaiseFTDRecipient />} />
-        <Route path="/invest" element={<RecentTransactionScreen />} />
-        <Route path="/pay" element={<FTDTransactionScreen/>} />
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/home" element={<HomeScreen />} />
+        <Route path="/invest" element={<HomeScreen />} />
+        <Route path="/pay" element={<HomeScreen/>} />
         <Route path="/plan" element={<HomeScreen />} />
         <Route path="/more" element={<HomeScreen />} />
         <Route path="/recenttransaction" element={<HomeScreen />} />
@@ -45,6 +45,8 @@ const Routing = () => {
         <Route path="/:userID/recenttransaction/:accountNumber" element={<RecentTransactionScreen />} />
         <Route path="/:userID/FTDtransactionsall" element={<FTDTransactionScreen />} />
         <Route path="/:userID/:transactionID" element={<TransactionDetailsScreen />}/>
+        <Route path="/:userID/refunddispute/:transactionID" element={<ResolveDisputeRefundScreen />}/>
+        <Route path="/:userID/reviewtransaction" element={<ReviewTransfer />}/>
       </Routes>
     </Router>
   );

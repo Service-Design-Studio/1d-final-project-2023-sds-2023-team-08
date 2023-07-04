@@ -1,68 +1,67 @@
 import '../../components/styles/others/ReviewTransferStyles.css';
 import jsonData from '../../testdata/reviewtransferdata.json';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const ReviewTransfer = () => {
     const navigate = useNavigate();
-    const recipientAccount = jsonData[0]['username'];
-    const recipientAccountNo = jsonData[0]['account number'];
-    const senderAccount = jsonData[0].transaction.transactiondetails["transaction name"];
-    const senderAccountNo = jsonData[0].transaction.transactiondetails["account number"];
-    const transferType = jsonData[0].transaction.transactiondetails["transaction type"];
-    const yourComments = jsonData[0].transaction.FTDdetails["comments"];
+    const {userID} = useParams();
+    const location = useLocation();
+    const transactionData = location.state;
+    const isDispute = transactionData['dispute']
+
+
     const handleSubmit = async(event) => {
         event.preventDefault();
     }
+    
     return (
-        <div className='ReviewTransferMain'>
-            <div className='ReviewTransferHeader'>
-                <button onClick={() => navigate('/')} className='transparent'>
+        <div className='overall1'>
+            <div className='header2transaction'>
+                <button id = 'backarrow' onClick={() => navigate(`/${userID}/refunddispute/${transactionData['transaction id']}`)} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
-                <p className='ReviewTransferHeaderText'>Review Transfer</p>
+                <p className='headertext'>Review Transfer</p>
             </div>
-            <div className='ReviewTransferLine'></div>
+
             <div className='ReviewTransferBody'>
                 <div className='ReviewTransferBox'>
-                    <div className="ReviewTransferBoxBlue">
-                        <div className='ReviewTransferBoxBlueText'>
-                            <p className='amountin'>Amount in</p>
-                            <div className='ReviewTransferBoxBlueSubText'>
-                                <p className='ReviewTransferBoxBlueSubTextLeft'>SGD</p>
-                                <p className='ReviewTransferBoxBlueSubTextRight'>XX.XX</p>
-                            </div>
+                    <div className='ReviewTransferBoxBlueText'>
+                        <p className='amountin'>Amount in</p>
+                        <div className='ReviewTransferBoxBlueSubText'>
+                            <p className='ReviewTransferBoxBlueSubTextLeft'>SGD</p>
+                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total amount']}</p>
                         </div>
                     </div>
-                    <div class="ReviewTransferBoxWhite">
+                    <div className="ReviewTransferBoxWhite">
 
-                        <div className='Chunk'>
-                            <p className='from'>From</p>
-                            <p className='RecipientAccount'>{recipientAccount}</p>
-                            <p className='RecipientAccountNo'>{recipientAccountNo}</p>
+                        <div className='Chunk1'>
+                            <p className='reviewtext'>From</p>
+                            <p className='accounttextname'>{transactionData['transfer from acc name']}</p>
+                            <p className='reviewtext'>{transactionData['transfer from acc number']}</p>
                         </div>
                         
                         <div className='Chunk'>
-                            <p className='to'>To</p>
-                            <p className='SenderAccount'>{senderAccount}</p>
-                            <p className='SenderAccountNo'>{senderAccountNo}</p>
+                            <p className='reviewtext'>To</p>
+                            <p className='accounttextname'>{transactionData['recipient name']}</p>
+                            <p className='reviewtext'>{transactionData['recipient acc']}</p>
                         </div>
 
                         <div className='Chunk'>
-                            <p className='transfertype'>Transfer Type</p>
-                            <p className='TransferType'>{transferType}</p>
+                            <p className='reviewtext'>Transfer Type</p>
+                            <p className='accounttextname'>FAST/IMMEDIATE</p>
                         </div>
 
-                        <div className='Chunk'>
-                            <p className='yourcomments'>Your Comments</p>
-                            <p className='YourComments'>{yourComments}</p>
+                        <div className='Chunk2'>
+                            <p className='reviewtext'>Your Comments</p>
+                            <p className='accounttextname'>{transactionData['comments']}</p>
                         </div>
 
                     </div>
-                    <form className='ReviewTransferForm' onSubmit={handleSubmit}>
-                        <button className='TransferNow'>TRANSFER NOW</button>
-                    </form>
                 </div>
             </div>
+
+            <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={() => navigate()}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button>
+
         </div>
 
     );
