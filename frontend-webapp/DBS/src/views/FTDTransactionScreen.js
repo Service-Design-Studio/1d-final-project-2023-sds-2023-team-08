@@ -62,11 +62,11 @@ const FTDTransactionScreen = () => {
 
   return (
     <div className='maincontainer'>
-        <div className='header2transaction'>
+        <div className='RefuteDisputeHeader'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
-          <p className='headertext'>Fund Disputes</p>
+          <p className='RefuteDisputeHeaderText'>Fund Disputes</p>
         </div>
 
         <div className='scrollview'>

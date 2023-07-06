@@ -11,11 +11,11 @@ const EnterRecipient = () => {
     return(
         <div className = 'overall1'>
             <div className='padforER1'>
-                <div className = 'paynowheadercontainer1'>
+                <div className = 'RefuteDisputeHeader'>
                     <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
-                        <img src = './assets/back.png' className = 'back'/>
+                        <img src = '/assets/back.png' className = 'back'/>
                     </button>
-                    <p className='headertitle5'>Enter Recipient's Details</p>
+                    <p className='RefuteDisputeHeaderText'>Enter Recipient's Details</p>
                 </div>
                 <p className='pntentermobileER'>ENTER MOBILE NO.</p>
             </div>
@@ -29,7 +29,7 @@ const EnterRecipient = () => {
                         <p className='plussixfiveER'>+65</p>
                     </div>
                     <div className='forwardarrowbackgroundER'>
-                        <img src = './assets/expand.png'className='forwardarrowER'></img>
+                        <img src = '/assets/expand.png'className='forwardarrowER'></img>
                     </div>
                     <div className='phonenumberER'>
                         <p className='eightdigitER'>{paynowtxn.recipientdetails["recipient mobile"]}</p>

@@ -3,6 +3,7 @@ import { useNavigate, useParams, useLocation  } from 'react-router-dom';
 import axios from 'axios';
 import ReviewTransfer from './others/ReviewTransfer';
 import ReviewRefute from './fund transfer dispute/ReviewRefute';
+import ReviewFTD from './fund transfer dispute/ReviewFTD';
 
 const ReviewScreen = () => {
     const navigate = useNavigate();
@@ -10,10 +11,13 @@ const ReviewScreen = () => {
     const { userID } = useParams();
 
     const isRefute = location.state['refute']
+    const isRaiseFTD = location.state['raiseFTD']
 
     return (
       isRefute ? (
         <ReviewRefute/>
+      ) : isRaiseFTD ? (
+        <ReviewFTD/>
       ) : (
         <ReviewTransfer/>
       )

@@ -39,11 +39,11 @@ const ResolveDisputeRefundScreen = () => {
 
     return(
         <div className = "overall1">
-            <div className='padforRF1'>
+            <div className='RefuteDisputeHeader'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/${transactionID}`)}>
                     <img src = '/assets/back.png' className = 'back'/>
                 </button>
-                <p className='headertitle5'>Refund Dispute</p>
+                <p className='RefuteDisputeHeaderText'>Refund Dispute</p>
             </div>
 
             <div className = 'container_parties1'>

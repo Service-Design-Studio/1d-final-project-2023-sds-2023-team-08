@@ -18,6 +18,7 @@ import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
 import TransferSuccessScreen from '../views/others/TransferSuccessScreen';
 import ReviewScreen from '../views/ReviewScreen';
 import SuccessScreen from '../views/SuccessScreen';
+import RaiseFTDScreen from '../views/RaiseFTDScreen';
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -49,6 +50,7 @@ const Routing = () => {
         <Route path="/:userID/refutedispute/:transactionID" element={<RefuteDisputeReason />}/>
         <Route path="/:userID/review" element={<ReviewScreen />}/>
         <Route path="/:userID/success" element={<SuccessScreen />} />
+        <Route path="/:userID/raiseFTD/:transactionID" element={<RaiseFTDScreen/>} />
       </Routes>
     </Router>
   );

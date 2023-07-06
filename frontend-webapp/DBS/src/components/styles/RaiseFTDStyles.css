@@ -1,0 +1,123 @@
+.raiseFTDcontainer{
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+
+.scriptbox1{
+    height: 25vh;
+    width: 90vw;
+    margin: auto;
+    margin-top: 7%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.reasonFTD{
+    background-color: #f0f0f0;
+    border-top: 1px solid #d2d2d2;
+    border-bottom: 1px solid #d4d4d4;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5vw;
+    margin-top: 3vh;
+}
+
+.reasonFTDtext {
+    font-family: 'Lato';
+    white-space: nowrap;
+    color: #444444;
+    font-weight: bold;
+    font-size: 16px;
+    justify-content: center;
+}
+
+.checkbox1,.checkbox2,.checkbox3 {
+    font-family: 'Lato';
+    font-size: 15px;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #F6F7F9;
+    padding-left: 5vw;
+}
+
+.checkboxtext {
+    padding-left: 3vw;
+}
+
+.commentsBox {
+    background-color: transparent;
+    border-bottom: 1px solid #e6e6e6 ;
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+
+.commentsTextBox {
+    align-self: center;
+    width: 90vw;
+    border: none;
+    font-size: 100%;
+    margin-top: 1.5vh;
+    padding: 0 0 3px 0;
+    text-decoration: none;
+    height: 30px; 
+    min-height: 30px; 
+    resize: none;
+    overflow-y: hidden;
+    font-family: "Lato";
+}
+
+.commentcharacterCount{
+    font-family: "Lato";
+    color: #a3a3a3;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 0.5vh ;
+    padding-left: 5vw;
+}
+
+.commentsTextBox:focus{
+   outline: none;
+   border: none;
+   text-decoration: none;
+ }
+
+ .RaiseFTDButton {
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
+}
+
+
+.RaiseFTDButton:active{
+    opacity: 0.5;
+    transition: none;
+}
+
+.flashmessagetext {
+    font-size: 12px;
+    color: #FF2C4E;
+    font-family: 'Lato';
+    font-weight: bold;
+    margin-left: 5vw;
+    margin-top: 2vh;
+    margin-bottom: -2vh;
+}

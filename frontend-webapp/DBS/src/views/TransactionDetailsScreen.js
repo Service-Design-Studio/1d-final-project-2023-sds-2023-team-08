@@ -3,14 +3,14 @@ import FTDTransactionDetails from './fund transfer dispute/FTDTransactionDetails
 import TransactionDetails from './others/TransactionDetails';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
-import TransactionJSON from '../testdata/ftddetail.json'
+import TransactionJSON from '../testdata/transactionlist.json'
 
 const TransactionDetailsScreen = () => {
     const navigate = useNavigate();
     const [FTDtransaction, setFTDtransaction] = useState(false);
     const { userID, transactionID } = useParams();
-    const TransactionDetailsJSON = TransactionJSON[0]
-
+    const TransactionDetailsJSON = TransactionJSON[1]
+  
     useEffect(() => {
         setFTDtransaction(TransactionDetailsJSON.transaction.transactiondetails['FTD']);
       }, []);

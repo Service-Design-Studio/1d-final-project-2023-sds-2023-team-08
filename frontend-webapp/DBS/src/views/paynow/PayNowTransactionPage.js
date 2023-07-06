@@ -10,11 +10,11 @@ const PayNowTransactionPage = () => {
 
     return(
         <div className = "overallPNT">
-            <div className='padforRF1'>
+            <div className='RefuteDisputeHeader'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => {}}>
-                    <img src = './assets/back.png' className = 'back'/>
+                    <img src = '/assets/back.png' className = 'back'/>
                 </button>
-                <p className='headertitle5'>PayNow to Mobile</p>
+                <p className='RefuteDisputeHeaderText'>PayNow to Mobile</p>
             </div>
 
             <div className = 'container_parties1'>
@@ -38,7 +38,7 @@ const PayNowTransactionPage = () => {
                     </div>
                 </div>
                 <div className = 'gif1'>
-                    <img src = './assets/gif.gif' className='gifimage'/>
+                    <img src = '/assets/gif.gif' className='gifimage'/>
                 </div>
             </div>
 

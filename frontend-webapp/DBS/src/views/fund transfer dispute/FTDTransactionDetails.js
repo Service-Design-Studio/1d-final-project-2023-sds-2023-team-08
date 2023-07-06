@@ -18,11 +18,11 @@ const FTDTransactionDetails = (props) => {
 
   return (
     <div className='RefuteDisputeMain'>
-        <div className='header2transaction'>
+        <div className='RefuteDisputeHeader'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/FTDtransactionsall`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
-          <p className='headertext'>Dispute Details</p>
+          <p className='RefuteDisputeHeaderText'>Dispute Details</p>
         </div>
 
         <div className='disputecontainer'>
@@ -32,7 +32,7 @@ const FTDTransactionDetails = (props) => {
             </div>
 
             <div className='transactdatecontainer'>
-                <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["transaction date"]}</p>
+                <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["date"]}</p>
             </div>
 
             <div className='transactiondetailscontainerbox'>

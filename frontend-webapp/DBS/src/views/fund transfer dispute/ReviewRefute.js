@@ -25,8 +25,8 @@ const ReviewRefute = () => {
   //       setTransactionDetailsJSON[transactiondetails[0]]
   //       setFTDtransaction(TransactionDetailsJSON.transaction.transactiondetails['FTD']);
   //
-  //       const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //new link
-  //       const Token = response.data.csrfToken;
+  //       const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //new link
+  //       const Token = response2.data.csrfToken;
   //       setCsrfToken(Token);
   //
   //     } catch (error) {
@@ -83,16 +83,16 @@ const ReviewRefute = () => {
 
     return (
         <div className='RefuteDisputeMain'>
-            <div className='header2transaction'>
+            <div className='RefuteDisputeHeader'>
                 <button id = 'backarrow' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
-                <p className='headertext'>Review Dispute</p>
+                <p className='RefuteDisputeHeaderText'>Review Dispute</p>
             </div>
 
             <div className='transactionmoney'>
                 <p className='sgddispute'> SGD</p>
-                <p className={TransactionDetailsJSON.transaction.transactiondetails["total amount"] < 0 ? 'reremoneytext2out' : 'reremoneytext2in'}>{TransactionDetailsJSON.transaction.transactiondetails["total amount"]}</p>
+                <p className={TransactionDetailsJSON.transaction.transactiondetails["total amount"] < 0 ? 'reremoneytext2out' : 'reremoneytext2in'}>{TransactionDetailsJSON.transaction.transactiondetails["total amount"].toFixed(2)}</p>
             </div>
 
             <div className='transactdatecontainer'>
