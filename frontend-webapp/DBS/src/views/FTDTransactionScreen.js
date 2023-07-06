@@ -14,6 +14,22 @@ const FTDTransactionScreen = () => {
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([]);
   const { userID } = useParams();
+
+  // const [FTDtransactions, setFTDtransactions] = useState([])
+  // useEffect(() => {
+  //   const fetchAllFTDtransactions = async () => {
+  //     try {
+  //       const response = await axios.get(`link to all FTD transactions`);
+  //       setFTDtransactions(response.data);
+  //       console.log(FTDtransactions)
+
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchAllFTDtransactions();
+  // }, []);
+
   const FTDtransactions = FTDjson;
 
   const statusDictionary = {
@@ -40,6 +56,8 @@ const FTDTransactionScreen = () => {
   };
 
   const uniqueFTDates = [...new Set(FTDtransactions.map(item => item.disputedate))];
+
+  
 
 
   return (

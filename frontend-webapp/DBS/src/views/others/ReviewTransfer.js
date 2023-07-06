@@ -73,7 +73,7 @@ const ReviewTransfer = () => {
     
     
     return (
-        <div className='overall1'>
+        <div className='RefuteDisputeMain'>
             <div className='header2transaction'>
                 <button id = 'backarrow' onClick={() => navigate(`/${userID}/refunddispute/${transactionData['transaction id']}`)} className='transparent'>
                     <img src='/assets/back.png' className='back' />

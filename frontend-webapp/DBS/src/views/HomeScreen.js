@@ -12,6 +12,27 @@ const HomeScreen = () => {
   
   const numFTD = {"awaitingactionFTD": 2}
   const anyFTD = numFTD['awaitingactionFTD'] >= 1
+  const numberofFTD = numFTD['awaitingactionFTD']
+
+  // const [anyFTD, setanyFTD] = useState(false)
+  // const [numberofFTD, setnumberofFTD] = useState(0)
+  // useEffect(() => {
+  //   const fetchFTDtransactions = async () => {
+  //     try {
+  //       const response = await axios.get(`link to number of FTD transaction`);
+  //       const numFTD = response.data;
+  //       console.log(numFTD)
+
+  //       setanyFTD(numFTD['awaitingactionFTD'] >= 1);
+  //       setnumberofFTD(numFTD['awaitingactionFTD']);
+
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchFTDtransactions();
+  // }, []);
+
 
   return (
     <div className="container">
@@ -43,7 +64,7 @@ const HomeScreen = () => {
             <div>
               <div className='alertbody'>
                 <p className='textheaderftd1'>:(<span style={{ paddingLeft: '3vw' }}> </span>ALERT:</p>
-                <p className='textheaderftd2'> YOU HAVE {numFTD['awaitingactionFTD']} FUND TRANSFER DISPUTE{numFTD['awaitingactionFTD'] >1 ? 'S' : ''}</p>
+                <p className='textheaderftd2'> YOU HAVE {numberofFTD} FUND TRANSFER DISPUTE{numberofFTD >1 ? 'S' : ''}</p>
                 <p className='textbodyftd'> It is encouraged to resolve the issue as soon as possible to prevent any implication with the 
   authorities.</p>
               </div>

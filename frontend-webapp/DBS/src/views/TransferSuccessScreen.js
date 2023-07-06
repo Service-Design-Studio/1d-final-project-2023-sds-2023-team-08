@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate, useParams  } from 'react-router-dom';
-import axios from 'axios';
 import ResolveSuccess from './fund transfer dispute/ResolveSuccess';
 import TransactionSucess from './paynow/TransactionSuccess';
 import ftdrecipientjson from '../testdata/ftdrecipient.json';
 
-const TransferScreen = () => {
+const TransferSuccessScreen = () => {
     const navigate = useNavigate();
     const { userID, transactionID } = useParams();
     // const location = useLocation();
@@ -42,4 +41,4 @@ const TransferScreen = () => {
   };
   
 
-export default TransferScreen;
+export default TransferSuccessScreen;

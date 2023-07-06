@@ -226,11 +226,10 @@
     font-size: 12px;
     font-family: 'Lato';
     text-align: left;
-    padding-left: 5vw;
+    padding-left: 6vw;
     max-width: 90vw;
     position: absolute;
     bottom: 10vh;
-    text-align: justify;
 }
 
 .submitbutton1{

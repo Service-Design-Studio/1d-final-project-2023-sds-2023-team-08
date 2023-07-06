@@ -1,12 +1,28 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../components/styles/fund transfer dispute/ResolveDisputeRefundScreenStyles.css';
 import ftdrecipientjson from '../../testdata/ftdrecipient.json';
+import axios from 'axios';
+
 
 const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, transactionID } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
     const isPaynowDispute = FTDtransactions['refund details']['recipient name'] !== 'nil'
+
+  // const [FTDtransactions, setFTDtransactions] = useState([])
+  // useEffect(() => {
+  //   const fetchFTDrefund = async () => {
+  //     try {
+  //       const response = await axios.get(`link to refund details`);
+  //       setFTDtransactions(response.data);
+  //       console.log(FTDtransactions)
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchFTDrefund();
+  // }, []);
 
     const transactionData = {
         "dispute": true,

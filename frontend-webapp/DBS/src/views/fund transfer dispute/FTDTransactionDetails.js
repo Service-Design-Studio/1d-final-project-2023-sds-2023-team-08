@@ -64,7 +64,7 @@ const FTDTransactionDetails = (props) => {
                     </div>
 
                     <button className='refundbutton' onClick={() => navigate(`/${userID}/refunddispute/${transactionID}`)}><b>YES</b> - REFUND</button>
-                    <button className='refutebutton'><b>NO</b> - REFUTE</button>
+                    <button className='refutebutton' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)}><b>NO</b> - REFUTE</button>
                 </div>
             ) : isrecipient && refuted ? (
                 <div className='reasoncontainer'>
