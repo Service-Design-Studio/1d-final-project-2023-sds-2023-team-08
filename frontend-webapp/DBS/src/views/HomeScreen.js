@@ -10,7 +10,7 @@ const HomeScreen = () => {
   const { userID } = useParams();
   console.log(userID)
   
-  const numFTD = {"awaitingactionFTD": 2}
+  const numFTD = {"awaitingactionFTD": 0}
   const anyFTD = numFTD['awaitingactionFTD'] >= 1
   const numberofFTD = numFTD['awaitingactionFTD']
 

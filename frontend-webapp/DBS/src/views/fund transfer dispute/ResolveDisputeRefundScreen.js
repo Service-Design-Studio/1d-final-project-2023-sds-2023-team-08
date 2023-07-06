@@ -32,7 +32,8 @@ const ResolveDisputeRefundScreen = () => {
         "recipient name":isPaynowDispute ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account",
         "recipient acc": FTDtransactions['refund details']['recipient acc'],
         "total amount":FTDtransactions['refund details']['total amount'],
-        "comments": "Resolving Dispute"
+        "comments": "Resolving Dispute",
+        "mode of payment": isPaynowDispute ? "FAST / PayNow Transfer" : "Account Transfer",
     }
 
 
