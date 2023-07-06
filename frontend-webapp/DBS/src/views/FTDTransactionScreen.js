@@ -37,7 +37,7 @@ const FTDTransactionScreen = () => {
       bgcolor: '#1D0C86',
       statustext: "AWAITING ACTION"
     },
-    "Pending": {
+    "Raised to DBS": {
       bgcolor: "#066DAF",
       statustext: "PENDING"
     },
@@ -49,9 +49,9 @@ const FTDTransactionScreen = () => {
       bgcolor: "#950909",
       statustext: "REFUTED"
     },
-    "Withdrawed": {
+    "Withdrawn": {
         bgcolor: "#7A7A7A",
-        statustext: "WITHDRAWED"
+        statustext: "WITHDRAWN"
     }
   };
 

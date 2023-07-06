@@ -10,7 +10,8 @@ const ReviewRefute = () => {
     const { userID } = useParams();
     const TransactionDetailsJSON = TransactionJSON[0]
     const location = useLocation();
-    const refutereason = location.state;
+    const refutereason = location.state["refute reason"];
+    const transactionID = location.state["transaction ID"]
     const [csrfToken, setCsrfToken] = useState('');
 
 
@@ -18,7 +19,7 @@ const ReviewRefute = () => {
   // useEffect(() => {
   //   const fetchFTDtransactiondata = async () => {
   //     try {
-  //       const response = await axios.get(`link to all FTD transactions`);
+  //       const response = await axios.get(`link to the transactions`); //using transactionID here
   //       const transactiondetails = response.data;
   //       console.log(FTDtransactions)
   //       setTransactionDetailsJSON[transactiondetails[0]]
@@ -51,7 +52,8 @@ const ReviewRefute = () => {
         //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
         TransactionDetails['date and time'] = `${currentDate} ${currentTime}`
         TransactionDetails['day and date'] =  `${currentDay}, ${currentDate}`
-        TransactionDetails['refute reason'] = refutereason
+        TransactionDetails['refutereason'] = refutereason
+        TransactionDetails['refute'] = true
         console.log(TransactionDetails)
 
         const response = await axios.post(
@@ -66,7 +68,7 @@ const ReviewRefute = () => {
             }
         );
         if (response.data.success) {
-            navigate(`/${userID}/refutesuccess`, {state: TransactionDetails})
+            navigate(`/${userID}/success`, {state: TransactionDetails})
         }
 
         else{
@@ -75,14 +77,14 @@ const ReviewRefute = () => {
 
     catch (error) {
         console.log('Error:', error.toJSON());
-        navigate(`/${userID}/refutesuccess`, {state: TransactionDetails})
+        navigate(`/${userID}/success`, {state: TransactionDetails})
     }
     };
 
     return (
         <div className='RefuteDisputeMain'>
             <div className='header2transaction'>
-                <button id = 'backarrow' onClick={() => navigate(`/${userID}/refutedispute/${TransactionDetailsJSON.transaction.transactiondetails['transaction ID']}`)} className='transparent'>
+                <button id = 'backarrow' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='headertext'>Review Dispute</p>

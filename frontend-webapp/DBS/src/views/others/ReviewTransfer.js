@@ -58,7 +58,7 @@ const ReviewTransfer = () => {
                 }
             );
             if (response.data.success) {
-                navigate(`/${userID}/transfersuccess`, {state: TransactionDetails})
+                navigate(`/${userID}/success`, {state: TransactionDetails})
             }
 
             else{
@@ -67,7 +67,7 @@ const ReviewTransfer = () => {
 
         catch (error) {
             console.log('Error:', error.toJSON());
-            navigate(`/${userID}/transfersuccess`, {state: TransactionDetails})
+            navigate(`/${userID}/success`, {state: TransactionDetails})
           }
         };
     

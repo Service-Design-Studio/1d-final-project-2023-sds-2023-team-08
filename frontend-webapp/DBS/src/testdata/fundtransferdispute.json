@@ -56,7 +56,7 @@
             "transaction ID": 12353463534
             },
             "FTDdetails": {
-            "status": "Pending",
+            "status": "Raised to DBS",
             "user": "Sender",
             "status detailed": "This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by 27 July 2023",
             "reason": "Transfer to Wrong Account",
@@ -118,9 +118,9 @@
                 "transaction ID": 4353462235
             },
             "FTDdetails": {
-            "status": "Withdrawed",
+            "status": "Withdrawn",
             "user": "Sender",
-            "status detailed": "Withdrawed by recipient",
+            "status detailed": "Withdrawn by recipient",
             "reason": "Transfer Wrong Amount",
             "comments": "Transfer wrong",
             "withdrawable":false

@@ -15,14 +15,16 @@ import ReviewTransfer from '../views/others/ReviewTransfer';
 import EnterRecipient from '../views/paynow/EnterRecipient';
 import PayNowTransactionPage from '../views/paynow/PayNowTransactionPage';
 import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
-import TransferSuccessScreen from '../views/TransferSuccessScreen';
+import TransferSuccessScreen from '../views/others/TransferSuccessScreen';
+import ReviewScreen from '../views/ReviewScreen';
+import SuccessScreen from '../views/SuccessScreen';
 
 const Routing = () => {
   const world = { currentLocation: null };
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TransferSuccessScreen />} />
+        <Route path="/" element={<LoginScreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/invest" element={<HomeScreen />} />
         <Route path="/pay" element={<HomeScreen/>} />
@@ -45,10 +47,8 @@ const Routing = () => {
         <Route path="/:userID/:transactionID" element={<TransactionDetailsScreen />}/>
         <Route path="/:userID/refunddispute/:transactionID" element={<ResolveDisputeRefundScreen />}/>
         <Route path="/:userID/refutedispute/:transactionID" element={<RefuteDisputeReason />}/>
-        <Route path="/:userID/reviewtransaction" element={<ReviewTransfer />}/>
-        <Route path="/:userID/transfersuccess" element={<TransferSuccessScreen />} />
-        <Route path="/:userID/reviewdispute" element={<ReviewRefute />} />
-        <Route path="/:userID/refutesuccess" element={<RefuteSuccess />} />
+        <Route path="/:userID/review" element={<ReviewScreen />}/>
+        <Route path="/:userID/success" element={<SuccessScreen />} />
       </Routes>
     </Router>
   );

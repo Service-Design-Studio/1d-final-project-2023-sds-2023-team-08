@@ -8,7 +8,7 @@ const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, transactionID } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
-    const isPaynowDispute = FTDtransactions['refund details']['recipient name'] !== 'nil'
+    const isPaynowDispute = typeof FTDtransactions['refund details']['recipient name'] === 'int'
 
   // const [FTDtransactions, setFTDtransactions] = useState([])
   // useEffect(() => {
@@ -29,7 +29,7 @@ const ResolveDisputeRefundScreen = () => {
         "transaction id":transactionID,
         "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
         "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],
-        "recipient name":isPaynowDispute ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account",
+        "recipient name":FTDtransactions['refund details']['recipient name'],
         "recipient acc": FTDtransactions['refund details']['recipient acc'],
         "total amount":FTDtransactions['refund details']['total amount'],
         "comments": "Resolving Dispute",
@@ -38,7 +38,7 @@ const ResolveDisputeRefundScreen = () => {
 
 
     return(
-        <div className = "RefuteDisputeMain">
+        <div className = "overall1">
             <div className='padforRF1'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/${transactionID}`)}>
                     <img src = '/assets/back.png' className = 'back'/>
@@ -59,7 +59,7 @@ const ResolveDisputeRefundScreen = () => {
                 <div className = 'sender_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>  {isPaynowDispute ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account"}</p>
+                        <p className= 'accountname1'>  {FTDtransactions['refund details']['recipient name']}</p>
                         <div className= 'accountnumber1'>
                             <p className= 'accountnumber1'>{FTDtransactions['refund details']['recipient acc']}</p>
                         </div>  
@@ -90,7 +90,7 @@ const ResolveDisputeRefundScreen = () => {
             </div>
 
             <p className='tncforrefund1'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
-            <button id='submitrefund1' className='submitbutton1' onClick={()=>navigate(`/${userID}/reviewtransaction`, {state : transactionData})}>SUBMIT</button>
+            <button id='submitrefund1' className='submitbutton1' onClick={()=>navigate(`/${userID}/review`, {state : transactionData})}>SUBMIT</button>
         </div>
     );
 

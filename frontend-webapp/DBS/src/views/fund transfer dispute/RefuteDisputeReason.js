@@ -17,7 +17,7 @@ const RefuteDisputeReason = () => {
         } 
         
         else {
-            navigate(`/${userID}/reviewdispute`, {state : reasonValue});
+            navigate(`/${userID}/review`, {state : {"refute reason":reasonValue, "refute": true, "transaction ID": transactionID}});
             }
     };
 

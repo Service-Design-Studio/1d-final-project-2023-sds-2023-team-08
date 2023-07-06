@@ -39,7 +39,7 @@ const RefuteSuccess = () => {
                 </div>
                 <div className='subpopboxRS'>
                     <p className='qnRS'>Reason for refuting dispute</p>
-                    <p className='uwuRS'>{TransactionDetails["refute reason"]}</p>
+                    <p className='uwuRS'>{TransactionDetails["refutereason"]}</p>
                 </div>
             </div>
             
