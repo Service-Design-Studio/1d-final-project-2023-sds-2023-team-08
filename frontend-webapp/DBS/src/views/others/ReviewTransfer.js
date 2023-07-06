@@ -1,6 +1,8 @@
 import '../../components/styles/others/ReviewTransferStyles.css';
 import jsonData from '../../testdata/reviewtransferdata.json';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 
 const ReviewTransfer = () => {
     const navigate = useNavigate();
@@ -8,11 +10,67 @@ const ReviewTransfer = () => {
     const location = useLocation();
     const transactionData = location.state;
     const isDispute = transactionData['dispute']
+    const [csrfToken, setCsrfToken] = useState('');
 
-
+    useEffect(() => {
+        const fetchCSRFData = async () => {
+          try {
+            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); // update link to get new csrftoken?
+            const Token = response.data.csrfToken;
+            setCsrfToken(Token);
+          } 
+          
+          catch (error) {
+            console.log(error)
+          }
+        };
+    
+        fetchCSRFData();
+      }, []);
+    
     const handleSubmit = async(event) => {
         event.preventDefault();
-    }
+        let TransactionDetails= transactionData
+
+        try{
+            const now = new Date();
+            const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
+            const currentDate = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).replace(',', '');
+            const currentHour = now.getHours().toString().padStart(2, '0'); 
+            const currentMinutes = now.getMinutes().toString().padStart(2, '0'); 
+            const currentTime = `${currentHour}:${currentMinutes}`;
+
+            //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
+            TransactionDetails['date and time'] = `${currentDate} ${currentTime}`
+            TransactionDetails['day and date'] =  `${currentDay}, ${currentDate}`
+            TransactionDetails['transfer type'] = "FAST/IMMEDIATE"
+            console.log(TransactionDetails)
+
+            const response = await axios.post(
+                'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
+                { TransactionDetails },
+                {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+                }
+            );
+            if (response.data.success) {
+                navigate(`/${userID}/transfersuccess`, {state: TransactionDetails})
+            }
+
+            else{
+            }
+        }
+
+        catch (error) {
+            console.log('Error:', error.toJSON());
+            navigate(`/${userID}/transfersuccess`, {state: TransactionDetails})
+          }
+        };
+    
     
     return (
         <div className='overall1'>
@@ -60,7 +118,7 @@ const ReviewTransfer = () => {
                 </div>
             </div>
 
-            <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={() => navigate()}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button>
+            <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
 
         </div>
 

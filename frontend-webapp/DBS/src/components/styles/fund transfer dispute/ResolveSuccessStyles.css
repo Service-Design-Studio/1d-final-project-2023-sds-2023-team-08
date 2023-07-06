@@ -1,98 +1,91 @@
-.successtxbase {
-    height: 100vh;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: #fefefe;
-}
-
-.successtxcross {
-    color: #808080;
-    font-family: 'Lato';
-    font-size: x-large;
-    font-weight: 500;
-    margin-top: 80%;
-    display: flex;
-}
-
-.successtxcross:active{
-    opacity: 0.5;
-}
-
 .successtxtransparent{
     display: inline-flex;
     background-color: transparent;
     border: none;
     cursor: pointer;
     margin-left: 2%;
+    font-size: 24px;
+    color: #444444;
+    margin-top: 3%;
 }
+
+.successtxtransparent:active{
+    opacity: 0.5;
+}
+
 
 .successtxgreenbox{
     display: flex;
     background-color: transparent;
     border: none;
-    margin-top: -18%;
+    margin-top: -15%
 }
 
 .successtxgreentick{
-    transform: scale(0.4);
+    transform: scale(0.3);
     margin: auto;
 }
 
 .successheadertext{
     font-family: 'Lato';
-    font-size: 20px;
+    font-size: 22px;
     color: #000000;
     font-weight: bold;
     text-align: center;
-    margin-top: -10%;
+    margin-top: -15%;
+    margin-bottom: 1.5vh;
 }
 
 .successtxdate{
     font-family: 'Lato';
-    font-size: 16px;
+    font-size: 18px;
     color: #a0a0a0;
-    font-weight: 600;
-    margin-top: -1%;
-    margin-bottom: 5%;
     text-align: center;
+    margin: 0;
+    margin-bottom: 5vh;
 }
 
 .successtxdescriptbox{
-    height: 43%;
     width: 85%;
     margin: auto;
     border: 1px solid #dcdcdc;
-    border-radius: 8px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius:10px;
     background-color: #ffffff;
-    margin-bottom: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0;
 }
 
 .successtxdescriptboxblack{
-    height: 22%;
-    width: 100%;
-    margin-top: -4%;
+    height: 10%;
+    width: 85%;
+    margin: auto;
     background-color: #162633;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border: 1px solid #162633;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .successtxdescriptboxblacktextop{
     font-family: 'Lato';
-    font-size: 12px;
+    font-size: 14px;
     font-weight: medium;
     color: #c3ccd3;
     margin-left: 5%;
-    padding-top: 3%;
+    margin-top: 7%;
 }
 
 .successtxdescriptboxtransparent{
     display: flex;
     flex-direction: row;
-    height: 40%;
+    justify-content: space-between;
+    align-content: center;
     width: 100%;
-    margin-top: -1%;
+    margin-top: -4%;
     background-color: transparent;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .successtxdescriptboxtransparentleft{
@@ -106,40 +99,60 @@
 
 .successtxdescriptboxtransparentright{
     font-family: 'Lato';
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     color: #c3ccd3;
     margin-block-start: auto;
-    padding-left: 55%;
-
+    margin-top: -2%;
+    margin-right: 5vw;
 }
 
 .successtxgreytextheader{
-    font-family: 'Lato';
-    font-size: 12px;
-    font-weight: medium;
-    color: #999999;
-    margin-left: 8%;
-    margin-bottom: -3%;
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-top: 1vh;
+}
+.successtxgreytextheadertitle{
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-top: 2vh;
 }
 
 .successtxgreytextheader2{
-    font-family: 'Lato';
-    font-size: 12px;
-    font-weight: medium;
-    color: #999999;
-    margin-left: 8%;
-    margin-top: -3%;
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-top: -2vh;
+    margin-bottom: 2vh;
 }
 
 .successtxblacktextheader{
     font-family: 'Lato';
-    font-size: 15px;
-    font-weight: bold;
-    color: #000000;
-    margin-left: 8%;
+    font-size: 18px;
+    color: #444444;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-bottom: 2vh;
 }
 
+.successtxblacktextheaderbottom{
+    font-family: 'Lato';
+    font-size: 18px;
+    color: #444444;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-bottom: 2vh;
+}
 .successtxwrongbox{
     display: flex;
     flex-direction: row;

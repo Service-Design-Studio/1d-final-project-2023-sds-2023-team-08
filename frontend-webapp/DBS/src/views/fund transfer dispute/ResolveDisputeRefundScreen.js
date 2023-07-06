@@ -6,14 +6,14 @@ const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, transactionID } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
-    const isPaynow = FTDtransactions['refund details']['recipient name'] !== 'nil'
+    const isPaynowDispute = FTDtransactions['refund details']['recipient name'] !== 'nil'
 
     const transactionData = {
         "dispute": true,
         "transaction id":transactionID,
         "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
         "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],
-        "recipient name":isPaynow ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account",
+        "recipient name":isPaynowDispute ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account",
         "recipient acc": FTDtransactions['refund details']['recipient acc'],
         "total amount":FTDtransactions['refund details']['total amount'],
         "comments": "Resolving Dispute"
@@ -42,7 +42,7 @@ const ResolveDisputeRefundScreen = () => {
                 <div className = 'sender_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>  {isPaynow ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account"}</p>
+                        <p className= 'accountname1'>  {isPaynowDispute ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account"}</p>
                         <div className= 'accountnumber1'>
                             <p className= 'accountnumber1'>{FTDtransactions['refund details']['recipient acc']}</p>
                         </div>  
