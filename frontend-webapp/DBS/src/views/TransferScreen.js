@@ -15,7 +15,7 @@ const TransferScreen = () => {
     const isPaynowDispute = FTDtransactions['refund details']['recipient name'] !== 'nil'
 
     const transactionData = {
-        "dispute": true,
+        "dispute": false,
         "transaction id":356362452636,
         "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
         "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],

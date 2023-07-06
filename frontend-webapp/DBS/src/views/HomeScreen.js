@@ -6,71 +6,74 @@ import BottomTabNavigator from './navigation/BottomTabNavigator';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const HomeScreen = () => {
-  const [anyFTD, setAnyFTD] = useState(false)
   const navigate = useNavigate();
   const { userID } = useParams();
   console.log(userID)
   
+  const numFTD = {"awaitingactionFTD": 2}
+  const anyFTD = numFTD['awaitingactionFTD'] >= 1
+
   return (
     <div className="container">
-        <div className='scrolx`lable'>
-          <div className='header'>
-            <div className='leftcontainer'>
-              <button className='transparent' onClick={() => {}}>
-                <img src='/assets/bellwhite.png' alt="bell" className='bell' />
-              </button>
-              <button className='transparent' onClick={() => {}}>
-                <img  src='/assets/eye.png' className='eye' />
-              </button>
-            </div>
+        <div className='scrollable'>
+          <div className='homeheader'>
+            <div className='header'>
+              <div className='leftcontainer'>
+                <button className='transparent' onClick={() => {}}>
+                  <img src='/assets/bellwhite.png' alt="bell" className='bell' />
+                </button>
+                <button className='transparent' onClick={() => {}}>
+                  <img  src='/assets/eye.png' className='eye' />
+                </button>
+              </div>
 
-            <div className='rightcontainer'>
-              <button className='transparent' onClick={() => {}}>
-                <img  src='/assets/help.png' className='help' />
-              </button>
-              <button  className='transparent' onClick={() => {}}>
-                <div className='logoutContainer'>
-                  <p className='logoutText'>LOG OUT</p>
-                </div>
-              </button>
-            </div>
-          </div>
-          
-          {anyFTD ? (
-          <div>
-            <div className='alertbody'>
-              <p className='textheaderftd1'>:( <span> </span>ALERT:</p>
-              <p className='textheaderftd2'> YOU HAVE 1 FUND TRANSFER DISPUTE</p>
-              <p className='textbodyftd'> It is encouraged to resolve the issue as soon as possible to prevent any implication with the 
-authorities.</p>
-            </div>
-
-            <div className='alertbutton' onClick={() => {}}>
-              <button className='transparent'>
-                <div className='buttonContainer'>
-                    <p className='buttonText'>RESOLVE NOW</p>
-                </div>
-              </button>      
-            </div>
-          </div>
-          ) : (
-          <div>
-            <div className='alertbody'>
-              <p className='textheader'> Make money work harder!</p>
-              <p className='textbody'> Find out how you can put your cash flows to good use and achieve a sustainable financial future.</p>
+              <div className='rightcontainer'>
+                <button className='transparent' onClick={() => {}}>
+                  <img  src='/assets/help.png' className='help' />
+                </button>
+                <button  className='transparent' onClick={() => {}}>
+                  <div className='logoutContainer'>
+                    <p className='logoutText'>LOG OUT</p>
+                  </div>
+                </button>
+              </div>
             </div>
             
-            <div className='alertbutton' onClick={() => {}}>
-              <button className='transparent'>
-                <div className='buttonContainer'>
-                    <p className='buttonText'>LET'S TALK</p>
-                </div>
-              </button>      
-            </div>
-          </div>
-          
-          )}
+            {anyFTD ? (
+            <div>
+              <div className='alertbody'>
+                <p className='textheaderftd1'>:(<span style={{ paddingLeft: '3vw' }}> </span>ALERT:</p>
+                <p className='textheaderftd2'> YOU HAVE {numFTD['awaitingactionFTD']} FUND TRANSFER DISPUTE{numFTD['awaitingactionFTD'] >1 ? 'S' : ''}</p>
+                <p className='textbodyftd'> It is encouraged to resolve the issue as soon as possible to prevent any implication with the 
+  authorities.</p>
+              </div>
 
+              <div className='alertbutton' onClick={() => navigate(`/${userID}/FTDtransactionsall`)}>
+                <button className='transparent'>
+                  <div className='buttonContainer'>
+                      <p className='buttonText'>RESOLVE NOW</p>
+                  </div>
+                </button>      
+              </div>
+            </div>
+            ) : (
+            <div>
+              <div className='alertbody'>
+                <p className='textheader'> Make money work harder!</p>
+                <p className='textbody'> Find out how you can put your cash flows to good use and achieve a sustainable financial future.</p>
+              </div>
+              
+              <div className='alertbutton' onClick={() => {}}>
+                <button className='transparent'>
+                  <div className='buttonContainer'>
+                      <p className='buttonText'>LET'S TALK</p>
+                  </div>
+                </button>      
+              </div>
+            </div>
+            
+            )}
+          </div>
           <div className='containertwo'>
             <p className='text'>Smart Shortcuts</p>
             <img  src='/assets/settings.png' className='setting' />

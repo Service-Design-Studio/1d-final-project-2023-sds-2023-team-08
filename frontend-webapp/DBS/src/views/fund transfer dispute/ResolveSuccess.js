@@ -10,7 +10,7 @@ const ResolveSuccess = (props) => {
     const {userID} = useParams();
  
     return (
-        <div className='overall1'>
+        <div className='RefuteDisputeMain'>
             <button onClick={() => navigate(`/${userID}/home`)} className='successtxtransparent'>X</button>
             <div className='successtxgreenbox'>
                 <img src='/assets/greentick.png' className='successtxgreentick' />
