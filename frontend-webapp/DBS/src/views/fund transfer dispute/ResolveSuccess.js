@@ -23,7 +23,7 @@ const ResolveSuccess = (props) => {
                 <p className='successtxdescriptboxblacktextop'> Amount in</p>
                 <div className='successtxdescriptboxtransparent'>
                     <p className='successtxdescriptboxtransparentleft'> SGD</p>
-                    <p className='successtxdescriptboxtransparentright'> {transactionDetails["total amount"]}</p>
+                    <p className='successtxdescriptboxtransparentright'> {transactionDetails["total amount"].toFixed(2)}</p>
                 </div>
             </div>
 

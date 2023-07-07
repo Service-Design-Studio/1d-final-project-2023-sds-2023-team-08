@@ -39,16 +39,18 @@
     justify-content: center;
 }
 
-.checkbox1,.checkbox2,.checkbox3 {
+.FTDcheckbox1,.FTDcheckbox2,.FTDcheckbox3 {
     font-family: 'Lato';
-    font-size: 15px;
+    font-size: 16px;
     border-bottom: 1px solid #e6e6e6;
     background-color: #F6F7F9;
-    padding-left: 5vw;
+    padding: 1vh 0;
+    padding-left: 4vw;
+
 }
 
 .checkboxtext {
-    padding-left: 3vw;
+    padding-left: 1vw;
 }
 
 .commentsBox {

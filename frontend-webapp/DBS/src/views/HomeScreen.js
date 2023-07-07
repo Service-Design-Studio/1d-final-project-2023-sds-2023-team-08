@@ -102,7 +102,7 @@ const HomeScreen = () => {
 
           <div className='containerthree'>
             <div className='"scrollview'>  
-              <button className='transparent' onClick={() => {}}>
+              <button className='transparent' onClick={() => navigate(`/${userID}/paynowrecipient`)}>
                 <div className='iconcontainer'>
                   <img  src='/assets/icons/paynow.png' className='icons' />
                   <p className='shortcut'>PayNow</p>

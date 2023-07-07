@@ -76,7 +76,7 @@ const ResolveDisputeRefundScreen = () => {
                     <p className='currency1'>SGD</p>
                 </div>
                 <div className='rightside1'>
-                    <p className='refundamount1'>{FTDtransactions['refund details']['total amount']}</p>
+                    <p className='refundamount1'>{FTDtransactions['refund details']['total amount'].toFixed(2)}</p>
                 </div>
             </div>
 

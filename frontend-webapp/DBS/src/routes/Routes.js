@@ -4,8 +4,6 @@ import HomeScreen from '../views/HomeScreen';
 import LoginScreen from '../views/LoginScreen';
 import RecentTransactionScreen from '../views/RecentTransactionScreen';
 import FTDTransactionScreen from '../views/FTDTransactionScreen';
-import RaiseFTDRecipient from '../views/fund transfer dispute/RaiseFTDRecipient';
-import RaiseFTDUser from '../views/fund transfer dispute/RaiseFTDUser';
 import FTDTransactionDetails from '../views/fund transfer dispute/FTDTransactionDetails';
 import RefuteDisputeReason from '../views/fund transfer dispute/RefuteDisputeReason';
 import RefuteSuccess from '../views/fund transfer dispute/RefuteSuccess';
@@ -51,6 +49,8 @@ const Routing = () => {
         <Route path="/:userID/review" element={<ReviewScreen />}/>
         <Route path="/:userID/success" element={<SuccessScreen />} />
         <Route path="/:userID/raiseFTD/:transactionID" element={<RaiseFTDScreen/>} />
+        <Route path="/:userID/paynowrecipient" element={<EnterRecipient />}/>
+        <Route path="/:userID/paynow" element={<PayNowTransactionPage />} />
       </Routes>
     </Router>
   );

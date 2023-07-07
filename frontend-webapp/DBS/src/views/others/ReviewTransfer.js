@@ -75,7 +75,9 @@ const ReviewTransfer = () => {
     return (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
-                <button id = 'backarrow' onClick={() => navigate(`/${userID}/refunddispute/${transactionData['transaction id']}`)} className='transparent'>
+                <button id = 'backarrow' onClick={() => isDispute
+                                                        ? navigate(`/${userID}/refunddispute/${transactionData['transaction id']}`)
+                                                        : navigate(`/${userID}/paynow`, {state: {"nickname":transactionData["recipient name"], "phonenumber": transactionData["recipient acc"]}})} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Review Transfer</p>
@@ -87,7 +89,7 @@ const ReviewTransfer = () => {
                         <p className='amountin'>Amount in</p>
                         <div className='ReviewTransferBoxBlueSubText'>
                             <p className='ReviewTransferBoxBlueSubTextLeft'>SGD</p>
-                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total amount']}</p>
+                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total amount'].toFixed(2)}</p>
                         </div>
                     </div>
                     <div className="ReviewTransferBoxWhite">

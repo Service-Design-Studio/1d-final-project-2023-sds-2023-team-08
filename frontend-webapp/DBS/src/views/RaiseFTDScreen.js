@@ -116,21 +116,21 @@ const RaiseFTDScreen = () => {
 
             {totalAmount < 0 ? (
             <div>
-                <div className='checkbox1'>
-                <input
-                    type='checkbox'
-                    id='transferWrongAccountCheckbox'
-                    checked={reason === 'Transfer to Wrong Account'}
-                    onChange={(event) => {
-                    const isChecked = event.target.checked;
-                    const updatedReason = isChecked ? 'Transfer to Wrong Account' : '';
-                    setReason(updatedReason);
-                    }}
-                />
-                <label className="checkboxtext" htmlFor='transferWrongAccountCheckbox'>Transfer to Wrong Account</label>
+                <div className='FTDcheckbox1'>
+                    <input
+                        type='checkbox'
+                        id='transferWrongAccountCheckbox'
+                        checked={reason === 'Transfer to Wrong Account'}
+                        onChange={(event) => {
+                        const isChecked = event.target.checked;
+                        const updatedReason = isChecked ? 'Transfer to Wrong Account' : '';
+                        setReason(updatedReason);
+                        }}
+                    />
+                    <label className="checkboxtext" htmlFor='transferWrongAccountCheckbox'>Transfer to Wrong Account</label>
                 </div>
 
-                <div className='checkbox2'>
+                <div className='FTDcheckbox2'>
                     <input
                     type='checkbox'
                     id='transferWrongAmountCheckbox'
@@ -161,7 +161,7 @@ const RaiseFTDScreen = () => {
             </div>
             ) : (
             <div>
-                <div className='checkbox3'>
+                <div className='FTDcheckbox3'>
                 <input
                     type='checkbox'
                     id='unknowntransaction'
