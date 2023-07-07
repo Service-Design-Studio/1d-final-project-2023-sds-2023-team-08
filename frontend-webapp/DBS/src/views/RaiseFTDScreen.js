@@ -1,6 +1,6 @@
 import React, { useState, useEffect , useRef} from 'react';
 import '../components/styles/RaiseFTDStyles.css';
-import '../components/styles/others/TransactionDetailsStyles.css';
+import '../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 

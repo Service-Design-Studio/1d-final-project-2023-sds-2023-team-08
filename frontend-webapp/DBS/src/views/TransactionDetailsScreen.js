@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FTDTransactionDetails from './fund transfer dispute/FTDTransactionDetails';
-import TransactionDetails from './others/TransactionDetails';
+import NormalTransactionDetails from './others/NormalTransactionDetails';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import TransactionJSON from '../testdata/transactionlist.json'
@@ -36,7 +36,7 @@ const TransactionDetailsScreen = () => {
       FTDtransaction ? (
         <FTDTransactionDetails FTDtransactions={TransactionDetailsJSON}/>
       ) : (
-        <TransactionDetails TransactionData={TransactionDetailsJSON}/>
+        <NormalTransactionDetails TransactionData={TransactionDetailsJSON}/>
       )
     );
   };

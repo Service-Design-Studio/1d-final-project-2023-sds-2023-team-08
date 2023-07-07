@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../../components/styles/others/TransactionDetailsStyles.css';
+import '../../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const TransactionDetails = (props) => {
+const NormalTransactionDetails = (props) => {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
     const {TransactionData} = props;
@@ -75,4 +75,4 @@ const TransactionDetails = (props) => {
     );
 };
 
-export default TransactionDetails;
+export default NormalTransactionDetails;
