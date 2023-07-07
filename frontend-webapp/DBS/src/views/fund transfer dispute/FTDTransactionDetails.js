@@ -11,7 +11,7 @@ const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
   const { userID, transactionID } = useParams();
   const { FTDtransactions } = props;
-  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] != undefined;
+  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] !== undefined;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient"
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed"
   const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"]
