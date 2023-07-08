@@ -30,11 +30,11 @@ const RefuteDisputeReason = () => {
       }
     
     function updateCharacterCount(textarea) {
-    const maxLength = parseInt(textarea.maxLength);
-    const currentLength = textarea.value.length;
-    const charactersLeft = maxLength - currentLength;
-    
-    document.getElementById('characterCount').textContent = charactersLeft;
+        const maxLength = parseInt(textarea.maxLength);
+        const currentLength = textarea.value.length;
+        const charactersLeft = maxLength - currentLength;
+        
+        document.getElementById('characterCount').textContent = charactersLeft;
     }
 
     return (

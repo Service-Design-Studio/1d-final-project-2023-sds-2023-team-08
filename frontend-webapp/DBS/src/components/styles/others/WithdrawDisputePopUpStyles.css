@@ -6,51 +6,20 @@
     background-color: #f6f6f6;
 }
 
-.tempbutontransparent {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-top: 30%;
-    margin-left: 6%;
-}
-
-.tempbuton{
-    display: flex;
-    width: 85vw;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border-color: #066DAF;
-    border: 2px solid #066DAF;
-    border-radius: 5px;
-}
-
-.tempbutontext{
-    font-family: 'Lato';
-    font-size: 17px;
-    color: #066DAf;
-    font-weight: bold;
-    word-spacing: 1vw;
-}
-
-.tempbutontext:active{
-    opacity: 0.5;
-}
-
 .wdpopgreyout{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 999;
 }
 
 .wdpopup{
     position: fixed;
     width: 70%;
-    height: 39%;
+    height: 35%;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -61,7 +30,7 @@
 
 .wdpopicon{
     font-family: 'Lato';
-    margin-top: -10%;
+    margin-top: -15%;
     font-size: 80px;
     font-weight: 1000;
     color: #A50303;
@@ -71,18 +40,18 @@
 .wdpopheader{
     font-family: 'Lato';
     font-size: 25px;
-    color: #000000;
+    color: #444444;
     font-weight: bold;
     margin: auto;
-    margin-left: 15%;
-    margin-top: -27%;
+    margin-top: -30%;
+    text-align: center;
 }
 
 .wdpoptext{
     font-family: 'Lato';
-    font-size: 14px;
-    color: #000000;
-    margin-bottom: 8%;
+    font-size: 15px;
+    color: #444444;
+    margin-bottom: 7%;
     font-weight: 550;
 }
 
@@ -96,24 +65,32 @@
 
 .wdpopbuttonblue{
     display: flex;
-    height: 14%;
+    height: 15%;
     width: 100%;
     align-items: center;
     justify-content: center;
     background-color:#066DAf;
     border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.wdpopbuttonblue :active
+.wdpopbuttonred :active{
+    opacity: 0.5;
 }
 
 .wdpopbuttontextblue{
     font-family: 'Lato';
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     color: #ffffff;
 }
 
 .wdpopbuttonred{
     display: flex;
-    height: 13%;
+    height: 15%;
     width: 100%;
     margin: auto;
     align-items: center;
@@ -129,7 +106,7 @@
 
 .wdpopbuttontextred{
     font-family: 'Lato';
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     color: #A50303;
 }

@@ -2,19 +2,35 @@ import React, {useState, useEffect} from 'react';
 import '../../components/styles/fund transfer dispute/FTDTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import WithdrawDisputePopUp from '../others/WithdrawDisputePopUp';
 
 function getFTDTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.disputedate === specificDate);
 }
+
 
 const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
   const { userID, transactionID } = useParams();
   const { FTDtransactions } = props;
   const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] !== undefined;
-  const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient"
-  const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed"
-  const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"]
+  const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
+  const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";
+  const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"];
+  
+  const [wdpopshowPopup, setwdpopShowPopup] = useState(false);
+
+  const withdrawConfirm = () => {
+        setwdpopShowPopup(true);
+  };
+
+  const withdrawData = {}
+  withdrawData['disputedate'] = FTDtransactions.disputedate;
+  withdrawData['total amount'] = FTDtransactions.transaction.transactiondetails['total amount'];
+  withdrawData['transaction type'] = FTDtransactions.transaction.transactiondetails['transaction type'];
+  withdrawData['reason'] = FTDtransactions.transaction.FTDdetails["reason"];
+  withdrawData['comments'] = FTDtransactions.transaction.FTDdetails["comments"];
+  withdrawData['withdrawn'] = true;
 
   return (
     <div className='RefuteDisputeMain'>
@@ -84,9 +100,9 @@ const FTDTransactionDetails = (props) => {
                     <div className='transactiondetailedexplained'>
                         <p className='transactiondetailsstatusdetails'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>
                     </div>
-                    <button className='withdrawbutton'>WITHDRAW DISPUTE</button>
+                    <button className='withdrawbutton' onClick={withdrawConfirm}>WITHDRAW DISPUTE</button>
+                    { wdpopshowPopup && (<WithdrawDisputePopUp onClose={() => setwdpopShowPopup(false)} data = {withdrawData}/>)}
                 </div>
-
             ) : (
                 <div className='transactiondetailedexplained'>
                         <p className='transactiondetailsstatusdetails'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>

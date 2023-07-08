@@ -195,7 +195,7 @@
 .txdpopheader{
     font-family: 'Lato';
     font-size: 25px;
-    color: #000000;
+    color: #444444;
     font-weight: bold;
     margin: auto;
     margin-left: 20%;
@@ -205,7 +205,7 @@
 .txdpoptext{
     font-family: 'Lato';
     font-size: 15px;
-    color: #000000;
+    color: #444444;
     margin-bottom: 7%;
     font-weight: 500;
 }
