@@ -4,27 +4,26 @@ import HomeScreen from '../views/HomeScreen';
 import LoginScreen from '../views/LoginScreen';
 import RecentTransactionScreen from '../views/RecentTransactionScreen';
 import FTDTransactionScreen from '../views/FTDTransactionScreen';
-import RaiseFTDRecipient from '../views/fund transfer dispute/RaiseFTDRecipient';
-import RaiseFTDUser from '../views/fund transfer dispute/RaiseFTDUser';
 import FTDTransactionDetails from '../views/fund transfer dispute/FTDTransactionDetails';
 import RefuteDisputeReason from '../views/fund transfer dispute/RefuteDisputeReason';
 import RefuteSuccess from '../views/fund transfer dispute/RefuteSuccess';
 import ResolveDisputeRefundScreen from '../views/fund transfer dispute/ResolveDisputeRefundScreen';
 import ReviewRefute from '../views/fund transfer dispute/ReviewRefute';
-import ResolveSuccess from '../views/fund transfer dispute/ResolveSuccess';
 import ReviewTransfer from '../views/others/ReviewTransfer';
-import TransactionDetails from '../views/others/TransactionDetails';
 import EnterRecipient from '../views/paynow/EnterRecipient';
 import PayNowTransactionPage from '../views/paynow/PayNowTransactionPage';
-import TransactionSucess from '../views/paynow/TransactionSuccess';
 import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
+import TransferSuccessScreen from '../views/others/TransferSuccessScreen';
+import ReviewScreen from '../views/ReviewScreen';
+import SuccessScreen from '../views/SuccessScreen';
+import RaiseFTDScreen from '../views/RaiseFTDScreen';
 
 const Routing = () => {
   const world = { currentLocation: null };
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomeScreen />} />
+        <Route path="/" element={<LoginScreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/invest" element={<HomeScreen />} />
         <Route path="/pay" element={<HomeScreen/>} />
@@ -46,7 +45,12 @@ const Routing = () => {
         <Route path="/:userID/FTDtransactionsall" element={<FTDTransactionScreen />} />
         <Route path="/:userID/:transactionID" element={<TransactionDetailsScreen />}/>
         <Route path="/:userID/refunddispute/:transactionID" element={<ResolveDisputeRefundScreen />}/>
-        <Route path="/:userID/reviewtransaction" element={<ReviewTransfer />}/>
+        <Route path="/:userID/refutedispute/:transactionID" element={<RefuteDisputeReason />}/>
+        <Route path="/:userID/review" element={<ReviewScreen />}/>
+        <Route path="/:userID/success" element={<SuccessScreen />} />
+        <Route path="/:userID/raiseFTD/:transactionID" element={<RaiseFTDScreen/>} />
+        <Route path="/:userID/paynowrecipient" element={<EnterRecipient />}/>
+        <Route path="/:userID/paynow" element={<PayNowTransactionPage />} />
       </Routes>
     </Router>
   );

@@ -13,6 +13,78 @@
     position: absolute
 }
 
+.txnbox1{
+    background-color: #162633;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.leftside{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: transparent;
+    margin: 4vh 0 0 0;
+    padding-left: 5vw;
+}
+
+.amountin1{
+    color: #C3CCD3;
+    font-size: 13px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.currency1{
+    color: #C3CCD3;
+    font-size: 24px;
+    font-family: 'Lato';
+    font-weight: 600;
+    background-color: transparent;
+    margin: 0.5vh 0 2.5vh 0;
+}
+
+.rightside{
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+    margin-right: 5vw;
+}
+
+.refundamount{
+    align-self: right;
+    font-size: 28px;
+    color:white;
+    font-family: 'Lato';
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+    margin-top: 4vh;
+    background-color: #162633;
+    text-align: right;
+    width: 50vw;
+    border: none;
+}
+.refundamount::placeholder{
+    color: white;
+}
+
+.WarningNoAmountPaynow {
+    margin-left: 4vw;
+    color: #FF2C4E;
+    font-family: 'Lato';
+    font-size: 14px;
+    margin-bottom: 1vh;
+    padding: 0;
+    margin-top: 1vh;
+}
+
 .bibibaba{
     margin:0;
     padding:0;
@@ -30,20 +102,18 @@
     background-color: transparent;
     margin: 1vh 0 1vh 0;
     padding-left: 5vw;
-    font-size: 12px;
+    font-size: 13px;
     font-family: 'Lato';
-    font-weight: 600;
-    color: #999999;
+    color: #909090;
 }
 
 .rightPNT{
     background-color: transparent;
     padding-right: 5vw;
     margin: 1vh 0 1vh 0;
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Lato';
-    color: black;
-    font-weight: 600;
+    color: #444444;
 }
 
 .authorisedPNT{
@@ -52,11 +122,6 @@
     padding: 0;
 }
 
-.remainingPNT{
-    background-color: transparent;
-    margin: 1vh 0 0 0;
-    padding: 0;
-}
 
 .AcategoryamountPNT{
     align-self: right;
@@ -64,30 +129,23 @@
     padding: 0;
 }
 
-.RcategoryamountPNT{
-    align-self: right;
-    margin: 1vh 0 0 0;
-    padding: 0;
-}
-
 
 .changelimitPNT{
-    padding: 2vh 0 2vh 5vw;
+    padding: 0.5vh 0 2.5vh 5vw;
     margin: 0 0 0 0;
     width: 95vw;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 14px;
     font-family: 'Lato';
     background-color: #F6F7F9;
+    color: #444444;
 }
 
 .trfdeetsPNT{
-    font-size: 12px;
+    font-size: 13px;
     font-family: 'Lato';
-    color: #999999;
-    font-weight: 600;
+    color: #909090;
     background-color: #F6F7F9;
-    padding: 1vh 0 1vh 5vw;
+    padding: 1vh 0 2vh 5vw;
     margin: 0vh;
     width: 95vw;
 }
@@ -100,24 +158,24 @@
     max-height: 100vh;
     background-color: #F6F7F9;
     top: 0;
-    height: 28vh;
+    height: 35vh;
 }
 
 .addcommentsPNT{
-    font-size: 14px;
+    font-size: 12.5px;
     font-family: 'Lato';
-    font-weight: 800;
-    color: #999999;
+    color: #909090;
     background-color: transparent;
-    margin: 2vh 0 2vh 5vw;
+    margin: 2vh 0 0.5vh 5vw;
 }
 
 .commentsPNT{
-    font-size: 16px;
+    font-size: 17px;
     font-family: 'Lato';
-    font-weight: 800;
-    margin: 0vh 0 2vh 5vw;
+    margin: 0vh 0 1vh 4.5vw;
     background-color: transparent;
+    border: none;
+    padding: 0;
 }
 
 .LIMITSbutton1{

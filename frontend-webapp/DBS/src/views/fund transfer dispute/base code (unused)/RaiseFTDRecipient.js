@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../components/styles/fund transfer dispute/RaiseFTDUserRecipientStyles.css';
+import '../../../components/styles/fund transfer dispute/RaiseFTDUserRecipientStyles.css';
 
 function RaiseFTDRecipient() {
   //-------------------------------- Code for State Variables -----------------------------------

@@ -159,7 +159,6 @@
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #d2d2d2;
-  border-top: 1px solid #d2d2d2;
 }
 
 .date {
@@ -175,20 +174,21 @@
   border-bottom: 1px solid #d2d2d2;
 }
 
-.transactionheader {
+.transactionheadercontainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
   padding: 0 3vw;
   margin: 0;
+  width: 97vw;
 }
 
-.transactiontitle {
+.transactiontitletext {
   font-family: 'Lato';
   font-size: 17px;
   color: #444444;
-  width: 84vw;
+  width: 90vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

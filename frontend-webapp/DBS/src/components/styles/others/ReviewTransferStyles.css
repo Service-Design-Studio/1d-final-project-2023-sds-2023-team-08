@@ -9,8 +9,9 @@
     width: 90vw;
     border-radius: 10px;
     background: linear-gradient(to bottom, #162633 0%, #162633 25%, white 25%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     height: auto;
+    margin-bottom: 5vh;
 }
 
 
@@ -74,6 +75,7 @@
     margin-bottom: 2vh;
 }
 .reviewtext {
+    font-family: 'Lato';
     font-size: 16px;
     color: #a3a3a3;
     padding: 0;
@@ -111,6 +113,7 @@
     font-size: 18px;
     font-family: "Lato";
     background-color:#066DAF ;
+    font-weight: bold;
     color: white;
     border: none;
     width: 90vw;

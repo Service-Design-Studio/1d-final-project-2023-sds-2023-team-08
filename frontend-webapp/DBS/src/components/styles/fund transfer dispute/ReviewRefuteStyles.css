@@ -1,150 +1,94 @@
-.rerebase{
-    height: 100vh;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: #f6f6f6;
-}
-
-.reretopbar{
-    height: 6%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 1px solid #DFDFDF;
-}
-
-.rerebacktx {
-    object-fit: contain;
-    width: 3.5vw;
-}
-
-.rerebacktx:active{
-    opacity: 0.5;
-}
-
-.reretransparent {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding-left: 3vw;
-    margin-top: 1vh;
-}
-
-.reretopbartext {
-    font-family: 'Lato';
-    font-size: 16px;
-    color: #000000;
-    font-weight: bold;
-    margin-right: auto;
-    padding-left: 3%;
-    padding-top: 1%;
-}
-
-.reremoneyinarow{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 7%;
-    padding-right: 5%;
-    margin-top: 5%;
-}
-
-.reremoneytext{
-    font-family: 'Lato';
-    font-size: 18px;
-    color: #a3a3a3;
-    font-weight: 600;
-    justify-content: center;
-    padding-top: 0.5%;
-    padding-right: 1.5%;
-}
-
-.reremoneytext2{
+.reremoneytext2in{
     font-family: 'Lato';
     font-size: 40px;
     justify-content: center;
     font-weight: bold;
     padding-bottom: 4%;
-}
-
-.reresender-color {
     color: #007D23;
 }
-  
-.rererecipient-color {
-    color: #000000;
+.reremoneytext2out{
+    font-family: 'Lato';
+    font-size: 40px;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 4%;
+    color: #444444;
 }
 
 .reredescriptionbox{
-    height: 38%;
     width: 85%;
     margin: auto;
-    margin-top: 2%;
-    outline: 1px solid #dcdcdc;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
     background-color: #ffffff;
-    padding-top: 3%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
 }
-
+.rereboxtextheadertitle{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-top: 2.5vh;
+}
 .rereboxtextheader{
     font-family: 'Lato';
-    font-size: 12px;
-    font-weight: medium;
-    color: #999999;
-    margin-left: 8%;
-    margin-bottom: -3%;
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-top: 1vh;
 }
 
 .rereboxtextcontent{
     font-family: 'Lato';
-    font-size: 15px;
-    font-weight: bold;
-    color: #000000;
-    margin-left: 8%;
+    font-size: 18px;
+    color: #444444;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-bottom: 2vh;
 }
-
+.rereboxtextcontentbottom{
+    font-family: 'Lato';
+    font-size: 18px;
+    color: #444444;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+    margin-bottom: 2.5vh;
+}
 .rerewarntext{
     font-family: 'Lato';
-    font-size: 12px;
+    font-size: 14px;
     font-weight: medium;
-    color: #6c6c6c;
-    margin-left: 8%;
-    margin-right: 7%;
-    margin-bottom: -3%;
-    word-spacing: 2px;
+    color: #444444;
+    max-width: 85%;
+    margin: auto;
+    margin-top: 2vh;
 }
 
-.reretransparentbutton {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin: 0vh 7%;
-    margin-top: 40%;
-}
-
-.rerefutebutton{
-    display: flex;
-    width: 85vw;
-    align-items: center;
-    justify-content: center;
-    background-color:#A50303;
+.SubmitButtonRed {
+    margin: 0 5vw 0vh 5vw;
+    padding: 2vh;
     border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#A50303 ;
+    color: white;
+    border: none;
+    width: 90vw;
+    position: absolute;
+    bottom: 4vh;
 }
 
-.rerefutebuttontext{
-    font-family: 'Lato';
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: 500;
-    word-spacing: 1vw;
-}
 
-.rerefutebutton:active{
-    opacity: 0.6;
-}
-
-.rerefutebuttontext:active{
-    opacity: 0.6;
+.SubmitButton:active{
+    opacity: 0.5;
+    transition: none;
 }

@@ -11,18 +11,18 @@ const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
   const { userID, transactionID } = useParams();
   const { FTDtransactions } = props;
-  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] != undefined;
+  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] !== undefined;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient"
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed"
   const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"]
 
   return (
     <div className='RefuteDisputeMain'>
-        <div className='header2transaction'>
+        <div className='RefuteDisputeHeader'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/FTDtransactionsall`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
-          <p className='headertext'>Dispute Details</p>
+          <p className='RefuteDisputeHeaderText'>Dispute Details</p>
         </div>
 
         <div className='disputecontainer'>
@@ -32,7 +32,7 @@ const FTDTransactionDetails = (props) => {
             </div>
 
             <div className='transactdatecontainer'>
-                <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["transaction date"]}</p>
+                <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["date"]}</p>
             </div>
 
             <div className='transactiondetailscontainerbox'>
@@ -64,7 +64,7 @@ const FTDTransactionDetails = (props) => {
                     </div>
 
                     <button className='refundbutton' onClick={() => navigate(`/${userID}/refunddispute/${transactionID}`)}><b>YES</b> - REFUND</button>
-                    <button className='refutebutton'><b>NO</b> - REFUTE</button>
+                    <button className='refutebutton' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)}><b>NO</b> - REFUTE</button>
                 </div>
             ) : isrecipient && refuted ? (
                 <div className='reasoncontainer'>

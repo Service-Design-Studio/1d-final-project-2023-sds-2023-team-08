@@ -1,32 +1,49 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../components/styles/fund transfer dispute/ResolveDisputeRefundScreenStyles.css';
 import ftdrecipientjson from '../../testdata/ftdrecipient.json';
+import axios from 'axios';
+
 
 const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, transactionID } = useParams();
     const FTDtransactions = ftdrecipientjson[1];
-    const isPaynow = FTDtransactions['refund details']['recipient name'] !== 'nil'
+    const isPaynowDispute = typeof FTDtransactions['refund details']['recipient name'] === 'int'
+
+  // const [FTDtransactions, setFTDtransactions] = useState([])
+  // useEffect(() => {
+  //   const fetchFTDrefund = async () => {
+  //     try {
+  //       const response = await axios.get(`link to refund details`);
+  //       setFTDtransactions(response.data);
+  //       console.log(FTDtransactions)
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchFTDrefund();
+  // }, []);
 
     const transactionData = {
         "dispute": true,
         "transaction id":transactionID,
         "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
         "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],
-        "recipient name":isPaynow ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account",
+        "recipient name":FTDtransactions['refund details']['recipient name'],
         "recipient acc": FTDtransactions['refund details']['recipient acc'],
         "total amount":FTDtransactions['refund details']['total amount'],
-        "comments": "Resolving Dispute"
+        "comments": "Resolving Dispute",
+        "mode of payment": isPaynowDispute ? "FAST / PayNow Transfer" : "Account Transfer",
     }
 
 
     return(
         <div className = "overall1">
-            <div className='padforRF1'>
+            <div className='RefuteDisputeHeader'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/${transactionID}`)}>
                     <img src = '/assets/back.png' className = 'back'/>
                 </button>
-                <p className='headertitle5'>Refund Dispute</p>
+                <p className='RefuteDisputeHeaderText'>Refund Dispute</p>
             </div>
 
             <div className = 'container_parties1'>
@@ -42,7 +59,7 @@ const ResolveDisputeRefundScreen = () => {
                 <div className = 'sender_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>  {isPaynow ? FTDtransactions['refund details']['recipient name'] : "Disputing Party's account"}</p>
+                        <p className= 'accountname1'>  {FTDtransactions['refund details']['recipient name']}</p>
                         <div className= 'accountnumber1'>
                             <p className= 'accountnumber1'>{FTDtransactions['refund details']['recipient acc']}</p>
                         </div>  
@@ -59,7 +76,7 @@ const ResolveDisputeRefundScreen = () => {
                     <p className='currency1'>SGD</p>
                 </div>
                 <div className='rightside1'>
-                    <p className='refundamount1'>{FTDtransactions['refund details']['total amount']}</p>
+                    <p className='refundamount1'>{FTDtransactions['refund details']['total amount'].toFixed(2)}</p>
                 </div>
             </div>
 
@@ -73,7 +90,7 @@ const ResolveDisputeRefundScreen = () => {
             </div>
 
             <p className='tncforrefund1'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
-            <button id='submitrefund1' className='submitbutton1' onClick={()=>navigate(`/${userID}/reviewtransaction`, {state : transactionData})}>SUBMIT</button>
+            <button id='submitrefund1' className='submitbutton1' onClick={()=>navigate(`/${userID}/review`, {state : transactionData})}>SUBMIT</button>
         </div>
     );
 

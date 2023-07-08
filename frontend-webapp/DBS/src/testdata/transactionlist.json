@@ -134,6 +134,37 @@
             "withdrawable":false
             }
         }
+    },
+
+    {
+      "transaction": {
+          "transactiondetails": {
+            "date": "Tues, 30 May 2023",
+              "transaction name": "PayNow Transfer to: Valencia OTHR",
+              "transaction type": "FAST / PayNow Transfer",
+              "account number": "539-23421-2",
+              "total amount": -17.30,
+              "transaction ID": 4353462235,
+              "FTD": false
+          },
+          "FTDdetails": {
+          }
+      }
+  },
+  {
+    "transaction": {
+        "transactiondetails": {
+            "date": "Tues, 30 May 2023",
+            "transaction name": "PayNow Transfer from: Tristan OTHR",
+            "transaction type": "FAST / PayNow Transfer",
+            "account number": "539-23421-2",
+            "total amount": 56,
+            "transaction ID": 242353463,
+            "FTD": false
+        },
+        "FTDdetails": {
+        }
     }
+}
 ]
   

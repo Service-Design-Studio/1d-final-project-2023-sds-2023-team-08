@@ -140,25 +140,6 @@
     font-weight: 800;
 }
 
-.reasonFTD{
-    background-color: #f0f0f0;
-    border-top: 1px solid #a7a7a7;
-    border-bottom: 1px solid #d4d4d4;
-    display: flex;
-    flex-direction: row;
-    padding-left: 3vw;
-}
-
-.reasonFTDtext {
-    font-family: 'Lato';
-    white-space: nowrap;
-    color: #000000;
-    font-weight: 800;
-    font-size: small;
-    justify-content: center;
-
-}
-
 
 .borderless-input {
     border: none;
@@ -198,12 +179,6 @@
     padding-top: 1.5vh;
     padding-left: 5vw;
     padding-bottom: 0.5vh; 
-}
-
-.commentsBox {
-    background-color: transparent;
-    border-bottom: 1px solid #e6e6e6 ;
-    width: 100vw;
 }
 
 .commentsLiterally {

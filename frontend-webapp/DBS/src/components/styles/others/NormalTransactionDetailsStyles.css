@@ -128,49 +128,38 @@
 }
 
 .sharebutton{
-    display: flex;
-    width: 90vw;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    background-color:#066DAF;
-    margin: 4vh 5vw 1.5vh 5vw;
+    margin: 4vh 5vw 0vh 5vw;
+    padding: 2vh;
     border-radius: 5px;
-}
-
-.sharebuttontext{
-    font-family: 'Lato';
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: 500;
-}
-
-.sharebuttontext:active{
-    opacity: 0.5;
-}
-
-.FTDbutton{
-    display: flex;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#066DAF ;
+    color: white;
+    border: none;
     width: 90vw;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    margin: 0vh 5vw;
-    border-radius: 5px;
-    background-color: #1d0c86;
 }
-
-.FTDbuttontext{
-    font-family: 'Lato';
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: 500;
-    word-spacing: 1vw;
-}
-
-.FTDbuttontext:active{
+.sharebutton:active{
     opacity: 0.5;
+    transition: none;}
+
+.FTDbutton1 {
+    margin: 1.5vh 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
 }
+
+
+.FTDbutton1:active{
+    opacity: 0.5;
+    transition: none;
+}
+
 
 .txdgreyout{
     position: fixed;

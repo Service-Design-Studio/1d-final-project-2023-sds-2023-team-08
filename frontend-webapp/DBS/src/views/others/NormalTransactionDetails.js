@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../../components/styles/others/TransactionDetailsStyles.css';
+import '../../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const TransactionDetails = (props) => {
+const NormalTransactionDetails = (props) => {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
     const {TransactionData} = props;
@@ -15,13 +15,13 @@ const TransactionDetails = (props) => {
       if (totalFundDisputeSent['ftd today'] >= 10) {
         setShowPopup(true);
       } else {
-        //navigate to raise fund transfer dispute form
+        navigate(`/${userID}/raiseFTD/${transactionID}`, {state : TransactionData.transaction.transactiondetails})
       }
     };
 
-  const closePopup = () => {
-    setShowPopup(false);
-  };
+    const closePopup = () => {
+      setShowPopup(false);
+    };
 
     return (
         <div className='ftdbase'> 
@@ -31,11 +31,11 @@ const TransactionDetails = (props) => {
 
             <div className='moneyinarow'>
                 <p className='moneytext'> SGD</p>
-                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount']}</p>            
+                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount'].toFixed(2)}</p>            
             </div>
             
             <div>
-              <p className='txdatetext'> {TransactionData.transaction.transactiondetails['transaction date']}</p>
+              <p className='txdatetext'> {TransactionData.transaction.transactiondetails['date']}</p>
             </div>
 
             <div className='scriptbox'>
@@ -50,17 +50,9 @@ const TransactionDetails = (props) => {
                 </div>
             </div>
 
-            <button onClick={() => {}} className='transparent'>
-                <div className='sharebutton'>
-                    <p className='sharebuttontext'> SHARE </p>
-                </div>
-            </button>
+            <button onClick={() => {}} className='sharebutton'>SHARE</button>
 
-            <button className='transparent' onClick={submitFundDispute}>
-                <div className='FTDbutton'>
-                    <p className='FTDbuttontext'> RAISE A FUND DISPUTE</p>
-                </div>
-            </button>
+            <button className='FTDbutton1' onClick={submitFundDispute}>RAISE A FUND DISPUTE</button>
 
             {showPopup && (
               <div className='txdgreyout'>
@@ -83,4 +75,4 @@ const TransactionDetails = (props) => {
     );
 };
 
-export default TransactionDetails;
+export default NormalTransactionDetails;
