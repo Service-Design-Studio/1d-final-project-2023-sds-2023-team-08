@@ -3,7 +3,7 @@ import '../../components/styles/fund transfer dispute/RefuteSuccessStyles.css';
 import '../../components/styles/fund transfer dispute/ResolveSuccessStyles.css'
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-const RaiseFTDSuccess = () => {
+const WithdrawSuccess = () => {
     const navigate = useNavigate();
     const { userID } = useParams();
     const location = useLocation();
@@ -17,15 +17,15 @@ const RaiseFTDSuccess = () => {
                 <img src='/assets/greentick.png' className='successtxgreentick' />
             </div>
             <div style ={{padding:".5vw"}}></div>
-            <p className='successheadertext'> Fund Transfer Dispute Raised</p>
+            <p className='successheadertext'> Withdraw Success</p>
             <div style ={{padding:"1vw"}}></div>
             <p className='successtxdate'>on {FTDDetails["date and time"]}</p>
             <div style ={{padding:"1vw"}}></div>
             
             <div className='popboxRS'>
                 <div className='subpopboxRS'>
-                    <p className='raisedonRS'>Transaction Date</p>
-                    <p className='ansRS'>{FTDDetails["date"]}</p>
+                    <p className='raisedonRS'>Raised On</p>
+                    <p className='ansRS'>{FTDDetails["disputedate"]}</p>
                 </div>
                 <div className='subpopboxRS'>
                     <p className='qnRS'>Transaction Type</p>
@@ -41,11 +41,11 @@ const RaiseFTDSuccess = () => {
                 </div>
             </div>
             
-            <p className='tncforrefund'>The other party will be notified of your Fund Transfer Dispute. No further action is required on your part.</p>
+            <p className='tncforrefund'>The other party will be notified of your withdrawal. No further action is required on your part.</p>
             <button id='closebutton' className='submitbutton1' onClick={()=>{}}>SHARE DISPUTE DETAILS</button>
         </div>
 
     );
 };
 
-export default RaiseFTDSuccess;
+export default WithdrawSuccess;

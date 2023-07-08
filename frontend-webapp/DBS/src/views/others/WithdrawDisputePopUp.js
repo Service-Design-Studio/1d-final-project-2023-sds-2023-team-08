@@ -1,28 +1,88 @@
 import React, { useState, useEffect } from 'react';
 import '../../components/styles/others/WithdrawDisputePopUpStyles.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const WithdrawDisputePopUp = () => {
+
+const WithdrawDisputePopUp = ({ onClose, data }) => {
     const navigate = useNavigate();
-    const [wdpopshowPopup, setwdpopShowPopup] = useState(false);
+    const {userID, transactionID}  = useParams();
+    const [csrfToken, setCsrfToken] = useState('')
 
-    const wdpopopenPopup = () => {
-        setwdpopShowPopup(true);
-    };
+    useEffect(() => {
+        const fetchCSRFData = async () => {
+          try {
+            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); // update link to get new csrftoken?
+            const Token = response.data.csrfToken;
+            setCsrfToken(Token);
+          } 
+          
+          catch (error) {
+            console.log(error)
+          }
+        };
     
+        fetchCSRFData();
+      }, []);
+
     const wdpopclosePopup = () => {
-        setwdpopShowPopup(false);
+        onClose();
     };
+
+    
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+        let WithdrawData= data
+        let TransaactionWithdraw = {}
+
+        try{
+            const now = new Date();
+            const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
+            const currentDate = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).replace(',', '');
+            const currentHour = now.getHours().toString().padStart(2, '0'); 
+            const currentMinutes = now.getMinutes().toString().padStart(2, '0'); 
+            const currentTime = `${currentHour}:${currentMinutes}`;
+
+            //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
+            WithdrawData['date and time'] = `${currentDate} ${currentTime}`
+            WithdrawData['day and date'] =  `${currentDay}, ${currentDate}`
+            console.log(WithdrawData)
+            
+            TransaactionWithdraw['date and time'] = `${currentDate} ${currentTime}`
+            TransaactionWithdraw['day and date'] =  `${currentDay}, ${currentDate}`
+            TransaactionWithdraw['status'] = 'Withdrawn'
+            TransaactionWithdraw['transactionID'] = transactionID
+            console.log(TransaactionWithdraw)
+
+            const response = await axios.post(
+                'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', 
+                { TransaactionWithdraw },
+                {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+                }
+            );
+            if (response.data.success) {
+                navigate(`/${userID}/success`, {state: WithdrawData})
+            }
+
+            else{
+            }
+        }
+
+        catch (error) {
+            console.log('Error:', error.toJSON());
+            navigate(`/${userID}/success`, {state: WithdrawData})
+          }
+        };
+    
 
     return(
         <div className='wdpopbase'>
-            <button onClick={wdpopopenPopup} className='tempbutontransparent'>
-                <div className='tempbuton'>
-                    <p className='tempbutontext'> WITHDRAW DISPUTE</p>
-                </div>
-            </button>
 
-        {wdpopshowPopup && (
             <div className='wdpopgreyout'>
                 <div className='wdpopup'>
                     <p className='wdpopicon'> !</p>
@@ -33,8 +93,7 @@ const WithdrawDisputePopUp = () => {
                     and you will not be able to raise a fund transfer dispute for this particular transaction again.
                     </p>
 
-                    {/* Change navigate to whatever is required */}
-                    <button onClick={() => navigate(`/plan`)} className='wdpopbuttonblue'>
+                    <button onClick={handleSubmit} className='wdpopbuttonblue'>
                         <p className='wdpopbuttontextblue'>OK, PROCEED AND WITHDRAW</p>
                     </button>
                     <button onClick={wdpopclosePopup} className='wdpopbuttonred'>
@@ -42,7 +101,6 @@ const WithdrawDisputePopUp = () => {
                     </button>
                 </div>
             </div>
-            )}
         </div>
     );
 };

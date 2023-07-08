@@ -17,7 +17,6 @@ import TransferSuccessScreen from '../views/others/TransferSuccessScreen';
 import ReviewScreen from '../views/ReviewScreen';
 import SuccessScreen from '../views/SuccessScreen';
 import RaiseFTDScreen from '../views/RaiseFTDScreen';
-import WithdrawDisputePopUp from '../views/others/WithdrawDisputePopUp';
 
 const Routing = () => {
   const world = { currentLocation: null };
