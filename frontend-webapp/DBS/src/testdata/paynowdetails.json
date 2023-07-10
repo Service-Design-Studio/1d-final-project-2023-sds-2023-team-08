@@ -2,15 +2,15 @@
     {   
         "date": "Sat, 30 Jun 2023",
         "senderdetails":{
-            "sender name": "Evelyn Chew",
+            "sender paynow name": "limpeh",
+            "sender bank acc name": "DBS Multiplier",
             "sender mobile": "81234567",
-            "sender account number": "533-12345-1",
-            "authorised limit": "40,000.00",
-            "remaining limit": "40,000.00"
+            "sender account number": "533-12345-1"
         },
+
         "recipientdetails":{
-            "recipient name": "Jesslyn Tan",
-            "recipient mobile": "87654321",
+            "recipient paynow name": "Tan kuku",
+            "recipient bank acc number":"DBS Savings",
             "recipient account number": "533-12345-2"
         },
         "txndetails":{

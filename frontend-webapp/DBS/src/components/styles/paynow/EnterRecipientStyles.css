@@ -1,20 +1,8 @@
-
-.padforER1{
-    flex: 1;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0 1vh 0;
-    background-color: #F6F7F9;
-}
-
-.paynowheadercontainer1{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    background-color: white;
+.overall{
     width: 100vw;
+    height: 100vh;
+    background-color: #f6f6f6;
 }
-
 
 .pntentermobileER{
     font-size: 12px;
@@ -23,6 +11,7 @@
     color: #767676;
     padding-top: 2vh;
     padding-left: 2vh;
+    padding-bottom: 1vh;
     background-color: transparent;
 }
 
@@ -35,10 +24,9 @@
 }
 
 .enternameER{
-    color: #b5b5b5;
-    font-size: 14px;
+    color: #a0a0a0;
+    font-size: 15px;
     font-family: 'Lato';
-    font-weight: 600;
     padding: 0 0 0 4vw;
     background-color: transparent;
 }
@@ -48,16 +36,16 @@
     flex-direction: row;
     width: 100vw;
     background-color: transparent;
-    padding: 0 0 0 1vw;
+    align-content: flex-start;
+    justify-content: flex-start;
 }
 
 .phonenumberER{
     font-size: 18px;
     font-family: 'Lato';
-    font-weight: 800;
     background-color: transparent;
-    color: black;
-    margin: -3vh 0 0 0;
+    color: #444444;
+    margin-top: -4vh;
 }
 
 .plussixfiveER{
@@ -72,25 +60,44 @@
 
 .forwardarrowER{
     height: 1.5vh;
-    width: 1.5vh;
-    padding-top: 2.1vh;
-    padding-left: 0.5vh;
+    object-fit: cover;
+    padding-top: 1.5vh;
+    padding-left: 1.5vw;
 }
 
+.formcontainer{
+    margin-left: 2vw;
+    margin-top: -0.2vh;
+}
 .eightdigitER{
-    padding-left: 1.5vh;
-    padding-top: 1.5vh;
     background-color: transparent;
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.eightdigitER:focus{
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.WarningMessagePaynow {
+    margin-left: 4vw;
+    color: #FF2C4E;
+    font-family: 'Lato';
+    font-size: 13px;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .senderboxER{
     flex-direction: column;
-    flex-direction: column;
     width: 100vw;
     background-color: transparent;
-    top: 0;
-    max-height: 100vh;
-    overflow: hidden;
 }
 
 .recipientdeets{
@@ -100,20 +107,20 @@
 
 .recipientnickER{
     background-color: transparent;
-    color: #b5b5b5;
-    font-size: 16px;
+    color: #9a9a9a;
+    font-size: 15px;
     font-family: 'Lato';
-    font-weight: 600;
     margin: 1vh 0 0 4vw;
 }
 
 .recipientnameER{
     font-size: 18px;
     font-family: 'Lato';
-    font-weight: 800;
-    padding-left: 2.4vh;
-    padding-top: 1vh;
+    padding-left: 4vw;
+    color: #444444;
     background-color: transparent;
+    padding-top: 0.5vh;
+    margin-top: 0;
 }
 
 

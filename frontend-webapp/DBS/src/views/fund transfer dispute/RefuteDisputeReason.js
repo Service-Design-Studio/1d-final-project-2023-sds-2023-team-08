@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../components/styles/fund transfer dispute/RefuteDisputeReasonStyles.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const RefuteDisputeReason = () => {
     const navigate = useNavigate();
+    const {userID, transactionID} = useParams();
     const [refutereason, setRefuteReason] = useState(false);
 
     const handleSubmit = async(event) => {
@@ -12,18 +14,33 @@ const RefuteDisputeReason = () => {
         const reasonValue = reasonInput.value.trim();
         if (reasonValue === '') {
             setRefuteReason(true);
-        } else {
-            const formData = {
-                refutereason: reasonValue
-            };
-            const jsonData = JSON.stringify(formData);
-        }
+        } 
+        
+        else {
+            navigate(`/${userID}/review`, {state : {"refute reason":reasonValue, "refute": true, "transaction ID": transactionID}});
+            }
+    };
+
+    function adjustTextareaHeight(textarea) {
+        textarea.style.height = '20px';
+        textarea.style.height = `${textarea.scrollHeight}px`;
+        if (textarea.value.length > 250) {
+            textarea.value = textarea.value.slice(0, 250);
+          }
+      }
+    
+    function updateCharacterCount(textarea) {
+        const maxLength = parseInt(textarea.maxLength);
+        const currentLength = textarea.value.length;
+        const charactersLeft = maxLength - currentLength;
+        
+        document.getElementById('characterCount').textContent = charactersLeft;
     }
 
     return (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
-                <button onClick={() => navigate('/')} className='transparent'>
+                <button onClick={() => navigate(`/${userID}/${transactionID}`)} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Refute Dispute</p>
@@ -35,9 +52,16 @@ const RefuteDisputeReason = () => {
                         <p className='warningtext'>* THIS FIELD CANNOT BE LEFT BLANK</p>
                     </div>
                     )}
-                    <input type='text' className='RefuteDisputeReason' name='refuteReason'
-                        placeholder='Reason for Refuting Dispute'></input>
-                    <p className='note1'>Note: It is an<b> offense under the Penal Code </b> 
+                    <div className='textareacontainer'>
+                        <textarea className="RefuteDisputeReason" 
+                        name="refuteReason" 
+                        placeholder="Reason for Refuting Dispute" 
+                        onInput={(event) => {adjustTextareaHeight(event.target);
+                                            updateCharacterCount(event.target);}}
+                        maxLength={250}></textarea>
+                        <p className="characterCount">/<span id="characterCount">250</span></p>
+                    </div>
+                    <p className='note1'>Note: It is an offense under the Penal Code 
                          for the recipient to retain or use the funds after being informed that it
                         was sent by mistake. The sender may consider lodging a police report.</p>
                     <p className='note2'>Your reason can be seen by the sender.</p>
