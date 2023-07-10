@@ -106,7 +106,7 @@ const EnterRecipient = () => {
                         <input
                             type="number"
                             className="eightdigitER"
-                            placeholder="Recipient's Mobie No."
+                            placeholder="Recipient's Mobile No."
                             onKeyDown={blockInvalidChar}
                             value={recipientPhoneNumber}
                             onInput={handleInputChange}
