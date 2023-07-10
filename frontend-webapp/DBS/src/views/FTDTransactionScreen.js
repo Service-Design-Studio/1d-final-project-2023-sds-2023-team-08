@@ -14,6 +14,22 @@ const FTDTransactionScreen = () => {
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([]);
   const { userID } = useParams();
+
+  // const [FTDtransactions, setFTDtransactions] = useState([])
+  // useEffect(() => {
+  //   const fetchAllFTDtransactions = async () => {
+  //     try {
+  //       const response = await axios.get(`link to all FTD transactions`);
+  //       setFTDtransactions(response.data);
+  //       console.log(FTDtransactions)
+
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchAllFTDtransactions();
+  // }, []);
+
   const FTDtransactions = FTDjson;
 
   const statusDictionary = {
@@ -21,7 +37,7 @@ const FTDTransactionScreen = () => {
       bgcolor: '#1D0C86',
       statustext: "AWAITING ACTION"
     },
-    "Pending": {
+    "Raised to DBS": {
       bgcolor: "#066DAF",
       statustext: "PENDING"
     },
@@ -33,22 +49,24 @@ const FTDTransactionScreen = () => {
       bgcolor: "#950909",
       statustext: "REFUTED"
     },
-    "Withdrawed": {
+    "Withdrawn": {
         bgcolor: "#7A7A7A",
-        statustext: "WITHDRAWED"
+        statustext: "WITHDRAWN"
     }
   };
 
   const uniqueFTDates = [...new Set(FTDtransactions.map(item => item.disputedate))];
 
+  
+
 
   return (
     <div className='maincontainer'>
-        <div className='header2transaction'>
+        <div className='RefuteDisputeHeader'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
-          <p className='headertext'>Fund Disputes</p>
+          <p className='RefuteDisputeHeaderText'>Fund Disputes</p>
         </div>
 
         <div className='scrollview'>

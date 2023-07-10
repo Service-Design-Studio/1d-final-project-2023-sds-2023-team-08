@@ -1,0 +1,24 @@
+[
+    {
+        "user": "Recipient",
+        "disputedate": "Fri, 9 Jun 2023",
+        "transaction":{
+            "total amount": "20.90",
+            "transaction type": "Funds Transfer",
+            "reason": "Transfer to Wrong Account",
+            "comments": "Was supposed to transfer to XXXX 1234",
+            "refute reason": "I am the correct recipient"
+        }
+    },
+    {
+        "user": "Sender",
+        "disputedate": "Fri, 9 Jun 2023",
+        "transaction":{
+            "total amount": "50.90",
+            "transaction type": "Funds Transfer",
+            "reason": "Received the Wrong Amount",
+            "comments": "Was supposed to transfer me $30.90",
+            "refute reason": "No, the amount sent was correct"
+        }
+    }
+]

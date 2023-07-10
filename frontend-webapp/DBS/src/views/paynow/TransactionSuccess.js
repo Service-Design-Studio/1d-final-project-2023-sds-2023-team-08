@@ -1,57 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../components/styles/fund transfer dispute/ResolveSuccessStyles.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const TransactionSucess = () => {
+const TransactionSucess = (props) => {
     const navigate = useNavigate();
+    const {userID} = useParams();
+    const {transactionDetails} = props;
+    const transactionID = transactionDetails['transaction id']
+
     return (
-        <div className='successtxbase'>
-            <button onClick={() => navigate()} className='successtxtransparent'>
-                <p className='successtxcross'> X</p>
-            </button>
+        <div className='RefuteDisputeMain'>
+            <button onClick={() => navigate(`/${userID}/home`)} className='successtxtransparent'>X</button>
             <div className='successtxgreenbox'>
                 <img src='/assets/greentick.png' className='successtxgreentick' />
             </div>
 
             <p className='successheadertext'> Successful</p>
-            <p className='successtxdate'>on 26 Jun 2023 12:35pm</p>
+            <p className='successtxdate'>on {transactionDetails["date and time"]}</p>
+
+            <div className='successtxdescriptboxblack'>
+                <p className='successtxdescriptboxblacktextop'> Amount in</p>
+                <div className='successtxdescriptboxtransparent'>
+                    <p className='successtxdescriptboxtransparentleft'> SGD</p>
+                    <p className='successtxdescriptboxtransparentright'> {transactionDetails["total amount"].toFixed(2)}</p>
+                </div>
+            </div>
 
             <div className='successtxdescriptbox'>
-                <div className='successtxdescriptboxblack'>
-                    <p className='successtxdescriptboxblacktextop'> Amount in</p>
-                    <div className='successtxdescriptboxtransparent'>
-                        <p className='successtxdescriptboxtransparentleft'> SGD</p>
-                        <p className='successtxdescriptboxtransparentright'> XX.XX</p>
-                    </div>
-                </div>
-                <p className='successtxgreytextheader'> From</p>
-                <p className='successtxblacktextheader'> RECIPIENT ACCOUNT</p>
-                <p className='successtxgreytextheader2'> XXX-XXXXX-X</p>
+
+                <p className='successtxgreytextheadertitle'> From</p>
+                <p className='successtxblacktextheader'> {transactionDetails["transfer from acc name"]}</p>
+                <p className='successtxgreytextheader2'> {transactionDetails["transfer from acc number"]}</p>
                 <p className='successtxgreytextheader'> To</p>
-                <p className='successtxblacktextheader'> SENDER ACCOUNT</p>
-                <p className='successtxgreytextheader2'> XXX-XXXXX-Y</p>
+                <p className='successtxblacktextheader'> {transactionDetails["recipient name"]}</p>
+                <p className='successtxgreytextheader2'> {transactionDetails["recipient acc"]}</p>
                 <p className='successtxgreytextheader'> Transfer Type</p>
-                <p className='successtxblacktextheader'> FAST/IMMEDIATE</p>
+                <p className='successtxblacktextheader'> {transactionDetails["transfer type"]}</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
-                <p className='successtxblacktextheader'> PayNow Transfer</p>
+                <p className='successtxblacktextheaderbottom'> {transactionDetails["comments"]}</p>
             </div>
 
             <div className='successtxwrongbox'>
                 <p className='successtxwrongtx'> Made a wrong transfer?</p>
-                <a className='successtxclicklink' href=''> Click here</a>
+                <a className='successtxclicklink' href={`/${userID}/raiseFTD/${transactionID}`}> Click here</a>
             </div>
 
-            <button onClick={() => {}} className='successtxtransparentbutton'>
-                <div className='sharetxdetailsbutton'>
-                    <p className='sharetxdetailsbuttontext'> SHARE TRANSFER DETAILS </p>
-                </div>
-            </button>
+            <button onClick={() => {}} className='sharetransferdetailspaynow'>SHARE TRANSFER DETAILS</button>
+            <button onClick={() => navigate(`/${userID}/paynowrecipient`)} className='anothertransferpaynow'>MAKE ANOTHER TRANSFER</button>
 
-            <button onClick={() => {}} className='successtxtransparentbuttonB'>
-                <div className='makertxbutton'>
-                    <p className='makertxbuttontext'> MAKE ANOTHER TRANSFER </p>
-                </div>
-            </button>
             
         </div>
     );

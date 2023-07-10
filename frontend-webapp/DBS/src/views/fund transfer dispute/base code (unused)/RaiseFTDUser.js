@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../components/styles/fund transfer dispute/RaiseFTDUserRecipientStyles.css';
+import '../../../components/styles/fund transfer dispute/RaiseFTDUserRecipientStyles.css';
 
 function RaiseFTDUser() {
   //-------------------------------- Code for State Variables -----------------------------------
@@ -144,31 +144,6 @@ function RaiseFTDUser() {
               />
             <label htmlFor='transferWrongAccountCheckbox'>Transfer to wrong account</label>
           </div>
-          
-          {isTransferWrongAccountChecked && (
-            <>
-            <div className='expandable-content-mode-of-payment'>
-              <input
-                type='text'
-                id='modeOfPaymentInput'
-                value={modeOfPayment}
-                onChange={handleModeOfPaymentChange}
-                placeholder='Mode of Payment'
-                className='borderless-input' />
-            </div>
-          
-            <div className='expandable-content-correct-no-of-recipient'>
-                <input
-                  type='text'
-                  id='correctNumberRecipientInput'
-                  value={correctNumberRecipient}
-                  onChange={handleCorrectNumberRecipientChange}
-                  placeholder='Correct Number of Recipients'
-                  className='borderless-input'
-                  />
-              </div>
-            </>
-          )}
         </div>
       </div>
 
@@ -183,19 +158,6 @@ function RaiseFTDUser() {
           />
           <label htmlFor='transferWrongAmountCheckbox'>Transfer wrong amount</label>
           </div>
-          
-          {isTransferWrongAmountChecked && (
-            <div className='expandable-content-correct-amt-to-transfer'>
-              <input
-                type='text'
-                id='correctAmountToTransferInput'
-                value={correctAmountToTransfer}
-                onChange={handleCorrectAmountToTransferChange}
-                placeholder='Correct Amount to Transfer'
-                className='borderless-input'
-              />
-            </div>
-          )}
         </div>
       </div>
 
