@@ -12,9 +12,14 @@ const RaiseFTDScreen = () => {
     const totalAmount = TransactionData['total amount']
     const commentsInputRef = useRef(null);
 
-    const [reason, setReason] = useState('')
-    const [emptyComment, setemptyComment] = useState(false)
-    const [emptyCheckbox, setemptyCheckbox] = useState(false)
+    const [reason, setReason] = useState('');
+    const [emptyComment, setemptyComment] = useState(false);
+    const [emptyCheckbox, setemptyCheckbox] = useState(false);
+    const [invalidContact, setinvalidContact] = useState(false);
+    const [emptydetails, setemptyDetails] = useState(false);
+    const [wrongAmount, setWrongAmount] = useState(false);
+    const [correctAmount, setCorrectAmount] = useState('');
+    const [contactDetails, setContactDetails] = useState('')
 
     // const [TransactionData, setTransactionData] = useState([])
     // const [csrfToken, setCsrfToken] = useState('');
@@ -47,6 +52,12 @@ const RaiseFTDScreen = () => {
             setemptyComment(true);
             setemptyCheckbox(false);
         } 
+        else if (correctAmount.length == 0 || contactDetails.length == 0 ) {
+            setemptyDetails(true)
+        }
+        else if (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6) {
+            setinvalidContact(true)
+        }
         else {
             TransactionData['user'] = totalAmount > 0 ? "Recipient" : "Sender"
             TransactionData['reason'] = reason
@@ -73,6 +84,20 @@ const RaiseFTDScreen = () => {
     
     document.getElementById('characterCount').textContent = charactersLeft;
     };
+
+    const handleCorrectAmount = (event) => {
+        const { value } = event.target;
+        setCorrectAmount(value);
+      };
+
+    
+    const handleContactDetails = (event) => {
+        const contact = event.target.value.replace(/\D/g, '').slice(0, 8);
+        setContactDetails(contact);
+    };
+
+    const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
+
 
     return(
         <div className='raiseFTDcontainer'>
@@ -116,6 +141,7 @@ const RaiseFTDScreen = () => {
 
             {totalAmount < 0 ? (
             <div>
+
                 <div className='FTDcheckbox1'>
                     <input
                         type='checkbox'
@@ -135,14 +161,46 @@ const RaiseFTDScreen = () => {
                     type='checkbox'
                     id='transferWrongAmountCheckbox'
                     checked={reason === 'Transfer Wrong Amount'}
+                    onKeyDown={blockInvalidChar}
                     onChange={(event) => {
                         const isChecked = event.target.checked;
                         const updatedReason = isChecked ? 'Transfer Wrong Amount' : '';
+                        setWrongAmount(isChecked)
                         setReason(updatedReason);
                     }}
                     />
                     <label className="checkboxtext" htmlFor='transferWrongAmountCheckbox'>Transfer Wrong Amount</label>
                 </div>
+
+                { wrongAmount &&
+                    <div>
+                        { invalidContact ? (
+                                <p className='flashmessagetext2'>* PLEASE ENTER A VALID PHONE NUMBER</p>
+                            ) : emptydetails ? (
+                                <p className='flashmessagetext2'>* THESE FIELDS CANNOT BE LEFT BLANK</p>
+                            ) : (null)}
+
+                        <div className='expandingcontainer'>
+                            <input
+                                type="number"
+                                id="correctAmount"
+                                onChange={handleCorrectAmount}
+                                value={correctAmount}
+                                onKeyDown={blockInvalidChar}
+                                className='detailscontainer'
+                                placeholder='Correct Amount Of Transaction' />
+                        
+                            <input
+                                type="number"
+                                id="contactDetails"
+                                onChange={handleContactDetails}
+                                value={contactDetails}
+                                className='detailscontainer'
+                                placeholder='Your Contact Details' 
+                                />
+                        </div>
+                    </div>
+                }
 
                 <div className='commentsBox'>
                     <textarea
