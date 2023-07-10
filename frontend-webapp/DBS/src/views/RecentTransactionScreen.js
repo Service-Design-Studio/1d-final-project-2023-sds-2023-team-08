@@ -43,15 +43,15 @@ const RecentTransactionScreen = () => {
 
   const uniqueAccountNumbers = [...new Set(transactions.map(transaction => transaction.transaction["account number"]))];
   const uniqueDates = [...new Set(filteredTransactions.map(transaction => transaction.date))];
-
+  
   return (
     <div className='maincontainer'>
       <div className='sticky'>
-        <div className='headertransaction'>
+        <div className='RefuteDisputeHeader'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
-          <p className='headertext'>Recent Transactions</p>
+          <p className='RefuteDisputeHeaderText'>Recent Transactions</p>
         </div>
         
         <div className='filtercontainer'>
@@ -100,10 +100,10 @@ const RecentTransactionScreen = () => {
 
               {transactionsWithSpecificDate.map((transactiondata, index) => {
                 return(
-                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["account number"]}`)}>
+                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["transaction ID"]}`)}>
                 <div className='transaction'>
-                  <div className='transactionheader'>
-                    <p className='transactiontitle'>{transactiondata.transaction["transaction name"]}</p>
+                  <div className='transactionheadercontainer'>
+                    <p className='transactiontitletext'>{transactiondata.transaction["transaction name"]}</p>
                     <img src='/assets/expand.png' className='expand'/>
                   </div>
 

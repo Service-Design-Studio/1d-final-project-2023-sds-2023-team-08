@@ -2,33 +2,53 @@ import React, {useState, useEffect} from 'react';
 import '../../components/styles/fund transfer dispute/FTDTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import WithdrawDisputePopUp from '../others/WithdrawDisputePopUp';
 
 function getFTDTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.disputedate === specificDate);
 }
 
+
 const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
-  const { userID, accountNumber } = useParams();
+  const { userID, transactionID } = useParams();
   const { FTDtransactions } = props;
-  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] != undefined;
-  const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient"
-  const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed"
-  const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"]
+  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] !== undefined;
+  const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
+  const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";
+  const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"];
+  
+  const [wdpopshowPopup, setwdpopShowPopup] = useState(false);
+
+  const withdrawConfirm = () => {
+        setwdpopShowPopup(true);
+  };
+
+  const withdrawData = {}
+  withdrawData['disputedate'] = FTDtransactions.disputedate;
+  withdrawData['total amount'] = FTDtransactions.transaction.transactiondetails['total amount'];
+  withdrawData['transaction type'] = FTDtransactions.transaction.transactiondetails['transaction type'];
+  withdrawData['reason'] = FTDtransactions.transaction.FTDdetails["reason"];
+  withdrawData['comments'] = FTDtransactions.transaction.FTDdetails["comments"];
+  withdrawData['withdrawn'] = true;
 
   return (
     <div className='RefuteDisputeMain'>
-        <div className='header2transaction'>
-          <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
+        <div className='RefuteDisputeHeader'>
+          <button id = 'backarrow' onClick={() => navigate(`/${userID}/FTDtransactionsall`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
-          <p className='headertext'>Dispute Details</p>
+          <p className='RefuteDisputeHeaderText'>Dispute Details</p>
         </div>
 
         <div className='disputecontainer'>
             <div className='transactionmoney'>
                 <p className='sgddispute'>SGD</p>
                 <p className={FTDtransactions.transaction.transactiondetails["total amount"] < 0 ? "moneydispute" : "moneydisputein"}>{FTDtransactions.transaction.transactiondetails["total amount"].toFixed(2)}</p>
+            </div>
+
+            <div className='transactdatecontainer'>
+                <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["date"]}</p>
             </div>
 
             <div className='transactiondetailscontainerbox'>
@@ -59,8 +79,8 @@ const FTDTransactionDetails = (props) => {
                         <p className='police'>Note: It is an offence under the Penal Code for the recipient to retain or use the funds after being informed that it was sent by mistake. The sender may consider lodging a police report.</p>
                     </div>
 
-                    <button className='refundbutton'><b>YES</b> - REFUND</button>
-                    <button className='refutebutton'><b>NO</b> - REFUTE</button>
+                    <button className='refundbutton' onClick={() => navigate(`/${userID}/refunddispute/${transactionID}`)}><b>YES</b> - REFUND</button>
+                    <button className='refutebutton' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)}><b>NO</b> - REFUTE</button>
                 </div>
             ) : isrecipient && refuted ? (
                 <div className='reasoncontainer'>
@@ -80,9 +100,9 @@ const FTDTransactionDetails = (props) => {
                     <div className='transactiondetailedexplained'>
                         <p className='transactiondetailsstatusdetails'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>
                     </div>
-                    <button className='withdrawbutton'>WITHDRAW DISPUTE</button>
+                    <button className='withdrawbutton' onClick={withdrawConfirm}>WITHDRAW DISPUTE</button>
+                    { wdpopshowPopup && (<WithdrawDisputePopUp onClose={() => setwdpopShowPopup(false)} data = {withdrawData}/>)}
                 </div>
-
             ) : (
                 <div className='transactiondetailedexplained'>
                         <p className='transactiondetailsstatusdetails'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>

@@ -1,8 +1,6 @@
 .ftdbase{
     height: 100vh;
     width: 100%;
-    overflow-y: hidden;
-    overflow-x: hidden;
     align-items: center;
     justify-content: center;
     background-color: #f6f6f6;
@@ -10,9 +8,9 @@
 
 .backtransaction {
     object-fit: contain;
-    width: 3.5vw;
-    padding-left: 3vw;
-    margin-top: 2vh;
+    width: 3vw;
+    padding-left: 2vw;
+    margin-top: 3vh;
 }
 
 .transparent {
@@ -39,6 +37,14 @@
     justify-content: center;
     padding-top: 0.5%;
     padding-right: 1.5%;
+}
+
+.moneytext2{
+    font-family: 'Lato';
+    font-size: 40px;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 4%;
 }
 
 .moneytext2spend{
@@ -68,6 +74,7 @@
 }
 
 .scriptbox{
+    height: 30vh;
     width: 90vw;
     margin: auto;
     margin-top: 7%;
@@ -98,15 +105,6 @@
 
 }
 
-
-.transactiontext1{
-    font-family: 'Lato';
-    font-size: 16px;
-    color: #a3a3a3;
-    padding: 0vh 8vw 0 8vw;
-    margin: 0;
-}
-
 .descriptext3{
     font-family: 'Lato';
     font-size: 18px;
@@ -117,54 +115,51 @@
 
 }
 
+.transactiontext1{
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #a3a3a3;
+    padding: 0vh 8vw 0 8vw;
+    margin: 0;
+}
+
 .textcontainerdetail{
     flex: 1;
 }
 
 .sharebutton{
-    display: flex;
-    width: 90vw;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    background-color:#066DAF;
-    margin: 4vh 5vw 1.5vh 5vw;
+    margin: 4vh 5vw 0vh 5vw;
+    padding: 2vh;
     border-radius: 5px;
-}
-
-.sharebuttontext{
-    font-family: 'Lato';
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: 500;
-}
-
-.sharebuttontext:active{
-    opacity: 0.5;
-}
-
-.FTDbutton{
-    display: flex;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#066DAF ;
+    color: white;
+    border: none;
     width: 90vw;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    margin: 0vh 5vw;
-    border-radius: 5px;
-    background-color: #1D0C86;
 }
-
-.FTDbuttontext{
-    font-family: 'Lato';
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: 500;
-    word-spacing: 1vw;
-}
-
-.FTDbuttontext:active{
+.sharebutton:active{
     opacity: 0.5;
+    transition: none;}
+
+.FTDbutton1 {
+    margin: 1.5vh 5vw 0vh 5vw;
+    padding: 2vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#1D0C86 ;
+    color: white;
+    border: none;
+    width: 90vw;
 }
+
+
+.FTDbutton1:active{
+    opacity: 0.5;
+    transition: none;
+}
+
 
 .txdgreyout{
     position: fixed;
@@ -179,6 +174,7 @@
 .txdetailsPop{
     position: fixed;
     width: 70%;
+    height: 28%;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -199,7 +195,7 @@
 .txdpopheader{
     font-family: 'Lato';
     font-size: 25px;
-    color: #000000;
+    color: #444444;
     font-weight: bold;
     margin: auto;
     margin-left: 20%;
@@ -209,7 +205,7 @@
 .txdpoptext{
     font-family: 'Lato';
     font-size: 15px;
-    color: #000000;
+    color: #444444;
     margin-bottom: 7%;
     font-weight: 500;
 }
@@ -217,6 +213,9 @@
 .popupbtn{
     width: 60vw;
     display: flex;
+    height: 20%;
+    margin: auto;
+    align-items: center;
     justify-content: center;
     background-color:#066DAf;
     border-radius: 5px;
