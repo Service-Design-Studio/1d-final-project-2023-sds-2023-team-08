@@ -61,7 +61,7 @@ const ResolveDisputeRefundScreen = () => {
                     <div className='account_right1'>
                         <p className= 'accountname1'>  {FTDtransactions['refund details']['recipient name']}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>{FTDtransactions['refund details']['recipient acc']}</p>
+                            <p className= 'accountnumber1'>Disputee's Account</p>
                         </div>  
                     </div>
                 </div>

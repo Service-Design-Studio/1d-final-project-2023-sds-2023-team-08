@@ -9,7 +9,7 @@ const TransactionDetailsScreen = () => {
     const navigate = useNavigate();
     const [FTDtransaction, setFTDtransaction] = useState(false);
     const { userID, transactionID } = useParams();
-    const TransactionDetailsJSON = TransactionJSON[0]
+    const TransactionDetailsJSON = TransactionJSON[1]
   
     useEffect(() => {
         setFTDtransaction(TransactionDetailsJSON.transaction.transactiondetails['FTD']);

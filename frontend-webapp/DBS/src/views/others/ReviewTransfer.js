@@ -58,6 +58,7 @@ const ReviewTransfer = () => {
                 }
             );
             if (response.data.success) {
+                TransactionDetails['transaction id'] = response.data.transactionID
                 navigate(`/${userID}/success`, {state: TransactionDetails})
             }
 
@@ -103,7 +104,7 @@ const ReviewTransfer = () => {
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient name']}</p>
-                            <p className='reviewtext'>{transactionData['recipient acc']}</p>
+                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient acc']}</p>
                         </div>
 
                         <div className='Chunk'>

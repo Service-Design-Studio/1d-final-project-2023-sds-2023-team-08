@@ -6,6 +6,7 @@ const TransactionSucess = (props) => {
     const navigate = useNavigate();
     const {userID} = useParams();
     const {transactionDetails} = props;
+    const transactionID = transactionDetails['transaction id']
 
     return (
         <div className='RefuteDisputeMain'>
@@ -41,11 +42,11 @@ const TransactionSucess = (props) => {
 
             <div className='successtxwrongbox'>
                 <p className='successtxwrongtx'> Made a wrong transfer?</p>
-                <a className='successtxclicklink' href=''> Click here</a>
+                <a className='successtxclicklink' href={`/${userID}/raiseFTD/${transactionID}`}> Click here</a>
             </div>
 
             <button onClick={() => {}} className='sharetransferdetailspaynow'>SHARE TRANSFER DETAILS</button>
-            <button onClick={() => {}} className='anothertransferpaynow'>MAKE ANOTHER TRANSFER</button>
+            <button onClick={() => navigate(`/${userID}/paynowrecipient`)} className='anothertransferpaynow'>MAKE ANOTHER TRANSFER</button>
 
             
         </div>

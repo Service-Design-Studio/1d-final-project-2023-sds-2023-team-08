@@ -34,7 +34,7 @@ const ResolveSuccess = (props) => {
                 <p className='successtxgreytextheader2'> {transactionDetails["transfer from acc number"]}</p>
                 <p className='successtxgreytextheader'> To</p>
                 <p className='successtxblacktextheader'> {transactionDetails["recipient name"]}</p>
-                <p className='successtxgreytextheader2'> {transactionDetails["recipient acc"]}</p>
+                <p className='successtxgreytextheader2'> Disputee's Account</p>
                 <p className='successtxgreytextheader'> Transfer Type</p>
                 <p className='successtxblacktextheader'> {transactionDetails["transfer type"]}</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
