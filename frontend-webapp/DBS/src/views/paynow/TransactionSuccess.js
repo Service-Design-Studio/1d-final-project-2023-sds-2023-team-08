@@ -27,7 +27,6 @@ const TransactionSucess = (props) => {
             </div>
 
             <div className='successtxdescriptbox'>
-
                 <p className='successtxgreytextheadertitle'> From</p>
                 <p className='successtxblacktextheader'> {transactionDetails["transfer from acc name"]}</p>
                 <p className='successtxgreytextheader2'> {transactionDetails["transfer from acc number"]}</p>
@@ -35,7 +34,7 @@ const TransactionSucess = (props) => {
                 <p className='successtxblacktextheader'> {transactionDetails["recipient name"]}</p>
                 <p className='successtxgreytextheader2'> {transactionDetails["recipient acc"]}</p>
                 <p className='successtxgreytextheader'> Transfer Type</p>
-                <p className='successtxblacktextheader'> {transactionDetails["transfer type"]}</p>
+                <p className='successtxblacktextheader'> {transactionDetails["transfer_type"]}</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
                 <p className='successtxblacktextheaderbottom'> {transactionDetails["comments"]}</p>
             </div>

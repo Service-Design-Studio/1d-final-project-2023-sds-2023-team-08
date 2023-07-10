@@ -13,7 +13,7 @@ const FTDTransactionDetails = (props) => {
   const navigate = useNavigate();
   const { userID, transactionID } = useParams();
   const { FTDtransactions } = props;
-  const refuted = FTDtransactions.transaction.FTDdetails["refutereason"] !== undefined;
+  const refuted = FTDtransactions.transaction?.FTDdetails?.refutereason != null;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";
   const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"];
@@ -26,8 +26,8 @@ const FTDTransactionDetails = (props) => {
 
   const withdrawData = {}
   withdrawData['disputedate'] = FTDtransactions.disputedate;
-  withdrawData['total amount'] = FTDtransactions.transaction.transactiondetails['total amount'];
-  withdrawData['transaction type'] = FTDtransactions.transaction.transactiondetails['transaction type'];
+  withdrawData['total amount'] = FTDtransactions.transaction.transactiondetails.transaction['total amount'];
+  withdrawData['transaction type'] = FTDtransactions.transaction.transactiondetails.transaction['transaction type'];
   withdrawData['reason'] = FTDtransactions.transaction.FTDdetails["reason"];
   withdrawData['comments'] = FTDtransactions.transaction.FTDdetails["comments"];
   withdrawData['withdrawn'] = true;
@@ -44,7 +44,7 @@ const FTDTransactionDetails = (props) => {
         <div className='disputecontainer'>
             <div className='transactionmoney'>
                 <p className='sgddispute'>SGD</p>
-                <p className={FTDtransactions.transaction.transactiondetails["total amount"] < 0 ? "moneydispute" : "moneydisputein"}>{FTDtransactions.transaction.transactiondetails["total amount"].toFixed(2)}</p>
+                <p className={FTDtransactions.transaction.transactiondetails.transaction["total amount"] < 0 ? "moneydispute" : "moneydisputein"}>{FTDtransactions.transaction.transactiondetails.transaction["total amount"].toFixed(2)}</p>
             </div>
 
             <div className='transactdatecontainer'>
@@ -57,7 +57,7 @@ const FTDTransactionDetails = (props) => {
                 <p className='transactiondetailsbodytext'>{FTDtransactions.disputedate}</p>
 
                 <p className='transactiondetailstitlestext'>Transaction Type</p>
-                <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.transactiondetails["transaction type"]}</p>
+                <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.transactiondetails.transaction["transaction type"]}</p>
 
                 <p className='transactiondetailstitlestext'>Reason For Transfer Dispute</p>
                 <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["reason"]}</p>

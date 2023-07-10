@@ -17,6 +17,7 @@ const RecentTransactionScreen = () => {
   const { userID, accountNumber } = useParams();
 
   useEffect(() => {
+    
     const fetchtransactions = async () => {
       try {
         const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`);

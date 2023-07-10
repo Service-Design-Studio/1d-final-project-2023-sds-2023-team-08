@@ -17,7 +17,7 @@ const ResolveSuccess = (props) => {
             </div>
 
             <p className='successheadertext'> Successful</p>
-            <p className='successtxdate'>on {transactionDetails["date and time"]}</p>
+            <p className='successtxdate'>on {transactionDetails["date_and_time"]}</p>
 
             <div className='successtxdescriptboxblack'>
                 <p className='successtxdescriptboxblacktextop'> Amount in</p>
@@ -36,7 +36,7 @@ const ResolveSuccess = (props) => {
                 <p className='successtxblacktextheader'> {transactionDetails["recipient name"]}</p>
                 <p className='successtxgreytextheader2'> Disputee's Account</p>
                 <p className='successtxgreytextheader'> Transfer Type</p>
-                <p className='successtxblacktextheader'> {transactionDetails["transfer type"]}</p>
+                <p className='successtxblacktextheader'> {transactionDetails["transfer_type"]}</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
                 <p className='successtxblacktextheaderbottom'> {transactionDetails["comments"]}</p>
             </div>

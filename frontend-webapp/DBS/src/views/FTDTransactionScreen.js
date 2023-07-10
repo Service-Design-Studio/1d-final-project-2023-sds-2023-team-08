@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import '../components/styles/FTDTransactionScreenStyles.css';
-import { useNavigate, useParams  } from 'react-router-dom';
-import axios from 'axios';
+import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import FTDjson from '../testdata/fundtransferdispute.json'
+import axios from 'axios';
+import { useLayoutEffect } from 'react';
 
 function getFTDTransactionsByDate(transactions, specificDate) {
   return transactions.filter(transaction => transaction.disputedate === specificDate);
@@ -11,26 +12,26 @@ function getFTDTransactionsByDate(transactions, specificDate) {
 
 const FTDTransactionScreen = () => {
   const navigate = useNavigate();
-  const [transactions, setTransactions] = useState([]);
-  const [accountdetails, setAccountDetails] = useState([]);
   const { userID } = useParams();
-
-  // const [FTDtransactions, setFTDtransactions] = useState([])
-  // useEffect(() => {
-  //   const fetchAllFTDtransactions = async () => {
-  //     try {
-  //       const response = await axios.get(`link to all FTD transactions`);
-  //       setFTDtransactions(response.data);
-  //       console.log(FTDtransactions)
-
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchAllFTDtransactions();
-  // }, []);
-
-  const FTDtransactions = FTDjson;
+  const [FTDtransactions, setFTDTransactions] = useState([]);
+  const [datafound, setdatafound] = useState(false)
+  const location = useLocation();
+  
+  useEffect(() => {
+    console.log("hello")
+    const fetchFTDtransactions = async () => {
+      try {
+        const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/user/${userID}/transaction_detail_for_disputes_involving_user`);
+        console.log(response.data)
+        setFTDTransactions(response.data);
+        setdatafound(true)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFTDtransactions();
+  }, [location.pathname]);
+  
 
   const statusDictionary = {
     "Dispute Filed": {
@@ -55,12 +56,16 @@ const FTDTransactionScreen = () => {
     }
   };
 
-  const uniqueFTDates = [...new Set(FTDtransactions.map(item => item.disputedate))];
+  let uniqueFTDates = [];
 
+  if (datafound) {
+    uniqueFTDates = [...new Set(FTDtransactions.map(item => item.disputedate))];
+    console.log(uniqueFTDates)
+    console.log(FTDtransactions)
+  }
   
-
-
   return (
+   datafound && (
     <div className='maincontainer'>
         <div className='RefuteDisputeHeader'>
           <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
@@ -80,8 +85,8 @@ const FTDTransactionScreen = () => {
                         </div>
 
                         {FTDTransactionwithSpecificDate.map((FTDtransactiondata, index) => {
-                            const {bgcolor, statustext} = statusDictionary[FTDtransactiondata.transaction.FTDdetails["status"]]
-                            const sender = FTDtransactiondata.transaction.FTDdetails["user"] === "Sender";
+                            const {bgcolor, statustext} = statusDictionary[FTDtransactiondata.FTDdetails["status"]]
+                            const sender = FTDtransactiondata.FTDdetails["user"] === "Sender";
                             console.log(bgcolor, statustext)
 
                             let updatedStatustext = statustext; 
@@ -89,20 +94,20 @@ const FTDTransactionScreen = () => {
                                 updatedStatustext = sender ? "AWAITING ACTION" : "ACTION REQUIRED";}
 
                             return(
-                                <button className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transaction.transactiondetails["transaction ID"]}`)}>
+                                <button className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transactiondetails.transaction["transaction ID"]}`)}>
                                     <div className='transaction'>
                                         <div className='transactionheader'>
-                                            <p className='transactiontitle'>{FTDtransactiondata.transaction.transactiondetails["transaction name"]}</p>
+                                            <p className='transactiontitle'>{FTDtransactiondata.transactiondetails.transaction["transaction name"]}</p>
                                             <img src='/assets/expand.png' className='expandtransaction'/>                    
                                         </div>
                                         
-                                        <p className='transactiontype2'>{FTDtransactiondata.transaction.transactiondetails["transaction type"]}</p>                 
+                                        <p className='transactiontype2'>{FTDtransactiondata.transactiondetails.transaction["transaction type"]}</p>                 
                                         
                                         <div className='transactiondetails'>
-                                            <p className='account'>{FTDtransactiondata.transaction.transactiondetails["account number"]}</p>
+                                            <p className='account'>{FTDtransactiondata.transactiondetails.transaction["account number"]}</p>
                                             <div className='rightcontainer'>
                                                 <p className='sgd2'>SGD</p>
-                                                <p className={FTDtransactiondata.transaction.transactiondetails["total amount"] < 0 ? "moneyout2" : "moneyin2"}>{FTDtransactiondata.transaction.transactiondetails["total amount"].toFixed(2)}</p>
+                                                <p className={FTDtransactiondata.transactiondetails.transaction["total amount"] < 0 ? "moneyout2" : "moneyin2"}>{FTDtransactiondata.transactiondetails.transaction["total amount"].toFixed(2)}</p>
                                             </div>
                                         </div>
                                         
@@ -122,6 +127,7 @@ const FTDTransactionScreen = () => {
           <BottomTabNavigator></BottomTabNavigator>
       </div>
     </div>
+    )
   );
 };
 

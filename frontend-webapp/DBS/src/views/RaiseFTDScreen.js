@@ -8,7 +8,8 @@ const RaiseFTDScreen = () => {
     const {userID, transactionID} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const TransactionData = location.state
+    const TransactionDataOver = location.state
+    const TransactionData = TransactionDataOver.transaction
     const totalAmount = TransactionData['total amount']
     const commentsInputRef = useRef(null);
 
@@ -20,26 +21,6 @@ const RaiseFTDScreen = () => {
     const [wrongAmount, setWrongAmount] = useState(false);
     const [correctAmount, setCorrectAmount] = useState('');
     const [contactDetails, setContactDetails] = useState('')
-
-    // const [TransactionData, setTransactionData] = useState([])
-    // const [csrfToken, setCsrfToken] = useState('');
-    // useEffect(() => {
-    //     const fetchTransactionData = async () => {
-    //       try {
-    //         const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //link to total amount
-    //         setTransactionData(response.data);
-    //       const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //new link
-    //       const Token = response2.data.csrfToken;
-    //       setCsrfToken(Token);
-    //       } 
-          
-    //       catch (error) {
-    //         console.log(error)
-    //       }
-    //     };
-    //     fetchTransactionData();
-    //   }, []);
-
     
     const handleSubmit = async(event) => {
         event.preventDefault(); 
@@ -52,10 +33,10 @@ const RaiseFTDScreen = () => {
             setemptyComment(true);
             setemptyCheckbox(false);
         } 
-        else if (correctAmount.length == 0 || contactDetails.length == 0 ) {
+        else if (reason === 'Transfer Wrong Amount' && (correctAmount.length == 0 || contactDetails.length == 0 )) {
             setemptyDetails(true)
         }
-        else if (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6) {
+        else if (reason === 'Transfer Wrong Amount' && (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6 )) {
             setinvalidContact(true)
         }
         else {
@@ -114,7 +95,7 @@ const RaiseFTDScreen = () => {
             </div>
             
             <div>
-              <p className='txdatetext'> {TransactionData['date']}</p>
+              <p className='txdatetext'> {TransactionDataOver['date']}</p>
             </div>
 
             <div className='scriptbox1'>
@@ -196,7 +177,7 @@ const RaiseFTDScreen = () => {
                                 onChange={handleContactDetails}
                                 value={contactDetails}
                                 className='detailscontainer'
-                                placeholder='Your Contact Details' 
+                                placeholder='Your Phone Number' 
                                 />
                         </div>
                     </div>
@@ -253,6 +234,7 @@ const RaiseFTDScreen = () => {
             <button className='RaiseFTDButton' onClick={handleSubmit}>RAISE FUND TRANSFER DISPUTE</button>
 
         </div>
+    
     );
 };
 

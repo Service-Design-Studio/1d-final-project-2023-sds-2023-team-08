@@ -12,9 +12,10 @@ const WithdrawDisputePopUp = ({ onClose, data }) => {
     useEffect(() => {
         const fetchCSRFData = async () => {
           try {
-            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); // update link to get new csrftoken?
+            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token');
             const Token = response.data.csrfToken;
             setCsrfToken(Token);
+            console.log(Token)
           } 
           
           catch (error) {
@@ -44,19 +45,19 @@ const WithdrawDisputePopUp = ({ onClose, data }) => {
             const currentTime = `${currentHour}:${currentMinutes}`;
 
             //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
-            WithdrawData['date and time'] = `${currentDate} ${currentTime}`
-            WithdrawData['day and date'] =  `${currentDay}, ${currentDate}`
+            WithdrawData['date_and_time'] = `${currentDate} ${currentTime}`
+            WithdrawData['day_and_date'] =  `${currentDay}, ${currentDate}`
             console.log(WithdrawData)
             
-            TransaactionWithdraw['date and time'] = `${currentDate} ${currentTime}`
-            TransaactionWithdraw['day and date'] =  `${currentDay}, ${currentDate}`
+            TransaactionWithdraw['date_and_time'] = `${currentDate} ${currentTime}`
+            TransaactionWithdraw['day_and_date'] =  `${currentDay}, ${currentDate}`
             TransaactionWithdraw['status'] = 'Withdrawn'
             TransaactionWithdraw['transactionID'] = transactionID
             console.log(TransaactionWithdraw)
 
             const response = await axios.post(
-                'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login', 
-                { TransaactionWithdraw },
+                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${transactionID}/withdraw_dispute`, 
+                JSON.stringify(TransaactionWithdraw),
                 {
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,12 +76,12 @@ const WithdrawDisputePopUp = ({ onClose, data }) => {
 
         catch (error) {
             console.log('Error:', error.toJSON());
-            navigate(`/${userID}/success`, {state: WithdrawData})
           }
         };
     
 
     return(
+        csrfToken != '' && (
         <div className='wdpopbase'>
 
             <div className='wdpopgreyout'>
@@ -102,6 +103,6 @@ const WithdrawDisputePopUp = ({ onClose, data }) => {
                 </div>
             </div>
         </div>
-    );
+    ));
 };
 export default WithdrawDisputePopUp;

@@ -41,14 +41,15 @@ const ReviewTransfer = () => {
             const currentTime = `${currentHour}:${currentMinutes}`;
 
             //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
-            TransactionDetails['date and time'] = `${currentDate} ${currentTime}`
-            TransactionDetails['day and date'] =  `${currentDay}, ${currentDate}`
-            TransactionDetails['transfer type'] = "FAST/IMMEDIATE"
+            TransactionDetails['date_and_time'] = `${currentDate} ${currentTime}`
+            TransactionDetails['day_and_date'] =  `${currentDay}, ${currentDate}`
+            TransactionDetails['transfer_type'] = "FAST/IMMEDIATE"
+            TransactionDetails['recipient_bank'] = 'DBS/POSB'
             console.log(TransactionDetails)
 
             const response = await axios.post(
-                'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
-                { TransactionDetails },
+                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${TransactionDetails['transaction id']}/resolve_dispute`,
+                JSON.stringify(TransactionDetails),
                 {
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +69,6 @@ const ReviewTransfer = () => {
 
         catch (error) {
             console.log('Error:', error.toJSON());
-            navigate(`/${userID}/success`, {state: TransactionDetails})
           }
         };
     

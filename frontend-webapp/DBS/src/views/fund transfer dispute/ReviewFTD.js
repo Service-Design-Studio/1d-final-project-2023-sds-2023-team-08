@@ -8,9 +8,8 @@ const ReviewFTD = () => {
     const { userID } = useParams();
     const location = useLocation();
     const RaiseFTDdata = location.state;
-    console.log(RaiseFTDdata)
 
-    const [csrfToken, setCsrfToken] = useState('');
+    const [csrfToken, setCsrfToken] = useState('empty');
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -26,11 +25,12 @@ const ReviewFTD = () => {
         };
     
         fetchCSRFData();
-      }, []);
+      }, [location.pathname]);
 
     const handleSubmit = async(event) => {
         event.preventDefault();            
         let FTDdetails = RaiseFTDdata
+        console.log(csrfToken)
 
         try{
             const now = new Date();
@@ -41,8 +41,8 @@ const ReviewFTD = () => {
             const currentTime = `${currentHour}:${currentMinutes}`;
 
             //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
-            FTDdetails['date and time'] = `${currentDate} ${currentTime}`
-            FTDdetails['day and date'] =  `${currentDay}, ${currentDate}`
+            FTDdetails['date_and_time'] = `${currentDate} ${currentTime}`
+            FTDdetails['day_and_date'] =  `${currentDay}, ${currentDate}`
             FTDdetails['user'] = RaiseFTDdata['user']
             FTDdetails['reason'] = RaiseFTDdata['reason']
             FTDdetails['comments'] = RaiseFTDdata['comments']
@@ -50,7 +50,7 @@ const ReviewFTD = () => {
             console.log(FTDdetails)
 
             const response = await axios.post(
-                'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
+                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/disputes/create`,
                 { FTDdetails },
                 {
                 headers: {
@@ -70,12 +70,11 @@ const ReviewFTD = () => {
 
         catch (error) {
             console.log('Error:', error.toJSON());
-            navigate(`/${userID}/success`, {state: FTDdetails})
         }
     };
 
-
     return (
+        csrfToken != 'empty' && (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
                 <button id = 'backarrow' onClick={() => navigate(`/${userID}/raiseFTD/${RaiseFTDdata['transaction ID']}`, {state: RaiseFTDdata})} className='transparent'>
@@ -104,6 +103,7 @@ const ReviewFTD = () => {
 
             <button onClick={handleSubmit} className='SubmitButton'>RAISE DISPUTE</button>
         </div>
+    )
     );
 
 };

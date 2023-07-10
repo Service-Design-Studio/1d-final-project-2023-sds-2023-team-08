@@ -23,6 +23,7 @@ const NormalTransactionDetails = (props) => {
       setShowPopup(false);
     };
 
+    console.log(TransactionData.transaction.transactiondetails)
     return (
         <div className='ftdbase'> 
           <button onClick={() => navigate(`/${userID}/recenttransaction`)} className='transparent'>
@@ -31,7 +32,7 @@ const NormalTransactionDetails = (props) => {
 
             <div className='moneyinarow'>
                 <p className='moneytext'> SGD</p>
-                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount'].toFixed(2)}</p>            
+                <p className={TransactionData.transaction.transactiondetails.transaction['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails.transaction['total amount'].toFixed(2)}</p>            
             </div>
             
             <div>
@@ -41,12 +42,12 @@ const NormalTransactionDetails = (props) => {
             <div className='scriptbox'>
                 <div className='textcontainerdetail'>
                     <p className='descriptext1'> Description</p>
-                    <p className='descriptext2'> {TransactionData.transaction.transactiondetails['transaction name']}</p>
+                    <p className='descriptext2'> {TransactionData.transaction.transactiondetails.transaction['transaction name']}</p>
                 </div>
 
                 <div className='textcontainerdetail'>
                     <p className='transactiontext1'> Transaction Type</p>
-                    <p className='descriptext3'>{TransactionData.transaction.transactiondetails['transaction type']}</p>
+                    <p className='descriptext3'>{TransactionData.transaction.transactiondetails.transaction['transaction type']}</p>
                 </div>
             </div>
 
