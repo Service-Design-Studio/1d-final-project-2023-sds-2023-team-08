@@ -3,12 +3,11 @@ import '../../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const NormalTransactionDetails = (props) => {
+const NormalTransactionDetails = ({TransactionData, prevpathname}) => {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
-    const {TransactionData} = props;
     const { userID, transactionID } = useParams();
-
+    
     const submitFundDispute = async () => {
       const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`);
       const totalFundDisputeSent = response.data
@@ -23,7 +22,6 @@ const NormalTransactionDetails = (props) => {
       setShowPopup(false);
     };
 
-    console.log(TransactionData.transaction.transactiondetails)
     return (
         <div className='ftdbase'> 
           <button onClick={() => navigate(`/${userID}/recenttransaction`)} className='transparent'>

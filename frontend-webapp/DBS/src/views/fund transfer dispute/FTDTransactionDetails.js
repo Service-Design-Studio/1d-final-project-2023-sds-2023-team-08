@@ -9,10 +9,9 @@ function getFTDTransactionsByDate(transactions, specificDate) {
 }
 
 
-const FTDTransactionDetails = (props) => {
+const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
   const navigate = useNavigate();
   const { userID, transactionID } = useParams();
-  const { FTDtransactions } = props;
   const refuted = FTDtransactions.transaction?.FTDdetails?.refutereason != null;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";
@@ -35,7 +34,7 @@ const FTDTransactionDetails = (props) => {
   return (
     <div className='RefuteDisputeMain'>
         <div className='RefuteDisputeHeader'>
-          <button id = 'backarrow' onClick={() => navigate(`/${userID}/FTDtransactionsall`)} className='transparent'>
+          <button id = 'backarrow' onClick={() => navigate(prevpathname || `/${userID}/FTDtransactionsall`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
           <p className='RefuteDisputeHeaderText'>Dispute Details</p>

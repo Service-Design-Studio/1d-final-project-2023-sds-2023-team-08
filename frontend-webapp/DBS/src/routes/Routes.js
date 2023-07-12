@@ -28,6 +28,7 @@ const Routing = () => {
     <Router>
       <Routes>
         <Route path="/" element={<LoginScreen key="login" />} />
+        <Route path="/login" element={<LoginScreen key="login" />} />
         <Route path="/:userID/home" element={<HomeScreen key="home"/>} />
         <Route path="/:userID/invest" element={<HomeScreen key="invest"/>} />
         <Route path="/:userID/pay" element={<HomeScreen key="pay"/>} />

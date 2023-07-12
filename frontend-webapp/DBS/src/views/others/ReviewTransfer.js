@@ -11,6 +11,7 @@ const ReviewTransfer = () => {
     const transactionData = location.state;
     const isDispute = transactionData['dispute']
     const [csrfToken, setCsrfToken] = useState('');
+    console.log(transactionData)
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -47,19 +48,31 @@ const ReviewTransfer = () => {
             TransactionDetails['recipient_bank'] = 'DBS/POSB'
             console.log(TransactionDetails)
 
-            const response = await axios.post(
-                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${TransactionDetails['transaction id']}/resolve_dispute`,
+            const [response1, response2] = await axios.all([
+                axios.post(
+                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${TransactionDetails['transaction_id']}/resolve_dispute`,
                 JSON.stringify(TransactionDetails),
                 {
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': csrfToken,
                     'X-Requested-With': 'XMLHttpRequest'
-                }
-                }
-            );
-            if (response.data.success) {
-                TransactionDetails['transaction id'] = response.data.transactionID
+                    }
+                }),
+                axios.post(
+                    `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions`,
+                    JSON.stringify(TransactionDetails),
+                    {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                ]);
+            console.log(response1.data, response2.data)
+            if (response1.data["success"] && response2.data.success) {
+                TransactionDetails['transaction_id'] = response1.data["transactionID"]
                 navigate(`/${userID}/success`, {state: TransactionDetails})
             }
 
@@ -68,7 +81,7 @@ const ReviewTransfer = () => {
         }
 
         catch (error) {
-            console.log('Error:', error.toJSON());
+            console.log('Error:', error);
           }
         };
     
@@ -77,8 +90,8 @@ const ReviewTransfer = () => {
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
                 <button id = 'backarrow' onClick={() => isDispute
-                                                        ? navigate(`/${userID}/refunddispute/${transactionData['transaction id']}`)
-                                                        : navigate(`/${userID}/paynow`, {state: {"nickname":transactionData["recipient name"], "phonenumber": transactionData["recipient acc"]}})} className='transparent'>
+                                                        ? navigate(`/${userID}/refunddispute/${transactionData['transaction_id']}`)
+                                                        : navigate(`/${userID}/paynow`, {state: {"nickname":transactionData["recipient_name"], "phonenumber": transactionData["recipient_acc"]}})} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Review Transfer</p>
@@ -90,21 +103,21 @@ const ReviewTransfer = () => {
                         <p className='amountin'>Amount in</p>
                         <div className='ReviewTransferBoxBlueSubText'>
                             <p className='ReviewTransferBoxBlueSubTextLeft'>SGD</p>
-                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total amount'].toFixed(2)}</p>
+                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total_amount'].toFixed(2)}</p>
                         </div>
                     </div>
                     <div className="ReviewTransferBoxWhite">
 
                         <div className='Chunk1'>
                             <p className='reviewtext'>From</p>
-                            <p className='accounttextname'>{transactionData['transfer from acc name']}</p>
-                            <p className='reviewtext'>{transactionData['transfer from acc number']}</p>
+                            <p className='accounttextname'>{transactionData['transfer_from_acc_name']}</p>
+                            <p className='reviewtext'>{transactionData['transfer_from_acc_number']}</p>
                         </div>
                         
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
-                            <p className='accounttextname'>{transactionData['recipient name']}</p>
-                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient acc']}</p>
+                            <p className='accounttextname'>{transactionData['recipient_name']}</p>
+                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_acc']}</p>
                         </div>
 
                         <div className='Chunk'>

@@ -33,14 +33,14 @@ const ResolveDisputeRefundScreen = () => {
         isPaynowDispute = typeof FTDtransactions['refund details']['recipient name'] === 'int'
         transactionData = {
             "dispute": true,
-            "transaction id":transactionID,
-            "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
-            "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],
-            "recipient name":FTDtransactions['refund details']['recipient name'],
-            "recipient acc": FTDtransactions['refund details']['recipient acc'],
-            "total amount":FTDtransactions['refund details']['total amount'],
+            "transaction_id":transactionID,
+            "transfer_from_acc_name":FTDtransactions['refund details']['transfer from acc name'],
+            "transfer_from_acc_number":FTDtransactions['refund details']['transfer from acc number'],
+            "recipient_name":FTDtransactions['refund details']['recipient name'],
+            "recipient_acc": FTDtransactions['refund details']['recipient acc'],
+            "total_amount":FTDtransactions['refund details']['total amount'],
             "comments": "Resolving Dispute",
-            "mode of payment": isPaynowDispute ? "FAST / PayNow Transfer" : "Account Transfer",
+            "mode_of_payment": isPaynowDispute ? "FAST / PayNow Transfer" : "Account Transfer",
         }
     }
 

@@ -7,9 +7,10 @@ const ReviewFTD = () => {
     const navigate = useNavigate();
     const { userID } = useParams();
     const location = useLocation();
-    const RaiseFTDdata = location.state;
-
+    const RaiseFTDdataOver = location.state;
+    const RaiseFTDdata = RaiseFTDdataOver.transaction;
     const [csrfToken, setCsrfToken] = useState('empty');
+
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -50,7 +51,7 @@ const ReviewFTD = () => {
             console.log(FTDdetails)
 
             const response = await axios.post(
-                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/disputes/create`,
+                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${FTDdetails['transaction ID']}/disputes`,
                 { FTDdetails },
                 {
                 headers: {
@@ -77,7 +78,7 @@ const ReviewFTD = () => {
         csrfToken != 'empty' && (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
-                <button id = 'backarrow' onClick={() => navigate(`/${userID}/raiseFTD/${RaiseFTDdata['transaction ID']}`, {state: RaiseFTDdata})} className='transparent'>
+                <button id = 'backarrow' onClick={() => navigate(`/${userID}/raiseFTD/${RaiseFTDdata['transaction ID']}`, {state: RaiseFTDdataOver})} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Review Fund Transfer Dispute</p>
@@ -89,7 +90,7 @@ const ReviewFTD = () => {
             </div>
 
             <div className='transactdatecontainer'>
-                <p className='transactiondatefordispute'>{RaiseFTDdata["date"]}</p>
+                <p className='transactiondatefordispute'>{RaiseFTDdataOver["date"]}</p>
             </div>
 
             <div className='reredescriptionbox'>

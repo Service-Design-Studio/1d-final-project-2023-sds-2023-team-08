@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../components/styles/RecentTransactionStylesScreen.css';
-import { useNavigate, useParams  } from 'react-router-dom';
+import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 
@@ -15,6 +15,7 @@ const RecentTransactionScreen = () => {
   const [transactions, setTransactions] = useState([]);
   const [accountdetails, setAccountDetails] = useState([])
   const { userID, accountNumber } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     
@@ -101,7 +102,7 @@ const RecentTransactionScreen = () => {
 
               {transactionsWithSpecificDate.map((transactiondata, index) => {
                 return(
-                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["transaction ID"]}`)}>
+                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["transaction ID"]}`, {state:location.pathname})}>
                 <div className='transaction'>
                   <div className='transactionheadercontainer'>
                     <p className='transactiontitletext'>{transactiondata.transaction["transaction name"]}</p>

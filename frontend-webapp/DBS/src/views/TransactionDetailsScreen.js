@@ -3,7 +3,6 @@ import FTDTransactionDetails from './fund transfer dispute/FTDTransactionDetails
 import NormalTransactionDetails from './others/NormalTransactionDetails';
 import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
-import TransactionJSON from '../testdata/transactionlist.json'
 
 
 const TransactionDetailsScreen = () => {
@@ -13,6 +12,7 @@ const TransactionDetailsScreen = () => {
     const location = useLocation();
     const [TransactionDetailsJSON, setTransactionDetailsJSON] = useState([])
     const [DataCalled, setDataCalled] = useState(false)
+    const pathname = location.state
     
     useEffect(() => {
       console.log("use effect is running")
@@ -33,9 +33,9 @@ const TransactionDetailsScreen = () => {
     return (
        DataCalled && (
           FTDtransaction ? (
-            <FTDTransactionDetails FTDtransactions={TransactionDetailsJSON}/>
+            <FTDTransactionDetails FTDtransactions={TransactionDetailsJSON} prevpathname={pathname}/>
           ) : (
-            <NormalTransactionDetails TransactionData={TransactionDetailsJSON}/>
+            <NormalTransactionDetails TransactionData={TransactionDetailsJSON} prevpathname={pathname}/>
           )
        )
     );

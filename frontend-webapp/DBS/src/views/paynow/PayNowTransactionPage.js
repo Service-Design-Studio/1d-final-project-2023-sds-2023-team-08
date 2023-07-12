@@ -17,29 +17,12 @@ const PayNowTransactionPage = () => {
     const newtransactiondata = {}
 
     newtransactiondata['dispute'] = false
-    newtransactiondata['transfer from acc name'] = senderdetails['user account name']
-    newtransactiondata['transfer from acc number'] = senderdetails['user account num']
-    newtransactiondata['recipient name'] = recipientdetails['nickname']
-    newtransactiondata['recipient acc'] = recipientdetails['phonenumber']
-    newtransactiondata['mode of payment'] = 'FAST / PayNow Transfer'
-    newtransactiondata['transfer type'] = "FAST/IMMEDIATE"
-
-
-    // const [senderdetails, setSenderDetails] = useState([])
-    // useEffect(() => {
-    //     const getsenderDetails = async () => {
-    //       try {
-    //         const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`); 
-    //         const parsedData = response.data;
-    
-    //         setSenderDetails(parsedData);
-    
-    //       } catch (error) {
-    //         console.log(error);
-    //       }
-    //     };
-    //     getsenderDetails();
-    //   }, []);
+    newtransactiondata['transfer_from_acc_name'] = senderdetails['user account name']
+    newtransactiondata['transfer_from_acc_number'] = senderdetails['user account num']
+    newtransactiondata['recipient_name'] = recipientdetails['nickname']
+    newtransactiondata['recipient_acc'] = recipientdetails['phonenumber']
+    newtransactiondata['mode_of_payment'] = 'FAST / PayNow Transfer'
+    newtransactiondata['transfer_type'] = "FAST/IMMEDIATE"
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
     
@@ -60,7 +43,7 @@ const PayNowTransactionPage = () => {
             setemptyamount("* How much would you like to transfer? Let us know")
         }
         else {
-            newtransactiondata['total amount'] = parseFloat(transactionamount)
+            newtransactiondata['total_amount'] = parseFloat(transactionamount)
             newtransactiondata['comments'] = paynowcomment
             navigate(`/${userID}/review`, {state:newtransactiondata })
         }

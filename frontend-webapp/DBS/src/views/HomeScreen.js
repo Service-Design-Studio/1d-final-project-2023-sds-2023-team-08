@@ -48,7 +48,7 @@ const HomeScreen = () => {
                 <button className='transparent' onClick={() => {}}>
                   <img  src='/assets/help.png' className='help' />
                 </button>
-                <button  className='transparent' onClick={() => {}}>
+                <button  className='transparent' onClick={() => navigate('/login')}>
                   <div className='logoutContainer'>
                     <p className='logoutText'>LOG OUT</p>
                   </div>

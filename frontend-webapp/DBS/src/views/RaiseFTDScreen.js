@@ -40,13 +40,12 @@ const RaiseFTDScreen = () => {
             setinvalidContact(true)
         }
         else {
-            TransactionData['user'] = totalAmount > 0 ? "Recipient" : "Sender"
-            TransactionData['reason'] = reason
-            TransactionData['comments'] = commentValue
-            TransactionData['raiseFTD'] = true
-            TransactionData['transaction ID'] = transactionID
-            console.log(TransactionData)
-            navigate(`/${userID}/review`, {state: TransactionData})
+            TransactionDataOver.transaction['user'] = totalAmount > 0 ? "Recipient" : "Sender"
+            TransactionDataOver.transaction['reason'] = reason
+            TransactionDataOver.transaction['comments'] = commentValue
+            TransactionDataOver.transaction['raiseFTD'] = true
+            TransactionDataOver.transaction['transaction ID'] = transactionID
+            navigate(`/${userID}/review`, {state: TransactionDataOver})
         }
     };
 
@@ -131,6 +130,7 @@ const RaiseFTDScreen = () => {
                         onChange={(event) => {
                         const isChecked = event.target.checked;
                         const updatedReason = isChecked ? 'Transfer to Wrong Account' : '';
+                        setWrongAmount(!isChecked)
                         setReason(updatedReason);
                         }}
                     />

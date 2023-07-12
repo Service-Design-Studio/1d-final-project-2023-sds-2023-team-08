@@ -18,7 +18,6 @@ const FTDTransactionScreen = () => {
   const location = useLocation();
   
   useEffect(() => {
-    console.log("hello")
     const fetchFTDtransactions = async () => {
       try {
         const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/user/${userID}/transaction_detail_for_disputes_involving_user`);
@@ -68,7 +67,7 @@ const FTDTransactionScreen = () => {
    datafound && (
     <div className='maincontainer'>
         <div className='RefuteDisputeHeader'>
-          <button id = 'backarrow' onClick={() => navigate(`/${userID}/home`)} className='transparent'>
+          <button id = 'backarrow' onClick={() => navigate(`/${userID}/recenttransaction`)} className='transparent'>
             <img src='/assets/back.png' className='back' />
           </button>
           <p className='RefuteDisputeHeaderText'>Fund Disputes</p>
@@ -94,7 +93,7 @@ const FTDTransactionScreen = () => {
                                 updatedStatustext = sender ? "AWAITING ACTION" : "ACTION REQUIRED";}
 
                             return(
-                                <button className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transactiondetails.transaction["transaction ID"]}`)}>
+                                <button className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transactiondetails.transaction["transaction ID"]}`, {state:location.pathname})}>
                                     <div className='transaction'>
                                         <div className='transactionheader'>
                                             <p className='transactiontitle'>{FTDtransactiondata.transactiondetails.transaction["transaction name"]}</p>
