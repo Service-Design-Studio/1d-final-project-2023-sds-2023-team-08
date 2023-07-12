@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_080320) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_183303) do
   create_table "accounts", force: :cascade do |t|
     t.string "account_number"
     t.integer "initial_deposit"
@@ -36,6 +36,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_080320) do
     t.string "day_date"
     t.text "further_action"
     t.index ["transaction_id"], name: "index_disputes_on_transaction_id"
+  end
+
+  create_table "paynows", force: :cascade do |t|
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "accnum"
+    t.string "bank"
+    t.string "nickname"
   end
 
   create_table "transactions", force: :cascade do |t|

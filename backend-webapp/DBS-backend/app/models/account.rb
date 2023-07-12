@@ -1,6 +1,8 @@
 class Account < ApplicationRecord
     belongs_to :user
     has_many :transactions
+    
+    
  
 
     def net_deposits #checked, used by user model: list_of_acc_infos

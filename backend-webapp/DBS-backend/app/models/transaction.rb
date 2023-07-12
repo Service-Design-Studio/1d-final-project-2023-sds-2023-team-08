@@ -55,17 +55,18 @@ class Transaction < ApplicationRecord
     def transaction_and_dispute_detail(user)
     
         dispute = self.dispute
+        
     
-        result={
-                    "dispute date": dispute ? dispute.created_at : "nil",
+        result=[{
+                    "disputedate": dispute ? Date.strptime(dispute.date_time.split(', ').last, '%d %B %Y') : "nil",
                     "transaction":{
-                      "transaction details": self.generate_transaction_details(user),
-                      "FTD details": dispute ? dispute.generate_ftd_details(user) : "nil"
+                      "transactiondetails": self.generate_transaction_details(user),
+                      "FTDdetails": dispute ? dispute.generate_ftd_details(user) : "nil"
     
                     }
                     
     
-                }
+                }]
     
         return result
       end
