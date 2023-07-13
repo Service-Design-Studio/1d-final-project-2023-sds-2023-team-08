@@ -8,6 +8,7 @@ const RaiseFTDSuccess = () => {
     const { userID } = useParams();
     const location = useLocation();
     const FTDDetails = location.state;
+    console.log(FTDDetails)
 
     return(
         <div className='RefuteDisputeMain'>

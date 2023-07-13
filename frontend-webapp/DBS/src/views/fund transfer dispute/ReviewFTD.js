@@ -48,6 +48,7 @@ const ReviewFTD = () => {
             FTDdetails['reason'] = RaiseFTDdata['reason']
             FTDdetails['comments'] = RaiseFTDdata['comments']
             FTDdetails['raiseFTD'] = true
+            FTDdetails['date'] = RaiseFTDdataOver['date']
 
             let FTDdetailstobesent = FTDdetails
             FTDdetailstobesent["total_amount"] = RaiseFTDdata["total amount"]
