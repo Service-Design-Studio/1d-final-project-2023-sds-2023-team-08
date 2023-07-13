@@ -93,7 +93,7 @@ const FTDTransactionScreen = () => {
                                 updatedStatustext = sender ? "AWAITING ACTION" : "ACTION REQUIRED";}
 
                             return(
-                                <button className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transactiondetails.transaction["transaction ID"]}`, {state:location.pathname})}>
+                                <button id='txncontainer' className='transparent' onClick={() => navigate(`/${userID}/${FTDtransactiondata.transactiondetails.transaction["transaction ID"]}`, {state:location.pathname})}>
                                     <div className='transaction'>
                                         <div className='transactionheader'>
                                             <p className='transactiontitle'>{FTDtransactiondata.transactiondetails.transaction["transaction name"]}</p>

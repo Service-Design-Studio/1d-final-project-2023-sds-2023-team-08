@@ -113,13 +113,13 @@ const ReviewTransfer = () => {
                         <div className='Chunk1'>
                             <p className='reviewtext'>From</p>
                             <p className='accounttextname'>{transactionData['transfer_from_acc_name']}</p>
-                            <p className='reviewtext'>{transactionData['transfer_from_acc_number']}</p>
+                            <p id = "banknumber" className='reviewtext'>{transactionData['transfer_from_acc_number']}</p>
                         </div>
                         
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient_name']}</p>
-                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_phonenum']}</p>
+                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>
@@ -129,7 +129,7 @@ const ReviewTransfer = () => {
 
                         <div className='Chunk2'>
                             <p className='reviewtext'>Your Comments</p>
-                            <p className='accounttextname'>{transactionData['comments']}</p>
+                            <p id="yourcomments" className='accounttextname'>{transactionData['comments']}</p>
                         </div>
 
                     </div>

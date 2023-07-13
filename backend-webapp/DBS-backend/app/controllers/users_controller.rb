@@ -139,11 +139,13 @@ class UsersController < ApplicationController
           "date":transaction.datetime.strftime("%a, %d %b %Y"),
           "transaction": {
             "transaction name": transaction.generate_transaction_name(outgoing) ,
-            "transaction type": transaction.transaction_type,
+            "mode of payment": transaction.transaction_type,
+            "transaction type": "FAST / PayNow Transfer",
             "account number": outgoing ? transaction.account.account_number : transaction.recipient_account_number,
             #if the account which made this transaction belongs to the user, it means outgoing funds thus other party is recipient acc, else sender's acc 
-            "total amount": outgoing ? -transaction.amount : transaction.amount
+            "total amount": outgoing ? -transaction.amount : transaction.amount,
             #if the account which made this transaction belongs to the user, it means outgoing funds thus -ve, else +ve
+            "transaction ID": transaction.id
           }
 
         }
