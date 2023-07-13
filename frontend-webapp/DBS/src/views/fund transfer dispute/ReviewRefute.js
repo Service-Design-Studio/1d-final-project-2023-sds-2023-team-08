@@ -8,33 +8,30 @@ import TransactionJSON from '../../testdata/ftddetail.json'
 const ReviewRefute = () => {
     const navigate = useNavigate();
     const { userID } = useParams();
-    const TransactionDetailsJSON = TransactionJSON[0]
     const location = useLocation();
     const refutereason = location.state["refute reason"];
     const transactionID = location.state["transaction ID"]
     const [csrfToken, setCsrfToken] = useState('');
+    const [TransactionDetailsJSON, setTransactionDetailsJSON] = useState([])
 
 
-  // const [TransactionDetailsJSON, setTransactionDetailsJSON] = useState([])
-  // useEffect(() => {
-  //   const fetchFTDtransactiondata = async () => {
-  //     try {
-  //       const response = await axios.get(`link to the transactions`); //using transactionID here
-  //       const transactiondetails = response.data;
-  //       console.log(FTDtransactions)
-  //       setTransactionDetailsJSON[transactiondetails[0]]
-  //       setFTDtransaction(TransactionDetailsJSON.transaction.transactiondetails['FTD']);
-  //
-  //       const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //new link
-  //       const Token = response2.data.csrfToken;
-  //       setCsrfToken(Token);
-  //
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchFTDtransactiondata();
-  // }, []);
+    useEffect(() => {
+        const fetchFTDtransactiondata = async () => {
+        try {
+            const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${transactionID}`); //using transactionID here
+            const transactiondetails = response.data;
+            setTransactionDetailsJSON(transactiondetails[0])
+    
+            const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); 
+            const Token = response2.data.csrfToken;
+            setCsrfToken(Token);
+    
+        } catch (error) {
+            console.log(error);
+        }
+        };
+        fetchFTDtransactiondata();
+    }, []);
 
 
   const handleSubmit = async(event) => {
@@ -49,16 +46,15 @@ const ReviewRefute = () => {
         const currentMinutes = now.getMinutes().toString().padStart(2, '0'); 
         const currentTime = `${currentHour}:${currentMinutes}`;
 
-        //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
-        TransactionDetails['date and time'] = `${currentDate} ${currentTime}`
-        TransactionDetails['day and date'] =  `${currentDay}, ${currentDate}`
+        TransactionDetails['date_and_time'] = `${currentDate} ${currentTime}`
+        TransactionDetails['day_and_date'] =  `${currentDay}, ${currentDate}`
         TransactionDetails['refutereason'] = refutereason
         TransactionDetails['refute'] = true
         console.log(TransactionDetails)
 
         const response = await axios.post(
-            'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
-            { TransactionDetails },
+            `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${transactionID}/refute_dispute`,
+            JSON.stringify(TransactionDetails),
             {
             headers: {
                 'Content-Type': 'application/json',
@@ -77,11 +73,15 @@ const ReviewRefute = () => {
 
     catch (error) {
         console.log('Error:', error.toJSON());
-        navigate(`/${userID}/success`, {state: TransactionDetails})
     }
     };
 
+    if (csrfToken != '') {
+        console.log(csrfToken)
+        console.log(TransactionDetailsJSON)
+    }
     return (
+        csrfToken != '' && (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
                 <button id = 'backarrow' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)} className='transparent'>
@@ -92,18 +92,18 @@ const ReviewRefute = () => {
 
             <div className='transactionmoney'>
                 <p className='sgddispute'> SGD</p>
-                <p className={TransactionDetailsJSON.transaction.transactiondetails["total amount"] < 0 ? 'reremoneytext2out' : 'reremoneytext2in'}>{TransactionDetailsJSON.transaction.transactiondetails["total amount"].toFixed(2)}</p>
+                <p className={TransactionDetailsJSON.transaction.transactiondetails.transaction["total amount"] < 0 ? 'reremoneytext2out' : 'reremoneytext2in'}>{TransactionDetailsJSON.transaction.transactiondetails.transaction["total amount"].toFixed(2)}</p>
             </div>
 
             <div className='transactdatecontainer'>
-                <p className='transactiondatefordispute'>{TransactionDetailsJSON.transaction.transactiondetails["transaction date"]}</p>
+                <p className='transactiondatefordispute'>{TransactionDetailsJSON.transaction.transactiondetails.transaction["transaction date"]}</p>
             </div>
 
             <div className='reredescriptionbox'>
                 <p className='rereboxtextheadertitle'> Raised On</p>
                 <p className='rereboxtextcontent'> {TransactionDetailsJSON.disputedate}</p>
                 <p className='rereboxtextheader'> Transaction Type</p>
-                <p className='rereboxtextcontent'> {TransactionDetailsJSON.transaction.transactiondetails["transaction type"]}</p>
+                <p className='rereboxtextcontent'> {TransactionDetailsJSON.transaction.transactiondetails.transaction["transaction type"]}</p>
                 <p className='rereboxtextheader'> Reason of Transfer Dispute</p>
                 <p className='rereboxtextcontent'> {TransactionDetailsJSON.transaction.FTDdetails["reason"]}</p>
                 <p className='rereboxtextheader'> Comments from Dispute Party</p>
@@ -120,8 +120,8 @@ const ReviewRefute = () => {
 
             <button onClick={handleSubmit} className='SubmitButtonRed'>REFUTE DISPUTE</button>
         </div>
+    )
     );
-
 };
 
 export default ReviewRefute;

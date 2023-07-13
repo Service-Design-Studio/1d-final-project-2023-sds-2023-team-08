@@ -11,6 +11,9 @@ const EnterRecipient = () => {
     const [ recipientNickname, setrecipientNickname ] = useState('');
     const [ recipientPhoneNumber, setrecipientPhoneNumber] = useState('');
     const [ invalidmessage, setinvalidmessage] = useState('')
+    const [recipientAccnum, setrecipientAccnum] = useState('');
+    const [senderAccnum, setsenderAccnum] = useState('')
+    const [senderAccname, setsenderAccname] = useState('')
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -33,8 +36,8 @@ const EnterRecipient = () => {
             try {
                 const data = { "phonenumber": recipientPhoneNumber }
                 console.log(data)
-                const response = await axios.post(
-                    'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
+                const response = await axios.get(
+                    `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/paynows/search_by_phone/+65${recipientPhoneNumber}`,
                     { data },
                     {
                     headers: {
@@ -46,6 +49,9 @@ const EnterRecipient = () => {
                 );
                 if (response.data.nickname.length > 0) {
                     setrecipientNickname(response.data.nickname);
+                    setrecipientAccnum(response.data.accnum);
+                    setsenderAccname(response.data.usraccname);
+                    setsenderAccnum(response.data.usraccnum)
                 } else {
                 }
 
@@ -70,7 +76,7 @@ const EnterRecipient = () => {
             setinvalidmessage("* Please Enter A Valid PayNow Phone Number")
         }
         else {
-            navigate(`/${userID}/paynow`, {state: {"phonenumber": recipientPhoneNumber, "nickname":recipientNickname }})
+            navigate(`/${userID}/paynow`, {state: {"phonenumber": recipientPhoneNumber, "nickname":recipientNickname, "accnum":recipientAccnum, "usraccnum":senderAccnum, "usraccname":senderAccname }})
         }
     };
 

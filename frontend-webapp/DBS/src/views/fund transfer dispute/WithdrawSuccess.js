@@ -19,7 +19,7 @@ const WithdrawSuccess = () => {
             <div style ={{padding:".5vw"}}></div>
             <p className='successheadertext'> Withdraw Success</p>
             <div style ={{padding:"1vw"}}></div>
-            <p className='successtxdate'>on {FTDDetails["date and time"]}</p>
+            <p className='successtxdate'>on {FTDDetails["date_and_time"]}</p>
             <div style ={{padding:"1vw"}}></div>
             
             <div className='popboxRS'>
