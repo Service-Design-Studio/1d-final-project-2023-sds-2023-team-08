@@ -28,6 +28,7 @@ jobs:
 
     - name: Bundle install
       run: |
+        cd backend-webapp/DBS-backend
         gem install bundler
         bundle install
 
