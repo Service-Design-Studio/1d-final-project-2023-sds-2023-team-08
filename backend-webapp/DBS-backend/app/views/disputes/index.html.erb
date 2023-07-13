@@ -1,0 +1,47 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Disputes</h1>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+    <th>dispute id</th>
+      <th>status</th>
+      <th>disputer_acc_id</th>
+      <th>dispute_reason</th>
+      <th>dispute_reason_details</th>
+      <th>disputee_id</th>
+      <th>disputer_id</th>
+      <th>transaction_id</th>
+      <th>day_date</th>
+      <th>date_time</th>
+      <th>further_action</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @disputes.each do |dispute| %>
+      <tr>
+        <td><%= dispute.id %></td>
+        <td><%= dispute.status %></td>
+        <td><%= dispute.disputer_acc_id %></td>
+        <td><%= dispute.dispute_reason %></td>
+        <td><%= dispute.dispute_reason_details %></td>
+
+
+        <td><%= dispute.disputee_id %></td>
+        <td><%= dispute.disputer_id %></td>
+        <td><%= dispute.transaction_id %></td>
+        <td><%= dispute.day_date %></td>
+        <td><%= dispute.date_time %></td>
+        <td><%= dispute.further_action %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
