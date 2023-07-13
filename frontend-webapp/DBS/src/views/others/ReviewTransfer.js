@@ -46,19 +46,8 @@ const ReviewTransfer = () => {
             TransactionDetails['day_and_date'] =  `${currentDay}, ${currentDate}`
             TransactionDetails['transfer_type'] = "FAST/IMMEDIATE"
             TransactionDetails['recipient_bank'] = 'DBS/POSB'
-            console.log(TransactionDetails)
 
             const [response1, response2] = await axios.all([
-                axios.post(
-                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${TransactionDetails['transaction_id']}/resolve_dispute`,
-                JSON.stringify(TransactionDetails),
-                {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': csrfToken,
-                    'X-Requested-With': 'XMLHttpRequest'
-                    }
-                }),
                 axios.post(
                     `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions`,
                     JSON.stringify(TransactionDetails),
@@ -68,11 +57,24 @@ const ReviewTransfer = () => {
                         'X-CSRF-Token': csrfToken,
                         'X-Requested-With': 'XMLHttpRequest'
                         }
+                    }),
+                
+                isDispute ? 
+                    axios.post(
+                    `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${TransactionDetails['transaction_id']}/resolve_dispute`,
+                    JSON.stringify(TransactionDetails),
+                    {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                        }
                     })
+                : (null)
                 ]);
-            console.log(response1.data, response2.data)
-            if (response1.data["success"] && response2.data.success) {
-                TransactionDetails['transaction_id'] = response1.data["transactionID"]
+
+            if (response1.data.success && (!isDispute || (isDispute && response2.data.success))) {
+                TransactionDetails['transaction_id'] = response1.data.transactionID
                 navigate(`/${userID}/success`, {state: TransactionDetails})
             }
 
@@ -117,7 +119,7 @@ const ReviewTransfer = () => {
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient_name']}</p>
-                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_acc']}</p>
+                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>

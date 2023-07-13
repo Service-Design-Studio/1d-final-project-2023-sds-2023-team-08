@@ -9,6 +9,7 @@ const RaiseFTDScreen = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const TransactionDataOver = location.state
+    console.log(TransactionDataOver)
     const TransactionData = TransactionDataOver.transaction
     const totalAmount = TransactionData['total amount']
     const commentsInputRef = useRef(null);

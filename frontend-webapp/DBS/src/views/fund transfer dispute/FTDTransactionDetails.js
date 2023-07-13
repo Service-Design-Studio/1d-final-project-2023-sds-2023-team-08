@@ -12,6 +12,7 @@ function getFTDTransactionsByDate(transactions, specificDate) {
 const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
   const navigate = useNavigate();
   const { userID, transactionID } = useParams();
+  console.log(FTDtransactions)
   const refuted = FTDtransactions.transaction?.FTDdetails?.refutereason != null;
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";

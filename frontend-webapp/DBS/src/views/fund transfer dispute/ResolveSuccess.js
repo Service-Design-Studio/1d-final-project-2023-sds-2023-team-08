@@ -8,6 +8,7 @@ const ResolveSuccess = (props) => {
     const navigate = useNavigate();
     const {transactionDetails} = props;
     const {userID} = useParams();
+    console.log(transactionDetails)
  
     return (
         <div className='RefuteDisputeMain'>
@@ -16,7 +17,7 @@ const ResolveSuccess = (props) => {
                 <img src='/assets/greentick.png' className='successtxgreentick' />
             </div>
 
-            <p className='successheadertext'> Successful</p>
+            <p className='successheadertext'>Successful</p>
             <p className='successtxdate'>on {transactionDetails["date_and_time"]}</p>
 
             <div className='successtxdescriptboxblack'>

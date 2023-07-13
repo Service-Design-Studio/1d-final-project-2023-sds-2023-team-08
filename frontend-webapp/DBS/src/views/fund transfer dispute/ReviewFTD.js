@@ -48,11 +48,18 @@ const ReviewFTD = () => {
             FTDdetails['reason'] = RaiseFTDdata['reason']
             FTDdetails['comments'] = RaiseFTDdata['comments']
             FTDdetails['raiseFTD'] = true
-            console.log(FTDdetails)
+
+            let FTDdetailstobesent = FTDdetails
+            FTDdetailstobesent["total_amount"] = RaiseFTDdata["total amount"]
+            FTDdetailstobesent["transaction_ID"] = RaiseFTDdata["transaction ID"]
+            FTDdetailstobesent["transaction_name"] = RaiseFTDdata["transaction name"]
+            FTDdetailstobesent["transaction_type"] = RaiseFTDdata["transaction type"]
+
+            console.log(FTDdetailstobesent)
 
             const response = await axios.post(
                 `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${FTDdetails['transaction ID']}/disputes`,
-                { FTDdetails },
+                JSON.stringify(FTDdetailstobesent) ,
                 {
                 headers: {
                     'Content-Type': 'application/json',
