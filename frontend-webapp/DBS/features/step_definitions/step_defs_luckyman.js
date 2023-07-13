@@ -4,25 +4,17 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
 const { useEffect } = require('react');
 const { expect } = require('chai');
 
-Before(async function () {
-  // Set up the Selenium WebDriver
-  this.driver = await new Builder().forBrowser('chrome').build();
-});
 
-After(async function () {
-  // Quit the Selenium WebDriver after each scenario
-  await this.driver.quit();
-});
 
-Given('I am at the log in page', async function () {
+Given('wx I am at the log in page', async function () {
     // Navigate to the login page
-    await this.driver.get('http://localhost:3000');
+    await this.driver.get(baseUrl);
     await this.driver.manage().window().setRect({ width: 393, height: 851 });
   });
 
 //////////////// Logging in to my account //////////////////////////////////////////////////////////////////////////////////////////////
 
-When('I click "LOGIN" after entering details', async function () {
+When('wx I click "LOGIN" after entering details', async function () {
     const usernameField = await this.driver.findElement(By.id('username'))
     usernameField.sendKeys("wei xuan")
     const passwordField = await this.driver.findElement(By.id('pin'))
@@ -37,17 +29,17 @@ When('I click "LOGIN" after entering details', async function () {
     await loginButton.click();
   });
   
-Then('feat2 I will be redirected to the homepage', async function () {
+Then('wx I will be redirected to the homepage', async function () {
     // Check if the current page is the home page
     await new Promise(resolve => setTimeout(resolve, 1000));
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.strictEqual(currentUrl, 'http://localhost:3000/5/home');
+    assert.strictEqual(currentUrl, baseUrl + '/5/home');
 });
 
 //////////////// Log in page fail //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-When('I click "LOGIN" without entering details', async function () {
+When('wx I click "LOGIN" without entering details', async function () {
   const loginButton = await this.driver.findElement(By.className('login'));
 
   // Add a delay of 1 second before clicking the button
@@ -57,7 +49,7 @@ When('I click "LOGIN" without entering details', async function () {
   await loginButton.click();
 });
 
-Then('I will see a warning to fill in the inputs', async function () {
+Then('wx I will see a warning to fill in the inputs', async function () {
   // Check if there is a warning
   const loginWarning = await this.driver.findElement(By.className('alert'));
   const warningText = await loginWarning.getText();
@@ -71,7 +63,7 @@ Then('I will see a warning to fill in the inputs', async function () {
 
 Given('I am at Home page', async function () {
     // Navigate to the login page
-    await this.driver.get('http://localhost:3000/5/home');
+    await this.driver.get(baseUrl + '/5/home');
     await this.driver.manage().window().setRect({ width: 393, height: 851 });
   });
 
@@ -89,13 +81,13 @@ Then('I will be redirected to the FTD Page', async function () {
     // Check if the current page is the home page
     await new Promise(resolve => setTimeout(resolve, 1000));
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.strictEqual(currentUrl, 'http://localhost:3000/5/FTDtransactionsall');
+    assert.strictEqual(currentUrl, baseUrl+'/5/FTDtransactionsall');
 });
 //////////////// I am at the Fund Dispute page //////////////////////////////////////////////////////////////////////////////////////////////
 
 Given('I am at the Fund Dispute page', async function () {
     // Navigate to the Fund Dispute Page
-    await this.driver.get('http://localhost:3000/5/FTDtransactionsall');
+    await this.driver.get(baseUrl + '/5/FTDtransactionsall');
     await this.driver.manage().window().setRect({ width: 393, height: 851 });
   });
 
@@ -114,7 +106,7 @@ Then('I will be redirected to the Dispute details Page', async function () {
     // Check if the current page is the Fund Dispute Page
     await new Promise(resolve => setTimeout(resolve, 1000));
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.ok(currentUrl.includes('http://localhost:3000/5'));
+    assert.ok(currentUrl.includes(baseUrl + '/5'));
 });
 
 Then("it will reflect the amount being disputed", async function () {
@@ -150,7 +142,7 @@ Then('I will be redirected to the Refund Dispute page', async function () {
     // Check if the current page is Refund Dispute page
     await new Promise(resolve => setTimeout(resolve, 1000));
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.ok(currentUrl.includes('http://localhost:3000/5/refunddispute'));
+    assert.ok(currentUrl.includes(baseUrl + '/5/refunddispute'));
 });
 
 
@@ -166,10 +158,10 @@ Then('I will be redirected to the Refund Dispute page', async function () {
     await submitButton.click();
   });
   
-Then('I will be redirected to the Review Transfer page', async function () {
+Then('wx I will be redirected to the Review Transfer page', async function () {
     // Check if the current page is the home page
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.strictEqual(currentUrl, 'http://localhost:3000/5/review');
+    assert.strictEqual(currentUrl, baseUrl + '/5/review');
 });
 
 
@@ -190,7 +182,7 @@ Then('I will be redirected to the Successful transfer page', async function () {
     // Check if the current page is the home page
     await new Promise(resolve => setTimeout(resolve, 1000));
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.strictEqual(currentUrl, 'http://localhost:3000/5/success');
+    assert.strictEqual(currentUrl, baseUrl+ '/5/success');
 });
 
 
@@ -209,5 +201,5 @@ Then('I will be redirected to the Successful transfer page', async function () {
 Then('I will be redirected to the Home page', async function () {
     // Check if the current page is the review transfer page
     const currentUrl = await this.driver.getCurrentUrl();
-    assert.strictEqual(currentUrl, 'http://localhost:3000/5/home');
+    assert.strictEqual(currentUrl, baseUrl + '/5/home');
 });
