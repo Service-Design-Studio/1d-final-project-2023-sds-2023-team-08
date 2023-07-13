@@ -21751,3 +21751,818 @@ Completed 200 OK in 215ms (Views: 0.9ms | ActiveRecord: 41.6ms | Allocations: 35
   [1m[36mTransaction Update (1.5ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-27 08:52:48.753214"], ["updated_at", "2023-07-13 08:52:48.753530"], ["date_time", "Tue, 27 Jun 2023 16:52"], ["id", 13]]
   [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to UpdateIntToFloatTransactions (20230713092525)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atransactions_on_account_id" ON "atransactions" ("account_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "transactions"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL, CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "transactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230713092525"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPaynow Delete All (6.6ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (0.2ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (7.8ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (5.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (5.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-07-13 09:27:19.547973"], ["updated_at", "2023-07-13 09:27:19.547973"]]
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-07-13 09:27:19.567185"], ["updated_at", "2023-07-13 09:27:19.567185"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-07-13 09:27:19.575850"], ["updated_at", "2023-07-13 09:27:19.575850"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-07-13 09:27:19.584448"], ["updated_at", "2023-07-13 09:27:19.584448"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-07-13 09:27:19.594214"], ["updated_at", "2023-07-13 09:27:19.594214"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-07-13 09:27:19.603288"], ["updated_at", "2023-07-13 09:27:19.603288"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-07-13 09:27:19.614358"], ["updated_at", "2023-07-13 09:27:19.614358"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-07-13 09:27:19.623882"], ["updated_at", "2023-07-13 09:27:19.623882"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.5ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:27:19.745169"], ["updated_at", "2023-07-13 09:27:19.745169"], ["user_id", 461]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:27:19.755204"], ["updated_at", "2023-07-13 09:27:19.755204"], ["user_id", 466]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:27:19.769420"], ["updated_at", "2023-07-13 09:27:19.769420"], ["user_id", 467]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:27:19.782964"], ["updated_at", "2023-07-13 09:27:19.782964"], ["user_id", 468]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:27:19.792914"], ["updated_at", "2023-07-13 09:27:19.792914"], ["user_id", 461]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:27:19.801003"], ["updated_at", "2023-07-13 09:27:19.801003"], ["user_id", 462]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:27:19.809775"], ["updated_at", "2023-07-13 09:27:19.809775"], ["user_id", 463]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:27:19.817927"], ["updated_at", "2023-07-13 09:27:19.817927"], ["user_id", 464]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:27:19.826622"], ["updated_at", "2023-07-13 09:27:19.826622"], ["user_id", 465]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (0.6ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888887"], ["created_at", "2023-07-13 09:27:19.841540"], ["updated_at", "2023-07-13 09:27:19.841540"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (0.6ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888888"], ["created_at", "2023-07-13 09:27:19.849070"], ["updated_at", "2023-07-13 09:27:19.849070"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.5ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-07-13 09:27:19.880469"], ["updated_at", "2023-07-13 09:27:19.880469"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-07-13 09:27:19.891284"], ["updated_at", "2023-07-13 09:27:19.891284"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-07-13 09:27:19.902865"], ["updated_at", "2023-07-13 09:27:19.902865"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-07-13 09:27:19.919718"], ["updated_at", "2023-07-13 09:27:19.919718"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-07-13 09:27:19.929855"], ["updated_at", "2023-07-13 09:27:19.929855"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-07-13 09:27:19.938595"], ["updated_at", "2023-07-13 09:27:19.938595"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-07-13 09:27:19.947289"], ["updated_at", "2023-07-13 09:27:19.947289"], ["account_id", 6], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-07-13 09:27:19.955684"], ["updated_at", "2023-07-13 09:27:19.955684"], ["account_id", 8], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-07-13 09:27:19.963777"], ["updated_at", "2023-07-13 09:27:19.963777"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-07-13 09:27:19.972530"], ["updated_at", "2023-07-13 09:27:19.972530"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-07-13 09:27:19.981166"], ["updated_at", "2023-07-13 09:27:19.981166"], ["account_id", 9], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:27:19.989681"], ["updated_at", "2023-07-13 09:27:19.990795"], ["date_time", "Sun, 09 Jul 2023 17:27"], ["id", 1]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:27:20.000188"], ["updated_at", "2023-07-13 09:27:20.000590"], ["date_time", "Sat, 08 Jul 2023 17:27"], ["id", 2]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:27:20.008720"], ["updated_at", "2023-07-13 09:27:20.009033"], ["date_time", "Sun, 09 Jul 2023 17:27"], ["id", 3]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-10 09:27:20.016282"], ["updated_at", "2023-07-13 09:27:20.016596"], ["date_time", "Mon, 10 Jul 2023 17:27"], ["id", 4]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:27:20.024275"], ["updated_at", "2023-07-13 09:27:20.024579"], ["date_time", "Fri, 07 Jul 2023 17:27"], ["id", 5]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:27:20.031644"], ["updated_at", "2023-07-13 09:27:20.032019"], ["date_time", "Fri, 07 Jul 2023 17:27"], ["id", 6]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:27:20.041190"], ["updated_at", "2023-07-13 09:27:20.041509"], ["date_time", "Sat, 08 Jul 2023 17:27"], ["id", 7]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.8ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:27:20.048783"], ["updated_at", "2023-07-13 09:27:20.049092"], ["date_time", "Sun, 09 Jul 2023 17:27"], ["id", 8]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:27:20.057146"], ["updated_at", "2023-07-13 09:27:20.057463"], ["date_time", "Fri, 07 Jul 2023 17:27"], ["id", 9]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:27:20.065042"], ["updated_at", "2023-07-13 09:27:20.065335"], ["date_time", "Thu, 06 Jul 2023 17:27"], ["id", 10]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-10 09:27:20.072779"], ["updated_at", "2023-07-13 09:27:20.073179"], ["date_time", "Mon, 10 Jul 2023 17:27"], ["id", 11]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-07-13 09:27:20.081156"], ["updated_at", "2023-07-13 09:27:20.081156"], ["account_id", 5], ["comments", "new trf"], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-07-13 09:27:20.089745"], ["updated_at", "2023-07-13 09:27:20.089745"], ["account_id", 5], ["comments", ""], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-28 09:27:20.097790"], ["updated_at", "2023-07-13 09:27:20.098086"], ["date_time", "Wed, 28 Jun 2023 17:27"], ["id", 12]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-16 09:27:20.105327"], ["updated_at", "2023-07-13 09:27:20.105643"], ["date_time", "Fri, 16 Jun 2023 17:27"], ["id", 13]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+Started GET "/" for 127.0.0.1 at 2023-07-13 17:35:39 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 30.8ms | Allocations: 522)
+Completed 200 OK in 156ms (Views: 56.5ms | ActiveRecord: 0.0ms | Allocations: 4836)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-13 17:35:42 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:23
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 461]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 462]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 463]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 464]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 465]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 466]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 467]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 468]]
+  ↳ app/views/users/index.html.erb:31
+  Rendered users/index.html.erb within layouts/application (Duration: 76.8ms | Allocations: 22264)
+  Rendered layout layouts/application.html.erb (Duration: 187.5ms | Allocations: 57472)
+Completed 200 OK in 208ms (Views: 189.5ms | ActiveRecord: 3.4ms | Allocations: 60828)
+
+
+Started GET "/users/461/transactions/all" for 127.0.0.1 at 2023-07-13 17:35:51 +0800
+Processing by TransactionsController#show as HTML
+  Parameters: {"user_id"=>"461", "id"=>"all"}
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:126:in `set_transaction'
+Completed 404 Not Found in 15ms (ActiveRecord: 1.2ms | Allocations: 3904)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Transaction with 'id'=all):
+  
+app/controllers/transactions_controller.rb:126:in `set_transaction'
+Started GET "/users/461/transactions_all" for 127.0.0.1 at 2023-07-13 17:35:59 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/461/transactions_all"):
+  
+Started GET "/users/461/all_transactions" for 127.0.0.1 at 2023-07-13 17:36:12 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"461"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 461]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-06')[0m  [["user_id", 461]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-07-06')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/users_controller.rb:132:in `all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 465], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 466], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 464], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 462], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 463], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 462], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 462], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 468], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 467], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 461], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:136:in `block in all_transactions_desc'
+Completed 200 OK in 240ms (Views: 0.6ms | ActiveRecord: 6.0ms | Allocations: 45221)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to UpdateFloatToDecimalTransaction (20230713093804)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_atransactions_on_account_id" ON "atransactions" ("account_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "transactions"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to UpdateFloatToDecimalTransaction (20230713093804)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_atransactions_on_account_id" ON "atransactions" ("account_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "transactions"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" decimal DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL, CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "transactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "atransactions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230713093804"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPaynow Delete All (6.3ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (0.1ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (4.7ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (4.8ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (5.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-07-13 09:42:40.924931"], ["updated_at", "2023-07-13 09:42:40.924931"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-07-13 09:42:40.933589"], ["updated_at", "2023-07-13 09:42:40.933589"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-07-13 09:42:40.941071"], ["updated_at", "2023-07-13 09:42:40.941071"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-07-13 09:42:40.949241"], ["updated_at", "2023-07-13 09:42:40.949241"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-07-13 09:42:40.956816"], ["updated_at", "2023-07-13 09:42:40.956816"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-07-13 09:42:40.964663"], ["updated_at", "2023-07-13 09:42:40.964663"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-07-13 09:42:40.972056"], ["updated_at", "2023-07-13 09:42:40.972056"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-07-13 09:42:40.979505"], ["updated_at", "2023-07-13 09:42:40.979505"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:42:41.012658"], ["updated_at", "2023-07-13 09:42:41.012658"], ["user_id", 469]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:42:41.021571"], ["updated_at", "2023-07-13 09:42:41.021571"], ["user_id", 474]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (2.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:42:41.034523"], ["updated_at", "2023-07-13 09:42:41.034523"], ["user_id", 475]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.0ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:42:41.048112"], ["updated_at", "2023-07-13 09:42:41.048112"], ["user_id", 476]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:42:41.058390"], ["updated_at", "2023-07-13 09:42:41.058390"], ["user_id", 469]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:42:41.067775"], ["updated_at", "2023-07-13 09:42:41.067775"], ["user_id", 470]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:42:41.076251"], ["updated_at", "2023-07-13 09:42:41.076251"], ["user_id", 471]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:42:41.084919"], ["updated_at", "2023-07-13 09:42:41.084919"], ["user_id", 472]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:42:41.097731"], ["updated_at", "2023-07-13 09:42:41.097731"], ["user_id", 473]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (0.8ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888887"], ["created_at", "2023-07-13 09:42:41.118648"], ["updated_at", "2023-07-13 09:42:41.118648"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (2.1ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888888"], ["created_at", "2023-07-13 09:42:41.130760"], ["updated_at", "2023-07-13 09:42:41.130760"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-07-13 09:42:41.156381"], ["updated_at", "2023-07-13 09:42:41.156381"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-07-13 09:42:41.165491"], ["updated_at", "2023-07-13 09:42:41.165491"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-07-13 09:42:41.174250"], ["updated_at", "2023-07-13 09:42:41.174250"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (2.1ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-07-13 09:42:41.189169"], ["updated_at", "2023-07-13 09:42:41.189169"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-07-13 09:42:41.203497"], ["updated_at", "2023-07-13 09:42:41.203497"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-07-13 09:42:41.213904"], ["updated_at", "2023-07-13 09:42:41.213904"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-07-13 09:42:41.223031"], ["updated_at", "2023-07-13 09:42:41.223031"], ["account_id", 6], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-07-13 09:42:41.231954"], ["updated_at", "2023-07-13 09:42:41.231954"], ["account_id", 8], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-07-13 09:42:41.240629"], ["updated_at", "2023-07-13 09:42:41.240629"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-07-13 09:42:41.249239"], ["updated_at", "2023-07-13 09:42:41.249239"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-07-13 09:42:41.257505"], ["updated_at", "2023-07-13 09:42:41.257505"], ["account_id", 9], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:42:41.265848"], ["updated_at", "2023-07-13 09:42:41.266300"], ["date_time", "Thu, 06 Jul 2023 17:42"], ["id", 1]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:42:41.275322"], ["updated_at", "2023-07-13 09:42:41.275669"], ["date_time", "Fri, 07 Jul 2023 17:42"], ["id", 2]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:42:41.283308"], ["updated_at", "2023-07-13 09:42:41.283625"], ["date_time", "Thu, 06 Jul 2023 17:42"], ["id", 3]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:42:41.290843"], ["updated_at", "2023-07-13 09:42:41.291159"], ["date_time", "Sat, 08 Jul 2023 17:42"], ["id", 4]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:42:41.299153"], ["updated_at", "2023-07-13 09:42:41.299513"], ["date_time", "Sat, 08 Jul 2023 17:42"], ["id", 5]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:42:41.306712"], ["updated_at", "2023-07-13 09:42:41.307026"], ["date_time", "Sun, 09 Jul 2023 17:42"], ["id", 6]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:42:41.314344"], ["updated_at", "2023-07-13 09:42:41.314656"], ["date_time", "Thu, 06 Jul 2023 17:42"], ["id", 7]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.0ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:42:41.323755"], ["updated_at", "2023-07-13 09:42:41.324114"], ["date_time", "Sat, 08 Jul 2023 17:42"], ["id", 8]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:42:41.335292"], ["updated_at", "2023-07-13 09:42:41.335992"], ["date_time", "Fri, 07 Jul 2023 17:42"], ["id", 9]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.9ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:42:41.347577"], ["updated_at", "2023-07-13 09:42:41.348211"], ["date_time", "Thu, 06 Jul 2023 17:42"], ["id", 10]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.9ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:42:41.357549"], ["updated_at", "2023-07-13 09:42:41.357972"], ["date_time", "Sat, 08 Jul 2023 17:42"], ["id", 11]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-07-13 09:42:41.367066"], ["updated_at", "2023-07-13 09:42:41.367066"], ["account_id", 5], ["comments", "new trf"], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-07-13 09:42:41.380314"], ["updated_at", "2023-07-13 09:42:41.380314"], ["account_id", 5], ["comments", ""], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.0ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-22 09:42:41.392374"], ["updated_at", "2023-07-13 09:42:41.392927"], ["date_time", "Thu, 22 Jun 2023 17:42"], ["id", 12]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-22 09:42:41.402246"], ["updated_at", "2023-07-13 09:42:41.402750"], ["date_time", "Thu, 22 Jun 2023 17:42"], ["id", 13]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to UpdateFloatToDecimalTransaction (20230713093804)
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPaynow Delete All (5.2ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (0.1ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (5.1ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (4.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (4.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-07-13 09:45:28.399829"], ["updated_at", "2023-07-13 09:45:28.399829"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-07-13 09:45:28.407868"], ["updated_at", "2023-07-13 09:45:28.407868"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-07-13 09:45:28.418285"], ["updated_at", "2023-07-13 09:45:28.418285"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-07-13 09:45:28.430674"], ["updated_at", "2023-07-13 09:45:28.430674"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-07-13 09:45:28.439883"], ["updated_at", "2023-07-13 09:45:28.439883"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-07-13 09:45:28.447447"], ["updated_at", "2023-07-13 09:45:28.447447"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-07-13 09:45:28.462288"], ["updated_at", "2023-07-13 09:45:28.462288"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-07-13 09:45:28.469444"], ["updated_at", "2023-07-13 09:45:28.469444"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:45:28.496910"], ["updated_at", "2023-07-13 09:45:28.496910"], ["user_id", 477]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:45:28.505589"], ["updated_at", "2023-07-13 09:45:28.505589"], ["user_id", 482]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:45:28.513502"], ["updated_at", "2023-07-13 09:45:28.513502"], ["user_id", 483]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:45:28.521552"], ["updated_at", "2023-07-13 09:45:28.521552"], ["user_id", 484]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:45:28.529689"], ["updated_at", "2023-07-13 09:45:28.529689"], ["user_id", 477]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:45:28.537930"], ["updated_at", "2023-07-13 09:45:28.537930"], ["user_id", 478]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:45:28.550188"], ["updated_at", "2023-07-13 09:45:28.550188"], ["user_id", 479]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.0ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:45:28.563570"], ["updated_at", "2023-07-13 09:45:28.563570"], ["user_id", 480]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:45:28.574250"], ["updated_at", "2023-07-13 09:45:28.574250"], ["user_id", 481]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (0.6ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888887"], ["created_at", "2023-07-13 09:45:28.589013"], ["updated_at", "2023-07-13 09:45:28.589013"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (1.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888888"], ["created_at", "2023-07-13 09:45:28.599202"], ["updated_at", "2023-07-13 09:45:28.599202"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-07-13 09:45:28.627167"], ["updated_at", "2023-07-13 09:45:28.627167"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-07-13 09:45:28.636824"], ["updated_at", "2023-07-13 09:45:28.636824"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-07-13 09:45:28.645355"], ["updated_at", "2023-07-13 09:45:28.645355"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-07-13 09:45:28.653770"], ["updated_at", "2023-07-13 09:45:28.653770"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-07-13 09:45:28.661855"], ["updated_at", "2023-07-13 09:45:28.661855"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-07-13 09:45:28.670220"], ["updated_at", "2023-07-13 09:45:28.670220"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-07-13 09:45:28.678635"], ["updated_at", "2023-07-13 09:45:28.678635"], ["account_id", 6], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-07-13 09:45:28.691683"], ["updated_at", "2023-07-13 09:45:28.691683"], ["account_id", 8], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-07-13 09:45:28.703951"], ["updated_at", "2023-07-13 09:45:28.703951"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-07-13 09:45:28.714003"], ["updated_at", "2023-07-13 09:45:28.714003"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-07-13 09:45:28.723149"], ["updated_at", "2023-07-13 09:45:28.723149"], ["account_id", 9], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:45:28.730579"], ["updated_at", "2023-07-13 09:45:28.730958"], ["date_time", "Sun, 09 Jul 2023 17:45"], ["id", 1]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:45:28.739668"], ["updated_at", "2023-07-13 09:45:28.739992"], ["date_time", "Thu, 06 Jul 2023 17:45"], ["id", 2]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:45:28.747499"], ["updated_at", "2023-07-13 09:45:28.747824"], ["date_time", "Fri, 07 Jul 2023 17:45"], ["id", 3]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-10 09:45:28.757630"], ["updated_at", "2023-07-13 09:45:28.758286"], ["date_time", "Mon, 10 Jul 2023 17:45"], ["id", 4]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.9ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:45:28.773249"], ["updated_at", "2023-07-13 09:45:28.773733"], ["date_time", "Fri, 07 Jul 2023 17:45"], ["id", 5]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.8ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:45:28.783132"], ["updated_at", "2023-07-13 09:45:28.783513"], ["date_time", "Sat, 08 Jul 2023 17:45"], ["id", 6]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:45:28.791228"], ["updated_at", "2023-07-13 09:45:28.791549"], ["date_time", "Sun, 09 Jul 2023 17:45"], ["id", 7]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:45:28.798870"], ["updated_at", "2023-07-13 09:45:28.799182"], ["date_time", "Fri, 07 Jul 2023 17:45"], ["id", 8]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.8ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:45:28.806193"], ["updated_at", "2023-07-13 09:45:28.806486"], ["date_time", "Thu, 06 Jul 2023 17:45"], ["id", 9]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:45:28.813963"], ["updated_at", "2023-07-13 09:45:28.814283"], ["date_time", "Fri, 07 Jul 2023 17:45"], ["id", 10]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:45:28.821760"], ["updated_at", "2023-07-13 09:45:28.822070"], ["date_time", "Thu, 06 Jul 2023 17:45"], ["id", 11]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-07-13 09:45:28.829698"], ["updated_at", "2023-07-13 09:45:28.829698"], ["account_id", 5], ["comments", "new trf"], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-07-13 09:45:28.838223"], ["updated_at", "2023-07-13 09:45:28.838223"], ["account_id", 5], ["comments", ""], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-29 09:45:28.845950"], ["updated_at", "2023-07-13 09:45:28.846256"], ["date_time", "Thu, 29 Jun 2023 17:45"], ["id", 12]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-20 09:45:28.855926"], ["updated_at", "2023-07-13 09:45:28.856888"], ["date_time", "Tue, 20 Jun 2023 17:45"], ["id", 13]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Rollbaack1 (20230713094619)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atransactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" decimal DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_atransactions_on_account_id" ON "atransactions" ("account_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "atransactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "transactions"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "transactions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" integer NOT NULL PRIMARY KEY, "transaction_name" varchar DEFAULT NULL, "transaction_type" varchar DEFAULT NULL, "recipient_account_number" varchar DEFAULT NULL, "datetime" datetime(6) DEFAULT NULL, "amount" float DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "account_id" integer NOT NULL, "comments" varchar DEFAULT NULL, "date_time" varchar DEFAULT NULL, "intrabank" boolean DEFAULT NULL, CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "transactions" ("id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank")
+                     SELECT "id","transaction_name","transaction_type","recipient_account_number","datetime","amount","created_at","updated_at","account_id","comments","date_time","intrabank" FROM "atransactions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "atransactions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230713094619"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPaynow Delete All (6.0ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (0.1ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (4.9ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (4.6ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (4.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-07-13 09:46:55.155324"], ["updated_at", "2023-07-13 09:46:55.155324"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-07-13 09:46:55.163006"], ["updated_at", "2023-07-13 09:46:55.163006"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-07-13 09:46:55.170568"], ["updated_at", "2023-07-13 09:46:55.170568"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-07-13 09:46:55.177972"], ["updated_at", "2023-07-13 09:46:55.177972"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-07-13 09:46:55.185477"], ["updated_at", "2023-07-13 09:46:55.185477"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-07-13 09:46:55.195332"], ["updated_at", "2023-07-13 09:46:55.195332"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-07-13 09:46:55.207963"], ["updated_at", "2023-07-13 09:46:55.207963"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-07-13 09:46:55.217040"], ["updated_at", "2023-07-13 09:46:55.217040"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:46:55.252628"], ["updated_at", "2023-07-13 09:46:55.252628"], ["user_id", 485]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:46:55.261800"], ["updated_at", "2023-07-13 09:46:55.261800"], ["user_id", 490]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:46:55.270169"], ["updated_at", "2023-07-13 09:46:55.270169"], ["user_id", 491]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:46:55.278247"], ["updated_at", "2023-07-13 09:46:55.278247"], ["user_id", 492]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:46:55.285968"], ["updated_at", "2023-07-13 09:46:55.285968"], ["user_id", 485]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.5ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-13 09:46:55.297283"], ["updated_at", "2023-07-13 09:46:55.297283"], ["user_id", 486]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.0ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:46:55.310508"], ["updated_at", "2023-07-13 09:46:55.310508"], ["user_id", 487]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (0.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:46:55.320719"], ["updated_at", "2023-07-13 09:46:55.320719"], ["user_id", 488]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Create (1.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-13 09:46:55.333483"], ["updated_at", "2023-07-13 09:46:55.333483"], ["user_id", 489]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (0.8ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888887"], ["created_at", "2023-07-13 09:46:55.355788"], ["updated_at", "2023-07-13 09:46:55.355788"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPaynow Create (0.8ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname") VALUES (?, ?, ?, ?, ?, ?)[0m  [["phone", "+6588888888"], ["created_at", "2023-07-13 09:46:55.364415"], ["updated_at", "2023-07-13 09:46:55.364415"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-07-13 09:46:55.381534"], ["updated_at", "2023-07-13 09:46:55.381534"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-07-13 09:46:55.389320"], ["updated_at", "2023-07-13 09:46:55.389320"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-07-13 09:46:55.396891"], ["updated_at", "2023-07-13 09:46:55.396891"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-07-13 09:46:55.407945"], ["updated_at", "2023-07-13 09:46:55.407945"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-07-13 09:46:55.416316"], ["updated_at", "2023-07-13 09:46:55.416316"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-07-13 09:46:55.424595"], ["updated_at", "2023-07-13 09:46:55.424595"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-07-13 09:46:55.432402"], ["updated_at", "2023-07-13 09:46:55.432402"], ["account_id", 6], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-07-13 09:46:55.441220"], ["updated_at", "2023-07-13 09:46:55.441220"], ["account_id", 8], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-07-13 09:46:55.452833"], ["updated_at", "2023-07-13 09:46:55.452833"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-07-13 09:46:55.464982"], ["updated_at", "2023-07-13 09:46:55.464982"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (1.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-07-13 09:46:55.475715"], ["updated_at", "2023-07-13 09:46:55.475715"], ["account_id", 9], ["comments", " "], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-09 09:46:55.484501"], ["updated_at", "2023-07-13 09:46:55.484952"], ["date_time", "Sun, 09 Jul 2023 17:46"], ["id", 1]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:46:55.494401"], ["updated_at", "2023-07-13 09:46:55.494734"], ["date_time", "Sat, 08 Jul 2023 17:46"], ["id", 2]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:46:55.504955"], ["updated_at", "2023-07-13 09:46:55.505705"], ["date_time", "Fri, 07 Jul 2023 17:46"], ["id", 3]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.0ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:46:55.517700"], ["updated_at", "2023-07-13 09:46:55.518223"], ["date_time", "Fri, 07 Jul 2023 17:46"], ["id", 4]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.9ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-10 09:46:55.527080"], ["updated_at", "2023-07-13 09:46:55.527512"], ["date_time", "Mon, 10 Jul 2023 17:46"], ["id", 5]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-06 09:46:55.536893"], ["updated_at", "2023-07-13 09:46:55.537269"], ["date_time", "Thu, 06 Jul 2023 17:46"], ["id", 6]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:46:55.544343"], ["updated_at", "2023-07-13 09:46:55.544662"], ["date_time", "Sat, 08 Jul 2023 17:46"], ["id", 7]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-10 09:46:55.556751"], ["updated_at", "2023-07-13 09:46:55.557411"], ["date_time", "Mon, 10 Jul 2023 17:46"], ["id", 8]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (1.0ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-08 09:46:55.569508"], ["updated_at", "2023-07-13 09:46:55.570025"], ["date_time", "Sat, 08 Jul 2023 17:46"], ["id", 9]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.9ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-07 09:46:55.578598"], ["updated_at", "2023-07-13 09:46:55.579021"], ["date_time", "Fri, 07 Jul 2023 17:46"], ["id", 10]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-07-10 09:46:55.587216"], ["updated_at", "2023-07-13 09:46:55.587585"], ["date_time", "Mon, 10 Jul 2023 17:46"], ["id", 11]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-07-13 09:46:55.595993"], ["updated_at", "2023-07-13 09:46:55.595993"], ["account_id", 5], ["comments", "new trf"], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-07-13 09:46:55.603738"], ["updated_at", "2023-07-13 09:46:55.603738"], ["account_id", 5], ["comments", ""], ["date_time", nil], ["intrabank", 1]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.6ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-23 09:46:55.611452"], ["updated_at", "2023-07-13 09:46:55.611783"], ["date_time", "Fri, 23 Jun 2023 17:46"], ["id", 12]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTransaction Update (0.8ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-28 09:46:55.619193"], ["updated_at", "2023-07-13 09:46:55.619510"], ["date_time", "Wed, 28 Jun 2023 17:46"], ["id", 13]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions"[0m
