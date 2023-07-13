@@ -135,12 +135,17 @@ class DisputesController < ApplicationController
     transaction=Transaction.find(params[:transactions_id])
     disputee_acc=Account.where(account_number: transaction.recipient_account_number).first
     if transaction && disputee_acc
+      
+      isModeOfPaymentPaynow=(transaction.transaction_type=="FAST / PayNow Transfer")
+
       data=[ {"refund details": {
     "transfer from acc name": disputee_acc.account_type,
     "transfer from acc number": transaction.recipient_account_number,
     "recipient name": Account.where(account_number: transaction.account.account_number).first.user.username,
     "recipient acc": transaction.account.account_number,
-    "total amount": transaction.amount}
+    "total amount": transaction.amount,
+    "mode of payment": isModeOfPaymentPaynow ? "FAST / PayNow Transfer" : "Account Transfer"
+  }
     }]
     render json: data, status: :ok #http 200
     else

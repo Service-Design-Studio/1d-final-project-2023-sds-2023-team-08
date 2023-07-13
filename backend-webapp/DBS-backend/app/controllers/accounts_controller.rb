@@ -84,10 +84,10 @@ class AccountsController < ApplicationController
       params.fetch(:account, {})
     end
 
-    def all_transactions_desc(outgoing,incoming) #latest to earliest
+    def all_transactions_desc(outgoing,incoming) #latest to earliest, most to least recent
         
   
-      combined_sorted=(outgoing.to_a + incoming.to_a).sort_by(&:datetime).reverse #latest to earliest
+      combined_sorted=(outgoing.to_a + incoming.to_a).sort_by { |t| (Time.now - t[:datetime].to_time).abs }
   
       data=[]
       

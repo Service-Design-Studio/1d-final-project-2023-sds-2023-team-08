@@ -24,7 +24,7 @@ shopeePay=User.create(username: 'SHOPEEPAY PRIVATE LIMITED OTHR',password: 'pass
 princeNoodles=User.create(username: 'PRINCE NOODLES',password: 'password123',phone: '+6588888881',email: 'PRINCE NOODLES@gmail.com')
 
 
-
+seed_transactions=[]
 
 # Create Accounts for User
 jx_savings_acc=junxiang.accounts.create(
@@ -97,52 +97,55 @@ Paynow.new(
   phone:wx.phone,
   accnum:wx_acc.account_number,
   bank:wx_acc.bank,
-  nickname:"wx's paynow"
+  nickname:"wx"
 ).save
 #paynow jx
 Paynow.new(
   phone:junxiang.phone,
   accnum:jx_savings_acc.account_number,
   bank:jx_savings_acc.bank,
-  nickname:"jx's paynow"
+  nickname:"jx"
 ).save
 
 
 # Create Transactions for Account 1
 
 
-jx_trf_extra_to_vinny=jx_savings_acc.transactions.create(
+seed_transactions << jx_savings_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings to Vinny OTHR PayNow Transfer
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-5',
-  datetime: DateTime.strptime("Tue, 15 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 5,
   comments:" ",
-  date_time: "Tue, 15 Aug 2023 10:30",
+  date_time: nil ,
   intrabank:true
 )
-jx_trf_extra_to_wx=jx_savings_acc.transactions.create(
+
+
+seed_transactions << jx_savings_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings to WeiXuan OTHR PayNow Transfer
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-4',
-  datetime: DateTime.strptime("Mon, 3 Jul 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 10.15,
   comments:" ",
-  date_time: "Mon, 3 Jul 2023 10:37",
+  date_time: nil,
   intrabank:true
 )
 
-jx_trf_extra_to_wx2=jx_savings_acc.transactions.create(
+seed_transactions << jx_savings_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings to WeiXuan OTHR PayNow Transfer
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-4',
-  datetime: DateTime.strptime("Mon, 11 Jul 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 16.15,
   comments:" ",
-  date_time: "Mon, 11 Jul 2023 10:37",
+  date_time: nil,
   intrabank:true
 )
 
+=begin
 jx_trf_extra_to_wx2.dispute= Dispute.new(
   status: "Dispute Filed",
   disputer_acc_id: jx_savings_acc.id,
@@ -190,91 +193,126 @@ jx_trf_extra_to_wx.dispute= Dispute.new(
 
 
 jx_trf_extra_to_wx.save
+=end
 
-jx_savings_acc.transactions.create(
+seed_transactions << jx_savings_acc.transactions.create(
   transaction_name: "NETS QR PAYMENT", #: jx savings to SEA KING SEAFOOD @ HOUGANG
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-20001-5',
-  datetime: DateTime.strptime("Fri, 18 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 12.23,
   comments:" ",
-  date_time: "Fri, 18 Aug 2023 14:37",
+  date_time: nil,
   intrabank:true
 )
-jx_savings_acc.transactions.create(
+seed_transactions << jx_savings_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings to SHOPEEPAY PRIVATE LIMITED OTHR
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-20001-6',
-  datetime: DateTime.strptime("Fri, 18 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 23.20,
   comments:" ",
-  date_time: "Fri, 18 Aug 2023 19:37",
+  date_time: nil,
   intrabank:true
 )
-jx_savings_acc.transactions.create(
+seed_transactions << jx_savings_acc.transactions.create(
   transaction_name: "NETS QR PAYMENT", #: jx savings to PRINCE NOODLES
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-20001-7',
-  datetime: DateTime.strptime("Mon, 14 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 4.20,
   comments:" ",
-  date_time: "Mon, 14 Aug 2023 18:47",
+  date_time: nil,
   intrabank:true
 )
-wx_acc.transactions.create(
+seed_transactions << wx_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings from Wei Xuan OTHR PayNow Transfer
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-2',
-  datetime: DateTime.strptime("Sat, 19 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 20.15,
   comments:" ",
-  date_time: "Sat, 19 Aug 2023 20:47",
+  date_time: nil,
   intrabank:true
 )
 
-brighton_multiplier_acc.transactions.create(
+seed_transactions << brighton_multiplier_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings from Brighton OTHR PayNow Transfer #shd not be shown
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-2',
-  datetime: DateTime.strptime("Fri, 15 Jan 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 15,
   comments:" ",
-  date_time: "Fri, 15 Jan 2023 20:47",
+  date_time: nil,
   intrabank:true
 )
-jx_multiplier_acc.transactions.create(
+seed_transactions << jx_multiplier_acc.transactions.create(
   transaction_name: "Account Transfer", #: jx mult to tristan via account
   transaction_type: "Account Transfer",
   recipient_account_number: '539-23421-7',
-  datetime: DateTime.strptime("Sat, 19 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 7,
   comments:" ",
-  date_time: "Sat, 19 Aug 2023 20:27",
+  date_time: nil,
   intrabank:true
 )
-jx_multiplier_acc.transactions.create(
+seed_transactions << jx_multiplier_acc.transactions.create(
   transaction_name: "Account Transfer", #: jx mult to tristan via account
   transaction_type: "Account Transfer",
   recipient_account_number: '539-23421-7',
-  datetime: DateTime.strptime("Mon, 14 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 30,
   comments:" ",
-  date_time: "Mon, 14 Aug 2023 01:27",
+  date_time: nil,
   intrabank:true
 )
 
 
-tristan_acc.transactions.create(
+seed_transactions << tristan_acc.transactions.create(
   transaction_name: "Account Transfer", #:  tristan to jx mult  via account
   transaction_type: "Account Transfer",
   recipient_account_number: '234-43941-0',
-  datetime: DateTime.strptime("Sun, 13 Aug 2023", "%a, %d %b %Y"),
+  datetime: nil,
   amount: 150,
   comments:" ",
-  date_time: "Sun, 13 Aug 2023 17:24",
+  date_time: nil,
   intrabank:true
 )
+seed_transactions.each do |t|
+  randate=(DateTime.now - rand(3..7))
+  t.datetime=randate
+  t.date_time=randate.strftime("%a, %d %b %Y %H:%M")
+  t.save
+end
 
+#more than 7 days
+more_than_7= []
+more_than_7 << jx_multiplier_acc.transactions.create(
+  transaction_name: "Account Transfer", #: jx mult to tristan via account
+  transaction_type: "Account Transfer",
+  recipient_account_number: '539-23421-7',
+  datetime: nil,
+  amount: 56,
+  comments:"new trf",
+  date_time: nil,
+  intrabank:true
+)
+more_than_7 << jx_multiplier_acc.transactions.create(
+  transaction_name: "Account Transfer", #: jx mult to tristan via account
+  transaction_type: "Account Transfer",
+  recipient_account_number: '539-23421-7',
+  datetime: nil,
+  amount: 78,
+  comments:"",
+  date_time: nil,
+  intrabank:true
+)
+more_than_7.each do |t|
+  randate=(DateTime.now - rand(8..30))
+  t.datetime=randate
+  t.date_time=randate.strftime("%a, %d %b %Y %H:%M")
+  t.save
+end
 
 
 
