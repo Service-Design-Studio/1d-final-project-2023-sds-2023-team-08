@@ -47,14 +47,14 @@ const TransactionSucess = (props) => {
                 <div className='successtxdescriptbox'>
                     <p className='successtxgreytextheadertitle'> From</p>
                     <p className='successtxblacktextheader'> {transactionDetails["transfer_from_acc_name"]}</p>
-                    <p className='successtxgreytextheader2'> {transactionDetails["transfer_from_acc_number"]}</p>
+                    <p id = "banknumber" className='successtxgreytextheader2'> {transactionDetails["transfer_from_acc_number"]}</p>
                     <p className='successtxgreytextheader'> To</p>
                     <p className='successtxblacktextheader'> {transactionDetails["recipient_name"]}</p>
-                    <p className='successtxgreytextheader2'> {transactionDetails["recipient_phonenum"]}</p>
+                    <p id="phonenumber" className='successtxgreytextheader2'> {transactionDetails["recipient_phonenum"]}</p>
                     <p className='successtxgreytextheader'> Transfer Type</p>
                     <p className='successtxblacktextheader'> {transactionDetails["transfer_type"]}</p>
                     <p className='successtxgreytextheader'> Your Comments</p>
-                    <p className='successtxblacktextheaderbottom'> {transactionDetails["comments"]}</p>
+                    <p id="yourcomments" className='successtxblacktextheaderbottom'> {transactionDetails["comments"]}</p>
                 </div>
 
                 <div className='successtxwrongbox'>

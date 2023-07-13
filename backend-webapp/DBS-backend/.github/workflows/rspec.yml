@@ -1,0 +1,27 @@
+env:
+  RUBY_VERSION: 3.2.2
+
+  name: Rails Specs
+  on: [push, pull_request]
+  jobs:
+    rspec-test:
+      name: RSpec
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Set up Ruby
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: 3.2.2
+
+        - name: Install Bundler
+          run: gem install bundler
+
+        - name: Install Dependencies
+          run: bundle install
+
+        - name: Run specs
+          run: bundle exec rspec spec/models

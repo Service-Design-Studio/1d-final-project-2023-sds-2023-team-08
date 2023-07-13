@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Paynows</h1>
+
+<div id="paynows">
+  <% @paynows.each do |paynow| %>
+    <%= render paynow %>
+    <p>
+      <%= link_to "Show this paynow", paynow %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New paynow", new_paynow_path %>

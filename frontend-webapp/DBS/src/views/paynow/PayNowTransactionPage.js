@@ -91,13 +91,16 @@ const PayNowTransactionPage = () => {
                     <p className='currency1'>SGD</p>
                 </div>
                 <div className='rightside'>
-                    <input
-                        type="number"
-                        className="refundamount"
-                        placeholder='0.00'
-                        onKeyDown={blockInvalidChar}
-                        value={transactionamount}
-                        onInput={getTransactionAmount}/>
+                    <form className='barrrar'>
+                        <input
+                            type="number"
+                            id = "keyinamt"
+                            className="refundamount"
+                            placeholder='0.00'
+                            onKeyDown={blockInvalidChar}
+                            value={transactionamount}
+                            onInput={getTransactionAmount}/>
+                    </form>
                 </div>
             </div>
 

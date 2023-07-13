@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_184332) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_183303) do
   create_table "accounts", force: :cascade do |t|
     t.string "account_number"
     t.integer "initial_deposit"
@@ -22,6 +22,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_184332) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
+  create_table "disputes", force: :cascade do |t|
+    t.string "status"
+    t.string "disputer_acc_id"
+    t.string "dispute_reason"
+    t.text "dispute_reason_details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "disputee_id"
+    t.integer "disputer_id"
+    t.integer "transaction_id"
+    t.string "date_time"
+    t.string "day_date"
+    t.text "further_action"
+    t.index ["transaction_id"], name: "index_disputes_on_transaction_id"
+  end
+
+  create_table "paynows", force: :cascade do |t|
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "accnum"
+    t.string "bank"
+    t.string "nickname"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "transaction_name"
     t.string "transaction_type"
@@ -31,6 +56,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_184332) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "account_id", null: false
+    t.string "comments"
+    t.string "date_time"
+    t.boolean "intrabank"
     t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
@@ -44,5 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_184332) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "disputes", "transactions"
   add_foreign_key "transactions", "accounts"
 end

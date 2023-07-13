@@ -63,7 +63,7 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["reason"]}</p>
 
                 <p className='transactiondetailstitlestext'>Comments From Sender</p>
-                <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["comments"]}</p>
+                <p id="commentstome" className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["comments"]}</p>
                 <div className='spacing'></div>
             </div>
 

@@ -7,7 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 #just to reset database
-
+Paynow.delete_all
+Dispute.delete_all
 Transaction.delete_all
 Account.delete_all
 User.delete_all
@@ -21,6 +22,9 @@ tristan=User.create(username: 'tristan',password: 'password123',phone: '+6588888
 seaKing=User.create(username: 'SEA KING SEAFOOD @ HOUGANG',password: 'password123',phone: '+6588888883',email: 'SEAKING@gmail.com')
 shopeePay=User.create(username: 'SHOPEEPAY PRIVATE LIMITED OTHR',password: 'password123',phone: '+6588888882',email: 'SHOPEEPAY@gmail.com')
 princeNoodles=User.create(username: 'PRINCE NOODLES',password: 'password123',phone: '+6588888881',email: 'PRINCE NOODLES@gmail.com')
+
+
+
 
 # Create Accounts for User
 jx_savings_acc=junxiang.accounts.create(
@@ -49,7 +53,7 @@ princeNoodles_savings_acc=princeNoodles.accounts.create(
 )
 
 
-  
+
 
 # Create Accounts for User
 jx_multiplier_acc = junxiang.accounts.create(
@@ -88,43 +92,144 @@ wx_acc=wx.accounts.create(
     account_type: "DBS Multiplier Account"
   )
 
+#paynow wx
+Paynow.new(
+  phone:wx.phone,
+  accnum:wx_acc.account_number,
+  bank:wx_acc.bank,
+  nickname:"wx's paynow"
+).save
+#paynow jx
+Paynow.new(
+  phone:junxiang.phone,
+  accnum:jx_savings_acc.account_number,
+  bank:jx_savings_acc.bank,
+  nickname:"jx's paynow"
+).save
+
+
 # Create Transactions for Account 1
 
 
-jx_savings_acc.transactions.create(
+jx_trf_extra_to_vinny=jx_savings_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings to Vinny OTHR PayNow Transfer
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-5',
   datetime: DateTime.strptime("Tue, 15 Aug 2023", "%a, %d %b %Y"),
-  amount: 5
+  amount: 5,
+  comments:" ",
+  date_time: "Tue, 15 Aug 2023 10:30",
+  intrabank:true
 )
+jx_trf_extra_to_wx=jx_savings_acc.transactions.create(
+  transaction_name: "PayNow Transfer", #: jx savings to WeiXuan OTHR PayNow Transfer
+  transaction_type: "FAST / PayNow Transfer",
+  recipient_account_number: '539-23421-4',
+  datetime: DateTime.strptime("Mon, 3 Jul 2023", "%a, %d %b %Y"),
+  amount: 10.15,
+  comments:" ",
+  date_time: "Mon, 3 Jul 2023 10:37",
+  intrabank:true
+)
+
+jx_trf_extra_to_wx2=jx_savings_acc.transactions.create(
+  transaction_name: "PayNow Transfer", #: jx savings to WeiXuan OTHR PayNow Transfer
+  transaction_type: "FAST / PayNow Transfer",
+  recipient_account_number: '539-23421-4',
+  datetime: DateTime.strptime("Mon, 11 Jul 2023", "%a, %d %b %Y"),
+  amount: 16.15,
+  comments:" ",
+  date_time: "Mon, 11 Jul 2023 10:37",
+  intrabank:true
+)
+
+jx_trf_extra_to_wx2.dispute= Dispute.new(
+  status: "Dispute Filed",
+  disputer_acc_id: jx_savings_acc.id,
+  dispute_reason: "Transfer to Wrong Account" ,
+  disputee_id: wx.id,
+  disputer_id: junxiang.id,
+  date_time:"12 July 2023 04:22",
+  day_date:"Mon, 12 July 2023",
+  further_action:{ }.to_json,
+  dispute_reason_details: { 
+    "comments" => "sbla bla wrong"}.to_json
+
+)
+jx_trf_extra_to_wx2.save
+
+#dispute raised by wx
+jx_trf_extra_to_vinny.dispute= Dispute.new(
+  status: "Dispute Filed",
+  disputer_acc_id: jx_savings_acc.id,
+  dispute_reason: "Transfer to Wrong Account" ,
+  disputee_id: vinny.id,
+  disputer_id: junxiang.id,
+  date_time:"10 July 2023 04:22",
+  day_date:"Mon, 10 July 2023",
+  further_action:{ }.to_json,
+  dispute_reason_details: { 
+    "comments" => "sorry , Was supposed to transfer to your number neighbor XXXX-9232 instead"}.to_json
+
+)
+jx_trf_extra_to_vinny.save
+
+jx_trf_extra_to_wx.dispute= Dispute.new(
+  status: "Dispute Filed",
+  disputer_acc_id: jx_savings_acc.id,
+  dispute_reason: "Transfer to Wrong Account" ,
+  disputee_id: wx.id,
+  disputer_id: junxiang.id,
+  date_time:"12 July 2023 04:22",
+  day_date:"Mon, 12 July 2023",
+  further_action:{ }.to_json,
+  dispute_reason_details: { 
+    "comments" => "Was supposed to transfer to your number neighbor XXXX-9232 instead"}.to_json
+
+)
+
+
+jx_trf_extra_to_wx.save
+
 jx_savings_acc.transactions.create(
   transaction_name: "NETS QR PAYMENT", #: jx savings to SEA KING SEAFOOD @ HOUGANG
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-20001-5',
   datetime: DateTime.strptime("Fri, 18 Aug 2023", "%a, %d %b %Y"),
-  amount: 12.23
+  amount: 12.23,
+  comments:" ",
+  date_time: "Fri, 18 Aug 2023 14:37",
+  intrabank:true
 )
 jx_savings_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings to SHOPEEPAY PRIVATE LIMITED OTHR
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-20001-6',
   datetime: DateTime.strptime("Fri, 18 Aug 2023", "%a, %d %b %Y"),
-  amount: 23.20
+  amount: 23.20,
+  comments:" ",
+  date_time: "Fri, 18 Aug 2023 19:37",
+  intrabank:true
 )
 jx_savings_acc.transactions.create(
   transaction_name: "NETS QR PAYMENT", #: jx savings to PRINCE NOODLES
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-20001-7',
   datetime: DateTime.strptime("Mon, 14 Aug 2023", "%a, %d %b %Y"),
-  amount: 4.20
+  amount: 4.20,
+  comments:" ",
+  date_time: "Mon, 14 Aug 2023 18:47",
+  intrabank:true
 )
 wx_acc.transactions.create(
   transaction_name: "PayNow Transfer", #: jx savings from Wei Xuan OTHR PayNow Transfer
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-2',
   datetime: DateTime.strptime("Sat, 19 Aug 2023", "%a, %d %b %Y"),
-  amount: 20.15
+  amount: 20.15,
+  comments:" ",
+  date_time: "Sat, 19 Aug 2023 20:47",
+  intrabank:true
 )
 
 brighton_multiplier_acc.transactions.create(
@@ -132,21 +237,30 @@ brighton_multiplier_acc.transactions.create(
   transaction_type: "FAST / PayNow Transfer",
   recipient_account_number: '539-23421-2',
   datetime: DateTime.strptime("Fri, 15 Jan 2023", "%a, %d %b %Y"),
-  amount: 15
+  amount: 15,
+  comments:" ",
+  date_time: "Fri, 15 Jan 2023 20:47",
+  intrabank:true
 )
 jx_multiplier_acc.transactions.create(
   transaction_name: "Account Transfer", #: jx mult to tristan via account
   transaction_type: "Account Transfer",
   recipient_account_number: '539-23421-7',
   datetime: DateTime.strptime("Sat, 19 Aug 2023", "%a, %d %b %Y"),
-  amount: 7
+  amount: 7,
+  comments:" ",
+  date_time: "Sat, 19 Aug 2023 20:27",
+  intrabank:true
 )
 jx_multiplier_acc.transactions.create(
   transaction_name: "Account Transfer", #: jx mult to tristan via account
   transaction_type: "Account Transfer",
   recipient_account_number: '539-23421-7',
   datetime: DateTime.strptime("Mon, 14 Aug 2023", "%a, %d %b %Y"),
-  amount: 30
+  amount: 30,
+  comments:" ",
+  date_time: "Mon, 14 Aug 2023 01:27",
+  intrabank:true
 )
 
 
@@ -155,8 +269,14 @@ tristan_acc.transactions.create(
   transaction_type: "Account Transfer",
   recipient_account_number: '234-43941-0',
   datetime: DateTime.strptime("Sun, 13 Aug 2023", "%a, %d %b %Y"),
-  amount: 150
+  amount: 150,
+  comments:" ",
+  date_time: "Sun, 13 Aug 2023 17:24",
+  intrabank:true
 )
+
+
+
 
 
 
