@@ -1,0 +1,48 @@
+.SwipeButtonContainer2{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.BasedContainer {
+    display: flex;
+    flex-direction: row;
+    border-radius: 35px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#A50303 ;
+    font-weight: bold;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: 4vh;
+    width: 90vw;
+    margin: 0 5vw 0 5vw;
+}
+
+.SwiperButton{
+    border-radius: 50%;
+    background-color: white;
+    padding: 1.5vh 5vw;
+    margin: 1vw 1vw;
+    position: absolute;
+    
+}
+
+.swipeimage{
+    object-fit: contain;
+    height: 3vh;
+    align-self: center;
+    justify-self: center;
+    margin-top: 1vw;
+}
+
+.swipertext{
+    font-family: 'Lato';
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    margin-left: 18vw;
+    align-self: center;
+}

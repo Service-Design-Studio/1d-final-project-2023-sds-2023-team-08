@@ -3,12 +3,11 @@ import '../../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const NormalTransactionDetails = (props) => {
+const NormalTransactionDetails = ({TransactionData, prevpathname}) => {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
-    const {TransactionData} = props;
     const { userID, transactionID } = useParams();
-
+    
     const submitFundDispute = async () => {
       const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`);
       const totalFundDisputeSent = response.data
@@ -31,7 +30,7 @@ const NormalTransactionDetails = (props) => {
 
             <div className='moneyinarow'>
                 <p className='moneytext'> SGD</p>
-                <p className={TransactionData.transaction.transactiondetails['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails['total amount'].toFixed(2)}</p>            
+                <p className={TransactionData.transaction.transactiondetails.transaction['total amount'] < 0 ? "moneytext2spend" : "moneytext2receive"}>{TransactionData.transaction.transactiondetails.transaction['total amount'].toFixed(2)}</p>            
             </div>
             
             <div>
@@ -41,12 +40,12 @@ const NormalTransactionDetails = (props) => {
             <div className='scriptbox'>
                 <div className='textcontainerdetail'>
                     <p className='descriptext1'> Description</p>
-                    <p className='descriptext2'> {TransactionData.transaction.transactiondetails['transaction name']}</p>
+                    <p className='descriptext2'> {TransactionData.transaction.transactiondetails.transaction['transaction name']}</p>
                 </div>
 
                 <div className='textcontainerdetail'>
                     <p className='transactiontext1'> Transaction Type</p>
-                    <p className='descriptext3'>{TransactionData.transaction.transactiondetails['transaction type']}</p>
+                    <p className='descriptext3'>{TransactionData.transaction.transactiondetails.transaction['transaction type']}</p>
                 </div>
             </div>
 
