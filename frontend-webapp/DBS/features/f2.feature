@@ -1,23 +1,31 @@
 Feature: Log in page fail
 
-  Background: Logging in to my account
+  Scenario: I am navigating to the PayNow page
     Given I am at the log in page
     When I click "LOGIN" without entering details
     Then I will see a warning to fill in the inputs
     When I click "LOGIN" after entering details
     Then I will be redirected to the homepage
-
-  Scenario: I am navigating to the PayNow page
     Given I am at the homepage
     When I click on the PayNow icon
     Then I will be redirected to the PayNow Recipient page
 
   Scenario: I am keying in the PayNow Recipient details fail
+    Given I am at the log in page
+    When I click "LOGIN" without entering details
+    Then I will see a warning to fill in the inputs
+    When I click "LOGIN" after entering details
+    Then I will be redirected to the homepage
     Given I am at the PayNow Recipient page
     When I click "SUBMIT" before keying in a valid recipient
     Then I will see a warning to key in a valid phone number 
 
   Scenario: Filing a FTD after making a PayNow Transfer
+    Given I am at the log in page
+    When I click "LOGIN" without entering details
+    Then I will see a warning to fill in the inputs
+    When I click "LOGIN" after entering details
+    Then I will be redirected to the homepage
     Given I am at the PayNow Recipient page
     When I key in my desired recipient's details
     And I tap away to the empty space
@@ -59,10 +67,57 @@ Feature: Log in page fail
     Then I will be redirected to the homepage
 
   Scenario: Check if my FTD has been logged successfully
+    Given I am at the log in page
+    When I click "LOGIN" without entering details
+    Then I will see a warning to fill in the inputs
+    When I click "LOGIN" after entering details
+    Then I will be redirected to the homepage
     Given I am at the homepage
     And I navigated to the Recent Transactions page
     When I click onto the FTD status tab
     Then I should see the FTD page
     And I should see that the status is "AWAITING ACTION" of the transaction I made with amount "-12.00"
 
+  Scenario: I am at Home and I have a notification
+    Given wx I am at the log in page
+    When wx I click "LOGIN" without entering details
+    Then wx I will see a warning to fill in the inputs
+    When wx I click "LOGIN" after entering details
+    Then wx I will be redirected to the homepage
 
+    Given I am at Home page
+    When I click on Resolve Now
+    Then I will be redirected to the FTD Page
+
+  Scenario: I am at the Fund Dispute page
+    Given wx I am at the log in page
+    When wx I click "LOGIN" without entering details
+    Then wx I will see a warning to fill in the inputs
+    When wx I click "LOGIN" after entering details
+    Then wx I will be redirected to the homepage
+
+    Given I am at the Fund Dispute page
+    When I click on Action Required as the Recipient
+    Then I will be redirected to the Dispute details Page
+    And it will reflect the amount being disputed
+    And it will reflect the comments made to me
+    When I click on the Yes - Refund button
+    Then I will be redirected to the Refund Dispute page
+    When I click on the Submit button
+    Then wx I will be redirected to the Review Transfer page
+    When I click on Transfer Now
+    Then I will be redirected to the Successful transfer page
+    When I click on Exit button
+    Then I will be redirected to the Home page
+
+  Scenario: Check that FTD has been resolved
+    Given I am at the log in page
+    When I click "LOGIN" without entering details
+    Then I will see a warning to fill in the inputs
+    When I click "LOGIN" after entering details
+    Then I will be redirected to the homepage
+
+    And I navigated to the Recent Transactions page
+    When I click onto the FTD status tab
+    Then I should see the FTD page
+    And I should see that the status is "RESOLVED" of the transaction I made with amount "12.00"
