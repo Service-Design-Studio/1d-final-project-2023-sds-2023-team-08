@@ -42,6 +42,7 @@ def generate_detailed_status(user)
       
 
     when "Raised to DBS"
+        
         puts "raiseddbs"
         isUnknownTransact=(self.dispute_reason=="Unknown Transaction")
         dispute_date=Date.strptime(self.date_time.split(', ').last, '%d %B %Y')
