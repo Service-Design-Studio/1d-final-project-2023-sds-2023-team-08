@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../../components/styles/paynow/SwipeToPayStyles.css';
 
-const SwipeToPay = () => {
+const SwipeToPay = ({ handleSubmit }) => {
   const buttonRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -9,7 +9,7 @@ const SwipeToPay = () => {
   const [dragStartPosition, setDragStartPosition] = useState({ x: 0 });
   const [buttonPosition, setButtonPosition] = useState({ x: 0 });
   const [containerBounds, setContainerBounds] = useState({});
-  const [maxbuttonWidth, setMaxButtonWidth] = useState({x:0})
+  const [maxbuttonWidth, setMaxButtonWidth] = useState({x:1000})
   
 
   useEffect(() => {
@@ -85,8 +85,11 @@ const SwipeToPay = () => {
       };
     } 
     else if (buttonPosition.x == maxbuttonWidth.x) {
-        console.log("swiped to pay")
-    }
+        console.log("swiped to pay");
+        setTimeout(() => {
+            handleSubmit();
+          }, 500)
+        }
   }, [isDragging, buttonPosition.x]);
 
 

@@ -3,14 +3,16 @@ import jsonData from '../../testdata/reviewtransferdata.json';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
+import SwipeToPay from '../paynow/SwipeToPay';
 
 const ReviewTransfer = () => {
     const navigate = useNavigate();
     const {userID} = useParams();
     const location = useLocation();
     const transactionData = location.state;
-    const isDispute = transactionData['dispute']
+    const isDispute = transactionData['dispute'];
     const [csrfToken, setCsrfToken] = useState('');
+    const isWarning = transactionData['warning'];
     console.log(transactionData)
 
     useEffect(() => {
@@ -29,8 +31,10 @@ const ReviewTransfer = () => {
         fetchCSRFData();
       }, []);
     
-    const handleSubmit = async(event) => {
-        event.preventDefault();
+    const handleSubmit = async(event=null) => {
+        if (event) {
+            event.preventDefault();
+        }
         let TransactionDetails= transactionData
 
         try{
@@ -93,7 +97,7 @@ const ReviewTransfer = () => {
             <div className='RefuteDisputeHeader'>
                 <button id = 'backarrow' onClick={() => isDispute
                                                         ? navigate(`/${userID}/refunddispute/${transactionData['transaction_id']}`)
-                                                        : navigate(`/${userID}/paynow`, {state: {"nickname":transactionData["recipient_name"], "phonenumber": transactionData["recipient_acc"]}})} className='transparent'>
+                                                        : navigate(`/${userID}/paynow`, {state: {'usraccname': transactionData['transfer_from_acc_name'], 'usraccnum':transactionData['transfer_from_acc_number'], 'nickname':transactionData['recipient_name'], 'accnum': transactionData['recipient_acc'], 'phonenumber': transactionData['recipient_phonenum'], 'warning': transactionData['warning']  }})} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Review Transfer</p>
@@ -135,9 +139,11 @@ const ReviewTransfer = () => {
                     </div>
                 </div>
             </div>
-
-            <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
-
+            { (isWarning) ? (
+                <SwipeToPay handleSubmit={handleSubmit}></SwipeToPay>
+            ): (
+                <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
+            )}
         </div>
 
     );
