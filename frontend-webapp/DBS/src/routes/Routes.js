@@ -27,7 +27,7 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SwipeToPay key="login" />} />
+        <Route path="/" element={<LoginScreen key="login" />} />
         <Route path="/login" element={<LoginScreen key="login" />} />
         <Route path="/:userID/home" element={<HomeScreen key="home"/>} />
         <Route path="/:userID/invest" element={<HomeScreen key="invest"/>} />

@@ -45,11 +45,9 @@ const ReviewTransfer = () => {
             const currentMinutes = now.getMinutes().toString().padStart(2, '0'); 
             const currentTime = `${currentHour}:${currentMinutes}`;
 
-            //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
             TransactionDetails['date_and_time'] = `${currentDate} ${currentTime}`
             TransactionDetails['day_and_date'] =  `${currentDay}, ${currentDate}`
             TransactionDetails['transfer_type'] = "FAST/IMMEDIATE"
-            TransactionDetails['recipient_bank'] = 'DBS/POSB'
 
             const [response1, response2] = await axios.all([
                 axios.post(

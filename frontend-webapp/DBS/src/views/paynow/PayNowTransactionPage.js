@@ -24,6 +24,8 @@ const PayNowTransactionPage = () => {
     newtransactiondata['mode_of_payment'] = 'FAST / PayNow Transfer'
     newtransactiondata['transfer_type'] = "FAST/IMMEDIATE"
     newtransactiondata['warning'] = recipientdetails['warning']
+    newtransactiondata['recipient_bank'] = 'DBS/POSB'
+
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
     
