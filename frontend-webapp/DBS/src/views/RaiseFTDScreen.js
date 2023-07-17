@@ -125,7 +125,7 @@ const RaiseFTDScreen = () => {
 
                 <div className='FTDcheckbox1'>
                     <input
-                        type='checkbox'
+                        type='radio'
                         id='transferWrongAccountCheckbox'
                         checked={reason === 'Transfer to Wrong Account'}
                         onChange={(event) => {
@@ -140,7 +140,7 @@ const RaiseFTDScreen = () => {
 
                 <div className='FTDcheckbox2'>
                     <input
-                    type='checkbox'
+                    type='radio'
                     id='transferWrongAmountCheckbox'
                     checked={reason === 'Transfer Wrong Amount'}
                     onKeyDown={blockInvalidChar}
@@ -203,7 +203,7 @@ const RaiseFTDScreen = () => {
             <div>
                 <div className='FTDcheckbox3'>
                 <input
-                    type='checkbox'
+                    type='radio'
                     id='unknowntransaction'
                     checked={reason === 'Unknown Transaction'}
                     onChange={(event) => {
