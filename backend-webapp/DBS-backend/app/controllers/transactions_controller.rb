@@ -78,19 +78,27 @@ class TransactionsController < ApplicationController
       date_time: transaction_params[:date_and_time],
       intrabank:isRecipientDBS
     )
-    else
+    #--------if trf type is paynow, add phone num  to paid bef list of current user----------
+    if transaction_params[:mode_of_payment]=="FAST / PayNow Transfer" 
+      #will not do anytg if paynow is not avail for that acc
+      Paynow.update_if_not_paid_before_else_nothing(transfer_from_acc_number,transaction_params[:recipient_acc])
+
+    end
+    #------------------------------------------------------------------------------
+    else #------sender acc not found-----------------------
       data={success: "false", error: "account not found"}
       render json: data, status: :unprocessable_entity #http 422
       return
     end
 
-  if (created_transaction)
+    #-------------finished creating transaction--------------------
+  if (created_transaction) #--------success------------
     data={success:true, 
           transactionID: created_transaction.id
         }
     render json: data, status: :ok #http 200
 
-  else
+  else #-------fail-----------------------
     data={success: "false", error: "transaction not successfully created"}
     render json: data, status: :unprocessable_entity #http 422
   end

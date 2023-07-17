@@ -97,14 +97,16 @@ Paynow.new(
   phone:wx.phone,
   accnum:wx_acc.account_number,
   bank:wx_acc.bank,
-  nickname:"wx"
+  nickname:"wx",
+  paid_bef_phone_num: []
 ).save
 #paynow jx
 Paynow.new(
   phone:junxiang.phone,
   accnum:jx_savings_acc.account_number,
   bank:jx_savings_acc.bank,
-  nickname:"jx"
+  nickname:"jx",
+  paid_bef_phone_num: []
 ).save
 
 

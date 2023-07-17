@@ -62,8 +62,9 @@ class PaynowsController < ApplicationController
     current_accnum=Paynow.get_accnum(current_phone)#2-usraccnum
     current_acctype=Account.where(account_number: current_accnum).first.account_type #3-usraccname
     other_accnum=Paynow.get_accnum(params[:phonenumber])#4- accnum
-    other_nickname=Paynow.get_nickname(params[:phonenumber])#4nickname
-    data={nickname: other_nickname, accnum: other_accnum, usraccname:current_acctype , usraccnum:current_accnum }
+    other_nickname=Paynow.get_nickname(params[:phonenumber])#nickname
+    warning= ! Paynow.paid_before(current_phone,params[:phonenumber])
+    data={nickname: other_nickname, accnum: other_accnum, usraccname:current_acctype , usraccnum:current_accnum , warning: warning}
     render json: data, status: :ok
     rescue=> e
       data={error: e.to_s }

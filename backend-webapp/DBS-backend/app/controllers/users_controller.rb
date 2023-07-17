@@ -129,7 +129,9 @@ class UsersController < ApplicationController
   def all_transactions_desc(outgoing,incoming) #latest to earliest
         
   
-    combined_sorted=(outgoing.to_a + incoming.to_a).sort_by(&:datetime).reverse #latest to earliest
+    #combined_sorted=(outgoing.to_a + incoming.to_a).sort_by(&:datetime).reverse #latest to earliest
+    combined_sorted=(outgoing.to_a + incoming.to_a)
+    combined_sorted=combined_sorted.sort_by { |t| DateTime.parse(t.date_time) }.reverse
 
     data=[]
     combined_sorted.each do |transaction|
@@ -145,7 +147,8 @@ class UsersController < ApplicationController
             #if the account which made this transaction belongs to the user, it means outgoing funds thus other party is recipient acc, else sender's acc 
             "total amount": outgoing ? -transaction.amount : transaction.amount,
             #if the account which made this transaction belongs to the user, it means outgoing funds thus -ve, else +ve
-            "transaction ID": transaction.id
+            "transaction ID": transaction.id,
+            
           }
 
         }
