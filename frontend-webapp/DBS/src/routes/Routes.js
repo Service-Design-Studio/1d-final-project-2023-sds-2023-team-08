@@ -20,6 +20,7 @@ import SuccessScreen from '../views/SuccessScreen';
 import RaiseFTDScreen from '../views/RaiseFTDScreen';
 import ClipboardReader from '../views/others/Clipboard Test';
 import SwipeToPay from '../views/paynow/SwipeToPay';
+import BankAccRecipientScreen from '../views/bank account/BankAccRecipient';
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -27,7 +28,7 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginScreen key="login" />} />
+        <Route path="/" element={<ClipboardReader key="login" />} />
         <Route path="/login" element={<LoginScreen key="login" />} />
         <Route path="/:userID/home" element={<HomeScreen key="home"/>} />
         <Route path="/:userID/invest" element={<HomeScreen key="invest"/>} />
@@ -45,6 +46,7 @@ const Routing = () => {
         <Route path="/:userID/raiseFTD/:transactionID" element={<RaiseFTDScreen/>} key="raiseFTD"/>
         <Route path="/:userID/refunddispute/:transactionID" element={<ResolveDisputeRefundScreen key="refunddispute"/>}/>
         <Route path="/:userID/refutedispute/:transactionID" element={<RefuteDisputeReason key="refutedispute"/>}/>
+        <Route path="/:userID/accounttransferrecipient" element={<BankAccRecipientScreen key="accountrecipient"/>} />
       </Routes>
     </Router>
   );
