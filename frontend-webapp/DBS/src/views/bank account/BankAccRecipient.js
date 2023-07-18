@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import '../../components/styles/bank account/BankAccRecipientStyles.css';
 import '../../components/styles/paynow/EnterRecipientStyles.css';
 import { useState, useEffect } from 'react';
@@ -9,6 +9,10 @@ const BankAccRecipientScreen = () => {
     const { userID } = useParams();
     const [recipientName, setRecipientName] = useState()
     const [recipientAccNum, setRecipientAccnum] = useState()
+    const [bankType, setbankType] = useState()
+    const location = useLocation()
+    
+    setbankType(location.state)
           
     const handleSubmit = async(event) => {
         event.preventDefault();            
@@ -17,7 +21,6 @@ const BankAccRecipientScreen = () => {
 
     const handleInputChangeName = (e) => {
         setRecipientName(e.target.value)
-        console.log(recipientName)
     };
     
     const blockInvalidChar =(e) => {
@@ -49,7 +52,7 @@ const BankAccRecipientScreen = () => {
                     </form>
 
                     <button className='transparentcontainerfull'>
-                        <p className='BankType'>Select Bank</p>
+                        <p className='BankType'>{bankType == undefined ? "Select Bank" : bankType}</p>
                         <img src='/assets/expand.png' className='expand'/>
                     </button>
 
