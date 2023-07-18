@@ -10,10 +10,11 @@ const EnterRecipient = () => {
     const [csrfToken, setCsrfToken] = useState('');
     const [ recipientNickname, setrecipientNickname ] = useState('');
     const [ recipientPhoneNumber, setrecipientPhoneNumber] = useState('');
-    const [ invalidmessage, setinvalidmessage] = useState('')
+    const [ invalidmessage, setinvalidmessage] = useState('');
     const [recipientAccnum, setrecipientAccnum] = useState('');
-    const [senderAccnum, setsenderAccnum] = useState('')
-    const [senderAccname, setsenderAccname] = useState('')
+    const [senderAccnum, setsenderAccnum] = useState('');
+    const [senderAccname, setsenderAccname] = useState('');
+    const [warning, setWarning] = useState(false)
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -51,13 +52,13 @@ const EnterRecipient = () => {
                     setrecipientNickname(response.data.nickname);
                     setrecipientAccnum(response.data.accnum);
                     setsenderAccname(response.data.usraccname);
-                    setsenderAccnum(response.data.usraccnum)
+                    setsenderAccnum(response.data.usraccnum);
+                    setWarning(response.data.warning);
                 } else {
                 }
 
             } catch (error) {
                 console.log('Error:', error.toJSON());
-                setrecipientNickname("Vinny Koh");
             }
         } 
         else {
@@ -76,7 +77,7 @@ const EnterRecipient = () => {
             setinvalidmessage("* Please Enter A Valid PayNow Phone Number")
         }
         else {
-            navigate(`/${userID}/paynow`, {state: {"phonenumber": recipientPhoneNumber, "nickname":recipientNickname, "accnum":recipientAccnum, "usraccnum":senderAccnum, "usraccname":senderAccname }})
+            navigate(`/${userID}/paynow`, {state: {"phonenumber": recipientPhoneNumber, "nickname":recipientNickname, "accnum":recipientAccnum, "usraccnum":senderAccnum, "usraccname":senderAccname, "warning":warning}})
         }
     };
 
@@ -130,10 +131,16 @@ const EnterRecipient = () => {
                     <p className='recipientnickER'>Recipient's Nickname</p>
                     <p className='recipientnameER'>{recipientNickname}</p>
                 </div>
-                <button id='pntsubmitbutton' className='pntsubmitbuttonER' onClick={handleSubmit}>
-                    <p className='pntsubmitER'>SUBMIT</p>
-                </button>
+                {warning &&
+                    <div>
+                        <p className='warningtextalert'>STAY ALERT: You have never transferred to this phone number before. Please check and ensure that you have keyed in the phone number correctly.</p>
+                    </div>
+                }
             </div>
+
+            <button id='pntsubmitbutton' className='pntsubmitbuttonER' style={{backgroundColor: warning? '#A50303': '#066DAF'}} onClick={handleSubmit}>
+                <p className='pntsubmitER'>SUBMIT</p>
+            </button>
         </div>
     );
 

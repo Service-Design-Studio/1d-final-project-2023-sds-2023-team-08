@@ -39,6 +39,7 @@ const ResolveDisputeRefundScreen = () => {
             "total_amount":FTDtransactions['refund details']['total amount'],
             "comments": "Resolving Dispute",
             "mode_of_payment": FTDtransactions['refund details']['mode of payment'],
+            'recipient_bank' : 'DBS/POSB'
         }
     }
 
