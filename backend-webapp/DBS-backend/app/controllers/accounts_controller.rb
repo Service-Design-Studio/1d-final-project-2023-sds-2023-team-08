@@ -87,7 +87,7 @@ class AccountsController < ApplicationController
     def all_transactions_desc(outgoing,incoming) #latest to earliest, most to least recent
         
       
-      combined_sorted=(outgoing.to_a + incoming.to_a)sort_by { |t| DateTime.parse(t.date_time) }.reverse
+      combined_sorted=(outgoing.to_a + incoming.to_a).sort_by { |t| DateTime.parse(t.date_time) }.reverse
   
       data=[]
       

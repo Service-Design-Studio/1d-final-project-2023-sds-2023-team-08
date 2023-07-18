@@ -25869,3 +25869,753 @@ Completed 200 OK in 84ms (Views: 1.2ms | ActiveRecord: 3.4ms | Allocations: 1708
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = ?, "updated_at" = ?, "date_time" = ? WHERE "transactions"."id" = ?[0m  [["datetime", "2023-06-20 19:20:17.551525"], ["updated_at", "2023-07-17 19:20:17.551923"], ["date_time", "Wed, 21 Jun 2023 03:20"], ["id", 13]]
   [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/534/all_transactions" for 127.0.0.1 at 2023-07-18 03:20:22 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"534"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 534], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 1218)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:119:in `rescue in set_user'
+app/controllers/users_controller.rb:116:in `set_user'
+Started GET "/users" for 127.0.0.1 at 2023-07-18 03:20:28 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:23
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 541]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 543]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 544]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 545]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 546]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 547]]
+  ↳ app/views/users/index.html.erb:31
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 548]]
+  ↳ app/views/users/index.html.erb:31
+  Rendered users/index.html.erb within layouts/application (Duration: 30.3ms | Allocations: 6624)
+  Rendered layout layouts/application.html.erb (Duration: 43.5ms | Allocations: 8840)
+Completed 200 OK in 49ms (Views: 42.3ms | ActiveRecord: 2.8ms | Allocations: 9135)
+
+
+Started GET "/users/541/paynows/search_by_phone/+6588888888" for 127.0.0.1 at 2023-07-18 03:21:50 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"541", "phonenumber"=>"+6588888888"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:60:in `search_by_phone'
+  [1m[36mPaynow Load (0.6ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:63:in `search_by_phone'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:15:in `get_nickname'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:21:in `paid_before'
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 3571)
+
+
+Started GET "/users/542/paynows/search_by_phone/+6588888888" for 127.0.0.1 at 2023-07-18 03:21:55 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"542", "phonenumber"=>"+6588888888"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:60:in `search_by_phone'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:63:in `search_by_phone'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:15:in `get_nickname'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:21:in `paid_before'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3622)
+
+
+Started GET "/users/542/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-18 03:22:02 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"542", "phonenumber"=>"+6588888887"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:60:in `search_by_phone'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:63:in `search_by_phone'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:15:in `get_nickname'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:21:in `paid_before'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3571)
+
+
+Started GET "/users/541/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-18 03:22:08 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"541", "phonenumber"=>"+6588888887"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:60:in `search_by_phone'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:63:in `search_by_phone'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:15:in `get_nickname'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:21:in `paid_before'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3622)
+
+
+Started POST "/users/541/transactions?transfer_from_acc_number=539-23421-2&recipient_acc=539-23421-4&recipient_bank=DBS&total_amount=34&comments=jx%20to%20wx&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2003:05&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:22:17 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"34", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:05", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"541"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cef2b4118>, params: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"34", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:05", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"541"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (1.1ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", "2023-07-18 00:00:00"], ["amount", 34.0], ["created_at", "2023-07-17 19:22:17.490673"], ["updated_at", "2023-07-17 19:22:17.490673"], ["account_id", 1], ["comments", "jx to wx"], ["date_time", "18 July 2023 03:05"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/paynow.rb:45:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Update (1.1ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = ?, "paid_bef_phone_num" = ? WHERE "paynows"."id" = ?[0m  [["updated_at", "2023-07-17 19:22:17.515803"], ["paid_bef_phone_num", "---\n- \"+6588888887\"\n"], ["id", 2]]
+  ↳ app/models/paynow.rb:45:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/paynow.rb:45:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 15.5ms | Allocations: 6473)
+
+
+Started POST "/users/542/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=16&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2003:30&day_and_date=Thu,%206%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:22:20 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"16", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:30", "day_and_date"=>"Thu, 6 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"542"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cedc72e40>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"16", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:30", "day_and_date"=>"Thu, 6 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"542"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (2.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-06 00:00:00"], ["amount", 16.0], ["created_at", "2023-07-17 19:22:20.449161"], ["updated_at", "2023-07-17 19:22:20.449161"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 03:30"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/paynow.rb:45:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Update (0.8ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = ?, "paid_bef_phone_num" = ? WHERE "paynows"."id" = ?[0m  [["updated_at", "2023-07-17 19:22:20.470371"], ["paid_bef_phone_num", "---\n- \"+6588888888\"\n"], ["id", 1]]
+  ↳ app/models/paynow.rb:45:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/paynow.rb:45:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 44ms (Views: 0.5ms | ActiveRecord: 15.5ms | Allocations: 6469)
+
+
+Started POST "/users/541/transactions?transfer_from_acc_number=539-23421-2&recipient_acc=539-23421-4&recipient_bank=DBS&total_amount=34&comments=jx%20to%20wx&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2004:05&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:22:34 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"34", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 04:05", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"541"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cef9f2308>, params: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"34", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 04:05", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"541"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (4.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", "2023-07-18 00:00:00"], ["amount", 34.0], ["created_at", "2023-07-17 19:22:34.835714"], ["updated_at", "2023-07-17 19:22:34.835714"], ["account_id", 1], ["comments", "jx to wx"], ["date_time", "18 July 2023 04:05"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 10.6ms | Allocations: 4499)
+
+
+Started GET "/users/541/all_transactions" for 127.0.0.1 at 2023-07-18 03:22:50 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"541"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.8ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 541]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 541]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN (?, ?) AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 547], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 545], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 548], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 544], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 543], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 546], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+Completed 200 OK in 157ms (Views: 2.5ms | ActiveRecord: 5.9ms | Allocations: 29368)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:23:30 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 34ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 10653)
+
+
+Started POST "/users/542/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=16&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2003:30&day_and_date=Thu,%206%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:24:05 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"16", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:30", "day_and_date"=>"Thu, 6 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"542"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cef815d28>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"16", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:30", "day_and_date"=>"Thu, 6 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"542"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-06 00:00:00"], ["amount", 16.0], ["created_at", "2023-07-17 19:24:05.548723"], ["updated_at", "2023-07-17 19:24:05.548723"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 03:30"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 6.3ms | Allocations: 4505)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:24:08 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.3ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 72ms (Views: 0.5ms | ActiveRecord: 2.2ms | Allocations: 10653)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:24:09 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.3ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 37ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 10652)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:24:09 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 35ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 10652)
+
+
+Started POST "/users/542/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=90&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2003:30&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:25:21 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"542"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cef5fafc0>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 03:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"542"} }[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (4.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-18 00:00:00"], ["amount", 90.0], ["created_at", "2023-07-17 19:25:21.336687"], ["updated_at", "2023-07-17 19:25:21.336687"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 03:30"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 29ms (Views: 0.2ms | ActiveRecord: 10.2ms | Allocations: 4501)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:25:23 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 83ms (Views: 0.7ms | ActiveRecord: 2.6ms | Allocations: 13024)
+
+
+Started POST "/users/542/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=90&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2005:30&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:26:12 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 05:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"542"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cee7c67d8>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 05:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"542"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (5.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-18 00:00:00"], ["amount", 90.0], ["created_at", "2023-07-17 19:26:12.577675"], ["updated_at", "2023-07-17 19:26:12.577675"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 05:30"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 46ms (Views: 0.2ms | ActiveRecord: 14.8ms | Allocations: 4499)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:26:16 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.3ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 57ms (Views: 0.5ms | ActiveRecord: 2.9ms | Allocations: 15396)
+
+
+Started POST "/users/541/transactions?transfer_from_acc_number=539-23421-2&recipient_acc=539-23421-4&recipient_bank=DBS&total_amount=34&comments=jx%20to%20wx&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2006:05&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:26:30 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"34", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:05", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"541"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cea689068>, params: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"34", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:05", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"541"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (4.2ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", "2023-07-18 00:00:00"], ["amount", 34.0], ["created_at", "2023-07-17 19:26:30.954317"], ["updated_at", "2023-07-17 19:26:30.954317"], ["account_id", 1], ["comments", "jx to wx"], ["date_time", "18 July 2023 06:05"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 32ms (Views: 0.2ms | ActiveRecord: 10.0ms | Allocations: 4501)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:26:33 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.3ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.7ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 60ms (Views: 0.4ms | ActiveRecord: 3.3ms | Allocations: 16681)
+
+
+Started POST "/users/542/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=90&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2006:30&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-18 03:26:43 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"542"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000025cef8f2e58>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"542"} }[0m
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ? ORDER BY "accounts"."id" ASC LIMIT ?[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-18 00:00:00"], ["amount", 90.0], ["created_at", "2023-07-17 19:26:43.241506"], ["updated_at", "2023-07-17 19:26:43.241506"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 06:30"], ["intrabank", 1]]
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/transactions_controller.rb:71:in `create'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:36:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 6.2ms | Allocations: 4499)
+
+
+Started GET "/users/542/all_transactions" for 127.0.0.1 at 2023-07-18 03:26:45 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"542"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:117:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 542]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-10')[0m  [["user_id", 542]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.9ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-10')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:133:in `all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 542], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = ?[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:138:in `block in all_transactions_desc'
+Completed 200 OK in 69ms (Views: 0.5ms | ActiveRecord: 2.9ms | Allocations: 19053)
+
+
