@@ -1,11 +1,8 @@
 import Fuse from 'fuse.js';
-import React, {useState, useEffect, ChangeEvent} from 'react';
-import { useNavigate, useParams, useLocation, Navigate  } from 'react-router-dom';
-import '../../components/styles/others/FuzzySearchStyles.css'
-import banklistjson from '../../testdata/fuzzysearch.json'
-
-// Change the cross to a back arrow icon
-// Change the magnifying glass beside the input instead of a placeholder
+import React, {useState} from 'react';
+import { useNavigate, useParams, useLocation} from 'react-router-dom';
+import '../../components/styles/bank account/FuzzySearchStyles.css'
+import banklistjson from '../../components/fuzzysearch.json'
 
 console.log('fuz')
 const options = {
@@ -22,6 +19,11 @@ const options = {
 
 const FuzzySearch = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const locationdata = location.state;
+  const userID = useParams();
+
+  console.log(locationdata)
 
   const [query, updateQuery] = useState('');
   const fuse = new Fuse(banklistjson, options);
@@ -34,21 +36,23 @@ const FuzzySearch = () => {
   }
 
   function handleClick(character) {
-    updateQuery(character.label);
+    console.log(character.label)
+    locationdata['bank'] = character.label
+    navigate(`/${userID}/accounttransferrecipient`, {state:locationdata})
   }
 
   return (
     <div className='Fuzbase'>
-      <div className='Fuzheader'>
-        <button className='Fuztransparent' onClick={() => navigate()}>
-          <img src='/assets/back.png' className='Fuzexit' />
-        </button>
-        <p className='Fuztitle'> Select Bank</p>
+      <div className = 'RefuteDisputeHeader'>
+          <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/accounttransferrecipient`, {state:locationdata})}>
+              <img src = '/assets/back.png' className = 'back'/>
+          </button>
+          <p className='RefuteDisputeHeaderText'>Select Bank</p>
       </div>
 
       <div className='Fuzsearchbase'>
         <div className='Fuzsearchthroughput'>
-          <img src='./assets/MagnifyIcon.png' className='DetectiveConan'/>
+          <img src='/assets/MagnifyIcon.png' className='DetectiveConan'/>
           <input
             className='Fuzsearchinput'
             placeholder='Search'

@@ -9,12 +9,23 @@ const BankAccRecipientScreen = () => {
     const { userID } = useParams();
     const [recipientName, setRecipientName] = useState('');
     const [recipientAccNum, setRecipientAccnum] = useState('');
+    const [bankType, setbankType] = useState('');
     const [clipboardText, setClipboardText] = useState('');
     const [showBottomSection, setShowBottomSection] = useState(false);
     const [warningMessage, setWarningMessage] = useState('')
     const location = useLocation()
-    const bankType = location.state
-    
+
+    useEffect(() => {
+        const setData = () => {
+            const locationdata = location.state
+            setRecipientName(locationdata.name || '')
+            setRecipientAccnum(locationdata.acc || '')
+            setbankType(locationdata.bank || '')
+        };
+        setData();
+      }, []); 
+
+
     useEffect(() => {
         const handleReadClipboard = async () => {
           try {
@@ -25,7 +36,7 @@ const BankAccRecipientScreen = () => {
             console.error('Failed to read clipboard:', error);
           }
         };
-    
+
         handleReadClipboard();
       }, [recipientName, recipientAccNum]); 
     
@@ -34,7 +45,7 @@ const BankAccRecipientScreen = () => {
         event.preventDefault();
         if (recipientName.length == 0) {
             setWarningMessage('* Please fill in your Recipient Name')
-        } else if (bankType == undefined) {
+        } else if (bankType == '') {
             setWarningMessage('* Please chose a Bank')
         } else if (recipientAccNum.length == 0) {
             setWarningMessage('* Please fill in your Recipient Bank Account Number')
@@ -90,8 +101,8 @@ const BankAccRecipientScreen = () => {
                             />
                     </form>
 
-                    <button className='transparentcontainerfull'>
-                        <p className='BankType'>{bankType == undefined ? "Select Bank" : bankType}</p>
+                    <button className='transparentcontainerfull' onClick={() => navigate(`/${userID}/accounttransferrecipient/selectbank`, {state:{name:recipientName, acc:recipientAccNum, bank:bankType}})}>
+                        <p className='BankType'>{bankType.length <= 0 ? "Select Bank" : bankType}</p>
                         <img src='/assets/expand.png' className='expand'/>
                     </button>
 
