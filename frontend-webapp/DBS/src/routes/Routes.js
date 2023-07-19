@@ -20,6 +20,7 @@ import SuccessScreen from '../views/SuccessScreen';
 import RaiseFTDScreen from '../views/RaiseFTDScreen';
 import ClipboardReader from '../views/others/Clipboard Test';
 import SwipeToPay from '../views/paynow/SwipeToPay';
+import FuzzySearch from '../views/others/FuzzySearch';
 
 const Routing = () => {
   const world = { currentLocation: null };
@@ -27,6 +28,7 @@ const Routing = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<FuzzySearch/>} />
         <Route path="/" element={<LoginScreen key="login" />} />
         <Route path="/login" element={<LoginScreen key="login" />} />
         <Route path="/:userID/home" element={<HomeScreen key="home"/>} />
