@@ -21,6 +21,7 @@ import RaiseFTDScreen from '../views/RaiseFTDScreen';
 import ClipboardReader from '../views/others/Clipboard Test';
 import SwipeToPay from '../views/paynow/SwipeToPay';
 import BankAccRecipientScreen from '../views/bank account/BankAccRecipient';
+import FuzzySearch from '../views/others/FuzzySearch';
 
 const Routing = () => {
   const world = { currentLocation: null };
