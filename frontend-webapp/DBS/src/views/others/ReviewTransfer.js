@@ -35,10 +35,11 @@ const ReviewTransfer = () => {
     
     const handleSubmit = async(event=null) => {
         if (event) {
+            console.log('submit2')
             event.preventDefault();
         }
         let TransactionDetails= transactionData
-
+        console.log('submit')
         try{
             const now = new Date();
             const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
