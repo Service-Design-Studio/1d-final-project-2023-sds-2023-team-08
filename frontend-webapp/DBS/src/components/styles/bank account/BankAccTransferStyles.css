@@ -40,7 +40,7 @@
     align-content: center;
     justify-content: space-between;
     flex-direction: row;
-    border-top: 1px solid #ececec;
+    border-top: 0.5px solid #ececec;
 }
 .immediatecontainer{
     display: flex;

@@ -107,7 +107,7 @@ const BankAccRecipientScreen = () => {
 
                     <button className='transparentcontainerfull' onClick={() => navigate(`/${userID}/accounttransferrecipient/selectbank`, {state:{name:recipientName, acc:recipientAccNum, bank:bankType}})}>
                         <p className='BankType' style={{color: bankType.length <= 0 ? '#696969' : '#444444'}}>{bankType.length <= 0 ? "Select Bank" : bankType}</p>
-                        <img src='/assets/expand.png' className='expand'/>
+                        <img src='/assets/expand.png' className='expandbank'/>
                     </button>
 
                     <p className='protiptext'> Pro tip! You can COPY and PASTE the bank account number :)</p>

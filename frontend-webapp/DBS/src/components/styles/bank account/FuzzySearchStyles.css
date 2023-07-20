@@ -1,43 +1,11 @@
 .Fuzbase{
     width: 100vw;
     height: 100vh;
-    background-color: #f6f6f6;
+    background-color: #F6F7F9;
     overflow-x: hidden;
 }    
 
-.Fuzheader{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #ffffff;
-}
-
-.Fuztransparent{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    padding-left: 3vw;
-}
-
-.Fuzexit{
-    object-fit: contain;
-    width: 3vw;
-    padding-left: 1vw;
-    margin-top: 1vw;
-}
-
-.Fuztitle{
-    padding-left: 3vw;
-    font-family: 'Lato';
-    font-size: 18px;
-    color: #000000;
-    font-weight: 500;
-}
-
 .Fuzsearchbase{
-    height: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -45,13 +13,14 @@
 }
 
 .Fuzsearchthroughput{
-    width: 85%;
-    height: 45%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 4%;
     background-color: #ffffff;
+    border-radius: 5px;
+    margin: 2.5vh 5vw;
+    padding: 1.5vh 5vw;
 }
 
 .DetectiveConan{
@@ -66,6 +35,9 @@
     height: 40%;
     border-color: transparent;
     margin-left: 5%;
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
 }
 
 .Fuzsearchinput::placeholder{
@@ -89,7 +61,10 @@
 .Fuzbutton{
     background-color: #ffffff;
     cursor: pointer;
-    border: 1px solid #e3e5e4;
+    border: 0.5px solid #e3e5e4;
     padding: 5%;
     text-align: left;
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
 }
