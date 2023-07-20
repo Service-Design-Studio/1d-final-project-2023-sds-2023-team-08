@@ -13,17 +13,17 @@ const BankTransferTransactionPage = () => {
     const [transactionamount, setTransactionAmount] = useState(bankrecipientdetails.total_amount || '')
     const [transfercomment, setTransferComment] = useState('Transfer')
     const [emptyamount, setemptyamount] = useState('')
-    const [userAcc, setUserAcc] = useState('234-321233-4')
-    const [userAccName, setUserAccName] = useState('DBS Multiplier Acc')
+    const [userAcc, setUserAcc] = useState('')
+    const [userAccName, setUserAccName] = useState('')
 
     const newtransactiondata = {}
 
     useEffect(() => {
         const fetchAccountDetails = async () => {
           try {
-            const response = await axios.get(''); 
-            setUserAcc(response.data.account)
-            setUserAccName(response.data.name);
+            const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/default_acc`); 
+            setUserAcc(response.data.default_acc_number)
+            setUserAccName(response.data.default_acc_name);
           } 
           
           catch (error) {
@@ -36,13 +36,14 @@ const BankTransferTransactionPage = () => {
 
 
     newtransactiondata['dispute'] = false
-    newtransactiondata['transfer_from_acc_name'] = userAcc
-    newtransactiondata['transfer_from_acc_number'] = userAccName
+    newtransactiondata['transfer_from_acc_name'] = userAccName
+    newtransactiondata['transfer_from_acc_number'] = userAcc
     newtransactiondata['recipient_name'] = bankrecipientdetails['name']
     newtransactiondata['recipient_acc'] = bankrecipientdetails['acc']
     newtransactiondata['mode_of_payment'] = 'Account Transfer'
     newtransactiondata['transfer_type'] = "FAST/IMMEDIATE"
     newtransactiondata['recipient_bank'] = bankrecipientdetails['bank']
+    newtransactiondata['acc_no_hash'] = bankrecipientdetails['acc']
 
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();

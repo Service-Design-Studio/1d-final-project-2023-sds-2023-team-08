@@ -95,6 +95,7 @@
     align-self: center;
     padding-left: 3vw;
     color: #444444;
+    margin-bottom: 1vh;
 }
 
 .warningbankmessage{
@@ -110,3 +111,13 @@
     width: 2.5vw;
     margin-left: 8vw;
   }
+
+.autofilltext{
+    font-family: 'Lato';
+    text-align: left;
+    font-size: 11px;
+    padding-left: 3vw;
+    margin-top: 1vh;
+    margin-bottom: -1.5vh;
+    color: #999999;
+}

@@ -12,8 +12,8 @@ const BankAccRecipientScreen = () => {
     const [bankType, setbankType] = useState('');
     const [clipboardText, setClipboardText] = useState('');
     const [showBottomSection, setShowBottomSection] = useState(false);
-    const [warningMessage, setWarningMessage] = useState('')
-    const location = useLocation()
+    const [warningMessage, setWarningMessage] = useState('');
+    const location = useLocation();
 
     useEffect(() => {
         const setData = () => {
@@ -25,21 +25,16 @@ const BankAccRecipientScreen = () => {
         setData();
       }, []); 
 
-
-    useEffect(() => {
-        const handleReadClipboard = async () => {
-          try {
+    const handleReadClipboard = async () => {
+        try {
             const text = await navigator.clipboard.readText();
             setClipboardText(text);
             console.log(clipboardText)
-          } catch (error) {
+        } catch (error) {
             console.error('Failed to read clipboard:', error);
-          }
-        };
+        }
+    };
 
-        handleReadClipboard();
-      }, [recipientName, recipientAccNum]); 
-    
     
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -58,6 +53,7 @@ const BankAccRecipientScreen = () => {
         const inputValue = e.target.value;
         const cleanedValue = inputValue.replace(/[^a-zA-Z\s]/g, '');
         setRecipientName(cleanedValue);
+        handleReadClipboard();
       };
       
 
@@ -73,7 +69,8 @@ const BankAccRecipientScreen = () => {
     };
     
     const readClipBoard = async () =>{
-        if (clipboardText.length >= 7 && clipboardText.length <=13 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
+        handleReadClipboard();
+        if (clipboardText.length >= 7 && clipboardText.length <=18 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
             setShowBottomSection(true)
         }
     };
@@ -125,6 +122,7 @@ const BankAccRecipientScreen = () => {
 
                     { showBottomSection && 
                         <button className='autofillcontainer' onClick={setAutofill}>
+                            <p className="autofilltext">Autofill</p>
                             <p className='bankaccnumbers'>{clipboardText}</p>
                         </button>
                     }

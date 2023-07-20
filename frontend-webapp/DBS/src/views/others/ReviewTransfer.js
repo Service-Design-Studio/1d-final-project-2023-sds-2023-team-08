@@ -35,10 +35,11 @@ const ReviewTransfer = () => {
     
     const handleSubmit = async(event=null) => {
         if (event) {
+            console.log('submit2')
             event.preventDefault();
         }
         let TransactionDetails= transactionData
-
+        console.log('submit')
         try{
             const now = new Date();
             const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
@@ -100,7 +101,7 @@ const ReviewTransfer = () => {
                         'name': transactionData['recipient_name'],
                         'acc': transactionData['recipient_acc'],
                         'bank': transactionData['recipient_bank'],
-                        'total_amount' : transactionData['total_amount']
+                        'total_amount' : transactionData['total_amount'],
                     }
                 });
             } else {
@@ -147,7 +148,7 @@ const ReviewTransfer = () => {
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient_name']}</p>
-                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_phonenum']}</p>
+                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>

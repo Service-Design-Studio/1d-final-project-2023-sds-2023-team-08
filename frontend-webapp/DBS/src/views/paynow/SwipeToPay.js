@@ -10,6 +10,7 @@ const SwipeToPay = ({ handleSubmit }) => {
   const [buttonPosition, setButtonPosition] = useState({ x: 0 });
   const [containerBounds, setContainerBounds] = useState({});
   const [maxbuttonWidth, setMaxButtonWidth] = useState({x:1000})
+  const [paymentTriggered, setPaymentTriggered] = useState(false)
   
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const SwipeToPay = ({ handleSubmit }) => {
 
   useEffect(() => {
     if (!isDragging && buttonPosition.x >0 && buttonPosition.x < maxbuttonWidth.x) {
-      const animationDuration = 0.15;
+      const animationDuration = 0.3;
       const animationDelay = 10;
 
       const step = buttonPosition.x / (animationDuration * 1000 / animationDelay);
@@ -80,17 +81,18 @@ const SwipeToPay = ({ handleSubmit }) => {
 
       const animationInterval = setInterval(animateBackToStart, animationDelay);
 
-      return () => {
-        clearInterval(animationInterval);
-      };
-    } 
-    else if (buttonPosition.x == maxbuttonWidth.x) {
-        console.log("swiped to pay");
-        setTimeout(() => {
-            handleSubmit();
-          }, 500)
-        }
-  }, [isDragging, buttonPosition.x]);
+        return () => {
+          clearInterval(animationInterval);
+        };
+      } 
+      else if (buttonPosition.x === maxbuttonWidth.x && !paymentTriggered) {
+          console.log("swiped to pay");
+          setPaymentTriggered(true)
+          setTimeout(() => {
+              handleSubmit();
+            }, 500)
+          }
+    }, [isDragging]);
 
 
   const shouldHideText = buttonPosition.x > containerBounds.width / 3;
