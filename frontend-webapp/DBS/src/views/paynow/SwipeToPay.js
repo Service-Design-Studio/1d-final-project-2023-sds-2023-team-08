@@ -64,7 +64,7 @@ const SwipeToPay = ({ handleSubmit }) => {
 
   useEffect(() => {
     if (!isDragging && buttonPosition.x >0 && buttonPosition.x < maxbuttonWidth.x) {
-      const animationDuration = 0.45;
+      const animationDuration = 0.3;
       const animationDelay = 10;
 
       const step = buttonPosition.x / (animationDuration * 1000 / animationDelay);

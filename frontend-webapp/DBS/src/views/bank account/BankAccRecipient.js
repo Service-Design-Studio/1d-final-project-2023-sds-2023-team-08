@@ -13,7 +13,6 @@ const BankAccRecipientScreen = () => {
     const [clipboardText, setClipboardText] = useState('');
     const [showBottomSection, setShowBottomSection] = useState(false);
     const [warningMessage, setWarningMessage] = useState('');
-    const [hashBank, setHashBank] = useState('');
     const location = useLocation();
 
     useEffect(() => {
@@ -26,21 +25,16 @@ const BankAccRecipientScreen = () => {
         setData();
       }, []); 
 
-
-    useEffect(() => {
-        const handleReadClipboard = async () => {
-          try {
+    const handleReadClipboard = async () => {
+        try {
             const text = await navigator.clipboard.readText();
             setClipboardText(text);
             console.log(clipboardText)
-          } catch (error) {
+        } catch (error) {
             console.error('Failed to read clipboard:', error);
-          }
-        };
+        }
+    };
 
-        handleReadClipboard();
-      }, [recipientName, recipientAccNum]); 
-    
     
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -68,13 +62,13 @@ const BankAccRecipientScreen = () => {
     };
 
     const setAutofill = () => {
-        setHashBank(clipboardText)
         const cleaned_clipboardText = clipboardText.replace(/-/g, '') 
         setRecipientAccnum(cleaned_clipboardText)
         setShowBottomSection(false)
     };
     
     const readClipBoard = async () =>{
+        handleReadClipboard()
         if (clipboardText.length >= 7 && clipboardText.length <=18 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
             setShowBottomSection(true)
         }
