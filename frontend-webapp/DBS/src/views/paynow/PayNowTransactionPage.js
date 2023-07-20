@@ -8,7 +8,7 @@ const PayNowTransactionPage = () => {
     const { userID } = useParams();
     const location = useLocation();
     const recipientdetails = location.state
-    const [transactionamount, setTransactionAmount] = useState('')
+    const [transactionamount, setTransactionAmount] = useState(recipientdetails.total_amount || '')
     const [paynowcomment, setPaynowComment] = useState('Paynow Transfer')
     const [emptyamount, setemptyamount] = useState('')
     const isWarning = recipientdetails['warning']

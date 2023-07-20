@@ -15,6 +15,7 @@ import RaiseFTDScreen from '../views/RaiseFTDScreen';
 import ClipboardReader from '../views/others/Clipboard Test';
 import BankAccRecipientScreen from '../views/bank account/BankAccRecipient';
 import FuzzySearch from '../views/bank account/FuzzySearch';
+import BankTransferTransactionPage from '../views/bank account/BankAccTransfer';
 
 const Routing = () => {
   
@@ -41,6 +42,7 @@ const Routing = () => {
         <Route path="/:userID/refutedispute/:transactionID" element={<RefuteDisputeReason key="refutedispute"/>}/>
         <Route path="/:userID/accounttransferrecipient" element={<BankAccRecipientScreen key="accountrecipient"/>} />
         <Route path="/:userID/accounttransferrecipient/selectbank" element={<FuzzySearch key="selectbank"/>} />
+        <Route path="/:userID/accounttransfer" element={<BankTransferTransactionPage key="accounttransfer" />} />
       </Routes>
     </Router>
   );

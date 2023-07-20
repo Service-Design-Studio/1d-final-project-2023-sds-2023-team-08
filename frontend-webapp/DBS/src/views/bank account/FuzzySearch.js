@@ -21,9 +21,7 @@ const FuzzySearch = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const locationdata = location.state;
-  const userID = useParams();
-
-  console.log(locationdata)
+  const {userID} = useParams();
 
   const [query, updateQuery] = useState('');
   const fuse = new Fuse(banklistjson, options);
