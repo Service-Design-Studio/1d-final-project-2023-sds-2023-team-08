@@ -53,6 +53,7 @@ const BankAccRecipientScreen = () => {
         const inputValue = e.target.value;
         const cleanedValue = inputValue.replace(/[^a-zA-Z\s]/g, '');
         setRecipientName(cleanedValue);
+        handleReadClipboard();
       };
       
 
@@ -68,7 +69,7 @@ const BankAccRecipientScreen = () => {
     };
     
     const readClipBoard = async () =>{
-        handleReadClipboard()
+        handleReadClipboard();
         if (clipboardText.length >= 7 && clipboardText.length <=18 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
             setShowBottomSection(true)
         }
@@ -121,6 +122,7 @@ const BankAccRecipientScreen = () => {
 
                     { showBottomSection && 
                         <button className='autofillcontainer' onClick={setAutofill}>
+                            <p className="autofilltext">Autofill</p>
                             <p className='bankaccnumbers'>{clipboardText}</p>
                         </button>
                     }
