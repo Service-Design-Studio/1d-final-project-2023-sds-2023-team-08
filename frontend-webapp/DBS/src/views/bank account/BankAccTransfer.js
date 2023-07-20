@@ -21,9 +21,9 @@ const BankTransferTransactionPage = () => {
     useEffect(() => {
         const fetchAccountDetails = async () => {
           try {
-            const response = await axios.get(''); 
-            setUserAcc(response.data.account)
-            setUserAccName(response.data.name);
+            const response = await axios.get(`/users/${userID}/default_acc`); 
+            setUserAcc(response.data.default_acc_number)
+            setUserAccName(response.data.default_acc_name);
           } 
           
           catch (error) {
