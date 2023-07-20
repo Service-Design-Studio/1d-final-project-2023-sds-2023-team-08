@@ -100,7 +100,7 @@ const ReviewTransfer = () => {
                         'name': transactionData['recipient_name'],
                         'acc': transactionData['recipient_acc'],
                         'bank': transactionData['recipient_bank'],
-                        'total_amount' : transactionData['total_amount']
+                        'total_amount' : transactionData['total_amount'],
                     }
                 });
             } else {
@@ -147,7 +147,7 @@ const ReviewTransfer = () => {
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient_name']}</p>
-                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_phonenum']}</p>
+                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>

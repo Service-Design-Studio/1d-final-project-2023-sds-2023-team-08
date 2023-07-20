@@ -12,8 +12,9 @@ const BankAccRecipientScreen = () => {
     const [bankType, setbankType] = useState('');
     const [clipboardText, setClipboardText] = useState('');
     const [showBottomSection, setShowBottomSection] = useState(false);
-    const [warningMessage, setWarningMessage] = useState('')
-    const location = useLocation()
+    const [warningMessage, setWarningMessage] = useState('');
+    const [hashBank, setHashBank] = useState('');
+    const location = useLocation();
 
     useEffect(() => {
         const setData = () => {
@@ -67,6 +68,7 @@ const BankAccRecipientScreen = () => {
     };
 
     const setAutofill = () => {
+        setHashBank(clipboardText)
         const cleaned_clipboardText = clipboardText.replace(/-/g, '') 
         setRecipientAccnum(cleaned_clipboardText)
         setShowBottomSection(false)
