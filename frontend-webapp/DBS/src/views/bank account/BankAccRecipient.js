@@ -75,7 +75,7 @@ const BankAccRecipientScreen = () => {
     };
     
     const readClipBoard = async () =>{
-        if (clipboardText.length >= 7 && clipboardText.length <=13 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
+        if (clipboardText.length >= 7 && clipboardText.length <=18 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
             setShowBottomSection(true)
         }
     };
