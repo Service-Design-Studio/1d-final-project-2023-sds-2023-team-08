@@ -9,12 +9,23 @@ const BankAccRecipientScreen = () => {
     const { userID } = useParams();
     const [recipientName, setRecipientName] = useState('');
     const [recipientAccNum, setRecipientAccnum] = useState('');
+    const [bankType, setbankType] = useState('');
     const [clipboardText, setClipboardText] = useState('');
     const [showBottomSection, setShowBottomSection] = useState(false);
     const [warningMessage, setWarningMessage] = useState('')
     const location = useLocation()
-    const bankType = location.state
-    
+
+    useEffect(() => {
+        const setData = () => {
+            const locationdata = location.state
+            setRecipientName(locationdata.name || '')
+            setRecipientAccnum(locationdata.acc || '')
+            setbankType(locationdata.bank || '')
+        };
+        setData();
+      }, []); 
+
+
     useEffect(() => {
         const handleReadClipboard = async () => {
           try {
@@ -25,7 +36,7 @@ const BankAccRecipientScreen = () => {
             console.error('Failed to read clipboard:', error);
           }
         };
-    
+
         handleReadClipboard();
       }, [recipientName, recipientAccNum]); 
     
@@ -34,10 +45,12 @@ const BankAccRecipientScreen = () => {
         event.preventDefault();
         if (recipientName.length == 0) {
             setWarningMessage('* Please fill in your Recipient Name')
-        } else if (bankType == undefined) {
+        } else if (bankType == '') {
             setWarningMessage('* Please chose a Bank')
         } else if (recipientAccNum.length == 0) {
             setWarningMessage('* Please fill in your Recipient Bank Account Number')
+        } else {
+            navigate(`/${userID}/accounttransfer`, {state:{name:recipientName, acc:recipientAccNum, bank:bankType}})
         }
     };
 
@@ -60,10 +73,12 @@ const BankAccRecipientScreen = () => {
     };
     
     const readClipBoard = async () =>{
-        if (clipboardText.length >= 7 && clipboardText.length <=11 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
+        if (clipboardText.length >= 7 && clipboardText.length <=13 && /^[0-9-]+$/.test(clipboardText) && recipientAccNum.length == 0) {
             setShowBottomSection(true)
         }
     };
+
+    const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
 
     return(
         <div className = 'overall'>
@@ -80,7 +95,7 @@ const BankAccRecipientScreen = () => {
                 { warningMessage.length > 0 && (
                     <p  className='warningbankmessage'>{warningMessage}</p>
                 )}
-                    <form className='formcontainer'>
+                    <form className='formcontainer2'>
                         <input
                             type="text"
                             className="bankaccdetails"
@@ -90,20 +105,21 @@ const BankAccRecipientScreen = () => {
                             />
                     </form>
 
-                    <button className='transparentcontainerfull'>
-                        <p className='BankType'>{bankType == undefined ? "Select Bank" : bankType}</p>
-                        <img src='/assets/expand.png' className='expand'/>
+                    <button className='transparentcontainerfull' onClick={() => navigate(`/${userID}/accounttransferrecipient/selectbank`, {state:{name:recipientName, acc:recipientAccNum, bank:bankType}})}>
+                        <p className='BankType' style={{color: bankType.length <= 0 ? '#696969' : '#444444'}}>{bankType.length <= 0 ? "Select Bank" : bankType}</p>
+                        <img src='/assets/expand.png' className='expandbank'/>
                     </button>
 
                     <p className='protiptext'> Pro tip! You can COPY and PASTE the bank account number :)</p>
-                    <form className='formcontainer'>
+                    <form className='formcontainer2'>
                         <input
-                            type="text"
+                            type="number"
                             className="bankaccdetails"
                             placeholder="Enter account no."
                             value={recipientAccNum}
                             onInput={handleInputChangeAccNum}
                             onFocus={readClipBoard}
+                            onKeyDown={blockInvalidChar}
                             />
                     </form>
 
