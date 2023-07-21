@@ -17,6 +17,8 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";
   const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"];
+  const partialrefund = FTDtransactions.transaction.FTDdetails["correct amount"];
+  const contact_details = FTDtransactions.transaction.FTDdetails["contact details"];
   
   const [wdpopshowPopup, setwdpopShowPopup] = useState(false);
 
@@ -62,6 +64,17 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 <p className='transactiondetailstitlestext'>Reason For Transfer Dispute</p>
                 <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["reason"]}</p>
 
+                {contact_details != undefined && (
+                
+                <div>
+                    <p className='transactiondetailstitlestext'>Correct Amount Of Transaction</p>
+                    <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["correct amount"]}</p>
+
+                    <p className='transactiondetailstitlestext'>Disputee's Contact Details</p>
+                    <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["contact details"]}</p>
+                </div>
+                )}
+
                 <p className='transactiondetailstitlestext'>Comments From Sender</p>
                 <p id="commentstome" className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["comments"]}</p>
                 <div className='spacing'></div>
@@ -72,7 +85,18 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 <p className='transactiondetailsstatusexplained'>{FTDtransactions.transaction.FTDdetails["status"]}</p>
             </div>
 
-            { isrecipient && actionneeded ? (
+            { isrecipient && actionneeded && contact_details != undefined ? (
+                <div>
+                    <div className='transactiondetailedexplained'>
+                        <p className='transactiondetailsstatusdetailsimportant'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>
+                        <p className='transactiondetailsstatusdetailsimportant'>Refunding will lead to a partial refund of the difference between the amount transferred and the correct amount. If you disagree with the supposed correct amount, please contact the disputee through their contact number.</p>
+                        <p className='police'>Note: It is an offence under the Penal Code for the recipient to retain or use the funds after being informed that it was sent by mistake. The sender may consider lodging a police report.</p>
+                    </div>
+
+                    <button className='refundbutton' onClick={() => navigate(`/${userID}/refunddispute/${transactionID}`)}><b>YES</b> - REFUND</button>
+                    <button className='refutebutton' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)}><b>NO</b> - REFUTE</button>
+                </div>
+            ): isrecipient && actionneeded ? (
                 <div>
                     <div className='transactiondetailedexplained'>
                         <p className='transactiondetailsstatusdetailsimportant'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>
