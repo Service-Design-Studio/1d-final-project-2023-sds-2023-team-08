@@ -15,7 +15,6 @@ const ReviewTransfer = () => {
     const isWarning = transactionData['warning'];
     const isBankTransfer = transactionData['mode_of_payment'] == 'Account Transfer'
     console.log(transactionData)
-    console.log(isBankTransfer)
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -35,11 +34,9 @@ const ReviewTransfer = () => {
     
     const handleSubmit = async(event=null) => {
         if (event) {
-            console.log('submit2')
             event.preventDefault();
         }
         let TransactionDetails= transactionData
-        console.log('submit')
         try{
             const now = new Date();
             const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
@@ -148,7 +145,7 @@ const ReviewTransfer = () => {
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient_name']}</p>
-                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
+                            <p id="phonenumber" className='reviewtext'>{isDispute && transactionData['contact_details'] != undefined ? transactionData['contact_details'] : isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>

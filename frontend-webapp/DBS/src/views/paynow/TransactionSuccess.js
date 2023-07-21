@@ -50,7 +50,7 @@ const TransactionSucess = (props) => {
                     <p id = "banknumber" className='successtxgreytextheader2'> {transactionDetails["transfer_from_acc_number"]}</p>
                     <p className='successtxgreytextheader'> To</p>
                     <p className='successtxblacktextheader'> {transactionDetails["recipient_name"]}</p>
-                    <p id="phonenumber" className='successtxgreytextheader2'> {transactionDetails["recipient_phonenum"]}</p>
+                    <p id="phonenumber" className='successtxgreytextheader2'> {transactionDetails["recipient_phonenum"] != undefined ? transactionDetails["recipient_phonenum"]: transactionDetails['recipient_acc']}</p>
                     <p className='successtxgreytextheader'> Transfer Type</p>
                     <p className='successtxblacktextheader'> {transactionDetails["transfer_type"]}</p>
                     <p className='successtxgreytextheader'> Your Comments</p>
