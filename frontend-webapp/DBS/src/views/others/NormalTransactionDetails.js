@@ -22,6 +22,7 @@ const NormalTransactionDetails = ({TransactionData, prevpathname}) => {
       setShowPopup(false);
     };
 
+    console.log(TransactionData)
     return (
         <div className='ftdbase'> 
           <button onClick={() => navigate(`/${userID}/recenttransaction`)} className='transparent'>

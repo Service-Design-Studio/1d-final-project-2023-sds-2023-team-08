@@ -1,28 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 import HomeScreen from '../views/HomeScreen';
 import LoginScreen from '../views/LoginScreen';
 import RecentTransactionScreen from '../views/RecentTransactionScreen';
 import FTDTransactionScreen from '../views/FTDTransactionScreen';
-import FTDTransactionDetails from '../views/fund transfer dispute/FTDTransactionDetails';
 import RefuteDisputeReason from '../views/fund transfer dispute/RefuteDisputeReason';
-import RefuteSuccess from '../views/fund transfer dispute/RefuteSuccess';
 import ResolveDisputeRefundScreen from '../views/fund transfer dispute/ResolveDisputeRefundScreen';
-import ReviewRefute from '../views/fund transfer dispute/ReviewRefute';
-import ReviewTransfer from '../views/others/ReviewTransfer';
 import EnterRecipient from '../views/paynow/EnterRecipient';
 import PayNowTransactionPage from '../views/paynow/PayNowTransactionPage';
 import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
-import TransferSuccessScreen from '../views/others/TransferSuccessScreen';
 import ReviewScreen from '../views/ReviewScreen';
 import SuccessScreen from '../views/SuccessScreen';
 import RaiseFTDScreen from '../views/RaiseFTDScreen';
 import ClipboardReader from '../views/others/Clipboard Test';
-import SwipeToPay from '../views/paynow/SwipeToPay';
+import BankAccRecipientScreen from '../views/bank account/BankAccRecipient';
+import FuzzySearch from '../views/bank account/FuzzySearch';
+import BankTransferTransactionPage from '../views/bank account/BankAccTransfer';
 
 const Routing = () => {
-  const world = { currentLocation: null };
   
   return (
     <Router>
@@ -45,6 +40,9 @@ const Routing = () => {
         <Route path="/:userID/raiseFTD/:transactionID" element={<RaiseFTDScreen/>} key="raiseFTD"/>
         <Route path="/:userID/refunddispute/:transactionID" element={<ResolveDisputeRefundScreen key="refunddispute"/>}/>
         <Route path="/:userID/refutedispute/:transactionID" element={<RefuteDisputeReason key="refutedispute"/>}/>
+        <Route path="/:userID/accounttransferrecipient" element={<BankAccRecipientScreen key="accountrecipient"/>} />
+        <Route path="/:userID/accounttransferrecipient/selectbank" element={<FuzzySearch key="selectbank"/>} />
+        <Route path="/:userID/accounttransfer" element={<BankTransferTransactionPage key="accounttransfer" />} />
       </Routes>
     </Router>
   );

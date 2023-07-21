@@ -13,7 +13,9 @@ const ReviewTransfer = () => {
     const isDispute = transactionData['dispute'];
     const [csrfToken, setCsrfToken] = useState('');
     const isWarning = transactionData['warning'];
+    const isBankTransfer = transactionData['mode_of_payment'] == 'Account Transfer'
     console.log(transactionData)
+    console.log(isBankTransfer)
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -33,10 +35,11 @@ const ReviewTransfer = () => {
     
     const handleSubmit = async(event=null) => {
         if (event) {
+            console.log('submit2')
             event.preventDefault();
         }
         let TransactionDetails= transactionData
-
+        console.log('submit')
         try{
             const now = new Date();
             const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
@@ -89,13 +92,37 @@ const ReviewTransfer = () => {
           }
         };
     
+    const backNavigation = () => {
+            if (isDispute) {
+                navigate(`/${userID}/refunddispute/${transactionData['transaction_id']}`);
+            } else if (isBankTransfer) {
+                navigate(`/${userID}/accounttransfer`, {
+                    state: {
+                        'name': transactionData['recipient_name'],
+                        'acc': transactionData['recipient_acc'],
+                        'bank': transactionData['recipient_bank'],
+                        'total_amount' : transactionData['total_amount'],
+                    }
+                });
+            } else {
+                navigate(`/${userID}/paynow`, {
+                    state: {
+                        'usraccname': transactionData['transfer_from_acc_name'],
+                        'usraccnum': transactionData['transfer_from_acc_number'],
+                        'nickname': transactionData['recipient_name'],
+                        'accnum': transactionData['recipient_acc'],
+                        'phonenumber': transactionData['recipient_phonenum'],
+                        'warning': transactionData['warning'],
+                        'total_amount': transactionData['total_amount']
+                    }
+                });
+            }
+        }
     
     return (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
-                <button id = 'backarrow' onClick={() => isDispute
-                                                        ? navigate(`/${userID}/refunddispute/${transactionData['transaction_id']}`)
-                                                        : navigate(`/${userID}/paynow`, {state: {'usraccname': transactionData['transfer_from_acc_name'], 'usraccnum':transactionData['transfer_from_acc_number'], 'nickname':transactionData['recipient_name'], 'accnum': transactionData['recipient_acc'], 'phonenumber': transactionData['recipient_phonenum'], 'warning': transactionData['warning']  }})} className='transparent'>
+                <button id = 'backarrow' onClick={backNavigation} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Review Transfer</p>
@@ -121,7 +148,7 @@ const ReviewTransfer = () => {
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
                             <p className='accounttextname'>{transactionData['recipient_name']}</p>
-                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient_phonenum']}</p>
+                            <p id="phonenumber" className='reviewtext'>{isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>

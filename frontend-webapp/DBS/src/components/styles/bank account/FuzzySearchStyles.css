@@ -1,0 +1,70 @@
+.Fuzbase{
+    width: 100vw;
+    height: 100vh;
+    background-color: #F6F7F9;
+    overflow-x: hidden;
+}    
+
+.Fuzsearchbase{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Fuzsearchthroughput{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 2.5vh 5vw;
+    padding: 1.5vh 5vw;
+}
+
+.DetectiveConan{
+    object-fit: contain;
+    width: 5vw;
+    margin-left: 1%;
+    filter: invert(50%);
+}
+
+.Fuzsearchinput{
+    width: 80%;
+    height: 40%;
+    border-color: transparent;
+    margin-left: 5%;
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
+}
+
+.Fuzsearchinput::placeholder{
+    font-family: 'Lato';
+    font-size: 18px;
+    color: #909092;
+}
+
+.Fuzscrollview{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    margin-bottom: 8vh;
+}
+
+.Fuzbutton{
+    background-color: #ffffff;
+    cursor: pointer;
+    border: 0.5px solid #e3e5e4;
+    padding: 5%;
+    text-align: left;
+    font-family: 'Lato';
+    font-size: 16px;
+    color: #444444;
+}
