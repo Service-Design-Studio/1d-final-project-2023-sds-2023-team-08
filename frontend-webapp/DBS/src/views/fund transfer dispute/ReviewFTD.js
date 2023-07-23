@@ -49,19 +49,25 @@ const ReviewFTD = () => {
             FTDdetails['comments'] = RaiseFTDdata['comments']
             FTDdetails['raiseFTD'] = true
             FTDdetails['date'] = RaiseFTDdataOver['date']
-            FTDdetails["correct_amount"] = RaiseFTDdata["correct amount"]
-            FTDdetails["contact_details"] = RaiseFTDdata["contact details"]
+            FTDdetails["correct_amount"] = parseInt(RaiseFTDdata["correct amount"])
+            FTDdetails["contact_details"] = parseFloat(RaiseFTDdata["contact details"])
 
             let FTDdetailstobesent = FTDdetails
             FTDdetailstobesent["total_amount"] = RaiseFTDdata["total amount"]
             FTDdetailstobesent["transaction_ID"] = RaiseFTDdata["transaction ID"]
             FTDdetailstobesent["transaction_name"] = RaiseFTDdata["transaction name"]
             FTDdetailstobesent["transaction_type"] = RaiseFTDdata["transaction type"]
+            delete FTDdetailstobesent["transaction type"]
+            delete FTDdetailstobesent["transaction name"]
+            delete FTDdetailstobesent["total amount"]
+            delete FTDdetailstobesent["transaction ID"]
+            delete FTDdetailstobesent["correct amount"]
+            delete FTDdetailstobesent["contact details"]
 
             console.log(FTDdetailstobesent)
 
             const response = await axios.post(
-                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${FTDdetails['transaction ID']}/disputes`,
+                `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${FTDdetailstobesent["transaction_ID"]}/disputes`,
                 JSON.stringify(FTDdetailstobesent) ,
                 {
                 headers: {
