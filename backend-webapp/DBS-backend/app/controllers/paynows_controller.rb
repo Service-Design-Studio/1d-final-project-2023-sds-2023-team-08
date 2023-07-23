@@ -1,7 +1,7 @@
 class PaynowsController < ApplicationController
   before_action :set_paynow, only: %i[ show edit update destroy ]
 
-
+=begin
   def search_by_phone
     phone_num=params[:phone]
     paynow_entry=PayNow.where(phone: phone_num).first
@@ -13,6 +13,8 @@ class PaynowsController < ApplicationController
       render json: data, status: :unprocessable_entity 
     end
   end
+=end
+
   # GET /paynows or /paynows.json
   def index
     @paynows = Paynow.all

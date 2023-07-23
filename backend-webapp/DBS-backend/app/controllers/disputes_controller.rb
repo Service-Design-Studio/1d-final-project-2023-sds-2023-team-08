@@ -134,17 +134,28 @@ class DisputesController < ApplicationController
     
     transaction=Transaction.find(params[:transactions_id])
     disputee_acc=Account.where(account_number: transaction.recipient_account_number).first
+    
+    
+
     if transaction && disputee_acc
       
       isModeOfPaymentPaynow=(transaction.transaction_type=="FAST / PayNow Transfer")
+      
+      
+      dispute=transaction.dispute
+      dispute_reason_details=JSON.parse(dispute.dispute_reason_details)
+      isWrongAmount=(dispute.dispute_reason=="Transfer Wrong Amount")
+      
 
       data=[ {"refund details": {
     "transfer from acc name": disputee_acc.account_type,
     "transfer from acc number": transaction.recipient_account_number,
     "recipient name": Account.where(account_number: transaction.account.account_number).first.user.username,
     "recipient acc": transaction.account.account_number,
-    "total amount": transaction.amount,
-    "mode of payment": isModeOfPaymentPaynow ? "FAST / PayNow Transfer" : "Account Transfer"
+    "total amount": isWrongAmount ? transaction.amount-dispute_reason_details["correct_amount"] : transaction.amount,
+    "mode of payment": isModeOfPaymentPaynow ? "FAST / PayNow Transfer" : "Account Transfer",
+    "contact details": dispute_reason_details["contact_details"]
+
   }
     }]
     render json: data, status: :ok #http 200
@@ -198,13 +209,16 @@ class DisputesController < ApplicationController
 
     disputer_id=params[:user_id]
     transaction_id=params[:transaction_id]
-    dispute_params = params.permit(:date_and_time, :day_and_date, :reason,:comments ,:user,:transaction_ID)
+    dispute_params = params.permit(:date_and_time, :day_and_date, :reason,:comments ,:user,:transaction_ID,:contact_details,:correct_amount)
     date_and_time = dispute_params[:date_and_time]
     day_and_date = dispute_params[:day_and_date]
     dispute_reasons = dispute_params[:reason]
     dispute_comments= dispute_params[:comments]
     role=dispute_params[:user]#sender or recipient of funds
     params.inspect
+
+
+    
     
     transaction=Transaction.find(transaction_id)
     if not transaction
@@ -216,6 +230,22 @@ class DisputesController < ApplicationController
     if(transaction.intrabank)
       senderIsDisputer=(transaction.account.user.id==disputer_id.to_i) #user who made transaction is disputer
       puts senderIsDisputer
+
+      #if dispute is paynow related and disputer is the one who sends money, we should remove his recipient from his trf bef list
+      #so warning will cont to appear for this recipient if he trf to this person again
+      if senderIsDisputer && transaction.transaction_type=="FAST / PayNow Transfer"
+        #get  recipient of this transaction and remove from users's paid_before phone numbers
+        begin
+          puts "delete"
+        other_party=Account.where(account_number: transaction.recipient_account_number).first
+        other_party_phone=other_party.user.phone
+        Paynow.remove_from_paid_before(transaction.account.account_number,other_party_phone)
+        rescue => e
+          puts "Error occurred: #{e.message} . cant find other recipient account or error removing recipient's phone"
+        end
+
+      end
+
       transaction_recipient_account=Account.where("account_number == ?",transaction.recipient_account_number).first
       if not transaction_recipient_account
         data={success: "false" , error: "unable to find recipient acc"}
@@ -223,6 +253,17 @@ class DisputesController < ApplicationController
         return
       end
       isReasonUnknownTrf=(dispute_reasons=="Unknown Transaction")
+      isWrongAmount=(dispute_reasons=="Transfer Wrong Amount")
+
+      #contact details and coorect_amount
+      if isWrongAmount
+        contact_details=dispute_params[:contact_details]
+        correct_amount=dispute_params[:correct_amount].to_f
+      else
+        contact_details=nil
+        correct_amount=nil
+      end
+      
       transaction.dispute= Dispute.new(
         status: isReasonUnknownTrf ? "Raised to DBS" : "Dispute Filed",
         disputer_acc_id: senderIsDisputer ? transaction.account.id : transaction_recipient_account.id ,
@@ -234,7 +275,9 @@ class DisputesController < ApplicationController
         further_action:{ }.to_json,
       
         dispute_reason_details: { 
-        "comments" => dispute_comments}.to_json
+        "comments" => dispute_comments,
+      "contact_details"=>contact_details,
+      "correct_amount"=>correct_amount}.to_json
 
     )
       
@@ -246,9 +289,14 @@ class DisputesController < ApplicationController
         dispute_reason: dispute_reasons,
         disputee_id: "",
         disputer_id: disputer_id,
+        date_time:date_and_time,
+        day_date:day_and_date,
+        further_action:{ }.to_json,
       
         dispute_reason_details: { 
-        "comments" => dispute_comments}.to_json
+        "comments" => dispute_comments,
+        "contact_details"=>contact_details,
+        "correct_amount"=>correct_amount}.to_json
 
       )
       

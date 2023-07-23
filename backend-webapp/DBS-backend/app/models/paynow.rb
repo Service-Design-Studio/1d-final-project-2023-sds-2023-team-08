@@ -31,6 +31,23 @@ class Paynow < ApplicationRecord
             
     end
 
+    def self.remove_from_paid_before(user_accnum,other_phone)
+        paynow=Paynow.where(accnum: user_accnum).first
+        begin
+            
+            
+            paynow.paid_bef_phone_num.delete(other_phone)
+            paynow.save
+            
+            puts "deleted"
+
+        rescue => e
+            puts "Error occurred: #{e.message} . (i think this funct only avail for postgres)"
+        end
+        
+            
+    end
+
     def self.update_if_not_paid_before_else_nothing(user_acc_num,recipient_acc_num)
         user_paynow=Paynow.where(accnum: user_acc_num).first
         recipient_paynow=Paynow.where(accnum: recipient_acc_num).first

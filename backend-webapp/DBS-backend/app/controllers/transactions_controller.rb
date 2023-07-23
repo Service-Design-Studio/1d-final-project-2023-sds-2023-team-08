@@ -67,11 +67,33 @@ class TransactionsController < ApplicationController
   end
 
     sender_acc=Account.where(account_number: transfer_from_acc_number).first
+
+    #because for bank account trf, the recipient_account_number comes without hashes, thus 
+    #need to check first if it belongs to any of the users in current database, if it is 
+    #then add hashes manually and set it in recipient_account_number.
+    #check unhashed with database: 
+    #Account.all.each do |account| -> if account.account_number.delete("-").strip==transaction_params[:recipient_acc], set recipient_acc as account.account_number
+    
+    #by default set recipient acc to the params then modify acc if no hashes. If it is outside bank then no change needed
+    recipient_acc=transaction_params[:recipient_acc]
+
+    if transaction_params[:mode_of_payment]=="Account Transfer"
+      Account.all.each do |account|
+        if account.account_number.delete("-").strip==transaction_params[:recipient_acc]
+          recipient_acc=account.account_number
+          break
+        end
+
+      end
+
+    end
+
+
     if sender_acc
       created_transaction=sender_acc.transactions.create(
       transaction_name: transaction_params[:transfer_type], #display
       transaction_type: transaction_params[:mode_of_payment], #internal use
-      recipient_account_number: transaction_params[:recipient_acc],
+      recipient_account_number: recipient_acc,
       datetime: DateTime.strptime(transaction_params[:day_and_date], "%a, %d %b %Y"),
       amount: transaction_params[:total_amount],
       comments:transaction_params[:comments],

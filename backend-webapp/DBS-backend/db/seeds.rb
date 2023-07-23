@@ -71,14 +71,14 @@ wx_acc=wx.accounts.create(
   )
   
   
- vinny.accounts.create(
+  vinny_savings_acc=vinny.accounts.create(
     account_number: '539-23421-5',
     initial_deposit: 1008.00,
     bank: 'DBS',
     account_type: "DBS Multiplier Account"
   )
 
-  brighton_multiplier_acc= brighton.accounts.create(
+  brighton_savings_acc=brighton_multiplier_acc= brighton.accounts.create(
     account_number: '539-23421-6',
     initial_deposit: 100.00,
     bank: 'DBS',
@@ -106,6 +106,30 @@ Paynow.new(
   accnum:jx_savings_acc.account_number,
   bank:jx_savings_acc.bank,
   nickname:"jx",
+  paid_bef_phone_num: []
+).save
+#paynow vinny
+Paynow.new(
+  phone:vinny.phone,
+  accnum:vinny_savings_acc.account_number,
+  bank:vinny_savings_acc.bank,
+  nickname:"vin",
+  paid_bef_phone_num: []
+).save
+#paynow brighton
+Paynow.new(
+  phone:brighton.phone,
+  accnum:brighton_savings_acc.account_number,
+  bank:brighton_savings_acc.bank,
+  nickname:"bright",
+  paid_bef_phone_num: []
+).save
+#paynow tristan
+Paynow.new(
+  phone:tristan.phone,
+  accnum:tristan_acc.account_number,
+  bank:tristan_acc.bank,
+  nickname:"tris",
   paid_bef_phone_num: []
 ).save
 

@@ -82,7 +82,9 @@ def generate_ftd_details(user)
         "reason": self.dispute_reason,
         "comments": comments,
         "withdrawable": isWithdrawable,
-        "refutereason":further_action["refutereason"]
+        "refutereason":further_action["refutereason"],
+        "correct amount":disputeDetails["correct_amount"],
+        "contact details":disputeDetails["contact_details"],
         
 
       }
