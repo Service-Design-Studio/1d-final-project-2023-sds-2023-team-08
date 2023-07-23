@@ -36,6 +36,19 @@ const RaiseFTDSuccess = () => {
                     <p className='qnRS'>Reason of Transfer Dispute</p>
                     <p className='ansRS'>{FTDDetails["reason"]}</p>
                 </div>
+
+                { FTDDetails['contact_details'].length > 0 && (
+                    <div>
+                        <div className='subpopboxRS'>
+                            <p className='qnRS'>Correct Amount Of Transaction</p>
+                            <p className='ansRS'>{FTDDetails["correct_amount"]}</p>
+                        </div>
+                        <div className='subpopboxRS'>
+                            <p className='qnRS'>Disputee's Contact Details</p>
+                            <p className='ansRS'>{FTDDetails["contact_details"]}</p>
+                        </div>
+                    </div>
+                )}
                 <div className='subpopboxRS'>
                     <p className='qnRS'>Comments</p>
                     <p className='uwuRS'>{FTDDetails["comments"]}</p>

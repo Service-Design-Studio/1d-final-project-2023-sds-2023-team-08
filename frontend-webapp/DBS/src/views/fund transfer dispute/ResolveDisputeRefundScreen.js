@@ -39,10 +39,10 @@ const ResolveDisputeRefundScreen = () => {
             "total_amount":FTDtransactions['refund details']['total amount'],
             "comments": "Resolving Dispute",
             "mode_of_payment": FTDtransactions['refund details']['mode of payment'],
-            'recipient_bank' : 'DBS/POSB'
+            'recipient_bank' : 'DBS/POSB',
+            "contact_details" : FTDtransactions['refund details']['contact details'],
         }
     }
-
 
     return (
         effectFinish && (
@@ -69,7 +69,7 @@ const ResolveDisputeRefundScreen = () => {
                     <div className='account_right1'>
                         <p className= 'accountname1'>  {FTDtransactions['refund details']['recipient name']}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>Disputee's Account</p>
+                            <p className= 'accountnumber1'>{transactionData['contact_details'] != undefined ? transactionData['contact_details']: "Disputee's Account"}</p>
                         </div>  
                     </div>
                 </div>

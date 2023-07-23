@@ -18,10 +18,11 @@ const RaiseFTDScreen = () => {
     const [emptyComment, setemptyComment] = useState(false);
     const [emptyCheckbox, setemptyCheckbox] = useState(false);
     const [invalidContact, setinvalidContact] = useState(false);
+    const [invalidamount, setinvalidAmount] = useState(false);
     const [emptydetails, setemptyDetails] = useState(false);
     const [wrongAmount, setWrongAmount] = useState(false);
     const [correctAmount, setCorrectAmount] = useState('');
-    const [contactDetails, setContactDetails] = useState('')
+    const [contactDetails, setContactDetails] = useState('');
     
     const handleSubmit = async(event) => {
         event.preventDefault(); 
@@ -46,6 +47,8 @@ const RaiseFTDScreen = () => {
             TransactionDataOver.transaction['comments'] = commentValue
             TransactionDataOver.transaction['raiseFTD'] = true
             TransactionDataOver.transaction['transaction ID'] = transactionID
+            TransactionDataOver.transaction['correct amount'] = correctAmount
+            TransactionDataOver.transaction['contact details'] = contactDetails
             navigate(`/${userID}/review`, {state: TransactionDataOver})
         }
     };
@@ -68,7 +71,12 @@ const RaiseFTDScreen = () => {
 
     const handleCorrectAmount = (event) => {
         const { value } = event.target;
-        setCorrectAmount(value);
+        if (value > -totalAmount) {
+            setinvalidAmount(true)
+        } else {
+            setinvalidAmount(false)
+            setCorrectAmount(value) 
+        }
       };
 
     
@@ -160,7 +168,9 @@ const RaiseFTDScreen = () => {
                                 <p className='flashmessagetext2'>* PLEASE ENTER A VALID PHONE NUMBER</p>
                             ) : emptydetails ? (
                                 <p className='flashmessagetext2'>* THESE FIELDS CANNOT BE LEFT BLANK</p>
-                            ) : (null)}
+                            ) : invalidamount ? (
+                                <p className='flashmessagetext2'>* CORRECT AMOUNT SHOULD NOT EXCEED TRANSACTION AMOUNT</p>
+                            ): (null)}
 
                         <div className='expandingcontainer'>
                             <input

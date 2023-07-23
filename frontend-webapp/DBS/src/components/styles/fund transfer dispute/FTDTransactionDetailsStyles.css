@@ -22,7 +22,7 @@
 .moneydispute {
     color: #444444;
     font-family: 'Lato';
-    font-size: 40px;
+    font-size: 34px;
     font-weight: bold;
     padding-bottom: 4%;
 }
@@ -30,7 +30,7 @@
 .moneydisputein{
     color: #007D23;
     font-family: 'Lato';
-    font-size: 40px;
+    font-size: 34px;
     font-weight: bold;
     padding-bottom: 4%;
 }
@@ -57,22 +57,22 @@
 }
 .transactiondetailstitlestext{
     font-family: 'Lato';
-    font-size: 16px;
+    font-size: 14px;
     color: #a3a3a3;
-    padding: 1vh 5vw 0 5vw;
+    padding: 0.5vh 5vw 0 5vw;
     margin: 0;
 }
 
 .transactiondetailsbodytext{
     font-family: 'Lato';
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #444444;
-    padding: 0vh 5vw 1vh 5vw;
+    padding: 0vh 5vw 0.5vh 5vw;
     margin: 0 ;
 }
 .spacing {
-    padding: 1vh;
+    padding: 0.5vh;
 }
 
 .transactiondetailsstatusbox {
@@ -85,7 +85,7 @@
 
 .transactiondetailsstatus{
     font-family: 'Lato';
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #a3a3a3;
     margin: 0;
@@ -97,7 +97,7 @@
 
 .transactiondetailsstatusexplained{
     font-family: 'Lato';
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #444444;
     margin: 0;
@@ -113,7 +113,7 @@
 
 .transactiondetailsstatusdetails{
     font-family: 'Lato';
-    font-size: 18px;
+    font-size: 16px;
     color: #444444;
     margin: 0;
     padding: 0;
@@ -122,7 +122,7 @@
 
 .transactiondetailsstatusdetailsimportant{
     font-family: 'Lato';
-    font-size: 18px;
+    font-size: 16px;
     color: #444444;
     margin: 0;
     padding: 0;
@@ -130,7 +130,7 @@
 }
 .police{
     font-family: 'Lato';
-    font-size: 14px;
+    font-size: 12.5px;
     color: #a3a3a3;
     margin: 0;
     padding: 0;
@@ -139,10 +139,19 @@
 
 .police2{
     font-family: 'Lato';
-    font-size: 14px;
+    font-size: 12.5px;
     color: #a3a3a3;
     margin: 0;
     padding: 0 5vw;
+    margin-top: 1vh;
+}
+
+.partialrefund{
+    font-family: 'Lato';
+    font-size: 14px;
+    color: #444444;
+    margin: 0;
+    padding: 0;
     margin-top: 1vh;
 }
 
