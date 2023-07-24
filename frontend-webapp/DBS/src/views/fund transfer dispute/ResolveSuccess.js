@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../../components/styles/fund transfer dispute/ResolveSuccessStyles.css'
 import { useNavigate, useParams } from 'react-router-dom';
 
-import resolvesuccessjson from '../../testdata/resolvesuccess.json'
 
 const ResolveSuccess = (props) => {
     const navigate = useNavigate();
@@ -35,7 +34,7 @@ const ResolveSuccess = (props) => {
                 <p className='successtxgreytextheader2'> {transactionDetails["transfer_from_acc_number"]}</p>
                 <p className='successtxgreytextheader'> To</p>
                 <p className='successtxblacktextheader'> {transactionDetails["recipient_name"]}</p>
-                <p className='successtxgreytextheader2'> Disputee's Account</p>
+                <p className='successtxgreytextheader2'> {transactionDetails["contact_details"] > 0 ? transactionDetails["contact_details"] : "Disputee's Account"}</p>
                 <p className='successtxgreytextheader'> Transfer Type</p>
                 <p className='successtxblacktextheader'> {transactionDetails["transfer_type"]}</p>
                 <p className='successtxgreytextheader'> Your Comments</p>
