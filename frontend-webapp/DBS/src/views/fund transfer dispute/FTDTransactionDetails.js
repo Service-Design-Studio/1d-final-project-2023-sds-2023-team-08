@@ -17,6 +17,10 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
   const isrecipient = FTDtransactions.transaction.FTDdetails["user"] === "Recipient";
   const actionneeded = FTDtransactions.transaction.FTDdetails["status"] === "Dispute Filed";
   const withdrawable = FTDtransactions.transaction.FTDdetails["withdrawable"];
+  const partialrefund = FTDtransactions.transaction.FTDdetails["correct amount"];
+  const contact_details = FTDtransactions.transaction.FTDdetails["contact details"];
+//   const partialrefund = 4
+//   const contact_details = 88888887
   
   const [wdpopshowPopup, setwdpopShowPopup] = useState(false);
 
@@ -47,12 +51,12 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 <p className={FTDtransactions.transaction.transactiondetails.transaction["total amount"] < 0 ? "moneydispute" : "moneydisputein"}>{FTDtransactions.transaction.transactiondetails.transaction["total amount"].toFixed(2)}</p>
             </div>
 
-            <div className='transactdatecontainer'>
+            <div className='transactdatecontainer' style={{marginBottom : contact_details != undefined ? '1.5vh': '3vh' }}>
                 <p className='transactiondatefordispute'>{FTDtransactions.transaction.transactiondetails["date"]}</p>
             </div>
 
             <div className='transactiondetailscontainerbox'>
-                <div className='spacing'></div>
+                <div className='spacing' style={{padding : contact_details != undefined ? '0.5vh': '1vh' }}></div>
                 <p className='transactiondetailstitlestext'>Raised On</p>
                 <p className='transactiondetailsbodytext'>{FTDtransactions.disputedate}</p>
 
@@ -62,9 +66,20 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 <p className='transactiondetailstitlestext'>Reason For Transfer Dispute</p>
                 <p className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["reason"]}</p>
 
+                {contact_details != undefined && (
+                
+                <div>
+                    <p className='transactiondetailstitlestext'>Correct Amount Of Transaction</p>
+                    <p className='transactiondetailsbodytext'>SGD {partialrefund}</p>
+
+                    <p className='transactiondetailstitlestext'>Disputee's Contact Details</p>
+                    <p className='transactiondetailsbodytext'>{contact_details}</p>
+                </div>
+                )}
+
                 <p className='transactiondetailstitlestext'>Comments From Sender</p>
                 <p id="commentstome" className='transactiondetailsbodytext'>{FTDtransactions.transaction.FTDdetails["comments"]}</p>
-                <div className='spacing'></div>
+                <div className='spacing' style={{padding : contact_details != undefined ? '0.5vh': '1vh' }}></div>
             </div>
 
             <div className='transactiondetailsstatusbox'>
@@ -72,7 +87,18 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 <p className='transactiondetailsstatusexplained'>{FTDtransactions.transaction.FTDdetails["status"]}</p>
             </div>
 
-            { isrecipient && actionneeded ? (
+            { isrecipient && actionneeded && contact_details != undefined ? (
+                <div>
+                    <div className='transactiondetailedexplained'>
+                        <p className='transactiondetailsstatusdetailsimportant'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>
+                        <p className='partialrefund'>Refunding will lead to a <b>partial refund</b> of the difference between the amount transferred and the correct amount. If you disagree with the supposed correct amount, please contact the disputee through their contact number.</p>
+                        <p className='police'>Note: It is an offence under the Penal Code for the recipient to retain or use the funds after being informed that it was sent by mistake. The sender may consider lodging a police report.</p>
+                    </div>
+
+                    <button className='refundbutton' onClick={() => navigate(`/${userID}/refunddispute/${transactionID}`)}><b>YES</b> - REFUND</button>
+                    <button className='refutebutton' onClick={() => navigate(`/${userID}/refutedispute/${transactionID}`)}><b>NO</b> - REFUTE</button>
+                </div>
+            ): isrecipient && actionneeded ? (
                 <div>
                     <div className='transactiondetailedexplained'>
                         <p className='transactiondetailsstatusdetailsimportant'>{FTDtransactions.transaction.FTDdetails["status detailed"]}</p>

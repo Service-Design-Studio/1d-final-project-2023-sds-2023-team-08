@@ -59,10 +59,10 @@ const RecentTransactionScreen = () => {
         <div className='filtercontainer'>
           <div className='scrollhorizontal'>
             {accountdetails.map((account, index) => (
-            <button id= {account} className='transparent' onClick={() => navigate(accountNumber === account['account number'] ? `/${userID}/recenttransaction` : `/${userID}/recenttransaction/${encodeURIComponent(account['account number'])}`)}>
-              <div className={account['account number'] === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
-                <p className={account['account number'] === accountNumber  ? 'accnameselected' : 'accnameunselected'}>{account['account type']}</p>
-                <p className={account['account number'] === accountNumber  ? 'nameselected' : 'nameunselected'}>{account['account number']}</p>
+            <button name = 'filtercontainer' id= {account} className='transparent' onClick={() => navigate(accountNumber === account['account number'] ? `/${userID}/recenttransaction` : `/${userID}/recenttransaction/${encodeURIComponent(account['account number'])}`)}>
+              <div id = 'filterbox' className={account['account number'] === accountNumber  ? 'filterrectangleselected' : 'filterrectangleunselected'}>
+                <p id = 'accountnames' className={account['account number'] === accountNumber  ? 'accnameselected' : 'accnameunselected'}>{account['account type']}</p>
+                <p id = 'accountnumbers' className={account['account number'] === accountNumber  ? 'nameselected' : 'nameunselected'}>{account['account number']}</p>
               </div>
             </button>
             ))}

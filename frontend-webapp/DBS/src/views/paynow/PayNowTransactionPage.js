@@ -8,9 +8,10 @@ const PayNowTransactionPage = () => {
     const { userID } = useParams();
     const location = useLocation();
     const recipientdetails = location.state
-    const [transactionamount, setTransactionAmount] = useState('')
+    const [transactionamount, setTransactionAmount] = useState(recipientdetails.total_amount || '')
     const [paynowcomment, setPaynowComment] = useState('Paynow Transfer')
     const [emptyamount, setemptyamount] = useState('')
+    const isWarning = recipientdetails['warning']
 
     const newtransactiondata = {}
 
@@ -22,6 +23,9 @@ const PayNowTransactionPage = () => {
     newtransactiondata['recipient_phonenum'] = recipientdetails['phonenumber']
     newtransactiondata['mode_of_payment'] = 'FAST / PayNow Transfer'
     newtransactiondata['transfer_type'] = "FAST/IMMEDIATE"
+    newtransactiondata['warning'] = recipientdetails['warning']
+    newtransactiondata['recipient_bank'] = 'DBS/POSB'
+
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
     
@@ -82,6 +86,10 @@ const PayNowTransactionPage = () => {
                 </div>
             </div>
 
+            {isWarning && 
+                <p className='WarningNoAmountPaynow'> STAY ALERT: You have never transferred to this phone number before. Please check and ensure that you have keyed in the phone number correctly.</p>
+            }
+
             {emptyamount.length > 0 ? (<p className='WarningNoAmountPaynow'>{emptyamount}</p>
             ) : (<div></div>)}
 
@@ -126,7 +134,7 @@ const PayNowTransactionPage = () => {
 
             <div className='greyboxPNT'>
                 <p className='tncforrefund1'>By clicking "NEXT", you agree to be bound by the <u>Terms and Conditions.</u></p>
-                <button id='submitrefund1' className='LIMITSbutton1' onClick={handleSubmit}>NEXT</button>
+                <button id='submitrefund1' className='LIMITSbutton1' onClick={handleSubmit} style={{backgroundColor: isWarning ? '#A50303': '#066DAF'}}>NEXT</button>
             </div>        
         </div>
     );
