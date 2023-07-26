@@ -32,6 +32,27 @@ const EnterRecipient = () => {
         fetchCSRFData();
       }, []);
 
+
+    useEffect(() => {
+        const checkWarning = () => {
+            if (recipientPhoneNumber.length > 0 && recipientPhoneNumber[0] != 9 && recipientPhoneNumber[0] != 8 ) {
+                setinvalidmessage('* Please Enter A Valid Phone Number')
+            }
+            else if (invalidmessage.length>0) {
+                setinvalidmessage('')
+            }
+            else if (warning) {
+                setWarning(false)
+                setrecipientNickname('')
+            }
+            else {
+                setrecipientNickname('')
+            }
+        };
+
+        checkWarning();
+        }, [recipientPhoneNumber]);
+
     const getNickname = async () => {
         if (recipientPhoneNumber.length >= 8) {
             try {
@@ -85,7 +106,7 @@ const EnterRecipient = () => {
     const handleInputChange = (e) => {
         const inputValue = e.target.value.replace(/\D/g, '').slice(0, 8);
         setrecipientPhoneNumber(inputValue)
-        //console.log(recipientPhoneNumber)
+        console.log(recipientPhoneNumber)
     };
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
