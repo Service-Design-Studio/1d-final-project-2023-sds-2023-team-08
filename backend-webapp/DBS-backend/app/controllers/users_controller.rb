@@ -1,7 +1,7 @@
 
 class UsersController < ApplicationController
   
-  before_action :set_user, only: %i[ show edit update destroy list_accounts total_deposit all_transactions home]
+  before_action :set_user, only: %i[ show edit update destroy default_acc list_accounts total_deposit all_transactions home]
 
   
   def home
@@ -54,6 +54,26 @@ class UsersController < ApplicationController
     end
 
   end
+
+  # GET 'users/:id/default_acc'
+  def default_acc
+    default_acc=@user.accounts.first
+    if default_acc
+      data={
+        default_acc_name:default_acc.account_type,
+        default_acc_number:default_acc.account_number
+      }
+      render json: data, status: :ok #http 200
+    else
+      data={
+        success:false,
+        error:"no account exist"
+      }
+      render json: data, status: :unprocessable_entity 
+    end
+
+  end
+
   # GET /users or /users.json
   def index
     @users = User.all
@@ -129,7 +149,9 @@ class UsersController < ApplicationController
   def all_transactions_desc(outgoing,incoming) #latest to earliest
         
   
-    combined_sorted=(outgoing.to_a + incoming.to_a).sort_by(&:datetime).reverse #latest to earliest
+    #combined_sorted=(outgoing.to_a + incoming.to_a).sort_by(&:datetime).reverse #latest to earliest
+    combined_sorted=(outgoing.to_a + incoming.to_a)
+    combined_sorted=combined_sorted.sort_by { |t| DateTime.parse(t.date_time) }.reverse
 
     data=[]
     combined_sorted.each do |transaction|
@@ -145,7 +167,8 @@ class UsersController < ApplicationController
             #if the account which made this transaction belongs to the user, it means outgoing funds thus other party is recipient acc, else sender's acc 
             "total amount": outgoing ? -transaction.amount : transaction.amount,
             #if the account which made this transaction belongs to the user, it means outgoing funds thus -ve, else +ve
-            "transaction ID": transaction.id
+            "transaction ID": transaction.id,
+            
           }
 
         }
@@ -154,5 +177,7 @@ class UsersController < ApplicationController
     return data
 
   end
+
+
 
 end

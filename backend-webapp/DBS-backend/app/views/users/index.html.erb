@@ -16,6 +16,7 @@
       <th>phone</th>
       <th>email</th>
       <th>link</th>
+      <th>paid bef paynow</th>
 
     </tr>
   </thead>
@@ -33,6 +34,7 @@
           <% end %>
 
         </td>
+        <td><%= "#{Paynow.where(phone: user.phone).first ? Paynow.where(phone: user.phone).first.paid_bef_phone_num : ""}"  %></td>
       </tr>
     <% end %>
   </tbody>

@@ -42,6 +42,7 @@ def generate_detailed_status(user)
       
 
     when "Raised to DBS"
+        
         puts "raiseddbs"
         isUnknownTransact=(self.dispute_reason=="Unknown Transaction")
         dispute_date=Date.strptime(self.date_time.split(', ').last, '%d %B %Y')
@@ -81,7 +82,9 @@ def generate_ftd_details(user)
         "reason": self.dispute_reason,
         "comments": comments,
         "withdrawable": isWithdrawable,
-        "refutereason":further_action["refutereason"]
+        "refutereason":further_action["refutereason"],
+        "correct amount":disputeDetails["correct_amount"],
+        "contact details":disputeDetails["contact_details"],
         
 
       }
