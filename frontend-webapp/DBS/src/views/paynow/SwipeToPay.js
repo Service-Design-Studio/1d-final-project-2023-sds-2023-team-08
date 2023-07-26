@@ -109,4 +109,6 @@ const SwipeToPay = ({ handleSubmit }) => {
   );
 };
 
+export const isDragging = 'drag';
+
 export default SwipeToPay;

@@ -84,10 +84,10 @@ class AccountsController < ApplicationController
       params.fetch(:account, {})
     end
 
-    def all_transactions_desc(outgoing,incoming) #latest to earliest
+    def all_transactions_desc(outgoing,incoming) #latest to earliest, most to least recent
         
-  
-      combined_sorted=(outgoing.to_a + incoming.to_a).sort_by(&:datetime).reverse #latest to earliest
+      
+      combined_sorted=(outgoing.to_a + incoming.to_a).sort_by { |t| DateTime.parse(t.date_time) }.reverse
   
       data=[]
       
@@ -101,7 +101,7 @@ class AccountsController < ApplicationController
               "transaction type": transaction.transaction_type,
               "account number": outgoing ? transaction.account.account_number : transaction.recipient_account_number,
               #if the account which made this transaction belongs to the user, it means outgoing funds thus other party is recipient acc, else sender's acc 
-              "total amount": outgoing ? -transaction.amount : transaction.amount
+              "total amount": outgoing ? - format('%.2f', transaction.amount) : format('%.2f', transaction.amount)
               #if the account which made this transaction belongs to the user, it means outgoing funds thus -ve, else +ve
             }
   
