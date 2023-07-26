@@ -35,9 +35,18 @@ const EnterRecipient = () => {
 
     useEffect(() => {
         const checkWarning = () => {
-            if (warning | invalidmessage.length>0) {
-                setWarning(false)
+            if (recipientPhoneNumber.length > 0 && recipientPhoneNumber[0] != 9 && recipientPhoneNumber[0] != 8 ) {
+                setinvalidmessage('* Please Enter A Valid Phone Number')
+            }
+            else if (invalidmessage.length>0) {
                 setinvalidmessage('')
+            }
+            else if (warning) {
+                setWarning(false)
+                setrecipientNickname('')
+            }
+            else {
+                setrecipientNickname('')
             }
         };
 
