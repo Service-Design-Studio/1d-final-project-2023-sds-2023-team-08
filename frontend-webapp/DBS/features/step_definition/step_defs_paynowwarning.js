@@ -50,7 +50,7 @@ Given('that I am on the Paynow Contact page', async function () {
 
 When("I enter a mobile number that I have never transferred to before", async function () {
   const phoneNumberField = await this.driver.findElement(By.className('eightdigitER'))
-  phoneNumberField.sendKeys("88888887")
+  phoneNumberField.sendKeys("88888885")
 
   // Add a delay of 1 second before clicking the button
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -73,7 +73,7 @@ Then("a warning will be displayed under the name", async function () {
   const autofillname = await recipientName.getText();
 
   // Assert the text content matches a particular string
-  expect(autofillname).to.equal('wx');
+  expect(autofillname).to.equal('bright');
 
   const newRecipient = await this.driver.findElement(By.className('warningtextalert'));
   const warningText = await newRecipient.getText();
@@ -155,12 +155,13 @@ Then("I will see a red Swipe To Pay button", async function (){
 
 
 When("I swipe the Swipe to Pay button", async function (){
+
   await new Promise(resolve => setTimeout(resolve, 1000));
   const swipeButton = await this.driver.findElement(By.id('swiperbutton'));
   
-  const actions = this.driver.actions({ bridge: true });
-  await actions.dragAndDropBy(swipeButton, 300, 0).perform();
+  const action = this.driver.actions({bridge: true});
 
+  await action.move({origin: swipeButton}).press().move({x: 300, y: 0, origin: swipeButton}).release().perform();
 });
 
 Then("I will be directed to the Succesful page", async function(){
