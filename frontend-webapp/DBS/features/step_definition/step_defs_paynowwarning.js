@@ -1,9 +1,9 @@
 const assert = require('assert');
 const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const { Builder, By, Key, until } = require('selenium-webdriver');
-const { Options } = require('selenium-webdriver/chrome');
 const { useEffect } = require('react');
 const { expect } = require('chai');
+
 
 Before(async function () {
   // Set up the Selenium WebDriver
@@ -23,7 +23,7 @@ Given('that I am on the Paynow Contact page', async function () {
   await this.driver.get('http://localhost:3000');
   await this.driver.manage().window().setRect({ width: 393, height: 851 });
   const usernameField = await this.driver.findElement(By.id('username'))
-  usernameField.sendKeys("wei xuan")
+  usernameField.sendKeys("junxiang")
   const passwordField = await this.driver.findElement(By.id('pin'))
   passwordField.sendKeys("password123")
 
@@ -101,7 +101,7 @@ When("I click the Submit button", async function () {
 
 Then("I will be directed to the Paynow Warning page", async function () {
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/4/paynow');
+  assert.strictEqual(currentUrl, 'http://localhost:3000' + '/4/paynow');
 });
 
 Then("a warning will be displayed above the blue box", async function (){
@@ -142,7 +142,7 @@ When("I click the Next button", async function (){
 
 Then("I will be directed to the Swipe To Confirm page", async function (){
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/4/review');
+  assert.strictEqual(currentUrl, 'http://localhost:3000' + '/4/review');
 });
 
 Then("I will see a red Swipe To Pay button", async function (){
@@ -156,23 +156,15 @@ Then("I will see a red Swipe To Pay button", async function (){
 
 When("I swipe the Swipe to Pay button", async function (){
   await new Promise(resolve => setTimeout(resolve, 1000));
-<<<<<<< HEAD
-  const swipeButton = await this.driver.findElement(By.id('swiperbutton'));
-  
-  const actions = this.driver.actions({ bridge: true });
-  await actions.dragAndDropBy(swipeButton, 300, 0).perform();
-
-=======
   const inputSlider = await this.driver.findElement(By.id('inputslider'));
   inputSlider.sendKeys(100)
   await new Promise(resolve => setTimeout(resolve, 1000));
->>>>>>> 8f7c9da701459d4f46cb48690ddff761a8a19b80
 });
   
 
 Then("I will be directed to the Succesful page", async function(){
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/4/success');
+  assert.strictEqual(currentUrl, 'http://localhost:3000' + '/4/success');
 });
 
 
