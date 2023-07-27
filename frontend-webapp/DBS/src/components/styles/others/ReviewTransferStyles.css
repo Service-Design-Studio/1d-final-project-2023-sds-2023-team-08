@@ -125,10 +125,17 @@
 .TransferPayNow:active {
     opacity: 0.5;
     transition: none;
-  }
+}
 
+.TransferPayNow:hover{
+    cursor: pointer;
+}
 
 .TransferNow:active {
     opacity: 0.5;
     transition: none;
+}
+
+.TransferNow:hover{
+    cursor: pointer;
 }

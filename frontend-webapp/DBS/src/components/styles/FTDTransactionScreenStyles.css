@@ -22,6 +22,11 @@
     padding: 0;
     margin: 0;
   }
+
+  .transparent{
+    cursor: pointer;
+  }
+
   .transparent img {
     transition: opacity 0.2s;
   }

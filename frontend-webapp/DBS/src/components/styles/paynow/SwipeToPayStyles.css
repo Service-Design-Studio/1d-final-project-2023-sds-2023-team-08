@@ -32,7 +32,9 @@
 .SwiperButton img {
     transition: opacity 0.2s;
 }
-
+.SwiperButton:hover{
+    cursor: pointer;
+}
 .SwiperButton:active img {
     opacity: 0.5;
     transition: none;

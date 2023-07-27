@@ -108,6 +108,10 @@
     bottom: 4vh;
 }
 
+.RaiseFTDButton:hover{
+    cursor: pointer;
+}
+
 
 .RaiseFTDButton:active{
     opacity: 0.5;
