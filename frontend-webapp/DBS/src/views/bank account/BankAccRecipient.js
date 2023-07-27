@@ -28,7 +28,8 @@ const BankAccRecipientScreen = () => {
     const handleReadClipboard = async () => {
         try {
             const text = await navigator.clipboard.readText();
-            setClipboardText(text);
+            const trimtext = text.trim()
+            setClipboardText(trimtext);
             console.log(clipboardText)
         } catch (error) {
             console.error('Failed to read clipboard:', error);
