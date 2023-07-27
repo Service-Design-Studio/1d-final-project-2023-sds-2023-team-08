@@ -20,8 +20,8 @@ const initDriver = () => {
 Before(async function () {
   //declaring global variable for each scenario
   global.driver = initDriver()
-  // global.baseUrl = "http://localhost:3000/"
-  global.baseUrl = "https://dbsservice-zwrzqgoagq-as.a.run.app"
+  global.baseUrl = "http://localhost:3000/"
+  // global.baseUrl = "https://dbsservice-zwrzqgoagq-as.a.run.app"
   global.parentNumber = Math.floor(Math.random() * 100000000)
   global.childNumber = Math.floor(Math.random() * 100000000)
 
