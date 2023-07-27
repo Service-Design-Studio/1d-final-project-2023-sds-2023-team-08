@@ -105,6 +105,7 @@ const SwipeToPay = ({ handleSubmit }) => {
       </button>
       <div className="SwiperButton2" style={{ width: `${buttonPosition.x}px` }}></div>
       <p className="swipertext" style={{ opacity: shouldHideText ? 0 : 1 }}>Swipe To Pay</p>
+      <div className='endButton' id='endbutton'></div>
     </div>
   );
 };
