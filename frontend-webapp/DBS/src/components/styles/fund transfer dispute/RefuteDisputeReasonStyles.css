@@ -23,6 +23,7 @@
     font-size: 18px;
     color: #444444;
     text-align: center;
+    z-index: 999;
 }
 
 .RefuteDisputeBody {
