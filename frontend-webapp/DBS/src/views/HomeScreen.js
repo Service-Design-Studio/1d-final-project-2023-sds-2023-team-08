@@ -105,14 +105,14 @@ const HomeScreen = () => {
                 </div>
               </button>
               
-              <button className='transparent' onClick={() => navigate(`/${userID}/accounttransferrecipient`, {state:{}})}>
+              <button id = 'transfermoney' className='transparent' onClick={() => navigate(`/${userID}/accounttransferrecipient`, {state:{}})}>
                 <div className='iconcontainer'>
                   <img  src='/assets/icons/local_transfer.png' className='icons' />
                   <p className='shortcut'>Transfer Money</p>
                 </div>
               </button>
               
-              <button className='transparent' onClick={() => {}}>
+              <button id='scanpay' className='transparent' onClick={() => {}}>
                 <div className='iconcontainer'>
                   <img src='/assets/icons/scan&pay.png' className='icons' />
                   <p className='shortcut'>Scan & Pay</p>
