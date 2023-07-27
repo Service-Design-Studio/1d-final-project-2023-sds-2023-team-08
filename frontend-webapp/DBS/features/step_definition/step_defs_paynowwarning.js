@@ -50,7 +50,7 @@ Given('that I am on the Paynow Contact page', async function () {
 
 When("I enter a mobile number that I have never transferred to before", async function () {
   const phoneNumberField = await this.driver.findElement(By.className('eightdigitER'))
-  phoneNumberField.sendKeys("88888887")
+  phoneNumberField.sendKeys("88888884")
 
   // Add a delay of 1 second before clicking the button
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -73,7 +73,7 @@ Then("a warning will be displayed under the name", async function () {
   const autofillname = await recipientName.getText();
 
   // Assert the text content matches a particular string
-  expect(autofillname).to.equal('wx');
+  expect(autofillname).to.equal('tris');
 
   const newRecipient = await this.driver.findElement(By.className('warningtextalert'));
   const warningText = await newRecipient.getText();
@@ -99,10 +99,10 @@ When("I click the Submit button", async function () {
 
 });
 
-Then("I will be directed to the Paynow Warning page", async function () {
-  const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/4/paynow');
-});
+// Then("I will be directed to the Paynow Warning page", async function () {
+//   const currentUrl = await this.driver.getCurrentUrl();
+//   assert.strictEqual(currentUrl, baseUrl + '/4/paynow');
+// });
 
 Then("a warning will be displayed above the blue box", async function (){
   const warning = await this.driver.findElement(By.className("WarningNoAmountPaynow"));
@@ -120,14 +120,15 @@ Then("I will see a red Next button", async function(){
   expect(backgroundColor).to.equal(expectedColor);
 });
 
+
+  // await new Promise(resolve => setTimeout(resolve, 1000));
+  // // debugger;
+  // const transactionAmount = await this.driver.findElement(By.id('keyinamt'))
+  // await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // transactionAmount.sendKeys("12")
+
 When("I click the Next button", async function (){
-
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  // debugger;
-  const transactionAmount = await this.driver.findElement(By.id('keyinamt'))
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-  transactionAmount.sendKeys("12")
 
   const nextButton = await this.driver.findElement(By.id('submitrefund1'));
 

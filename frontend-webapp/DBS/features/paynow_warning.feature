@@ -9,6 +9,7 @@
 #         Then I will be directed to the Paynow Warning page
 #         And a warning will be displayed above the blue box
 #         And I will see a red Next button
+#         When I key 
 #         When I click the Next button
 #         Then I will be directed to the Swipe To Confirm page
 #         And I will see a red Swipe To Pay button

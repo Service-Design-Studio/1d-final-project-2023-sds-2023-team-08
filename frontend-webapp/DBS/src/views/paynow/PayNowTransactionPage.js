@@ -102,7 +102,7 @@ const PayNowTransactionPage = () => {
                     <form className='barrrar'>
                         <input
                             type="number"
-                            id = "keyinamt"
+                            id = "keyInAmtPaynow"
                             className="refundamount"
                             placeholder='0.00'
                             onKeyDown={blockInvalidChar}

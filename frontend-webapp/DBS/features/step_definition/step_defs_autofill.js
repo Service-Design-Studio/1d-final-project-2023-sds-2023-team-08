@@ -5,10 +5,6 @@ const { useEffect } = require('react');
 const { expect } = require('chai');
 const readline = require('readline');
 
-// let clipboardy;
-// (async () => {
-//   clipboardy = await import('clipboardy');
-// })();
 
 
 async function pauseTest() {
