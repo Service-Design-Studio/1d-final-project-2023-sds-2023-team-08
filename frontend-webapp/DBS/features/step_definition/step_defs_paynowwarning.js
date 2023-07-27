@@ -153,7 +153,13 @@ Then("I will see a red Swipe To Pay button", async function (){
   expect(backgroundColor).to.equal(expectedColor);
 });
 
+
 When("I swipe the Swipe to Pay button", async function (){
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const swipeButton = await this.driver.findElement(By.id('swiperbutton'));
+  
+  const actions = this.driver.actions({ bridge: true });
+  await actions.dragAndDropBy(swipeButton, 300, 0).perform();
 
 });
 
