@@ -4243,6 +4243,11 @@ chrome-trace-event@^1.0.2:
   resolved "https://registry.npmjs.org/chrome-trace-event/-/chrome-trace-event-1.0.3.tgz"
   integrity sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==
 
+chromedriver-html5-dragdrop@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/chromedriver-html5-dragdrop/-/chromedriver-html5-dragdrop-0.3.1.tgz"
+  integrity sha512-dGRw8S8NcewKz2vXPKsM+EUi2zhnFIs0p2jcfaVSXIKTO8arJsH7MXAintZszPBP7DJ7O3Bqgn9PKnGikGSpZg==
+
 chromedriver@^114.0.2:
   version "114.0.2"
   resolved "https://registry.npmjs.org/chromedriver/-/chromedriver-114.0.2.tgz"

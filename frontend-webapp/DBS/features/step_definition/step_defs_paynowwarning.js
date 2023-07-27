@@ -156,12 +156,19 @@ Then("I will see a red Swipe To Pay button", async function (){
 
 When("I swipe the Swipe to Pay button", async function (){
   await new Promise(resolve => setTimeout(resolve, 1000));
+<<<<<<< HEAD
   const swipeButton = await this.driver.findElement(By.id('swiperbutton'));
   
   const actions = this.driver.actions({ bridge: true });
   await actions.dragAndDropBy(swipeButton, 300, 0).perform();
 
+=======
+  const inputSlider = await this.driver.findElement(By.id('inputslider'));
+  inputSlider.sendKeys(100)
+  await new Promise(resolve => setTimeout(resolve, 1000));
+>>>>>>> 8f7c9da701459d4f46cb48690ddff761a8a19b80
 });
+  
 
 Then("I will be directed to the Succesful page", async function(){
   const currentUrl = await this.driver.getCurrentUrl();
