@@ -20,7 +20,7 @@ After(async function () {
 
 Given('that I am on the Paynow Contact page', async function () {
   // Navigate to the login page
-  await this.driver.get(baseUrl);
+  await this.driver.get('http://localhost:3000');
   await this.driver.manage().window().setRect({ width: 393, height: 851 });
   const usernameField = await this.driver.findElement(By.id('username'))
   usernameField.sendKeys("wei xuan")
@@ -50,7 +50,7 @@ Given('that I am on the Paynow Contact page', async function () {
 
 When("I enter a mobile number that I have never transferred to before", async function () {
   const phoneNumberField = await this.driver.findElement(By.className('eightdigitER'))
-  phoneNumberField.sendKeys("88888886")
+  phoneNumberField.sendKeys("88888887")
 
   // Add a delay of 1 second before clicking the button
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -73,7 +73,7 @@ Then("a warning will be displayed under the name", async function () {
   const autofillname = await recipientName.getText();
 
   // Assert the text content matches a particular string
-  expect(autofillname).to.equal('vin');
+  expect(autofillname).to.equal('wx');
 
   const newRecipient = await this.driver.findElement(By.className('warningtextalert'));
   const warningText = await newRecipient.getText();
@@ -101,7 +101,7 @@ When("I click the Submit button", async function () {
 
 Then("I will be directed to the Paynow Warning page", async function () {
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/5/paynow');
+  assert.strictEqual(currentUrl, baseUrl + '/4/paynow');
 });
 
 Then("a warning will be displayed above the blue box", async function (){
@@ -142,7 +142,7 @@ When("I click the Next button", async function (){
 
 Then("I will be directed to the Swipe To Confirm page", async function (){
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/5/review');
+  assert.strictEqual(currentUrl, baseUrl + '/4/review');
 });
 
 Then("I will see a red Swipe To Pay button", async function (){
@@ -155,44 +155,17 @@ Then("I will see a red Swipe To Pay button", async function (){
 
 
 When("I swipe the Swipe to Pay button", async function (){
-  async function performDragAndDrop() {
-    const options = new Options();
-    options.addArguments('--disable-dev-shm-usage'); // To prevent "DevToolsActivePort file doesn't exist" error in some environments
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const swipeButton = await this.driver.findElement(By.id('swiperbutton'));
   
-    const driver = await new Builder()
-      .forBrowser('chrome')
-      .setChromeOptions(options)
-      .build();
-  
-    try {
-      await driver.get('https://dbsservice-zwrzqgoagq-as.a.run.app/5/review');
-  
-      // Element (BANK) which needs to be dragged.
-      const fromElement = await driver.findElement(By.className("SwiperButton"));
-  
-      // Using Action class for drag and drop.
-      const actions = driver.actions({ bridge: true });
-  
-      // Drag and Drop by Offset. Here, we will drag the element 300 pixels to the right.
-      await actions.dragAndDropBy(fromElement, 296.358, 0).perform();
-  
-      // Wait for a short duration to see the effect (optional)
-      await driver.sleep(2000);
-    } catch (error) {
-      console.error('Error occurred:', error);
-    } finally {
-      await driver.quit();
-    }
-  }
-  
-  // Call the function to perform the drag and drop
-  performDragAndDrop();
+  const actions = this.driver.actions({ bridge: true });
+  await actions.dragAndDropBy(swipeButton, 300, 0).perform();
 
 });
 
 Then("I will be directed to the Succesful page", async function(){
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/5/success');
+  assert.strictEqual(currentUrl, baseUrl + '/4/success');
 });
 
 
