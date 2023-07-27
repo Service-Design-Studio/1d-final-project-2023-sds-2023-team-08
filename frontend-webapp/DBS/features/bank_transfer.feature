@@ -1,7 +1,8 @@
 Feature: Bank Transfer
 
     Scenario: Making a Bank Transfer
-        Given that I have entered the Recipient's name as "Vinny"
+        Given that I have logged in
+        And I have entered the Recipient's name as "Vinny"
         And I select "OVERSEA-CHINESE BANKING CORPORATION LTD" as the bank
         And I copy and paste "860-345-34" as the account no.
         And I click the Next button
