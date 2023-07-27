@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   get 'users/:id/home', to: 'users#home'
   get 'users/:id/all_transactions', to: 'users#all_transactions'
   post 'users/login', to: 'users#login'
-
+  get 'users/:id/default_acc', to: 'users#default_acc'
+ 
   #GET users/:id/transactions/1 
 
   #custom routes - disputes related

@@ -1,7 +1,7 @@
 class PaynowsController < ApplicationController
   before_action :set_paynow, only: %i[ show edit update destroy ]
 
-
+=begin
   def search_by_phone
     phone_num=params[:phone]
     paynow_entry=PayNow.where(phone: phone_num).first
@@ -13,6 +13,8 @@ class PaynowsController < ApplicationController
       render json: data, status: :unprocessable_entity 
     end
   end
+=end
+
   # GET /paynows or /paynows.json
   def index
     @paynows = Paynow.all
@@ -62,8 +64,9 @@ class PaynowsController < ApplicationController
     current_accnum=Paynow.get_accnum(current_phone)#2-usraccnum
     current_acctype=Account.where(account_number: current_accnum).first.account_type #3-usraccname
     other_accnum=Paynow.get_accnum(params[:phonenumber])#4- accnum
-    other_nickname=Paynow.get_nickname(params[:phonenumber])#4nickname
-    data={nickname: other_nickname, accnum: other_accnum, usraccname:current_acctype , usraccnum:current_accnum }
+    other_nickname=Paynow.get_nickname(params[:phonenumber])#nickname
+    warning= ! Paynow.paid_before(current_phone,params[:phonenumber])
+    data={nickname: other_nickname, accnum: other_accnum, usraccname:current_acctype , usraccnum:current_accnum , warning: warning}
     render json: data, status: :ok
     rescue=> e
       data={error: e.to_s }
