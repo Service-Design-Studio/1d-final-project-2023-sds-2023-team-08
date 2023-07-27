@@ -1,4 +1,3 @@
-Feature: Paynow Warning
 
     Scenario: Verify that a warning is shown when transferring to a new mobile number
         Given that I am on the Paynow Contact page
