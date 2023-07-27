@@ -153,6 +153,8 @@ Then("I will see a red Swipe To Pay button", async function (){
   expect(backgroundColor).to.equal(expectedColor);
 });
 
+
+///////HELP NEEDED HERE HELP HELP HELP
 When("I swipe the Swipe to Pay button", async function (){
 
 });
