@@ -3,7 +3,9 @@ const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { useEffect } = require('react');
 const { expect } = require('chai');
-
+const { Builder, By, Key, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+const { Options } = require('selenium-webdriver/chrome');
 
 Before(async function () {
   // Set up the Selenium WebDriver
@@ -155,11 +157,37 @@ Then("I will see a red Swipe To Pay button", async function (){
 
 
 When("I swipe the Swipe to Pay button", async function (){
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  const swipeButton = await this.driver.findElement(By.id('swiperbutton'));
+  async function DragnDrop() {
+    const options = new Options();
+    options.addArguments('--disable-dev-shm-usage'); // To prevent "DevToolsActivePort file doesn't exist" error in some environments
   
-  const actions = this.driver.actions({ bridge: true });
-  await actions.dragAndDropBy(swipeButton, 300, 0).perform();
+    const driver = await new Builder()
+      .forBrowser('chrome')
+      .setChromeOptions(options)
+      .build();
+  
+    try {
+      await driver.get('https://dbsservice-zwrzqgoagq-as.a.run.app/5/review');
+  
+      // Element which needs to drag.
+      const fromElement = await driver.findElement(By.className("SwiperButton"));
+  
+      // Element on which need to drop.
+      const toElement = await driver.findElement(By.className("SwiperButton"));
+  
+      // Using Action class for drag and drop.
+      const actions = driver.actions({ bridge: true });
+  
+      // Dragged and dropped.
+      await actions.dragAndDrop(fromElement, toElement).perform();
+    } catch (error) {
+      console.error('Error occurred:', error);
+    } finally {
+      await driver.quit();
+    }
+  }
+  
+  DragnDrop();
 
 });
 
