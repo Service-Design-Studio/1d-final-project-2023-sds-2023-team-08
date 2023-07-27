@@ -100,7 +100,7 @@ const SwipeToPay = ({ handleSubmit }) => {
   
   return (
     <div className="BasedContainer" ref={containerRef}>
-      <button className="SwiperButton" ref={buttonRef} style={{ left: `${buttonPosition.x}px` }}>
+      <button className="SwiperButton" id="swiperbutton" ref={buttonRef} style={{ left: `${buttonPosition.x}px` }}>
         <img src="/assets/expand.png" className="swipeimage" alt="Swipe Icon" />
       </button>
       <div className="SwiperButton2" style={{ width: `${buttonPosition.x}px` }}></div>
