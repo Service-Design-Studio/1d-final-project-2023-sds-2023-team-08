@@ -142,3 +142,10 @@
     opacity: 0.5;
     transition: none;
 }
+
+.warningtextalert {
+    max-width: 92%;
+    margin: auto;
+    font-size: 14px;
+    color: #FF2C4E;
+}

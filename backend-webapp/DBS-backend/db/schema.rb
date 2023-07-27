@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_182400) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_184507) do
   create_table "accounts", force: :cascade do |t|
     t.string "account_number"
     t.integer "initial_deposit"
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_182400) do
     t.string "accnum"
     t.string "bank"
     t.string "nickname"
-    t.text "paid_bef_phone_num", default: [].to_json
+    t.text "paid_bef_phone_num", default: "[]"
   end
 
   create_table "transactions", force: :cascade do |t|

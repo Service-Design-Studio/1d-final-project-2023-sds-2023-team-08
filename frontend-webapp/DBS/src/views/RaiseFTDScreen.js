@@ -8,33 +8,21 @@ const RaiseFTDScreen = () => {
     const {userID, transactionID} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const TransactionData = location.state
+    const TransactionDataOver = location.state
+    console.log(TransactionDataOver)
+    const TransactionData = TransactionDataOver.transaction
     const totalAmount = TransactionData['total amount']
     const commentsInputRef = useRef(null);
 
-    const [reason, setReason] = useState('')
-    const [emptyComment, setemptyComment] = useState(false)
-    const [emptyCheckbox, setemptyCheckbox] = useState(false)
-
-    // const [TransactionData, setTransactionData] = useState([])
-    // const [csrfToken, setCsrfToken] = useState('');
-    // useEffect(() => {
-    //     const fetchTransactionData = async () => {
-    //       try {
-    //         const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //link to total amount
-    //         setTransactionData(response.data);
-    //       const response2 = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); //new link
-    //       const Token = response2.data.csrfToken;
-    //       setCsrfToken(Token);
-    //       } 
-          
-    //       catch (error) {
-    //         console.log(error)
-    //       }
-    //     };
-    //     fetchTransactionData();
-    //   }, []);
-
+    const [reason, setReason] = useState('');
+    const [emptyComment, setemptyComment] = useState(false);
+    const [emptyCheckbox, setemptyCheckbox] = useState(false);
+    const [invalidContact, setinvalidContact] = useState(false);
+    const [invalidamount, setinvalidAmount] = useState(false);
+    const [emptydetails, setemptyDetails] = useState(false);
+    const [wrongAmount, setWrongAmount] = useState(false);
+    const [correctAmount, setCorrectAmount] = useState('');
+    const [contactDetails, setContactDetails] = useState('');
     
     const handleSubmit = async(event) => {
         event.preventDefault(); 
@@ -47,14 +35,21 @@ const RaiseFTDScreen = () => {
             setemptyComment(true);
             setemptyCheckbox(false);
         } 
+        else if (reason === 'Transfer Wrong Amount' && (correctAmount.length == 0 || contactDetails.length == 0 )) {
+            setemptyDetails(true)
+        }
+        else if (reason === 'Transfer Wrong Amount' && (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6 )) {
+            setinvalidContact(true)
+        }
         else {
-            TransactionData['user'] = totalAmount > 0 ? "Recipient" : "Sender"
-            TransactionData['reason'] = reason
-            TransactionData['comments'] = commentValue
-            TransactionData['raiseFTD'] = true
-            TransactionData['transaction ID'] = transactionID
-            console.log(TransactionData)
-            navigate(`/${userID}/review`, {state: TransactionData})
+            TransactionDataOver.transaction['user'] = totalAmount > 0 ? "Recipient" : "Sender"
+            TransactionDataOver.transaction['reason'] = reason
+            TransactionDataOver.transaction['comments'] = commentValue
+            TransactionDataOver.transaction['raiseFTD'] = true
+            TransactionDataOver.transaction['transaction ID'] = transactionID
+            TransactionDataOver.transaction['correct amount'] = correctAmount
+            TransactionDataOver.transaction['contact details'] = contactDetails
+            navigate(`/${userID}/review`, {state: TransactionDataOver})
         }
     };
 
@@ -74,6 +69,25 @@ const RaiseFTDScreen = () => {
     document.getElementById('characterCount').textContent = charactersLeft;
     };
 
+    const handleCorrectAmount = (event) => {
+        const { value } = event.target;
+        if (value > -totalAmount) {
+            setinvalidAmount(true)
+        } else {
+            setinvalidAmount(false)
+            setCorrectAmount(value) 
+        }
+      };
+
+    
+    const handleContactDetails = (event) => {
+        const contact = event.target.value.replace(/\D/g, '').slice(0, 8);
+        setContactDetails(contact);
+    };
+
+    const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
+
+
     return(
         <div className='raiseFTDcontainer'>
             <div className='RefuteDisputeHeader'>
@@ -89,7 +103,7 @@ const RaiseFTDScreen = () => {
             </div>
             
             <div>
-              <p className='txdatetext'> {TransactionData['date']}</p>
+              <p className='txdatetext'> {TransactionDataOver['date']}</p>
             </div>
 
             <div className='scriptbox1'>
@@ -116,14 +130,16 @@ const RaiseFTDScreen = () => {
 
             {totalAmount < 0 ? (
             <div>
+
                 <div className='FTDcheckbox1'>
                     <input
-                        type='checkbox'
+                        type='radio'
                         id='transferWrongAccountCheckbox'
                         checked={reason === 'Transfer to Wrong Account'}
                         onChange={(event) => {
                         const isChecked = event.target.checked;
                         const updatedReason = isChecked ? 'Transfer to Wrong Account' : '';
+                        setWrongAmount(!isChecked)
                         setReason(updatedReason);
                         }}
                     />
@@ -132,17 +148,51 @@ const RaiseFTDScreen = () => {
 
                 <div className='FTDcheckbox2'>
                     <input
-                    type='checkbox'
+                    type='radio'
                     id='transferWrongAmountCheckbox'
                     checked={reason === 'Transfer Wrong Amount'}
+                    onKeyDown={blockInvalidChar}
                     onChange={(event) => {
                         const isChecked = event.target.checked;
                         const updatedReason = isChecked ? 'Transfer Wrong Amount' : '';
+                        setWrongAmount(isChecked)
                         setReason(updatedReason);
                     }}
                     />
                     <label className="checkboxtext" htmlFor='transferWrongAmountCheckbox'>Transfer Wrong Amount</label>
                 </div>
+
+                { wrongAmount &&
+                    <div>
+                        { invalidContact ? (
+                                <p className='flashmessagetext2'>* PLEASE ENTER A VALID PHONE NUMBER</p>
+                            ) : emptydetails ? (
+                                <p className='flashmessagetext2'>* THESE FIELDS CANNOT BE LEFT BLANK</p>
+                            ) : invalidamount ? (
+                                <p className='flashmessagetext2'>* CORRECT AMOUNT SHOULD NOT EXCEED TRANSACTION AMOUNT</p>
+                            ): (null)}
+
+                        <div className='expandingcontainer'>
+                            <input
+                                type="number"
+                                id="correctAmount"
+                                onChange={handleCorrectAmount}
+                                value={correctAmount}
+                                onKeyDown={blockInvalidChar}
+                                className='detailscontainer'
+                                placeholder='Correct Amount Of Transaction' />
+                        
+                            <input
+                                type="number"
+                                id="contactDetails"
+                                onChange={handleContactDetails}
+                                value={contactDetails}
+                                className='detailscontainer'
+                                placeholder='Your Phone Number' 
+                                />
+                        </div>
+                    </div>
+                }
 
                 <div className='commentsBox'>
                     <textarea
@@ -163,7 +213,7 @@ const RaiseFTDScreen = () => {
             <div>
                 <div className='FTDcheckbox3'>
                 <input
-                    type='checkbox'
+                    type='radio'
                     id='unknowntransaction'
                     checked={reason === 'Unknown Transaction'}
                     onChange={(event) => {
@@ -195,6 +245,7 @@ const RaiseFTDScreen = () => {
             <button className='RaiseFTDButton' onClick={handleSubmit}>RAISE FUND TRANSFER DISPUTE</button>
 
         </div>
+    
     );
 };
 

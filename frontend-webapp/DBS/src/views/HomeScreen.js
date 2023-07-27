@@ -1,37 +1,33 @@
-import React,  { useState }  from 'react';
+import React,  { useState, useEffect }  from 'react';
 import '../components/styles/HomeScreenStyles.css';
 import TopNavigator from './navigation/TopNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const HomeScreen = () => {
   const navigate = useNavigate();
   const { userID } = useParams();
-  console.log(userID)
-  
-  const numFTD = {"awaitingactionFTD": 4}
-  const anyFTD = numFTD['awaitingactionFTD'] >= 1
-  const numberofFTD = numFTD['awaitingactionFTD']
+  const [anyFTD, setanyFTD] = useState(false)
+  const [numberofFTD, setnumberofFTD] = useState(0)
 
-  // const [anyFTD, setanyFTD] = useState(false)
-  // const [numberofFTD, setnumberofFTD] = useState(0)
-  // useEffect(() => {
-  //   const fetchFTDtransactions = async () => {
-  //     try {
-  //       const response = await axios.get(`link to number of FTD transaction`);
-  //       const numFTD = response.data;
-  //       console.log(numFTD)
+  useEffect(() => {
+    const fetchFTDtransactions = async () => {
+      try {
+        const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/new_disputes_received`);
+        const numFTD = response.data;
+        console.log(numFTD)
 
-  //       setanyFTD(numFTD['awaitingactionFTD'] >= 1);
-  //       setnumberofFTD(numFTD['awaitingactionFTD']);
+        setanyFTD(numFTD['awaitingactionFTD'] >= 1);
+        setnumberofFTD(numFTD['awaitingactionFTD']);
 
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchFTDtransactions();
-  // }, []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFTDtransactions();
+  }, []);
 
 
   return (
@@ -52,7 +48,7 @@ const HomeScreen = () => {
                 <button className='transparent' onClick={() => {}}>
                   <img  src='/assets/help.png' className='help' />
                 </button>
-                <button  className='transparent' onClick={() => {}}>
+                <button  className='transparent' onClick={() => navigate('/login')}>
                   <div className='logoutContainer'>
                     <p className='logoutText'>LOG OUT</p>
                   </div>
@@ -102,14 +98,14 @@ const HomeScreen = () => {
 
           <div className='containerthree'>
             <div className='"scrollview'>  
-              <button className='transparent' onClick={() => navigate(`/${userID}/paynowrecipient`)}>
+              <button id = 'paynowbutton' className='transparent' onClick={() => navigate(`/${userID}/paynowrecipient`)}>
                 <div className='iconcontainer'>
                   <img  src='/assets/icons/paynow.png' className='icons' />
                   <p className='shortcut'>PayNow</p>
                 </div>
               </button>
               
-              <button className='transparent' onClick={() => {}}>
+              <button className='transparent' onClick={() => navigate(`/${userID}/accounttransferrecipient`, {state:{}})}>
                 <div className='iconcontainer'>
                   <img  src='/assets/icons/local_transfer.png' className='icons' />
                   <p className='shortcut'>Transfer Money</p>

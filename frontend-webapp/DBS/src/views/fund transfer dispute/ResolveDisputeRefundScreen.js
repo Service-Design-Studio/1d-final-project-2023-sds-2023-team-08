@@ -1,43 +1,51 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import '../../components/styles/fund transfer dispute/ResolveDisputeRefundScreenStyles.css';
 import ftdrecipientjson from '../../testdata/ftdrecipient.json';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 
 const ResolveDisputeRefundScreen = () => {
     const navigate = useNavigate();
     const { userID, transactionID } = useParams();
-    const FTDtransactions = ftdrecipientjson[1];
-    const isPaynowDispute = typeof FTDtransactions['refund details']['recipient name'] === 'int'
+    const [FTDtransactions, setFTDtransactions] = useState([])
+    const [effectFinish, seteffectFinish] = useState(false)
+    const location = useLocation();
 
-  // const [FTDtransactions, setFTDtransactions] = useState([])
-  // useEffect(() => {
-  //   const fetchFTDrefund = async () => {
-  //     try {
-  //       const response = await axios.get(`link to refund details`);
-  //       setFTDtransactions(response.data);
-  //       console.log(FTDtransactions)
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchFTDrefund();
-  // }, []);
+    useEffect(() => {
+        const fetchFTDrefund = async () => {
+        try {
+            const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${transactionID}/refund_details`);
+            setFTDtransactions(response.data[0]);
+            seteffectFinish(true)
+        } catch (error) {
+            console.log(error);
+        }
+        };
+        fetchFTDrefund();
+    }, [location.pathname]);
 
-    const transactionData = {
-        "dispute": true,
-        "transaction id":transactionID,
-        "transfer from acc name":FTDtransactions['refund details']['transfer from acc name'],
-        "transfer from acc number":FTDtransactions['refund details']['transfer from acc number'],
-        "recipient name":FTDtransactions['refund details']['recipient name'],
-        "recipient acc": FTDtransactions['refund details']['recipient acc'],
-        "total amount":FTDtransactions['refund details']['total amount'],
-        "comments": "Resolving Dispute",
-        "mode of payment": isPaynowDispute ? "FAST / PayNow Transfer" : "Account Transfer",
+    let transactionData = {}
+    
+    if (effectFinish) {
+        console.log(FTDtransactions)
+        transactionData = {
+            "dispute": true,
+            "transaction_id":transactionID,
+            "transfer_from_acc_name":FTDtransactions['refund details']['transfer from acc name'],
+            "transfer_from_acc_number":FTDtransactions['refund details']['transfer from acc number'],
+            "recipient_name":FTDtransactions['refund details']['recipient name'],
+            "recipient_acc": FTDtransactions['refund details']['recipient acc'],
+            "total_amount":FTDtransactions['refund details']['total amount'],
+            "comments": "Resolving Dispute",
+            "mode_of_payment": FTDtransactions['refund details']['mode of payment'],
+            'recipient_bank' : 'DBS/POSB',
+            "contact_details" : FTDtransactions['refund details']['contact details'],
+        }
     }
 
-
-    return(
+    return (
+        effectFinish && (
         <div className = "overall1">
             <div className='RefuteDisputeHeader'>
                 <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/${transactionID}`)}>
@@ -61,7 +69,7 @@ const ResolveDisputeRefundScreen = () => {
                     <div className='account_right1'>
                         <p className= 'accountname1'>  {FTDtransactions['refund details']['recipient name']}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>Disputee's Account</p>
+                            <p className= 'accountnumber1'>{transactionData['contact_details'] != undefined ? transactionData['contact_details']: "Disputee's Account"}</p>
                         </div>  
                     </div>
                 </div>
@@ -92,8 +100,8 @@ const ResolveDisputeRefundScreen = () => {
             <p className='tncforrefund1'>By clicking “SUBMIT”, the amount will be transferred <b>immediately</b> and you agree to be bound by the <u>Terms and Conditions</u>.</p>
             <button id='submitrefund1' className='submitbutton1' onClick={()=>navigate(`/${userID}/review`, {state : transactionData})}>SUBMIT</button>
         </div>
+    ) 
     );
-
 };
 
 export default ResolveDisputeRefundScreen;

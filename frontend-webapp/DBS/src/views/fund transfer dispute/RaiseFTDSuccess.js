@@ -8,6 +8,7 @@ const RaiseFTDSuccess = () => {
     const { userID } = useParams();
     const location = useLocation();
     const FTDDetails = location.state;
+    console.log(FTDDetails)
 
     return(
         <div className='RefuteDisputeMain'>
@@ -19,7 +20,7 @@ const RaiseFTDSuccess = () => {
             <div style ={{padding:".5vw"}}></div>
             <p className='successheadertext'> Fund Transfer Dispute Raised</p>
             <div style ={{padding:"1vw"}}></div>
-            <p className='successtxdate'>on {FTDDetails["date and time"]}</p>
+            <p className='successtxdate'>on {FTDDetails["date_and_time"]}</p>
             <div style ={{padding:"1vw"}}></div>
             
             <div className='popboxRS'>
@@ -35,6 +36,19 @@ const RaiseFTDSuccess = () => {
                     <p className='qnRS'>Reason of Transfer Dispute</p>
                     <p className='ansRS'>{FTDDetails["reason"]}</p>
                 </div>
+
+                { FTDDetails['contact_details'].length > 0 && (
+                    <div>
+                        <div className='subpopboxRS'>
+                            <p className='qnRS'>Correct Amount Of Transaction</p>
+                            <p className='ansRS'>{FTDDetails["correct_amount"]}</p>
+                        </div>
+                        <div className='subpopboxRS'>
+                            <p className='qnRS'>Disputee's Contact Details</p>
+                            <p className='ansRS'>{FTDDetails["contact_details"]}</p>
+                        </div>
+                    </div>
+                )}
                 <div className='subpopboxRS'>
                     <p className='qnRS'>Comments</p>
                     <p className='uwuRS'>{FTDDetails["comments"]}</p>
