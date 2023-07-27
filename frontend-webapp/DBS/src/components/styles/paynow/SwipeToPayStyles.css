@@ -19,12 +19,14 @@
 .SwiperButton{
     border-radius: 50%;
     background-color: white;
-    padding: 1.2vh 4.5vw;
+    /* padding: 1.2vh 4.5vw; */
     margin: 1vw 1vw;
     position: absolute;
     outline: none;
     border: none;
     z-index: 2;
+    width: 50px;
+    height: 50px;
 }
 
 .SwiperButton img {
@@ -43,13 +45,15 @@
 .SwiperButton2{
     border-radius: 30px; 
     background-color: white;
-    padding: 6.2vw 6.2vw;
     margin: 1vw 1vw;
+    padding: 0 25px;
     position: absolute;
     outline: none;
     border: none;
     z-index: 1;
     opacity: 0.7;
+    width: 50px;
+    height: 50px;
 }
 
 
