@@ -45,5 +45,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "babel": {
+    "presets": ["@babel/preset-react"]
   }
 }

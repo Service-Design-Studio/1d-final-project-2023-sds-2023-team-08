@@ -81,22 +81,22 @@ const BankTransferTransactionPage = () => {
             </div>
 
             <div className = 'container_parties1'>
-                <div className='recipient_container1'>
+                <div className='sender_container1'>
                     <div className= 'profile1'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>{userAccName}</p>
+                        <p id = 'senderName' className= 'accountname1'>{userAccName}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>{userAcc}</p>
+                            <p id = 'senderAccNumber' className= 'accountnumber1'>{userAcc}</p>
                         </div>  
                     </div>
                 </div>
                 
-                <div className = 'sender_container1'>
+                <div className = 'recipient_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>{bankrecipientdetails['name']}</p>
+                        <p id='recipientName' className= 'accountname1'>{bankrecipientdetails['name']}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>{bankrecipientdetails['acc']}</p>
+                            <p id = 'recipientAccNumber' className= 'accountnumber1'>{bankrecipientdetails['acc']}</p>
                         </div>  
                     </div>
                 </div>
@@ -117,7 +117,7 @@ const BankTransferTransactionPage = () => {
                     <form className='barrrar'>
                         <input
                             type="number"
-                            id = "keyinamt"
+                            id = "keyInAmtBank"
                             className="refundamount"
                             placeholder='0.00'
                             onKeyDown={blockInvalidChar}
