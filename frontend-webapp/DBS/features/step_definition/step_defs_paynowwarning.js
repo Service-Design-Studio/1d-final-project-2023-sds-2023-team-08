@@ -3,6 +3,8 @@ const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { useEffect } = require('react');
 const { expect } = require('chai');
+const readline = require('readline');
+
 
 
 Before(async function () {
@@ -16,6 +18,29 @@ After(async function () {
 });
 
 
+async function pauseTest() {
+  // Log a message to prompt the tester to manually continue the test
+  console.log('Test execution paused. Type "S" and press "Enter" to continue...');
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  return new Promise((resolve) => {
+    const onData = (input) => {
+      const trimmedInput = input.trim().toLowerCase();
+      if (trimmedInput === 's') {
+        rl.off('line', onData); // Remove the event listener
+        rl.close(); // Close the readline interface
+        resolve();
+      } else {
+        console.log('Invalid input. Type "S" and press "Enter" to continue...');
+      }
+    };
+    rl.on('line', onData);
+  });
+}
 //////////////// never trf to before  //////////////////////////////////////////////////////////////////////////////////////////////
 
 Given('that I am on the Paynow Contact page', async function () {
@@ -50,7 +75,7 @@ Given('that I am on the Paynow Contact page', async function () {
 
 When("I enter a mobile number that I have never transferred to before", async function () {
   const phoneNumberField = await this.driver.findElement(By.className('eightdigitER'))
-  phoneNumberField.sendKeys("88888887")
+  phoneNumberField.sendKeys("88888884")
 
   // Add a delay of 1 second before clicking the button
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -73,7 +98,7 @@ Then("a warning will be displayed under the name", async function () {
   const autofillname = await recipientName.getText();
 
   // Assert the text content matches a particular string
-  expect(autofillname).to.equal('wx');
+  expect(autofillname).to.equal('tris');
 
   const newRecipient = await this.driver.findElement(By.className('warningtextalert'));
   const warningText = await newRecipient.getText();
@@ -120,14 +145,16 @@ Then("I will see a red Next button", async function(){
   expect(backgroundColor).to.equal(expectedColor);
 });
 
-When("I click the Next button", async function (){
-
+When('I key in the transaction amount', async function (){
   await new Promise(resolve => setTimeout(resolve, 1000));
   // debugger;
-  const transactionAmount = await this.driver.findElement(By.id('keyinamt'))
+  const transactionAmount = await this.driver.findElement(By.id('keyInAmtPaynow'))
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   transactionAmount.sendKeys("12")
+})
+
+When("I click the Next button", async function (){
 
   const nextButton = await this.driver.findElement(By.id('submitrefund1'));
 

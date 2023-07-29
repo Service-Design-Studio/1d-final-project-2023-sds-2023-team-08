@@ -138,13 +138,13 @@ const ReviewTransfer = () => {
 
                         <div className='Chunk1'>
                             <p className='reviewtext'>From</p>
-                            <p className='accounttextname'>{transactionData['transfer_from_acc_name']}</p>
+                            <p id = 'senderAccountTextName' className='accounttextname'>{transactionData['transfer_from_acc_name']}</p>
                             <p id = "banknumber" className='reviewtext'>{transactionData['transfer_from_acc_number']}</p>
                         </div>
                         
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
-                            <p className='accounttextname'>{transactionData['recipient_name']}</p>
+                            <p id = 'recipientAccountTextName' className='accounttextname'>{transactionData['recipient_name']}</p>
                             <p id="phonenumber" className='reviewtext'>{isDispute && transactionData['contact_details'] != undefined ? transactionData['contact_details'] : isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
                         </div>
 
@@ -164,7 +164,7 @@ const ReviewTransfer = () => {
             { (isWarning) ? (
                 <SwipeToPay handleSubmit={handleSubmit}></SwipeToPay>
             ): (
-                <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
+                <button id = 'reviewTransferNextButton' className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
             )}
         </div>
 

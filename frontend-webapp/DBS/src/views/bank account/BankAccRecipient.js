@@ -84,7 +84,7 @@ const BankAccRecipientScreen = () => {
                 <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/home`)}>
                     <img src = '/assets/back.png' className = 'back'/>
                 </button>
-                <p className='RefuteDisputeHeaderText'>Enter Recipient's Details</p>
+                <p id= 'tocopy' className='RefuteDisputeHeaderText'>Enter Recipient's Details</p>
             </div>
 
             <p className='pntentermobileER'>ENTER ACCOUNT DETAILS</p>
