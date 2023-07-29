@@ -140,7 +140,12 @@
 }
 .sharebutton:active{
     opacity: 0.5;
-    transition: none;}
+    transition: none;
+}
+
+.sharebutton:hover{
+    cursor: pointer;
+}
 
 .FTDbutton1 {
     margin: 1.5vh 5vw 0vh 5vw;
@@ -154,7 +159,9 @@
     width: 90vw;
 }
 
-
+.FTDbutton1:hover{
+    cursor: pointer;
+}
 .FTDbutton1:active{
     opacity: 0.5;
     transition: none;

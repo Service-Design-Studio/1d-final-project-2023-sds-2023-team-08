@@ -177,7 +177,9 @@
     color: #a50303;
     margin-left: 2%;
 }
-
+.successtxclicklink:hover{
+    cursor: pointer;
+}
 .successtxclicklink:active{
     opacity: 0.5;
 }
@@ -196,8 +198,9 @@
     bottom: 12vh;
 
 }
-
-
+.sharetransferdetailspaynow:hover{
+    cursor: pointer;
+}
 .sharetransferdetailspaynow:active {
     opacity: 0.5;
     transition: none;
@@ -220,7 +223,9 @@
 
 }
 
-
+.anothertransferpaynow:hover{
+    cursor: pointer;
+}
 .anothertransferpaynow:active {
     opacity: 0.5;
     transition: none;

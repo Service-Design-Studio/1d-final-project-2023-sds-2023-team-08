@@ -199,7 +199,9 @@
 
 }
 
-
+.withdrawbutton:hover{
+    cursor: pointer;
+}
 .withdrawbutton:active {
     opacity: 0.5;
     transition: none;
@@ -220,7 +222,9 @@
 
 }
 
-
+.refundbutton:hover{
+    cursor: pointer;
+}
 .refundbutton:active {
     opacity: 0.5;
     transition: none;
@@ -241,6 +245,9 @@
 
 }
 
+.refutebutton:hover{
+    cursor: pointer;
+}
 
 .refutebutton:active {
     opacity: 0.5;

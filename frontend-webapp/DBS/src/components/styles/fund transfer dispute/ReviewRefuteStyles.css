@@ -87,7 +87,9 @@
     bottom: 4vh;
 }
 
-
+.SubmitButton:hover{
+    cursor: pointer;
+}
 .SubmitButton:active{
     opacity: 0.5;
     transition: none;

@@ -49,6 +49,10 @@
   z-index: 999;
 }
 
+.transparent:hover{
+  cursor: pointer;
+}
+
 .transparent img {
   transition: opacity 0.2s;
 }

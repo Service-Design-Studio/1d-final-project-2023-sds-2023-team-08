@@ -1,0 +1,33 @@
+.loadermain {
+    display: flex;
+}
+
+.loader {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 10rem;
+    background: linear-gradient(#5a5a5a, #b5b5b5, #f3f3f3, #f3f3f3);
+    animation: animate 1s linear infinite;
+}
+
+.loader::before {
+    position: absolute;
+    content: "";
+    background: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    border-radius: 10rem;
+}
+
+@keyframes animate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
