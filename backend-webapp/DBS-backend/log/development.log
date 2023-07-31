@@ -29189,3 +29189,1351 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 225ms (Views: 211.6ms | ActiveRecord: 6.5ms | Allocations: 53134)
 
 
+Started GET "/" for 127.0.0.1 at 2023-07-31 12:52:43 +0800
+Started GET "/users" for 127.0.0.1 at 2023-07-31 12:52:43 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 44.5ms | Allocations: 762)
+Completed 200 OK in 309ms (Views: 90.4ms | ActiveRecord: 0.0ms | Allocations: 8585)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 549]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 550]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.7ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 551]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 552]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 553]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 554]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 555]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 556]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 461.0ms | Allocations: 37123)
+  Rendered layout layouts/application.html.erb (Duration: 931.0ms | Allocations: 72421)
+Completed 200 OK in 1221ms (Views: 973.2ms | ActiveRecord: 11.2ms | Allocations: 81071)
+
+
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 12:52:46 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:139:in `set_user'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.2ms | Allocations: 1806)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:141:in `rescue in set_user'
+app/controllers/users_controller.rb:138:in `set_user'
+Started GET "/users" for 127.0.0.1 at 2023-07-31 12:52:53 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 549]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 550]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 551]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 552]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 553]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 554]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 555]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 556]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 60.6ms | Allocations: 15214)
+  Rendered layout layouts/application.html.erb (Duration: 69.6ms | Allocations: 17717)
+Completed 200 OK in 80ms (Views: 71.3ms | ActiveRecord: 4.4ms | Allocations: 18558)
+
+
+Started GET "/users/549/home" for 127.0.0.1 at 2023-07-31 12:52:58 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:139:in `set_user'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 955)
+
+
+  
+NameError (uninitialized constant Net::HTTP):
+  
+app/controllers/users_controller.rb:8:in `home'
+Started GET "/users/549/home" for 127.0.0.1 at 2023-07-31 12:54:43 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:139:in `set_user'
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 1.2ms | Allocations: 7526)
+
+
+  
+NoMethodError (undefined method `body' for "{\"user\":\"junxiang\",\"account\":[{\"account type\":\"DBS Savings Account\",\"account number\":\"539-23421-2\",\"total amount\":9998.22,\"account id\":1},{\"account type\":\"DBS Multiplier Account\",\"account number\":\"234-43941-0\",\"total amount\":12021.0,\"account id\":5}]}":String):
+  
+app/controllers/users_controller.rb:9:in `home'
+Started GET "/users/549/home" for 127.0.0.1 at 2023-07-31 12:56:07 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:139:in `set_user'
+Completed 200 OK in 98ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 5715)
+
+
+Started GET "/users/549/home" for 127.0.0.1 at 2023-07-31 12:57:48 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:140:in `set_user'
+Completed 200 OK in 109ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 5445)
+
+
+Started GET "/users/549/home" for 127.0.0.1 at 2023-07-31 12:58:12 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:140:in `set_user'
+Completed 200 OK in 153ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 5717)
+
+
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 13:03:48 +0800
+  
+SyntaxError (C:/Users/Vinny/Desktop/SDS-final/backend-webapp/DBS-backend/app/controllers/users_controller.rb:15: Invalid return in class/module body
+    return
+    ^~~~~~
+C:/Users/Vinny/Desktop/SDS-final/backend-webapp/DBS-backend/app/controllers/users_controller.rb:190: syntax error, unexpected `end'):
+  
+app/controllers/users_controller.rb:15: Invalid return in class/module body
+app/controllers/users_controller.rb:190: syntax error, unexpected `end'
+app/controllers/users_controller.rb:15: Invalid return in class/module body
+app/controllers/users_controller.rb:190: syntax error, unexpected `end'
+app/controllers/users_controller.rb:15: Invalid return in class/module body
+app/controllers/users_controller.rb:190: syntax error, unexpected `end'
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 13:04:02 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:144:in `set_user'
+Completed 404 Not Found in 15ms (ActiveRecord: 0.6ms | Allocations: 3450)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:146:in `rescue in set_user'
+app/controllers/users_controller.rb:143:in `set_user'
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 13:05:07 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:144:in `set_user'
+Completed 404 Not Found in 14ms (ActiveRecord: 1.2ms | Allocations: 3805)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:146:in `rescue in set_user'
+app/controllers/users_controller.rb:143:in `set_user'
+Started GET "/users/549/home" for 127.0.0.1 at 2023-07-31 13:05:18 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:144:in `set_user'
+Completed 200 OK in 67ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 2723)
+
+
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 13:05:23 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:144:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms | Allocations: 1193)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:146:in `rescue in set_user'
+app/controllers/users_controller.rb:143:in `set_user'
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 13:05:35 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 47ms (Views: 0.1ms | Allocations: 1118)
+
+
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 13:06:51 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 90ms (Views: 0.2ms | Allocations: 1120)
+
+
+Started GET "/users/4/all_transactions" for 127.0.0.1 at 2023-07-31 13:08:06 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:149:in `set_user'
+Completed 404 Not Found in 14ms (ActiveRecord: 1.8ms | Allocations: 3806)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:151:in `rescue in set_user'
+app/controllers/users_controller.rb:148:in `set_user'
+Started GET "/users/4/all_transactions" for 127.0.0.1 at 2023-07-31 13:08:30 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 68ms (Views: 0.4ms | Allocations: 1116)
+
+
+Started GET "/users/4/all_transactions" for 127.0.0.1 at 2023-07-31 14:48:16 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 9047ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 3089)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:50:00 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.6ms | Allocations: 574)
+
+
+  
+NoMethodError (undefined method `raw_post' for #<Net::HTTP::Post POST>):
+  
+app/controllers/users_controller.rb:56:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:50:46 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.7ms | Allocations: 893)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:51:00 +0800
+  
+SyntaxError (C:/Users/Vinny/Desktop/SDS-final/backend-webapp/DBS-backend/app/controllers/users_controller.rb:216: syntax error, unexpected `end'):
+  
+app/controllers/users_controller.rb:216: syntax error, unexpected `end'
+app/controllers/users_controller.rb:216: syntax error, unexpected `end'
+app/controllers/users_controller.rb:216: syntax error, unexpected `end'
+Started POST "/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:51:52 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:52:19 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.7ms | Allocations: 893)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started GET "/users/4/default_acc" for 127.0.0.1 at 2023-07-31 14:57:00 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 100ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1051)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:57:50 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms | Allocations: 813)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 14:59:44 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.9ms | Allocations: 838)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 15:02:23 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 2.9ms | Allocations: 1166)
+
+
+  
+NoMethodError (undefined method `body' for nil:NilClass):
+  
+app/controllers/users_controller.rb:68:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 15:44:24 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.4ms | Allocations: 838)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 15:45:09 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms | Allocations: 813)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 15:46:42 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.7ms | Allocations: 838)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:09:23 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 80ms (Allocations: 813)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:59:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:16:15 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.4ms | Allocations: 1213)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:18:12 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 0.9ms | Allocations: 1210)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started GET "/users/4/default_acc" for 127.0.0.1 at 2023-07-31 16:18:38 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 7661ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 1072)
+
+
+Started GET "/users/4/all_transactions" for 127.0.0.1 at 2023-07-31 16:18:53 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 10409ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1018)
+
+
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 16:19:06 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 7417ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 1087)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:19:35 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 0.0ms | Allocations: 1185)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:20:28 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.0ms | Allocations: 1185)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:22:09 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 1.0ms | Allocations: 1210)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:24:12 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 0.8ms | Allocations: 1210)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:25:46 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 0.8ms | Allocations: 1448)
+
+
+  
+NoMethodError (undefined method `body' for "{\"csrfToken\":\"JrIFLyc--Bfz96XyWhYjsTloc1SGtDeX_kY6I0Glo3B78S5iXWu-v7sNISKO-41b49t2Q2WPkO5YKsLdVuBLdA\"}":String):
+  
+app/controllers/users_controller.rb:52:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:26:09 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 0.8ms | Allocations: 1870)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:66:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:26:31 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 0.9ms | Allocations: 1816)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:66:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:27:57 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.9ms | Allocations: 1452)
+
+
+  
+NameError (uninitialized constant UsersController::Json):
+  
+app/controllers/users_controller.rb:53:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:28:21 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.8ms | Allocations: 1499)
+
+
+  
+NameError (uninitialized constant UsersController::Json):
+  
+app/controllers/users_controller.rb:54:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:32:04 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 0.8ms | Allocations: 1448)
+
+
+  
+NoMethodError (undefined method `body' for "{\"csrfToken\":\"aFARSn_JSjn_ikuXRKRXLrl-42ixkYQLZX_y16b3pwcu3Dac-EihwhnypN7n1sYRYUj0f_s00AFIkVPZZp2Q9g\"}":String):
+  
+app/controllers/users_controller.rb:54:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:32:18 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 0.9ms | Allocations: 1886)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:67:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:32:51 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 1.2ms | Allocations: 1820)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:68:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for 127.0.0.1 at 2023-07-31 16:42:31 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 189ms (ActiveRecord: 0.4ms | Allocations: 1819)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:68:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:43:17 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 0.0ms | Allocations: 1793)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:68:in `login'
+Started GET "/" for ::1 at 2023-07-31 16:43:41 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 28.9ms | Allocations: 281)
+Completed 200 OK in 38ms (Views: 31.9ms | ActiveRecord: 0.0ms | Allocations: 1084)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:43:49 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 0.0ms | Allocations: 1792)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:68:in `login'
+Started GET "/users/4/home" for 127.0.0.1 at 2023-07-31 16:52:01 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"4"}
+Completed 200 OK in 72ms (Views: 0.3ms | Allocations: 821)
+
+
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 16:52:04 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 133ms (Views: 0.4ms | Allocations: 1004)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:52:30 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 89ms (Allocations: 1772)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:68:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:53:51 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.4ms | Allocations: 1821)
+
+
+  
+EOFError (end of file reached):
+  
+app/controllers/users_controller.rb:70:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:55:39 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 0.8ms | Allocations: 1475)
+
+
+  
+NameError (undefined local variable or method `https' for #<UsersController:0x000000001218d0>):
+  
+app/controllers/users_controller.rb:60:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:55:53 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 200 OK in 121ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2167)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 16:56:38 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 200 OK in 129ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 2136)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:01:26 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 110ms (ActiveRecord: 1.0ms | Allocations: 1483)
+
+
+  
+JSON::ParserError (unexpected token at ''):
+  
+app/controllers/users_controller.rb:64:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:03:49 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 0.8ms | Allocations: 1476)
+
+
+  
+NameError (undefined local variable or method `raw_json_data' for #<UsersController:0x00000000150928>):
+  
+app/controllers/users_controller.rb:64:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:26:51 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 677)
+
+
+  
+SocketError (Failed to open TCP connection to dbs-cloudsql-service-5qwlwvimaq-as.a.run.app:443 (getaddrinfo: No such host is known. )):
+  
+app/controllers/users_controller.rb:51:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:27:25 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 200 OK in 13202ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2097)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:27:57 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 200 OK in 162ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2000)
+
+
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:30:18 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.7ms | Allocations: 502)
+
+
+  
+JSON::ParserError (unexpected token at ''):
+  
+app/controllers/users_controller.rb:50:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:30:34 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.7ms | Allocations: 556)
+
+
+  
+JSON::ParserError (unexpected token at ''):
+  
+app/controllers/users_controller.rb:50:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:31:23 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.7ms | Allocations: 521)
+
+
+  
+TypeError (no implicit conversion of ActionController::Parameters into String):
+  
+app/controllers/users_controller.rb:50:in `login'
+Started POST "/users/login?username=junxiang&pin=password123" for ::1 at 2023-07-31 17:35:31 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 490)
+
+
+  
+TypeError (no implicit conversion of ActionController::Parameters into String):
+  
+app/controllers/users_controller.rb:50:in `login'
+Started POST "/users/login" for ::1 at 2023-07-31 17:36:27 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 490)
+
+
+  
+TypeError (no implicit conversion of ActionController::Parameters into String):
+  
+app/controllers/users_controller.rb:50:in `login'
+Started POST "/users/login" for ::1 at 2023-07-31 17:37:20 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 226ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 2163)
+
+
+Started POST "/users/login" for ::1 at 2023-07-31 17:38:10 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 141ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 2155)
+
+
+Started POST "/users/login" for ::1 at 2023-07-31 17:39:24 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 265ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 2123)
+
+
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:36:16 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 6316ms (Views: 0.2ms | Allocations: 1034)
+
+
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:36:36 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Started GET "/users/10/default_acc" for 127.0.0.1 at 2023-07-31 19:37:20 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"10"}
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:38:14 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Started GET "/" for 127.0.0.1 at 2023-07-31 19:39:17 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.6ms | Allocations: 522)
+Completed 200 OK in 133ms (Views: 36.8ms | ActiveRecord: 0.0ms | Allocations: 4836)
+
+
+Started GET "/csrf_token" for 127.0.0.1 at 2023-07-31 19:39:27 +0800
+Processing by CsrfController#fetch_csrf_token as HTML
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 677)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-31 19:39:32 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2304)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 2399)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 3432)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:39:37 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Started POST "/users/login" for ::1 at 2023-07-31 19:41:12 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 261ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2196)
+
+
+Completed 500 Internal Server Error in 120090ms (ActiveRecord: 0.0ms | Allocations: 17101)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started POST "/users/login" for ::1 at 2023-07-31 19:42:10 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 313ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2037)
+
+
+Started GET "/" for 127.0.0.1 at 2023-07-31 19:43:03 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 272)
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 933)
+
+
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:43:09 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 71ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 990)
+
+
+Started GET "/users/10/home" for 127.0.0.1 at 2023-07-31 19:43:14 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"10"}
+Completed 200 OK in 70ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 988)
+
+
+Started GET "/users/10/default_acc" for 127.0.0.1 at 2023-07-31 19:43:21 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"10"}
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:43:26 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Started GET "/users/11/home" for 127.0.0.1 at 2023-07-31 19:43:54 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"11"}
+Completed 200 OK in 84ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 988)
+
+
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:44:03 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Started GET "/users/10/default_Acc" for 127.0.0.1 at 2023-07-31 19:44:36 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/10/default_Acc"):
+  
+Started GET "/users/10/default_acc" for 127.0.0.1 at 2023-07-31 19:44:39 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"10"}
+Started GET "/users/9/default_Acc" for 127.0.0.1 at 2023-07-31 19:45:04 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/9/default_Acc"):
+  
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:45:07 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Completed 500 Internal Server Error in 120090ms (ActiveRecord: 0.0ms | Allocations: 161047)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:45:21 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1009)
+
+
+Completed 500 Internal Server Error in 120149ms (ActiveRecord: 0.0ms | Allocations: 351407)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/" for 127.0.0.1 at 2023-07-31 19:45:28 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 222)
+
+
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:45:36 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Completed 500 Internal Server Error in 120081ms (ActiveRecord: 0.0ms | Allocations: 540808)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:46:08 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 89ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1008)
+
+
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:46:30 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Completed 500 Internal Server Error in 120090ms (Allocations: 652955)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/users/10/home" for 127.0.0.1 at 2023-07-31 19:46:43 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"10"}
+Completed 200 OK in 86ms (Views: 0.1ms | Allocations: 1008)
+
+
+Started GET "/users/10/default_acc" for 127.0.0.1 at 2023-07-31 19:46:48 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"10"}
+Completed 500 Internal Server Error in 120208ms (Allocations: 776876)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/users/10/default_acc" for 127.0.0.1 at 2023-07-31 19:47:08 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"10"}
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:47:11 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Completed 500 Internal Server Error in 120103ms (Allocations: 585130)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Completed 500 Internal Server Error in 120109ms (Allocations: 580984)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Completed 500 Internal Server Error in 120088ms (Allocations: 575791)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/" for 127.0.0.1 at 2023-07-31 19:48:54 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 13)
+Completed 200 OK in 6ms (Views: 2.5ms | Allocations: 221)
+
+
+Completed 500 Internal Server Error in 120127ms (Allocations: 575857)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Completed 500 Internal Server Error in 120089ms (Allocations: 763705)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:67:in `default_acc'
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:49:54 +0800
+Processing by UsersController#default_acc as */*
+  Parameters: {"id"=>"9"}
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:51:39 +0800
+Completed 500 Internal Server Error in 120142ms (Allocations: 2576)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:68:in `default_acc'
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 87ms (Views: 0.2ms | Allocations: 1120)
+
+
+Started GET "/users/10/home" for 127.0.0.1 at 2023-07-31 19:56:44 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"10"}
+Completed 200 OK in 102ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 3070)
+
+
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:56:49 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 67ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 997)
+
+
+Started GET "/users/9/default_Acc" for 127.0.0.1 at 2023-07-31 19:56:54 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/9/default_Acc"):
+  
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:56:57 +0800
+Processing by UsersController#default_acc as */*
+  Parameters: {"id"=>"9"}
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 19:57:24 +0800
+Processing by UsersController#default_acc as */*
+  Parameters: {"id"=>"9"}
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 19:57:33 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 187ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1012)
+
+
+Completed 500 Internal Server Error in 120103ms (ActiveRecord: 0.0ms | Allocations: 7050)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:68:in `default_acc'
+Completed 500 Internal Server Error in 120146ms (ActiveRecord: 0.0ms | Allocations: 194787)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:68:in `default_acc'
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 20:00:02 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 72ms (Views: 0.4ms | Allocations: 1458)
+
+
+Started GET "/users/9/home" for 127.0.0.1 at 2023-07-31 20:01:26 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 78ms (Views: 0.3ms | Allocations: 1090)
+
+
+Started GET "/users/11/home" for 127.0.0.1 at 2023-07-31 20:01:35 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"11"}
+Completed 200 OK in 52ms (Views: 0.1ms | Allocations: 963)
+
+
+Started GET "/users/11/all_transactions" for 127.0.0.1 at 2023-07-31 20:02:31 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"11"}
+Completed 200 OK in 160ms (Views: 0.2ms | Allocations: 1090)
+
+
+Started POST "/users/login" for ::1 at 2023-07-31 20:05:35 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 500 Internal Server Error in 257ms (ActiveRecord: 1.1ms | Allocations: 1473)
+
+
+  
+TypeError (no implicit conversion of Net::HTTPOK into String):
+  
+app/controllers/users_controller.rb:75:in `login'
+Started POST "/users/login" for ::1 at 2023-07-31 20:06:01 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 140ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 2134)
+
+
+Started POST "/users/login" for ::1 at 2023-07-31 20:07:13 +0800
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"junxiang", "pin"=>"password123", "user"=>{"username"=>"junxiang"}}
+Completed 200 OK in 190ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 2097)
+
+
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 20:07:31 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Completed 500 Internal Server Error in 20085ms (ActiveRecord: 0.0ms | Allocations: 1535)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:115:in `default_acc'
+Started GET "/users/9/default_acc" for 127.0.0.1 at 2023-07-31 20:07:52 +0800
+Processing by UsersController#default_acc as HTML
+  Parameters: {"id"=>"9"}
+Started GET "/users/11/default_acc" for 127.0.0.1 at 2023-07-31 20:07:55 +0800
+Processing by UsersController#default_acc as */*
+  Parameters: {"id"=>"11"}
+Started GET "/users/11/default_acc" for 127.0.0.1 at 2023-07-31 20:08:03 +0800
+Processing by UsersController#default_acc as */*
+  Parameters: {"id"=>"11"}
+Completed 500 Internal Server Error in 20120ms (ActiveRecord: 0.0ms | Allocations: 5534)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:115:in `default_acc'
+Completed 500 Internal Server Error in 20120ms (ActiveRecord: 0.0ms | Allocations: 186337)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:115:in `default_acc'
+Completed 500 Internal Server Error in 20158ms (ActiveRecord: 0.0ms | Allocations: 365875)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<TCPSocket:(closed)>):
+  
+app/controllers/users_controller.rb:115:in `default_acc'
+Started GET "/users/11/default_acc" for 127.0.0.1 at 2023-07-31 20:09:38 +0800
+Processing by UsersController#default_acc as */*
+  Parameters: {"id"=>"11"}
+Completed 200 OK in 86ms (Views: 0.2ms | Allocations: 1069)
+
+
+Started GET "/users/9/transactions/14" for 127.0.0.1 at 2023-07-31 20:31:53 +0800
+Processing by TransactionsController#show as */*
+  Parameters: {"user_id"=>"9", "id"=>"14"}
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:170:in `set_transaction'
+Completed 200 OK in 274ms (Views: 0.5ms | ActiveRecord: 1.2ms | Allocations: 12510)
+
+
+Started GET "/" for 127.0.0.1 at 2023-07-31 20:45:55 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | Allocations: 286)
+Completed 200 OK in 9ms (Views: 4.5ms | Allocations: 1088)
+
+
+Started GET "/users/9/transactions" for 127.0.0.1 at 2023-07-31 20:46:03 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"9"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (0.6ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" IS NULL[0m
+  ↳ app/views/transactions/index.html.erb:24
+  Rendered transactions/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 4009)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 4091)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.5ms | Allocations: 6288)
+
+
+  
+ActionView::Template::Error (Couldn't find Account without an ID):
+    54: 
+    55: 
+    56:   <tbody>
+    57:     <% @transactions.where(recipient_account_number:Account.find(params[:account_id]).account_number).each do |t| %>
+    58:       <tr>
+    59:         <td><%= t.id %></td>
+    60:         <td><%= t.transaction_name %></td>
+  
+app/views/transactions/index.html.erb:57
+Started GET "/users/9/transactions/14/details_for_ftd_review" for 127.0.0.1 at 2023-07-31 20:47:05 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/9/transactions/14/details_for_ftd_review"):
+  
+Started GET "/users/9/transaction/14/details_for_ftd_review" for 127.0.0.1 at 2023-07-31 20:47:28 +0800
+  
+AbstractController::ActionNotFound (The action 'details_for_ftd_review' could not be found for DisputesController):
+  
+actionpack (7.0.5) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.5) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.5) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.5) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.5) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.5) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.5) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.5) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.5) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.5) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.5) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.5) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (7.0.5) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/users/9/transactions/14" for 127.0.0.1 at 2023-07-31 22:39:00 +0800
+Processing by TransactionsController#show as */*
+  Parameters: {"user_id"=>"9", "id"=>"14"}
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:116:in `set_transaction'
+Completed 200 OK in 115ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 6563)
+
+
+Started GET "/users/9/transactions/14" for 127.0.0.1 at 2023-07-31 22:40:33 +0800
+Processing by TransactionsController#show as */*
+  Parameters: {"user_id"=>"9", "id"=>"14"}
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:116:in `set_transaction'
+Completed 200 OK in 93ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1439)
+
+
+Started GET "/" for 127.0.0.1 at 2023-07-31 22:41:49 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.3ms | Allocations: 275)
+Completed 200 OK in 13ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 856)
+
+
+Started GET "/users/9/transactions/14" for 127.0.0.1 at 2023-07-31 22:41:56 +0800
+Processing by TransactionsController#show as HTML
+  Parameters: {"user_id"=>"9", "id"=>"14"}
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:116:in `set_transaction'
+Completed 200 OK in 119ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1432)
+
+
+Started GET "/user/2/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 22:55:56 +0800
+Processing by DisputesController#transaction_detail_for_disputes_involving_user as */*
+  Parameters: {"id"=>"2"}
+Completed 200 OK in 52ms (Views: 0.2ms | Allocations: 839)
+
+
+Started GET "/user/9/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 22:55:59 +0800
+Processing by DisputesController#transaction_detail_for_disputes_involving_user as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 61ms (Views: 0.2ms | Allocations: 717)
+
+
+Started GET "/users/9/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 22:56:11 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/9/transaction_detail_for_disputes_involving_user"):
+  
+Started GET "/users/9/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 22:59:46 +0800
+Processing by DisputesController#transaction_detail_for_disputes_involving_user as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 71ms (Views: 0.2ms | Allocations: 811)
+
+
+Started GET "/users/9/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 23:00:15 +0800
+Processing by DisputesController#transaction_detail_for_disputes_involving_user as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 110ms (Views: 0.2ms | Allocations: 1054)
+
+
+Started GET "/users/9/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 23:01:18 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/9/transaction_detail_for_disputes_involving_user"):
+  
+Started GET "/user/9/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-31 23:01:23 +0800
+Processing by DisputesController#transaction_detail_for_disputes_involving_user as */*
+  Parameters: {"id"=>"9"}
+Completed 200 OK in 76ms (Views: 0.2ms | Allocations: 1052)
+
+
+Started GET "/users/9/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-31 23:03:00 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"9", "phonenumber"=>"+6588888887"}
+Completed 200 OK in 215ms (Views: 0.2ms | Allocations: 770)
+
+
+Started GET "/users/9/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-31 23:05:05 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"9", "phonenumber"=>"+6588888887"}
+Completed 500 Internal Server Error in 3ms (Allocations: 496)
+
+
+  
+NameError (undefined local variable or method `phonenumber' for #<PaynowsController:0x000000000cc6f0>):
+  
+app/controllers/paynows_controller.rb:21:in `search_by_phone'
+Started GET "/users/9/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-31 23:05:25 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"9", "phonenumber"=>"+6588888887"}
+Completed 200 OK in 89ms (Views: 0.1ms | Allocations: 1054)
+
+
+Started POST "/users/9/transactions/21/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-31 23:16:21 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"9", "transaction_id"=>"21"}
+Completed 200 OK in 144ms (Views: 0.2ms | Allocations: 1856)
+
+
+Started POST "/users/9/transactions/21/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-31 23:19:38 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"9", "transaction_id"=>"21"}
+Completed 200 OK in 172ms (Views: 0.4ms | Allocations: 1851)
+
+
+Started POST "/users/9/transactions/21/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-31 23:21:47 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"9", "transaction_id"=>"21"}
+Completed 200 OK in 281ms (Views: 0.5ms | Allocations: 2091)
+
+
