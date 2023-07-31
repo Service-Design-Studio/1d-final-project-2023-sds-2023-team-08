@@ -15,14 +15,13 @@ import RaiseFTDScreen from '../views/RaiseFTDScreen';
 import BankAccRecipientScreen from '../views/bank account/BankAccRecipient';
 import FuzzySearch from '../views/bank account/FuzzySearch';
 import BankTransferTransactionPage from '../views/bank account/BankAccTransfer';
-import LoadingScreen from '../views/others/Loader';
 
 const Routing = () => {
   
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoadingScreen key="login" />} />
+        <Route path="/" element={<LoginScreen key="login" />} />
         <Route path="/login" element={<LoginScreen key="login" />} />
         <Route path="/:userID/home" element={<HomeScreen key="home"/>} />
         <Route path="/:userID/invest" element={<HomeScreen key="invest"/>} />
