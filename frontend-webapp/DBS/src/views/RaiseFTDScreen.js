@@ -46,6 +46,13 @@ const RaiseFTDScreen = () => {
         fetchCSRFData();
       }, []);
 
+
+    useEffect(() => {
+        const textarea = commentsInputRef.current;
+        adjustTextareaHeight(textarea)
+        updateCharacterCount(textarea)
+      }, [comment]);
+
     const handleSubmit = async(event) => {
         event.preventDefault(); 
 
@@ -88,7 +95,6 @@ const RaiseFTDScreen = () => {
         const maxLength = parseInt(textarea.maxLength);
         const currentLength = textarea.value.length;
         const charactersLeft = maxLength - currentLength;
-        setComment(textarea.value)
         document.getElementById('characterCount').textContent = charactersLeft;
         };
 
@@ -118,23 +124,28 @@ const RaiseFTDScreen = () => {
     const cleanComments = async () => {
         if (comment.length <= 0) {
             setemptyComment(true)
+            setemptyCheckbox(false)
+        } else if (reason.length <= 0) {
+            setemptyComment(false);
+            setemptyCheckbox(true)
         } else {
             setemptyComment(false)
             setCleaningComments(true)
+
             document.getElementById('loadingcursor').style.visibility = 'visible';
-            document.getElementById('dotanimation').style.visibility = 'visible';
             document.getElementById('Aitext').textContent = 'AI is working ';
-            sleep(3000).then( async () => {
+            sleep(1000).then( async () => {
                 try{
                     const commentData = {}
 
                     commentData['transactionAmt'] = totalAmount
                     commentData['reason'] = reason
-                    commentData['correctamount'] = correctAmount 
+                    commentData['correctamount'] = parseFloat(correctAmount)
                     commentData['comment'] = comment
+                    console.log(commentData)
                     
                     const response = await axios.post(
-                        `https://dbs-backend-service-ga747cgfta-as.a.run.app/`, //link to axios
+                        `https://dbs-backend-service-ga747cgfta-as.a.run.app/disputes/generate_dispute_comment`, //link to axios
                         JSON.stringify(commentData),
                         {
                             headers: {
@@ -145,12 +156,12 @@ const RaiseFTDScreen = () => {
                         }
                     );
                     if (response.data.success) {
+                        console.log(response.data)
                         sleep(2000).then(() => {
                             document.getElementById('loadingcursor').style.visibility = 'hidden';
-                            document.getElementById('dotanimation').style.visibility = 'hidden';
                             document.getElementById('Aitext').textContent = 'Comments is cleaned!';
                             setComment(response.data.result);
-                            sleep(1000).then(() => {
+                            sleep(1500).then(() => {
                                 setCleaningComments(false)            
                             })
                         })
@@ -161,18 +172,13 @@ const RaiseFTDScreen = () => {
                 }
                 catch (error) {
                     console.log('Error:', error.toJSON());
-                    sleep(2000).then(() => {
-                        document.getElementById('loadingcursor').style.visibility = 'hidden';
-                        document.getElementById('dotanimation').style.visibility = 'hidden';
-                        document.getElementById('Aitext').textContent = 'Comments is cleaned!';
-                        sleep(1000).then(() => {
-                            setCleaningComments(false)            
-                        })
-                    })
                 }
             });
         };
     }
+
+
+
 
     return(
         <div className='raiseFTDcontainermain'>
@@ -284,25 +290,22 @@ const RaiseFTDScreen = () => {
 
                 
                 <div className='commentsBox'>
-                
                     <div className='loadingScreen' id='loadingOverlay' style={{visibility: cleaningComments ? 'visible' : 'hidden'}}> 
                         <div id='loadingcursor'><LoadingScreen/></div>
-                        <p className='Aitext' id='Aitext'>AI is working <span class="dotAnimation" id='dotanimation'> </span></p>
+                        <p className='Aitext' id='Aitext'>AI is working <span className="dotAnimation" id='dotanimation'> </span></p>
                     </div>
+
                     <textarea
                     className="commentsTextBox" 
                     name="comment" 
                     placeholder="Comments for Recipient"
                     ref={commentsInputRef} 
                     value={comment}
-                    onInput={(event) => {
-                        adjustTextareaHeight(event.target);
-                        updateCharacterCount(event.target);
-                    }}
+                    onInput={(event) => setComment(event.target.value)}
                     maxLength={250}
                     ></textarea>
                     <div className='AIassist' style={{top: wrongAmount ? '75vh' : '65vh'}} onClick={cleanComments}>
-                        <span class="hovertext">AI Assist: Help me clean</span>
+                        <span className="hovertext">AI Assist: Help me clean</span>
                     </div>
                     <p className="commentcharacterCount">/<span id="characterCount">250</span></p>
                 </div>
@@ -329,7 +332,7 @@ const RaiseFTDScreen = () => {
                 <div className='commentsBox'>
                     <div className='loadingScreen' id='loadingOverlay' style={{visibility: cleaningComments ? 'visible' : 'hidden'}}> 
                         <div id='loadingcursor'><LoadingScreen/></div>
-                        <p className='Aitext' id='Aitext'>AI is working <span class="dotAnimation" id='dotanimation'> </span></p>
+                        <p className='Aitext' id='Aitext'>AI is working <span className="dotAnimation" id='dotanimation'> </span></p>
                     </div>
                     <textarea
                     className="commentsTextBox" 
@@ -340,11 +343,12 @@ const RaiseFTDScreen = () => {
                     onInput={(event) => {
                         adjustTextareaHeight(event.target);
                         updateCharacterCount(event.target);
+                        setComment(event.target.value);
                     }}
                     maxLength={250}
                     ></textarea>
                     <div className='AIassist' style={{top: '60.5vh'}} onClick={cleanComments}>
-                        <span class="hovertext">AI Assist: Help me clean</span>
+                        <span className="hovertext">AI Assist: Help me clean</span>
                     </div>
                     <p className="commentcharacterCount">/<span id="characterCount">250</span></p>
                 </div>
