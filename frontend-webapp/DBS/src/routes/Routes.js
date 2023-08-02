@@ -12,7 +12,6 @@ import TransactionDetailsScreen from '../views/TransactionDetailsScreen';
 import ReviewScreen from '../views/ReviewScreen';
 import SuccessScreen from '../views/SuccessScreen';
 import RaiseFTDScreen from '../views/RaiseFTDScreen';
-import ClipboardReader from '../views/others/Clipboard Test';
 import BankAccRecipientScreen from '../views/bank account/BankAccRecipient';
 import FuzzySearch from '../views/bank account/FuzzySearch';
 import BankTransferTransactionPage from '../views/bank account/BankAccTransfer';

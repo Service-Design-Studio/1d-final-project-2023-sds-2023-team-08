@@ -243,7 +243,9 @@
     position: absolute;
     bottom: 4vh;
 }
-
+.submitbutton1:hover{
+    cursor: pointer;
+}
 .submitbutton1:active {
     opacity: 0.5;
     transition: none;

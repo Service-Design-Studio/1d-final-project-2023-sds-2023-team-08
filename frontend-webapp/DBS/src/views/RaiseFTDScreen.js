@@ -3,6 +3,7 @@ import '../components/styles/RaiseFTDStyles.css';
 import '../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
+import LoadingScreen from './others/Loader';
 
 const RaiseFTDScreen = () => {
     const {userID, transactionID} = useParams();
@@ -14,7 +15,11 @@ const RaiseFTDScreen = () => {
     const totalAmount = TransactionData['total amount']
     const commentsInputRef = useRef(null);
 
+    const [cleaningComments, setCleaningComments] = useState(false)
+    const [csrfToken, setCsrfToken] = useState('')
+    
     const [reason, setReason] = useState('');
+    const [comment, setComment] = useState('');
     const [emptyComment, setemptyComment] = useState(false);
     const [emptyCheckbox, setemptyCheckbox] = useState(false);
     const [invalidContact, setinvalidContact] = useState(false);
@@ -23,15 +28,39 @@ const RaiseFTDScreen = () => {
     const [wrongAmount, setWrongAmount] = useState(false);
     const [correctAmount, setCorrectAmount] = useState('');
     const [contactDetails, setContactDetails] = useState('');
+
     
+    useEffect(() => {
+        const fetchCSRFData = async () => {
+          try {
+            const response = await axios.get('https://dbs-backend-service-ga747cgfta-as.a.run.app/csrf_token'); // update link to get new csrftoken?
+            const Token = response.data.csrfToken;
+            setCsrfToken(Token);
+          } 
+          
+          catch (error) {
+            console.log(error)
+          }
+        };
+    
+        fetchCSRFData();
+      }, []);
+
+
+    useEffect(() => {
+        const textarea = commentsInputRef.current;
+        adjustTextareaHeight(textarea)
+        updateCharacterCount(textarea)
+      }, [comment]);
+
     const handleSubmit = async(event) => {
         event.preventDefault(); 
-        const commentValue = commentsInputRef.current.value.trim();
+
         if (reason === ''){
             setemptyComment(false);
             setemptyCheckbox(true);
         }
-        else if (commentValue === '') {
+        else if (comment.length === 0) {
             setemptyComment(true);
             setemptyCheckbox(false);
         } 
@@ -44,7 +73,7 @@ const RaiseFTDScreen = () => {
         else {
             TransactionDataOver.transaction['user'] = totalAmount > 0 ? "Recipient" : "Sender"
             TransactionDataOver.transaction['reason'] = reason
-            TransactionDataOver.transaction['comments'] = commentValue
+            TransactionDataOver.transaction['comments'] = comment
             TransactionDataOver.transaction['raiseFTD'] = true
             TransactionDataOver.transaction['transaction ID'] = transactionID
             TransactionDataOver.transaction['correct amount'] = correctAmount
@@ -53,23 +82,24 @@ const RaiseFTDScreen = () => {
         }
     };
 
-    function adjustTextareaHeight(textarea) {
+    const adjustTextareaHeight = (textarea) => {
         textarea.style.height = '20px';
         textarea.style.height = `${textarea.scrollHeight}px`;
+        document.getElementById('loadingOverlay').style.height = `${textarea.scrollHeight + 12}px`;
         if (textarea.value.length > 250) {
             textarea.value = textarea.value.slice(0, 250);
           }
       };
     
     function updateCharacterCount(textarea) {
-    const maxLength = parseInt(textarea.maxLength);
-    const currentLength = textarea.value.length;
-    const charactersLeft = maxLength - currentLength;
-    
-    document.getElementById('characterCount').textContent = charactersLeft;
-    };
+        const maxLength = parseInt(textarea.maxLength);
+        const currentLength = textarea.value.length;
+        const charactersLeft = maxLength - currentLength;
+        document.getElementById('characterCount').textContent = charactersLeft;
+        };
 
-    const handleCorrectAmount = (event) => {
+
+    function handleCorrectAmount(event) {
         const { value } = event.target;
         if (value > -totalAmount) {
             setinvalidAmount(true)
@@ -87,9 +117,71 @@ const RaiseFTDScreen = () => {
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
 
+    function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+
+    const cleanComments = async () => {
+        if (comment.length <= 0) {
+            setemptyComment(true)
+            setemptyCheckbox(false)
+        } else if (reason.length <= 0) {
+            setemptyComment(false);
+            setemptyCheckbox(true)
+        } else {
+            setemptyComment(false)
+            setCleaningComments(true)
+
+            document.getElementById('loadingcursor').style.visibility = 'visible';
+            document.getElementById('Aitext').textContent = 'AI is working ';
+            sleep(1000).then( async () => {
+                try{
+                    const commentData = {}
+
+                    commentData['transactionAmt'] = totalAmount
+                    commentData['reason'] = reason
+                    commentData['correctamount'] = parseFloat(correctAmount)
+                    commentData['comment'] = comment
+                    console.log(commentData)
+                    
+                    const response = await axios.post(
+                        `https://dbs-backend-service-ga747cgfta-as.a.run.app/disputes/generate_dispute_comment`, //link to axios
+                        JSON.stringify(commentData),
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-Token': csrfToken,
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        }
+                    );
+                    if (response.data.success) {
+                        console.log(response.data)
+                        sleep(2000).then(() => {
+                            document.getElementById('loadingcursor').style.visibility = 'hidden';
+                            document.getElementById('Aitext').textContent = 'Comments is cleaned!';
+                            setComment(response.data.result);
+                            sleep(1500).then(() => {
+                                setCleaningComments(false)            
+                            })
+                        })
+
+                    }
+                    else{
+                    }
+                }
+                catch (error) {
+                    console.log('Error:', error.toJSON());
+                }
+            });
+        };
+    }
+
+
+
 
     return(
-        <div className='raiseFTDcontainer'>
+        <div className='raiseFTDcontainermain'>
             <div className='RefuteDisputeHeader'>
                 <button onClick={() => navigate(`/${userID}/${transactionID}`)} className='transparent'>
                     <img src='/assets/back.png' className='back' />
@@ -118,11 +210,9 @@ const RaiseFTDScreen = () => {
                 </div>
             </div>
 
-            { emptyComment ? (
-                <p className='flashmessagetext'>* COMMENTS FIELD CANNOT BE LEFT BLANK</p>
-            ) : emptyCheckbox ? (
+            {emptyCheckbox && (
                 <p className='flashmessagetext'>* PLEASE SELECT A REASON</p>
-            ) : (null)}
+            )}
 
             <div className='reasonFTD'>
                 <p className='reasonFTDtext'> Reason for Fund Transfer Dispute</p>
@@ -194,23 +284,37 @@ const RaiseFTDScreen = () => {
                     </div>
                 }
 
+                {emptyComment && (
+                    <p className='flashmessagetextcomments'>* COMMENTS FIELD CANNOT BE LEFT BLANK</p>
+                )}
+
+                
                 <div className='commentsBox'>
+                    <div className='loadingScreen' id='loadingOverlay' style={{visibility: cleaningComments ? 'visible' : 'hidden'}}> 
+                        <div id='loadingcursor'><LoadingScreen/></div>
+                        <p className='Aitext' id='Aitext'>AI is working <span className="dotAnimation" id='dotanimation'> </span></p>
+                    </div>
+
                     <textarea
                     className="commentsTextBox" 
                     name="comment" 
                     placeholder="Comments for Recipient"
                     ref={commentsInputRef} 
-                    onInput={(event) => {
-                        adjustTextareaHeight(event.target);
-                        updateCharacterCount(event.target);
-                    }}
+                    value={comment}
+                    onInput={(event) => setComment(event.target.value)}
                     maxLength={250}
                     ></textarea>
+                    <div className='AIassist' style={{top: wrongAmount ? '75vh' : '65vh'}} onClick={cleanComments}>
+                        <span className="hovertext">AI Assist: Help me clean</span>
+                    </div>
                     <p className="commentcharacterCount">/<span id="characterCount">250</span></p>
                 </div>
             </div>
             ) : (
             <div>
+                {emptyComment && (
+                        <p className='flashmessagetextcomments'>* COMMENTS FIELD CANNOT BE LEFT BLANK</p>
+                    )}
                 <div className='FTDcheckbox3'>
                 <input
                     type='radio'
@@ -226,17 +330,26 @@ const RaiseFTDScreen = () => {
                 </div>
 
                 <div className='commentsBox'>
+                    <div className='loadingScreen' id='loadingOverlay' style={{visibility: cleaningComments ? 'visible' : 'hidden'}}> 
+                        <div id='loadingcursor'><LoadingScreen/></div>
+                        <p className='Aitext' id='Aitext'>AI is working <span className="dotAnimation" id='dotanimation'> </span></p>
+                    </div>
                     <textarea
                     className="commentsTextBox" 
                     name="comment" 
                     placeholder="Comments to Sender" 
+                    value={comment}
                     ref={commentsInputRef} 
                     onInput={(event) => {
                         adjustTextareaHeight(event.target);
                         updateCharacterCount(event.target);
+                        setComment(event.target.value);
                     }}
                     maxLength={250}
                     ></textarea>
+                    <div className='AIassist' style={{top: '60.5vh'}} onClick={cleanComments}>
+                        <span className="hovertext">AI Assist: Help me clean</span>
+                    </div>
                     <p className="commentcharacterCount">/<span id="characterCount">250</span></p>
                 </div>
             </div>

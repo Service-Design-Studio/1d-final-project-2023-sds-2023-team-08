@@ -138,6 +138,9 @@
     bottom: 4vh;
 }
 
+.pntsubmitbuttonER:hover{
+    cursor: pointer;
+}
 .pntsubmitbuttonER:active {
     opacity: 0.5;
     transition: none;
