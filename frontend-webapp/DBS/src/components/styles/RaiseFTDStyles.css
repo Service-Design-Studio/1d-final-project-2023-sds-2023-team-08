@@ -167,8 +167,8 @@
     height:4.5vh;
     width: 29vw;
     position: absolute;
-    left:70vw;
-    top:65vh;
+    left:65vw;
+    top:0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -182,8 +182,8 @@
     height:4.5vh;
     width: 29vw;
     position: absolute;
-    left:70vw;
-    top:65vh;
+    left:65vw;
+    top:0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
