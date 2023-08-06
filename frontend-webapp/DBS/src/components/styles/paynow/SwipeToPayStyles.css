@@ -1,0 +1,101 @@
+.BasedContainer {
+    display: flex;
+    flex-direction: row;
+    border-radius: 35px;
+    font-size: 18px;
+    font-family: "Lato";
+    background-color:#A50303 ;
+    font-weight: bold;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: 4vh;
+    width: 90vw;
+    margin: 0 5vw 0 5vw;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.SwiperButton{
+    border-radius: 50%;
+    background-color: white;
+    /* padding: 1.2vh 4.5vw; */
+    margin: 1vw 1vw;
+    position: absolute;
+    outline: none;
+    border: none;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+}
+
+.SwiperButton img {
+    transition: opacity 0.2s;
+}
+.SwiperButton:hover{
+    cursor: pointer;
+}
+.SwiperButton:active img {
+    opacity: 0.5;
+    transition: none;
+}
+.SwiperButton:active {
+    opacity: 0.5;
+    transition: none;
+}
+
+.SwiperButton2{
+    border-radius: 30px; 
+    background-color: white;
+    margin: 1vw 1vw;
+    padding: 0 25px;
+    position: absolute;
+    outline: none;
+    border: none;
+    z-index: 1;
+    opacity: 0.7;
+    width: 50px;
+    height: 50px;
+}
+
+
+.swipeimage{
+    object-fit: contain;
+    height: 2.5vh;
+    align-self: center;
+    justify-self: center;
+    margin-top: 1vw;
+}
+
+.swipertext{
+    font-family: 'Lato';
+    font-size: 18px;
+    text-align: right;
+    color: white;
+    opacity: 0.8;
+    margin-left: 35vw;
+}
+
+.endButton{
+    background-color: transparent;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1vw;
+}
+
+.inputsliderprop{
+    color:transparent;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: large;
+    z-index: 5;
+    overflow-y: hidden;
+}
+
+.inputsliderprop:focus{
+    outline: none;
+    border: none;
+}

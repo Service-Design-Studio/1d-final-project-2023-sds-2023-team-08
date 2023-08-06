@@ -3,14 +3,18 @@ import jsonData from '../../testdata/reviewtransferdata.json';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
+import SwipeToPay from '../paynow/SwipeToPay';
 
 const ReviewTransfer = () => {
     const navigate = useNavigate();
     const {userID} = useParams();
     const location = useLocation();
     const transactionData = location.state;
-    const isDispute = transactionData['dispute']
+    const isDispute = transactionData['dispute'];
     const [csrfToken, setCsrfToken] = useState('');
+    const isWarning = transactionData['warning'];
+    const isBankTransfer = transactionData['mode_of_payment'] == 'Account Transfer'
+    console.log(transactionData)
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -28,10 +32,11 @@ const ReviewTransfer = () => {
         fetchCSRFData();
       }, []);
     
-    const handleSubmit = async(event) => {
-        event.preventDefault();
+    const handleSubmit = async(event=null) => {
+        if (event) {
+            event.preventDefault();
+        }
         let TransactionDetails= transactionData
-
         try{
             const now = new Date();
             const currentDay = now.toLocaleDateString('en-GB', { weekday: 'short' }); 
@@ -40,25 +45,38 @@ const ReviewTransfer = () => {
             const currentMinutes = now.getMinutes().toString().padStart(2, '0'); 
             const currentTime = `${currentHour}:${currentMinutes}`;
 
-            //const TransactionDetails = {transactionData, "date and time":`${currentDate} ${currentTime}`, "day and date":`${currentDay}, ${currentDate}`}
-            TransactionDetails['date and time'] = `${currentDate} ${currentTime}`
-            TransactionDetails['day and date'] =  `${currentDay}, ${currentDate}`
-            TransactionDetails['transfer type'] = "FAST/IMMEDIATE"
-            console.log(TransactionDetails)
+            TransactionDetails['date_and_time'] = `${currentDate} ${currentTime}`
+            TransactionDetails['day_and_date'] =  `${currentDay}, ${currentDate}`
+            TransactionDetails['transfer_type'] = "FAST/IMMEDIATE"
 
-            const response = await axios.post(
-                'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
-                { TransactionDetails },
-                {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': csrfToken,
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-                }
-            );
-            if (response.data.success) {
-                TransactionDetails['transaction id'] = response.data.transactionID
+            const [response1, response2] = await axios.all([
+                axios.post(
+                    `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions`,
+                    JSON.stringify(TransactionDetails),
+                    {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    }),
+                
+                isDispute ? 
+                    axios.post(
+                    `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/transactions/${TransactionDetails['transaction_id']}/resolve_dispute`,
+                    JSON.stringify(TransactionDetails),
+                    {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                : (null)
+                ]);
+
+            if (response1.data.success && (!isDispute || (isDispute && response2.data.success))) {
+                TransactionDetails['transaction_id'] = response1.data.transactionID
                 navigate(`/${userID}/success`, {state: TransactionDetails})
             }
 
@@ -67,18 +85,41 @@ const ReviewTransfer = () => {
         }
 
         catch (error) {
-            console.log('Error:', error.toJSON());
-            navigate(`/${userID}/success`, {state: TransactionDetails})
+            console.log('Error:', error);
           }
         };
     
+    const backNavigation = () => {
+            if (isDispute) {
+                navigate(`/${userID}/refunddispute/${transactionData['transaction_id']}`);
+            } else if (isBankTransfer) {
+                navigate(`/${userID}/accounttransfer`, {
+                    state: {
+                        'name': transactionData['recipient_name'],
+                        'acc': transactionData['recipient_acc'],
+                        'bank': transactionData['recipient_bank'],
+                        'total_amount' : transactionData['total_amount'],
+                    }
+                });
+            } else {
+                navigate(`/${userID}/paynow`, {
+                    state: {
+                        'usraccname': transactionData['transfer_from_acc_name'],
+                        'usraccnum': transactionData['transfer_from_acc_number'],
+                        'nickname': transactionData['recipient_name'],
+                        'accnum': transactionData['recipient_acc'],
+                        'phonenumber': transactionData['recipient_phonenum'],
+                        'warning': transactionData['warning'],
+                        'total_amount': transactionData['total_amount']
+                    }
+                });
+            }
+        }
     
     return (
         <div className='RefuteDisputeMain'>
             <div className='RefuteDisputeHeader'>
-                <button id = 'backarrow' onClick={() => isDispute
-                                                        ? navigate(`/${userID}/refunddispute/${transactionData['transaction id']}`)
-                                                        : navigate(`/${userID}/paynow`, {state: {"nickname":transactionData["recipient name"], "phonenumber": transactionData["recipient acc"]}})} className='transparent'>
+                <button id = 'backarrow' onClick={backNavigation} className='transparent'>
                     <img src='/assets/back.png' className='back' />
                 </button>
                 <p className='RefuteDisputeHeaderText'>Review Transfer</p>
@@ -90,21 +131,21 @@ const ReviewTransfer = () => {
                         <p className='amountin'>Amount in</p>
                         <div className='ReviewTransferBoxBlueSubText'>
                             <p className='ReviewTransferBoxBlueSubTextLeft'>SGD</p>
-                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total amount'].toFixed(2)}</p>
+                            <p className='ReviewTransferBoxBlueSubTextRight'>{transactionData['total_amount'].toFixed(2)}</p>
                         </div>
                     </div>
                     <div className="ReviewTransferBoxWhite">
 
                         <div className='Chunk1'>
                             <p className='reviewtext'>From</p>
-                            <p className='accounttextname'>{transactionData['transfer from acc name']}</p>
-                            <p className='reviewtext'>{transactionData['transfer from acc number']}</p>
+                            <p id = 'senderAccountTextName' className='accounttextname'>{transactionData['transfer_from_acc_name']}</p>
+                            <p id = "banknumber" className='reviewtext'>{transactionData['transfer_from_acc_number']}</p>
                         </div>
                         
                         <div className='Chunk'>
                             <p className='reviewtext'>To</p>
-                            <p className='accounttextname'>{transactionData['recipient name']}</p>
-                            <p className='reviewtext'>{isDispute ? "Disputee's Account" : transactionData['recipient acc']}</p>
+                            <p id = 'recipientAccountTextName' className='accounttextname'>{transactionData['recipient_name']}</p>
+                            <p id="phonenumber" className='reviewtext'>{isDispute && transactionData['contact_details'] != undefined ? transactionData['contact_details'] : isDispute ? "Disputee's Account" : isBankTransfer ? transactionData['recipient_acc']: transactionData['recipient_phonenum']}</p>
                         </div>
 
                         <div className='Chunk'>
@@ -114,15 +155,17 @@ const ReviewTransfer = () => {
 
                         <div className='Chunk2'>
                             <p className='reviewtext'>Your Comments</p>
-                            <p className='accounttextname'>{transactionData['comments']}</p>
+                            <p id="yourcomments" className='accounttextname'>{transactionData['comments']}</p>
                         </div>
 
                     </div>
                 </div>
             </div>
-
-            <button className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
-
+            { (isWarning) ? (
+                <SwipeToPay handleSubmit={handleSubmit}></SwipeToPay>
+            ): (
+                <button id = 'reviewTransferNextButton' className= { isDispute ? 'TransferNow' : 'TransferPayNow'} onClick={handleSubmit}>{ isDispute ? 'TRANSFER NOW' : 'NEXT'}</button> 
+            )}
         </div>
 
     );

@@ -9,10 +9,15 @@ const ReviewScreen = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { userID } = useParams();
-
+    
     const isRefute = location.state['refute']
-    const isRaiseFTD = location.state['raiseFTD']
+    let isRaiseFTD = false;
 
+    try {
+      isRaiseFTD = location.state.transaction['raiseFTD'];
+    } catch (error) {
+    }
+    
     return (
       isRefute ? (
         <ReviewRefute/>

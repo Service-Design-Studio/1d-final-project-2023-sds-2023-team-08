@@ -1,9 +1,10 @@
-.raiseFTDcontainer{
+.raiseFTDcontainermain{
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     align-items: center;
     justify-content: center;
     background-color: white;
+    overflow: hidden;
 }
 
 
@@ -79,15 +80,6 @@
     font-family: "Lato";
 }
 
-.commentcharacterCount{
-    font-family: "Lato";
-    color: #a3a3a3;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 0.5vh ;
-    padding-left: 5vw;
-}
-
 .commentsTextBox:focus{
    outline: none;
    border: none;
@@ -108,6 +100,10 @@
     bottom: 4vh;
 }
 
+.RaiseFTDButton:hover{
+    cursor: pointer;
+}
+
 
 .RaiseFTDButton:active{
     opacity: 0.5;
@@ -122,4 +118,142 @@
     margin-left: 5vw;
     margin-top: 2vh;
     margin-bottom: -2vh;
+}
+
+.expandingcontainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #fbfbfb;
+}
+
+.detailscontainer {
+    align-self: center;
+    width: 90vw;
+    padding: 1.5vh 0;
+    font-family: "Lato";
+    font-size: 14px;
+    border: none;
+    border-bottom: 0.7px solid #d2d2d2;
+}
+
+.detailscontainer:focus{
+    border-bottom: 0.7px solid #d2d2d2 !important;
+}
+
+.flashmessagetext2 {
+    font-size: 12px;
+    color: #FF2C4E;
+    font-family: 'Lato';
+    font-weight: bold;
+    margin-left: 5vw;
+    margin-bottom: 0;
+
+}
+
+.commentcharacterCount{
+    font-family: "Lato";
+    color: #a3a3a3;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 0vh;
+    /* margin-top: 1vh; */
+}
+
+.AIassist {
+    background-image: url('../assets/AiAssist.png');
+    background-size: 17.5px;
+    background-repeat: no-repeat; 
+    background-position:85% 50%;   
+    height:4.5vh;
+    width: 29vw;
+    position: absolute;
+    left:70vw;
+    top:65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.AIassist:hover{
+    background-image: url('../assets/AiAssistHover.png');
+    background-size: 17.5px;
+    background-repeat: no-repeat; 
+    background-position:85% 50%;   
+    height:4.5vh;
+    width: 29vw;
+    position: absolute;
+    left:70vw;
+    top:65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.hovertext{
+    background-color: white;
+    border: 0.5px solid #CC8A3C;
+    color: #CC8A3C;
+    font-family: 'Lato';
+    font-size: 10px;
+    text-align: center;
+    width: fit-content;
+    padding: 0.5vh 1vw;
+    visibility: hidden;
+}
+
+.AIassist:hover .hovertext{
+    visibility: visible;
+}
+
+.loadingScreen {
+    background-color: white;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    margin-left: -5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Aitext {
+    font-family: 'Lato';
+    color: #444444;
+    margin:0 0 0 5vw;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.dotAnimation::before {
+    content: ".";
+    animation: dotanimation infinite 3s;
+    padding-left: 2px;
+    display: block;
+}
+
+@keyframes dotanimation {
+
+    0% {
+        content: ".";
+    }
+
+    50% {
+        content: "..";
+    }
+
+    75% {
+        content: "...";
+    }
+}
+
+.flashmessagetextcomments {
+    font-size: 12px;
+    color: #FF2C4E;
+    font-family: 'Lato';
+    font-weight: bold;
+    margin-left: 5vw;
+    margin-top: 1vh;
+    margin-bottom: -1vh;
 }

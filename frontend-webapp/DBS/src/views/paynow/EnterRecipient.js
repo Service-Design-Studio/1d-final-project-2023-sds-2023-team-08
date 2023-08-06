@@ -10,7 +10,11 @@ const EnterRecipient = () => {
     const [csrfToken, setCsrfToken] = useState('');
     const [ recipientNickname, setrecipientNickname ] = useState('');
     const [ recipientPhoneNumber, setrecipientPhoneNumber] = useState('');
-    const [ invalidmessage, setinvalidmessage] = useState('')
+    const [ invalidmessage, setinvalidmessage] = useState('');
+    const [recipientAccnum, setrecipientAccnum] = useState('');
+    const [senderAccnum, setsenderAccnum] = useState('');
+    const [senderAccname, setsenderAccname] = useState('');
+    const [warning, setWarning] = useState(false)
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -28,13 +32,34 @@ const EnterRecipient = () => {
         fetchCSRFData();
       }, []);
 
+
+    useEffect(() => {
+        const checkWarning = () => {
+            if (recipientPhoneNumber.length > 0 && recipientPhoneNumber[0] != 9 && recipientPhoneNumber[0] != 8 ) {
+                setinvalidmessage('* Please Enter A Valid Phone Number')
+            }
+            else if (invalidmessage.length>0) {
+                setinvalidmessage('')
+            }
+            else if (warning) {
+                setWarning(false)
+                setrecipientNickname('')
+            }
+            else {
+                setrecipientNickname('')
+            }
+        };
+
+        checkWarning();
+        }, [recipientPhoneNumber]);
+
     const getNickname = async () => {
         if (recipientPhoneNumber.length >= 8) {
             try {
                 const data = { "phonenumber": recipientPhoneNumber }
                 console.log(data)
-                const response = await axios.post(
-                    'https://dbs-backend-service-ga747cgfta-as.a.run.app/users/login',
+                const response = await axios.get(
+                    `https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/paynows/search_by_phone/+65${recipientPhoneNumber}`,
                     { data },
                     {
                     headers: {
@@ -46,12 +71,16 @@ const EnterRecipient = () => {
                 );
                 if (response.data.nickname.length > 0) {
                     setrecipientNickname(response.data.nickname);
+                    setrecipientAccnum(response.data.accnum);
+                    setsenderAccname(response.data.usraccname);
+                    setsenderAccnum(response.data.usraccnum);
+                    setWarning(response.data.warning);
                 } else {
                 }
 
             } catch (error) {
                 console.log('Error:', error.toJSON());
-                setrecipientNickname("Vinny Koh");
+                setinvalidmessage('* Please Enter A Valid PayNow Phone Number')
             }
         } 
         else {
@@ -70,14 +99,14 @@ const EnterRecipient = () => {
             setinvalidmessage("* Please Enter A Valid PayNow Phone Number")
         }
         else {
-            navigate(`/${userID}/paynow`, {state: {"phonenumber": recipientPhoneNumber, "nickname":recipientNickname }})
+            navigate(`/${userID}/paynow`, {state: {"phonenumber": recipientPhoneNumber, "nickname":recipientNickname, "accnum":recipientAccnum, "usraccnum":senderAccnum, "usraccname":senderAccname, "warning":warning}})
         }
     };
 
     const handleInputChange = (e) => {
         const inputValue = e.target.value.replace(/\D/g, '').slice(0, 8);
         setrecipientPhoneNumber(inputValue)
-        //console.log(recipientPhoneNumber)
+        console.log(recipientPhoneNumber)
     };
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
@@ -94,7 +123,7 @@ const EnterRecipient = () => {
             <p className='pntentermobileER'>ENTER MOBILE NO.</p>
 
             <div className = 'inputboxER'>
-                <p className='enternameER'>Enter name or mobile no.</p>
+                <p className='enternameER'>Enter mobile no.</p>
                 <div className='mobilenumberER'>
                     <div className='phonenumberER'>
                         <p className='plussixfiveER'>+65</p>
@@ -124,10 +153,16 @@ const EnterRecipient = () => {
                     <p className='recipientnickER'>Recipient's Nickname</p>
                     <p className='recipientnameER'>{recipientNickname}</p>
                 </div>
-                <button id='pntsubmitbutton' className='pntsubmitbuttonER' onClick={handleSubmit}>
-                    <p className='pntsubmitER'>SUBMIT</p>
-                </button>
+                {warning &&
+                    <div>
+                        <p className='warningtextalert'>STAY ALERT: You have never transferred to this phone number before. Please check and ensure that you have keyed in the phone number correctly.</p>
+                    </div>
+                }
             </div>
+
+            <button id='pntsubmitbutton' className='pntsubmitbuttonER' style={{backgroundColor: warning? '#A50303': '#066DAF'}} onClick={handleSubmit}>
+                <p className='pntsubmitER'>SUBMIT</p>
+            </button>
         </div>
     );
 

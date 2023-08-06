@@ -76,6 +76,11 @@
     border: none;
 }
 
+.wdpopbuttonblue :hover
+.wdpopbuttonred :hover{
+    cursor: pointer;
+}
+
 .wdpopbuttonblue :active
 .wdpopbuttonred :active{
     opacity: 0.5;

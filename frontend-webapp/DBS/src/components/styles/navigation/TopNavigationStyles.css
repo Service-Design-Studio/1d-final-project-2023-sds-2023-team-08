@@ -172,3 +172,6 @@
     opacity: 0.5;
     transition: none;
   }
+  .buttontransparent:hover{
+    cursor: pointer;
+  }

@@ -191,7 +191,9 @@
     position: absolute;
     bottom: 4vh;
 }
-
+.LIMITSbutton1:hover{
+    cursor: pointer;
+}
 .LIMITSbutton1:active {
     opacity: 0.5;
     transition: none;

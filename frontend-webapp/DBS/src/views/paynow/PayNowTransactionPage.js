@@ -8,38 +8,24 @@ const PayNowTransactionPage = () => {
     const { userID } = useParams();
     const location = useLocation();
     const recipientdetails = location.state
-    const senderdetails = {"user account num": "235-56324-0",
-                        "user account name": "DBS Multiplier Account"};
-    const [transactionamount, setTransactionAmount] = useState('')
+    const [transactionamount, setTransactionAmount] = useState(recipientdetails.total_amount || '')
     const [paynowcomment, setPaynowComment] = useState('Paynow Transfer')
     const [emptyamount, setemptyamount] = useState('')
+    const isWarning = recipientdetails['warning']
 
     const newtransactiondata = {}
 
     newtransactiondata['dispute'] = false
-    newtransactiondata['transfer from acc name'] = senderdetails['user account name']
-    newtransactiondata['transfer from acc number'] = senderdetails['user account num']
-    newtransactiondata['recipient name'] = recipientdetails['nickname']
-    newtransactiondata['recipient acc'] = recipientdetails['phonenumber']
-    newtransactiondata['mode of payment'] = 'FAST / PayNow Transfer'
-    newtransactiondata['transfer type'] = "FAST/IMMEDIATE"
+    newtransactiondata['transfer_from_acc_name'] = recipientdetails['usraccname']
+    newtransactiondata['transfer_from_acc_number'] = recipientdetails['usraccnum']
+    newtransactiondata['recipient_name'] = recipientdetails['nickname']
+    newtransactiondata['recipient_acc'] = recipientdetails['accnum']
+    newtransactiondata['recipient_phonenum'] = recipientdetails['phonenumber']
+    newtransactiondata['mode_of_payment'] = 'FAST / PayNow Transfer'
+    newtransactiondata['transfer_type'] = "FAST/IMMEDIATE"
+    newtransactiondata['warning'] = recipientdetails['warning']
+    newtransactiondata['recipient_bank'] = 'DBS/POSB'
 
-
-    // const [senderdetails, setSenderDetails] = useState([])
-    // useEffect(() => {
-    //     const getsenderDetails = async () => {
-    //       try {
-    //         const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/all_transactions`); 
-    //         const parsedData = response.data;
-    
-    //         setSenderDetails(parsedData);
-    
-    //       } catch (error) {
-    //         console.log(error);
-    //       }
-    //     };
-    //     getsenderDetails();
-    //   }, []);
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
     
@@ -60,7 +46,7 @@ const PayNowTransactionPage = () => {
             setemptyamount("* How much would you like to transfer? Let us know")
         }
         else {
-            newtransactiondata['total amount'] = parseFloat(transactionamount)
+            newtransactiondata['total_amount'] = parseFloat(transactionamount)
             newtransactiondata['comments'] = paynowcomment
             navigate(`/${userID}/review`, {state:newtransactiondata })
         }
@@ -79,9 +65,9 @@ const PayNowTransactionPage = () => {
                 <div className='recipient_container1'>
                     <div className= 'profile1'></div>
                     <div className='account_right1'>
-                        <p className= 'accountname1'>{senderdetails["user account name"]}</p>
+                        <p className= 'accountname1'>{recipientdetails['usraccname']}</p>
                         <div className= 'accountnumber1'>
-                            <p className= 'accountnumber1'>{senderdetails["user account num"]}</p>
+                            <p className= 'accountnumber1'>{recipientdetails['usraccnum']}</p>
                         </div>  
                     </div>
                 </div>
@@ -100,6 +86,10 @@ const PayNowTransactionPage = () => {
                 </div>
             </div>
 
+            {isWarning && 
+                <p className='WarningNoAmountPaynow'> STAY ALERT: You have never transferred to this phone number before. Please check and ensure that you have keyed in the phone number correctly.</p>
+            }
+
             {emptyamount.length > 0 ? (<p className='WarningNoAmountPaynow'>{emptyamount}</p>
             ) : (<div></div>)}
 
@@ -109,13 +99,16 @@ const PayNowTransactionPage = () => {
                     <p className='currency1'>SGD</p>
                 </div>
                 <div className='rightside'>
-                    <input
-                        type="number"
-                        className="refundamount"
-                        placeholder="0.00"
-                        onKeyDown={blockInvalidChar}
-                        value={transactionamount}
-                        onInput={getTransactionAmount}/>
+                    <form className='barrrar'>
+                        <input
+                            type="number"
+                            id = "keyInAmtPaynow"
+                            className="refundamount"
+                            placeholder='0.00'
+                            onKeyDown={blockInvalidChar}
+                            value={transactionamount}
+                            onInput={getTransactionAmount}/>
+                    </form>
                 </div>
             </div>
 
@@ -136,13 +129,12 @@ const PayNowTransactionPage = () => {
             <input
                 type="text"
                 className="commentsPNT"
-                defaultValue="Paynow Transfer"
                 value={paynowcomment}
                 onInput={getPaynowComment}/>
 
             <div className='greyboxPNT'>
                 <p className='tncforrefund1'>By clicking "NEXT", you agree to be bound by the <u>Terms and Conditions.</u></p>
-                <button id='submitrefund1' className='LIMITSbutton1' onClick={handleSubmit}>NEXT</button>
+                <button id='submitrefund1' className='LIMITSbutton1' onClick={handleSubmit} style={{backgroundColor: isWarning ? '#A50303': '#066DAF'}}>NEXT</button>
             </div>        
         </div>
     );

@@ -55,6 +55,10 @@ input:focus {
     border: none;
 }
 
+.login:hover{
+    cursor: pointer;
+}
+
 .alert {
     color: #FF2C4E;
     font-family: "Lato";

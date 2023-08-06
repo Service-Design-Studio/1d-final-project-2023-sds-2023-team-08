@@ -41,6 +41,18 @@
   border: none;
   cursor: pointer;
 }
+
+.transfer{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.transparent:hover{
+  cursor: pointer;
+}
+
 .transparent img {
   transition: opacity 0.2s;
 }
