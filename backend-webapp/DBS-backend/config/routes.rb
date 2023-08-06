@@ -36,10 +36,10 @@ Rails.application.routes.draw do
   post 'users/:id/transactions/:transactions_id/withdraw_dispute', to: 'disputes#withdraw_dispute'
   post 'users/:id/transactions/:transactions_id/refute_dispute', to: 'disputes#refute_dispute'
   post 'users/:id/transactions/:transactions_id/resolve_dispute', to: 'disputes#resolve_dispute'
-  
+
   get 'user/:id/transaction_detail_for_disputes_involving_user', to: 'disputes#transaction_detail_for_disputes_involving_user'
   get 'users/:id/transactions/:transactions_id/refund_details', to: 'disputes#refund_details'
- 
+  post 'disputes/generate_dispute_comment',to: 'disputes#generate_dispute_comment'
   #for paynow
   get 'users/:id/paynows/search_by_phone/:phonenumber', to: 'paynows#search_by_phone'
  

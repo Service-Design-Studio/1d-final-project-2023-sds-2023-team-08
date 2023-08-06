@@ -1,3 +1,5 @@
+require 'net/http'
+require 'json'
 class DisputesController < ApplicationController
   
 
@@ -264,6 +266,46 @@ class DisputesController < ApplicationController
     render json: response.body
   end
 
+  #post 'disputes/generate_dispute_comment',to: 'disputes#generate_dispute_comment'
+  def generate_dispute_comment
+   
+
+    raw=request.raw_post
+ 
+    # Assuming you have the URL for the GET request
+
+
+    #url and http setup
+    url = URI("https://hello-zf2sgw655q-uc.a.run.app/generate_text")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    
+    
+    
+    #create post req
+    request = Net::HTTP::Post.new(url)
+    request['Content-Type'] = 'application/json'
+    
+    request.body = raw
+
+    #send POST and get response
+    begin
+    response = http.request(request)
+    body=JSON.parse(response.body)
+    data={
+      success:true,
+      result:body["generated_text"]
+    }
+  rescue => e
+    data={
+      success:false,
+      result:"error occured"
+    }
+  end
+
+    #return response
+    render json: data
+  end
 
 
 

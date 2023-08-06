@@ -1,4 +1,6 @@
 require_relative '../helpers/application_helper'
+require 'net/http'
+require 'json'
 class TransactionsController < ApplicationController
   
 

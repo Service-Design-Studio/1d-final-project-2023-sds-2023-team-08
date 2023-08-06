@@ -1,3 +1,5 @@
+require 'net/http'
+require 'json'
 class PaynowsController < ApplicationController
   
 
