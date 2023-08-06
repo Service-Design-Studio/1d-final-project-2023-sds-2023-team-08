@@ -30,7 +30,7 @@ const RaiseFTDSuccess = () => {
                 </div>
                 <div className='subpopboxRS'>
                     <p className='qnRS'>Transaction Type</p>
-                    <p className='ansRS'>{FTDDetails["transaction type"]}</p>
+                    <p className='ansRS'>{FTDDetails["transaction_type"]}</p>
                 </div>
                 <div className='subpopboxRS'>
                     <p className='qnRS'>Reason of Transfer Dispute</p>

@@ -23,6 +23,7 @@
     font-size: 18px;
     color: #444444;
     text-align: center;
+    z-index: 999;
 }
 
 .RefuteDisputeBody {
@@ -126,7 +127,9 @@
     bottom: 4vh;
 }
 
-
+.SubmitButton:hover{
+    cursor: pointer;
+}
 .SubmitButton:active{
     opacity: 0.5;
     transition: none;

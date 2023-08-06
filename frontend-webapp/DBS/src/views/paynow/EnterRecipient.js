@@ -123,7 +123,7 @@ const EnterRecipient = () => {
             <p className='pntentermobileER'>ENTER MOBILE NO.</p>
 
             <div className = 'inputboxER'>
-                <p className='enternameER'>Enter name or mobile no.</p>
+                <p className='enternameER'>Enter mobile no.</p>
                 <div className='mobilenumberER'>
                     <div className='phonenumberER'>
                         <p className='plussixfiveER'>+65</p>

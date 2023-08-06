@@ -28,7 +28,8 @@ const BankAccRecipientScreen = () => {
     const handleReadClipboard = async () => {
         try {
             const text = await navigator.clipboard.readText();
-            setClipboardText(text);
+            const trimtext = text.trim()
+            setClipboardText(trimtext);
             console.log(clipboardText)
         } catch (error) {
             console.error('Failed to read clipboard:', error);
@@ -83,7 +84,7 @@ const BankAccRecipientScreen = () => {
                 <button id ='backarrow' className= 'transparent' onClick= {() => navigate(`/${userID}/home`)}>
                     <img src = '/assets/back.png' className = 'back'/>
                 </button>
-                <p className='RefuteDisputeHeaderText'>Enter Recipient's Details</p>
+                <p id= 'tocopy' className='RefuteDisputeHeaderText'>Enter Recipient's Details</p>
             </div>
 
             <p className='pntentermobileER'>ENTER ACCOUNT DETAILS</p>
@@ -94,6 +95,7 @@ const BankAccRecipientScreen = () => {
                 )}
                     <form className='formcontainer2'>
                         <input
+                            id = 'ERname'
                             type="text"
                             className="bankaccdetails"
                             placeholder="Enter recipient's name"
@@ -102,7 +104,7 @@ const BankAccRecipientScreen = () => {
                             />
                     </form>
 
-                    <button className='transparentcontainerfull' onClick={() => navigate(`/${userID}/accounttransferrecipient/selectbank`, {state:{name:recipientName, acc:recipientAccNum, bank:bankType}})}>
+                    <button id = 'banks' className='transparentcontainerfull' onClick={() => navigate(`/${userID}/accounttransferrecipient/selectbank`, {state:{name:recipientName, acc:recipientAccNum, bank:bankType}})}>
                         <p className='BankType' style={{color: bankType.length <= 0 ? '#696969' : '#444444'}}>{bankType.length <= 0 ? "Select Bank" : bankType}</p>
                         <img src='/assets/expand.png' className='expandbank'/>
                     </button>
@@ -110,6 +112,7 @@ const BankAccRecipientScreen = () => {
                     <p className='protiptext'> Pro tip! You can COPY and PASTE the bank account number :)</p>
                     <form className='formcontainer2'>
                         <input
+                            id = 'accno'
                             type="number"
                             className="bankaccdetails"
                             placeholder="Enter account no."

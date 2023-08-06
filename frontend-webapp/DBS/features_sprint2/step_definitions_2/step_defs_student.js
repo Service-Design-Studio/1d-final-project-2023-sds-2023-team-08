@@ -4,6 +4,9 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
 const { useEffect } = require('react');
 const { expect } = require('chai');
 
+
+
+
 Before(async function () {
   // Set up the Selenium WebDriver
   this.driver = await new Builder().forBrowser('chrome').build();
@@ -125,6 +128,8 @@ Then('I will see a warning to key in a valid phone number', async function () {
 
 //////////////// Filing a FTD after making a PayNow Transfer //////////////////////////////////////////////////////////////////////////////////////////////
 
+
+////problem here: i press button to submit before clicking away. must fix
 When("I key in my desired recipient's details", async function () {
     const phoneNumberField = await this.driver.findElement(By.className('eightdigitER'))
     phoneNumberField.sendKeys("88888887")
@@ -227,14 +232,16 @@ Then('the comments is "Paynow Transfer"', async function () {
     expect(comments).to.equal('Paynow Transfer');
   });
 
-When('I click "NEXT"', async function () {
-    const nextButton = await this.driver.findElement(By.className('TransferPayNow'))
 
-    // Add a delay of 1 second before clicking the button
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  
-    // Click the button
-    await nextButton.click();
+
+
+
+import { lazy, Suspense } from 'react';
+
+When('I swipe to pay', async function () {
+    const {isDragging} = await import('../../src/views/paynow/SwipeToPay.js')
+    console.log(isDragging);
+
 });
 
 Then('I will be brought to a successful PayNow transfer page', async function () {

@@ -11,13 +11,16 @@ const SwipeToPay = ({ handleSubmit }) => {
   const [containerBounds, setContainerBounds] = useState({});
   const [maxbuttonWidth, setMaxButtonWidth] = useState({x:1000})
   const [paymentTriggered, setPaymentTriggered] = useState(false)
-  
+  const [sliderinput, setSliderInput] = useState('')
 
   useEffect(() => {
     const buttonElement = buttonRef.current;
     const containerElement = containerRef.current;
     const windowWidth = window.innerWidth;
-
+    const containerRect = containerBounds;
+    const containerWidth = containerRect.width - buttonElement.offsetWidth - windowWidth * 0.02;
+    setMaxButtonWidth({x:containerWidth});
+  
     const handleTouchStart = (event) => {
       event.preventDefault();
       setIsDragging(true);
@@ -27,12 +30,7 @@ const SwipeToPay = ({ handleSubmit }) => {
     const handleTouchMove = (event) => {
       if (!isDragging) return;
       const mouseX = event.touches[0].clientX;
-
-      const containerRect = containerBounds;
-      const containerWidth = containerRect.width - buttonElement.offsetWidth - windowWidth * 0.02;
-      setMaxButtonWidth({x:containerWidth});
       const newButtonX = mouseX - containerRect.left - buttonElement.offsetWidth / 2;
-
       const constrainedX = Math.max(0, Math.min(newButtonX, containerWidth));
       setButtonPosition({ x: constrainedX });
     };
@@ -59,10 +57,11 @@ const SwipeToPay = ({ handleSubmit }) => {
 
       window.removeEventListener('resize', updateContainerBounds);
     };
-  }, [isDragging, dragStartPosition.x, containerBounds.width]);
+  }, [sliderinput, isDragging, dragStartPosition.x, containerBounds.width]);
 
 
   useEffect(() => {
+    console.log(buttonPosition, isDragging, maxbuttonWidth, paymentTriggered)
     if (!isDragging && buttonPosition.x >0 && buttonPosition.x < maxbuttonWidth.x) {
       const animationDuration = 0.3;
       const animationDelay = 10;
@@ -92,21 +91,36 @@ const SwipeToPay = ({ handleSubmit }) => {
               handleSubmit();
             }, 500)
           }
-    }, [isDragging]);
+    }, [isDragging, sliderinput]);
 
 
   const shouldHideText = buttonPosition.x > containerBounds.width / 3;
 
+  const handleSliderInput = (event) => {
+    const value = event.target.value
+    if (value == 100){
+      setButtonPosition(maxbuttonWidth)
+    }
+    setSliderInput(value)
+  }
   
   return (
-    <div className="BasedContainer" ref={containerRef}>
-      <button className="SwiperButton" ref={buttonRef} style={{ left: `${buttonPosition.x}px` }}>
-        <img src="/assets/expand.png" className="swipeimage" alt="Swipe Icon" />
-      </button>
-      <div className="SwiperButton2" style={{ width: `${buttonPosition.x}px` }}></div>
-      <p className="swipertext" style={{ opacity: shouldHideText ? 0 : 1 }}>Swipe To Pay</p>
+    <div>
+      <div className="BasedContainer" ref={containerRef}>
+        <button className="SwiperButton" id="swiperbutton" ref={buttonRef} style={{ left: `${buttonPosition.x}px` }} draggable='true'>
+          <img src="/assets/expand.png" className="swipeimage" alt="Swipe Icon" />
+        </button>
+        <div className="SwiperButton2" style={{ width: `${buttonPosition.x}px` }}></div>
+        <p className="swipertext" style={{ opacity: shouldHideText ? 0 : 1 }}>Swipe To Pay</p>
+        <div className='endButton' id='endbutton'></div>
+      </div>
+      <div>
+        <input type='numeric' id='inputslider' className='inputsliderprop' value={sliderinput} onInput={handleSliderInput}/>
+      </div>
     </div>
   );
 };
+
+export const isDragging = 'drag';
 
 export default SwipeToPay;

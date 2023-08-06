@@ -24,7 +24,7 @@ const Accounts = () => {
           try {
             const response = await axios.get(`https://dbs-backend-service-ga747cgfta-as.a.run.app/users/${userID}/home`);
             const parsedData = response.data
-
+            console.log(parsedData)
             setUserData(parsedData.account);
           } catch (error) {
             console.log(error);
