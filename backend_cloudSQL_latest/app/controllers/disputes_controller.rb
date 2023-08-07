@@ -10,7 +10,24 @@ class DisputesController < ApplicationController
     data={awaitingactionFTD: num_disputes}
     render json: data, status: :ok #http 200
   end
+  def update_status()
+    params[:id]=params[:id].to_i
+    params[:transactions_id]=params[:transactions_id].to_i
+    if params[:dispute_action]=="withdraw"
+      
+      withdraw_dispute
 
+    elsif params[:dispute_action]=="refute"
+      puts "refute"
+      refute_dispute
+    elsif params[:dispute_action]=="resolve"
+      puts "resolve"
+      resolve_dispute
+    else
+      data={success: "false", error: "no such dispute action"}
+      render json: data, status: :unprocessable_entity #http 422
+    end
+  end
   #post 'users/:id/transactions/:id/withdraw_dispute', to: 'disputes#withdraw_dispute'
   def withdraw_dispute()
     dispute_params = params.permit(:date_and_time, :day_and_date)
