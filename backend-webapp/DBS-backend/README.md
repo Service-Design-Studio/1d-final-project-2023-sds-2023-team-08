@@ -61,4 +61,4 @@ This is the service broker of the banking app to redirect incoming requests to t
 | GET | /users/:id/transactions/:transaction_id/refund_details | Transaction and Disputes service | /users/:id/transactions/:id/dispute/refund-details |
 | GET | /user/:id/transaction_detail_for_disputes_involving_use | Transaction and Disputes service | /user/:id/disputes/disputes-with-transaction-details |
 | GET | /users/:id/paynows/search_by_phone/:phonenumber | Transaction and Disputes service | /users/:id/paynows/details/:phonenumber |
-| POST | /disputes/generate_dispute_comment | VertexAI service | /users/:id/transactions/:transaction_id |
+| POST | /disputes/generate_dispute_comment | VertexAI service | /generate_text |
