@@ -24,9 +24,9 @@ This is the Transaction and Disputes microservice which is linked to the main da
 * connect to local database by going under default section and modifying the username and password field respectively in database.yml file
 * run the following :
 * `rails db:create    # Creates the database`
-*`rails db:migrate   # Runs database migrations`
-*`rails db:seed      # Seeds the database with initial data (if applicable)` 
-*to run the app locally, run `rails server` and open localhost
+* `rails db:migrate   # Runs database migrations`
+* `rails db:seed      # Seeds the database with initial data (if applicable)` 
+* to run the app locally, run `rails server` and open localhost
 
 ### Prerequisite: Deployment to GCloud
 *set up a project in gcloud console
