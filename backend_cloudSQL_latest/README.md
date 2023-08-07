@@ -3,7 +3,7 @@
 This README documents whatever steps are necessary to get the
 application up and running.
 
-This README also explains the project file structure and usage.
+This README also explains the project usage.
 
 ### Introduction
 This is the Transaction and Disputes microservice which is linked to the main database of the banking app.
@@ -46,7 +46,9 @@ This is the Transaction and Disputes microservice which is linked to the main da
 *cd to /backend_cloudSQL_latest folder
 *run `glocud builds submit` to deploy
 
+### USAGE
 ### API Endpoints
+
 ### Users resource
 | HTTP Verbs | Endpoints | Controller | description |
 |--- | --- | --- |--- |
@@ -72,7 +74,10 @@ This is the Transaction and Disputes microservice which is linked to the main da
 | POST | /users/:id/transactions/:transactions_id/disputes | disputes#create | Creation of dispute related to transaction with id :transaction_id by user with :id |
 | PUT | users/:id/transactions/:id/dispute/status | disputes#update_status | update status field of dispute ( supports withdraw , refute and resolve dispute actions ) |
 
-
+### Paynows resource
+| HTTP Verbs | Endpoints | Controller | description |
+|--- | --- | --- |--- |
+| GET | users/:id/paynows/details/:phonenumber | paynows#search_by_phone | Returns details required for paynow page based on user with :id when user searches for phone number :phonenumber |
 
 
 ### Technologies Used
