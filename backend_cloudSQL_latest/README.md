@@ -6,7 +6,7 @@ application up and running.
 This README also explains the project usage.
 
 ### Introduction
-This is the Transaction and Disputes microservice which is linked to the main database of the banking app.
+This is the Transaction and Disputes microservice which is linked to the main posgresql database of the banking app. Built using Ruby On Rails.
 
 ### Prerequisites
 * Ensure you have ruby installed. This project uses ruby version 3.2.2 . run `ruby -v` in your terminal to check
@@ -29,22 +29,22 @@ This is the Transaction and Disputes microservice which is linked to the main da
 * to run the app locally, run `rails server` and open localhost
 
 ### Prerequisite: Deployment to GCloud
-*set up a project in gcloud console
-*ensure Google Cloud SDK is installed
-*refer to sections:
-*Before You Begin
-*Set the Project Default
-*set up a CloudSQL for POSGRESQL instance 
-*store secret values in secret manager
-*connect rails app to production database and storage
-*under [this link] (https://cloud.google.com/ruby/rails/run#windows) to setup the project on cloud. some of the files (dbpassword,.env file) are already created, thus edit accordingly
-*edit the substituitions section under cloudbuild.yml file with your respective values created during the above setup
+* set up a project in gcloud console
+* ensure Google Cloud SDK is installed
+* refer to sections:
+* Before You Begin
+* Set the Project Default
+* set up a CloudSQL for POSGRESQL instance 
+* store secret values in secret manager
+* connect rails app to production database and storage
+* under [this link] (https://cloud.google.com/ruby/rails/run#windows) to setup the project on cloud. some of the files (dbpassword,.env file) are already created, thus edit accordingly
+* edit the substituitions section under cloudbuild.yml file with your respective values created during the above setup
 
 ### Deployment to GCloud
-*run `gcloud init` in Google Cloud  SDK and follow the steps accordingly
-*run `gcloud auth login` to authenticate
-*cd to /backend_cloudSQL_latest folder
-*run `glocud builds submit` to deploy
+* run `gcloud init` in Google Cloud  SDK and follow the steps accordingly
+* run `gcloud auth login` to authenticate
+* cd to /backend_cloudSQL_latest folder
+* run `glocud builds submit` to deploy
 
 ### USAGE
 ### API Endpoints
