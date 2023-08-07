@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     id=params[:id]
     
     # Assuming you have the URL for the GET request
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/all_transactions")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/all-transactions-7-days")
 
     # Create a new Net::HTTP object with SSL enabled (if needed)
     http = Net::HTTP.new(url.host, url.port)
@@ -103,7 +103,7 @@ class UsersController < ApplicationController
     
     id=params[:id]
     # Assuming you have the URL for the GET request
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/default_acc")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/default-account")
 
     # Create a new Net::HTTP object with SSL enabled (if needed)
     http = Net::HTTP.new(url.host, url.port)

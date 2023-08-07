@@ -30929,3 +30929,109 @@ Processing by DisputesController#generate_dispute_comment as */*
 Completed 200 OK in 1473ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 880)
 
 
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:10:04 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16"}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 252ms (ActiveRecord: 0.0ms | Allocations: 3033)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:11:14 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 1.0ms | Allocations: 453)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:11:34 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 1.1ms | Allocations: 253)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:12:31 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.8ms | Allocations: 250)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:12:46 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.8ms | Allocations: 250)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:13:41 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms | Allocations: 249)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:15:13 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.9ms | Allocations: 250)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:16:33 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.9ms | Allocations: 249)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:16:51 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 1.5ms | Allocations: 249)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:18:17 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 171)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:18:28 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.9ms | Allocations: 249)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:19:16 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.8ms | Allocations: 249)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:20:25 +0800
+  
+SyntaxError (C:/Users/Vinny/Desktop/SDS-final/backend-webapp/DBS-backend/app/controllers/disputes_controller.rb:325: syntax error, unexpected end-of-input):
+  
+app/controllers/disputes_controller.rb:325: syntax error, unexpected end-of-input
+app/controllers/disputes_controller.rb:325: syntax error, unexpected end-of-input
+app/controllers/disputes_controller.rb:325: syntax error, unexpected end-of-input
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:20:41 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.7ms | Allocations: 249)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-08-07 13:22:07 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"hello"=>"hi", "date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16", "dispute"=>{}}
+No template found for DisputesController#withdraw_dispute, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 1.1ms | Allocations: 268)
+
+

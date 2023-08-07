@@ -9,7 +9,7 @@ class DisputesController < ApplicationController
   def new_disputes_received()
     id=params[:id]
     # Assuming you have the URL for the GET request
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/new_disputes_received")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/disputes/number-disputes-filed")
 
     # Create a new Net::HTTP object with SSL enabled (if needed)
     http = Net::HTTP.new(url.host, url.port)
@@ -31,8 +31,19 @@ class DisputesController < ApplicationController
     id=params[:id]
     transaction_id=params[:transactions_id]
 
-    raw=request.raw_post
-    puts raw
+    raw=request.raw_post  
+    parsed_data = JSON.parse(raw)
+  
+    # Add a new field to the parsed hash
+    parsed_data["dispute_action"] = "withdraw"
+  
+      # Convert the updated hash back to a JSON string
+    updated_raw = JSON.generate(parsed_data)
+  
+      # Now you have the updated JSON string in `updated_raw`
+      
+    puts updated_raw
+     
     
     
 
@@ -52,17 +63,17 @@ class DisputesController < ApplicationController
     csrf_token = body["csrfToken"]
 
     #url and http setup
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/withdraw_dispute")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/dispute/status")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     
     
     
     #create post req
-    request = Net::HTTP::Post.new(url)
+    request = Net::HTTP::Put.new(url)
     request['Content-Type'] = 'application/json'
     request['X-CSRF-Token'] = csrf_token
-    request.body = raw
+    request.body = updated_raw
 
     #send POST and get response
     response = http.request(request)
@@ -70,7 +81,7 @@ class DisputesController < ApplicationController
 
     #return response
     render json: response.body
-  
+
   end 
   #post 'users/:id/transactions/:id/refute_dispute', to: 'disputes#refute_dispute'
   def refute_dispute()
@@ -78,8 +89,14 @@ class DisputesController < ApplicationController
     transaction_id=params[:transactions_id]
 
     raw=request.raw_post
-    puts raw
-    
+    parsed_data = JSON.parse(raw)
+  
+    # Add a new field to the parsed hash
+    parsed_data["dispute_action"] = "refute"
+  
+      # Convert the updated hash back to a JSON string
+    updated_raw = JSON.generate(parsed_data)
+
     
 
     # Assuming you have the URL for the GET request
@@ -98,17 +115,17 @@ class DisputesController < ApplicationController
     csrf_token = body["csrfToken"]
 
     #url and http setup
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/refute_dispute")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/dispute/status")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     
     
     
     #create post req
-    request = Net::HTTP::Post.new(url)
+    request = Net::HTTP::Put.new(url)
     request['Content-Type'] = 'application/json'
     request['X-CSRF-Token'] = csrf_token
-    request.body = raw
+    request.body = updated_raw
 
     #send POST and get response
     response = http.request(request)
@@ -128,6 +145,13 @@ class DisputesController < ApplicationController
 
     raw=request.raw_post
     puts raw
+    parsed_data = JSON.parse(raw)
+  
+    # Add a new field to the parsed hash
+    parsed_data["dispute_action"] = "resolve"
+  
+      # Convert the updated hash back to a JSON string
+    updated_raw = JSON.generate(parsed_data)
     
     
 
@@ -147,17 +171,17 @@ class DisputesController < ApplicationController
     csrf_token = body["csrfToken"]
 
     #url and http setup
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/resolve_dispute")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/dispute/status")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     
     
     
     #create post req
-    request = Net::HTTP::Post.new(url)
+    request = Net::HTTP::Put.new(url)
     request['Content-Type'] = 'application/json'
     request['X-CSRF-Token'] = csrf_token
-    request.body = raw
+    request.body = updated_raw
 
     #send POST and get response
     response = http.request(request)
@@ -175,7 +199,7 @@ class DisputesController < ApplicationController
   id=params[:id]
   transaction_id=params[:transactions_id]
   # Assuming you have the URL for the GET request
-  url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/refund_details")
+  url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/transactions/#{transaction_id}/dispute/refund-details")
 
   # Create a new Net::HTTP object with SSL enabled (if needed)
   http = Net::HTTP.new(url.host, url.port)
@@ -200,7 +224,7 @@ class DisputesController < ApplicationController
     id=params[:id]
     
     # Assuming you have the URL for the GET request
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/user/#{id}/transaction_detail_for_disputes_involving_user")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/user/#{id}/disputes/disputes-with-transaction-details")
   
     # Create a new Net::HTTP object with SSL enabled (if needed)
     http = Net::HTTP.new(url.host, url.port)

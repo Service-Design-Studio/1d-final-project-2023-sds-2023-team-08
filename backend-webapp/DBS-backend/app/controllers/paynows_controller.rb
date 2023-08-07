@@ -20,7 +20,7 @@ class PaynowsController < ApplicationController
     id=params[:id]
     phone=params[:phonenumber]
     # Assuming you have the URL for the GET request
-    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/paynows/search_by_phone/#{phone}")
+    url = URI("https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users/#{id}/paynows/#{phone}/details")
   
     # Create a new Net::HTTP object with SSL enabled (if needed)
     http = Net::HTTP.new(url.host, url.port)
