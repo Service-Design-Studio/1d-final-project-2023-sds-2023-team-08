@@ -14,7 +14,10 @@ const EnterRecipient = () => {
     const [recipientAccnum, setrecipientAccnum] = useState('');
     const [senderAccnum, setsenderAccnum] = useState('');
     const [senderAccname, setsenderAccname] = useState('');
-    const [warning, setWarning] = useState(false)
+    const [warning, setWarning] = useState(false);
+    const [clipboardText, setClipboardText] = useState('');
+    const [showBottomSection, setShowBottomSection] = useState(false);
+
 
     useEffect(() => {
         const fetchCSRFData = async () => {
@@ -51,6 +54,7 @@ const EnterRecipient = () => {
         };
 
         checkWarning();
+        getNickname();
         }, [recipientPhoneNumber]);
 
     const getNickname = async () => {
@@ -111,6 +115,38 @@ const EnterRecipient = () => {
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
 
+    const handleReadClipboard = async () => {
+        try {
+            const text = await navigator.clipboard.readText();
+            const trimtext = text.trim()
+            setClipboardText(trimtext);
+            console.log(clipboardText)
+        } catch (error) {
+            console.error('Failed to read clipboard:', error);
+        }
+    };    
+
+    const readClipBoard = async () =>{
+        handleReadClipboard();
+        if (clipboardText === recipientPhoneNumber) {
+            setShowBottomSection(false)
+        } else if (clipboardText.length === 8 && clipboardText[0] === '9' || clipboardText.length === 8 && clipboardText[0] === '8') {
+            setShowBottomSection(true)
+        } else if (clipboardText.length === 11  && clipboardText[0] === "+" || clipboardText.length===12 && clipboardText[0] === "+") {
+            setShowBottomSection(true)
+        }
+    };
+
+    const setAutofill = () => {
+        const cleaned_clipboardText = clipboardText.replace("+65", '') 
+        setrecipientPhoneNumber(cleaned_clipboardText)
+        setShowBottomSection(false)
+    };
+
+    const stopFocus = () => {
+        setShowBottomSection(false)
+    }
+
     return(
         <div className = 'overall'>
             <div className = 'RefuteDisputeHeader'>
@@ -133,22 +169,32 @@ const EnterRecipient = () => {
                     </div>
                     <form className='formcontainer'>
                         <input
-                            type="number"
+                            type="numeric"
                             className="eightdigitER"
                             placeholder="Recipient's Mobile No."
                             onKeyDown={blockInvalidChar}
                             value={recipientPhoneNumber}
                             onInput={handleInputChange}
                             onBlur={getNickname}
+                            onFocus={readClipBoard}
                             />
                     </form>
                 </div>
             </div>
+        
+            { showBottomSection && 
+            <div className='autofillpaynow'>
+                <button className='autofillcontainer' onClick={setAutofill} style={{width:'30vw', marginLeft:0}}>
+                    <p className="autofilltext">Autofill</p>
+                    <p className='bankaccnumbers'>{clipboardText}</p>
+                </button>
+            </div>
+            }
 
             {invalidmessage.length > 0 ? (<p className='WarningMessagePaynow'>{invalidmessage}</p>
             ) : (<div></div>)}
 
-            <div className='senderboxER'>
+            <div className='senderboxERflex' onClick={stopFocus}>
                 <div className='recipientdeets'>
                     <p className='recipientnickER'>Recipient's Nickname</p>
                     <p className='recipientnameER'>{recipientNickname}</p>
