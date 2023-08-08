@@ -48,7 +48,12 @@ def generate_detailed_status(user)
         dispute_date=Date.strptime(self.date_time.split(', ').last, '%d %B %Y')
         date_status_is_raised=isUnknownTransact ? dispute_date : dispute_date+3.days #the date can only either be when unknown transaction/ auto raise to dbs
         thirty_days_from_status_change=date_status_is_raised+ 30.days
-        return "This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by #{thirty_days_from_status_change.strftime('%a, %d %B %Y')}"
+        if isUnknownTransact 
+            return "This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by #{thirty_days_from_status_change.strftime('%a, %d %B %Y')} "
+        else
+            return "The recipient did not respond within 3 working days.Your dispute has been automatically raised to the DBS claims team. You will hear back from us latest by #{thirty_days_from_status_change.strftime('%a, %d %B %Y')} "
+        end
+        
       
     when "Withdrawn"
         return "Withdrawn by Recipient"

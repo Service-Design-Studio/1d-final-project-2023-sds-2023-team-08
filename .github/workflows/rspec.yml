@@ -34,5 +34,5 @@ jobs:
 
     - name: Run RSpec tests
       run: |
-        cd backend-webapp/DBS-backend
+        cd backend_cloudSQL_latest
         bundle exec rspec spec/models/dispute_spec.rb spec/models/paynow_spec.rb
