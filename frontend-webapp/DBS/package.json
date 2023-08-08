@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cucumber/cucumber": "^9.1.1",
     "@react-navigation/material-top-tabs": "^6.6.2",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
@@ -67,7 +66,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
-    "@cucumber/cucumber": "^9.1.2",
+    "@cucumber/cucumber": "^9.3.0",
     "babel-jest": "^29.5.0"
   },
   "jest": {
