@@ -1664,3 +1664,422 @@ Processing by DisputesController#index as HTML
 Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.4ms | Allocations: 3470)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (19.1ms)[0m  [1m[35mALTER SEQUENCE users_id_seq RESTART WITH 0[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (11.2ms)[0m  [1m[35mALTER SEQUENCE users_id_seq RESTART WITH 1[0m
+  [1m[36mPaynow Delete All (2.9ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (4.3ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (5.1ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (3.6ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (3.5ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-08-08 05:09:21.817230"], ["updated_at", "2023-08-08 05:09:21.817230"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-08-08 05:09:21.822219"], ["updated_at", "2023-08-08 05:09:21.822219"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-08-08 05:09:21.825099"], ["updated_at", "2023-08-08 05:09:21.825099"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-08-08 05:09:21.828028"], ["updated_at", "2023-08-08 05:09:21.828028"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-08-08 05:09:21.831068"], ["updated_at", "2023-08-08 05:09:21.831068"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-08-08 05:09:21.834244"], ["updated_at", "2023-08-08 05:09:21.834244"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-08-08 05:09:21.837752"], ["updated_at", "2023-08-08 05:09:21.837752"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-08-08 05:09:21.841374"], ["updated_at", "2023-08-08 05:09:21.841374"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (1.8ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:21.965050"], ["updated_at", "2023-08-08 05:09:21.965050"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:21.971127"], ["updated_at", "2023-08-08 05:09:21.971127"], ["user_id", 6]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:21.981132"], ["updated_at", "2023-08-08 05:09:21.981132"], ["user_id", 7]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:21.985341"], ["updated_at", "2023-08-08 05:09:21.985341"], ["user_id", 8]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:21.990145"], ["updated_at", "2023-08-08 05:09:21.990145"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:21.994879"], ["updated_at", "2023-08-08 05:09:21.994879"], ["user_id", 2]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:21.998688"], ["updated_at", "2023-08-08 05:09:21.998688"], ["user_id", 3]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:22.002888"], ["updated_at", "2023-08-08 05:09:22.002888"], ["user_id", 4]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:22.007556"], ["updated_at", "2023-08-08 05:09:22.007556"], ["user_id", 5]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (1.8ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888887"], ["created_at", "2023-08-08 05:09:22.020738"], ["updated_at", "2023-08-08 05:09:22.020738"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888888"], ["created_at", "2023-08-08 05:09:22.026157"], ["updated_at", "2023-08-08 05:09:22.026157"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888886"], ["created_at", "2023-08-08 05:09:22.030097"], ["updated_at", "2023-08-08 05:09:22.030097"], ["accnum", "539-23421-5"], ["bank", "DBS"], ["nickname", "vin"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888885"], ["created_at", "2023-08-08 05:09:22.033913"], ["updated_at", "2023-08-08 05:09:22.033913"], ["accnum", "539-23421-6"], ["bank", "DBS"], ["nickname", "bright"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888884"], ["created_at", "2023-08-08 05:09:22.037623"], ["updated_at", "2023-08-08 05:09:22.037623"], ["accnum", "539-23421-7"], ["bank", "DBS"], ["nickname", "tris"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (2.2ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-08-08 05:09:22.053275"], ["updated_at", "2023-08-08 05:09:22.053275"], ["account_id", 10], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-08-08 05:09:22.059652"], ["updated_at", "2023-08-08 05:09:22.059652"], ["account_id", 10], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-08-08 05:09:22.065717"], ["updated_at", "2023-08-08 05:09:22.065717"], ["account_id", 10], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-08-08 05:09:22.069563"], ["updated_at", "2023-08-08 05:09:22.069563"], ["account_id", 10], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-08-08 05:09:22.073350"], ["updated_at", "2023-08-08 05:09:22.073350"], ["account_id", 10], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-08-08 05:09:22.077585"], ["updated_at", "2023-08-08 05:09:22.077585"], ["account_id", 10], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-08-08 05:09:22.081853"], ["updated_at", "2023-08-08 05:09:22.081853"], ["account_id", 15], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-08-08 05:09:22.085684"], ["updated_at", "2023-08-08 05:09:22.085684"], ["account_id", 17], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-08-08 05:09:22.090002"], ["updated_at", "2023-08-08 05:09:22.090002"], ["account_id", 14], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-08-08 05:09:22.094304"], ["updated_at", "2023-08-08 05:09:22.094304"], ["account_id", 14], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-08-08 05:09:22.098648"], ["updated_at", "2023-08-08 05:09:22.098648"], ["account_id", 18], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.5ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-01 05:09:22.102561"], ["updated_at", "2023-08-08 05:09:22.105619"], ["date_time", "Tue, 01 Aug 2023 13:09"], ["id", 17]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-01 05:09:22.125091"], ["updated_at", "2023-08-08 05:09:22.125434"], ["date_time", "Tue, 01 Aug 2023 13:09"], ["id", 18]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-02 05:09:22.128669"], ["updated_at", "2023-08-08 05:09:22.128928"], ["date_time", "Wed, 02 Aug 2023 13:09"], ["id", 19]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-04 05:09:22.131868"], ["updated_at", "2023-08-08 05:09:22.132101"], ["date_time", "Fri, 04 Aug 2023 13:09"], ["id", 20]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-03 05:09:22.135703"], ["updated_at", "2023-08-08 05:09:22.135979"], ["date_time", "Thu, 03 Aug 2023 13:09"], ["id", 21]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.5ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-03 05:09:22.138989"], ["updated_at", "2023-08-08 05:09:22.139239"], ["date_time", "Thu, 03 Aug 2023 13:09"], ["id", 22]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-02 05:09:22.145505"], ["updated_at", "2023-08-08 05:09:22.145797"], ["date_time", "Wed, 02 Aug 2023 13:09"], ["id", 23]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.7ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-05 05:09:22.149042"], ["updated_at", "2023-08-08 05:09:22.149315"], ["date_time", "Sat, 05 Aug 2023 13:09"], ["id", 24]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-05 05:09:22.153345"], ["updated_at", "2023-08-08 05:09:22.153643"], ["date_time", "Sat, 05 Aug 2023 13:09"], ["id", 25]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-04 05:09:22.156848"], ["updated_at", "2023-08-08 05:09:22.157275"], ["date_time", "Fri, 04 Aug 2023 13:09"], ["id", 26]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-03 05:09:22.160921"], ["updated_at", "2023-08-08 05:09:22.161204"], ["date_time", "Thu, 03 Aug 2023 13:09"], ["id", 27]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-08-08 05:09:22.164973"], ["updated_at", "2023-08-08 05:09:22.164973"], ["account_id", 14], ["comments", "new trf"], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-08-08 05:09:22.168757"], ["updated_at", "2023-08-08 05:09:22.168757"], ["account_id", 14], ["comments", ""], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-30 05:09:22.172346"], ["updated_at", "2023-08-08 05:09:22.172605"], ["date_time", "Sun, 30 Jul 2023 13:09"], ["id", 28]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-30 05:09:22.175950"], ["updated_at", "2023-08-08 05:09:22.176331"], ["date_time", "Sun, 30 Jul 2023 13:09"], ["id", 29]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2023-08-08 13:09:37 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 37.4ms | Allocations: 522)
+Completed 200 OK in 244ms (Views: 77.4ms | ActiveRecord: 0.0ms | Allocations: 4831)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-08 13:09:39 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (1.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.7ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 200.4ms | Allocations: 36768)
+  Rendered layout layouts/application.html.erb (Duration: 621.0ms | Allocations: 71923)
+Completed 200 OK in 642ms (Views: 602.4ms | ActiveRecord: 25.1ms | Allocations: 75270)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.4ms)[0m  [1m[35mALTER SEQUENCE users_id_seq RESTART WITH 1[0m
+  [1m[36mPaynow Delete All (2.0ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (1.9ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (3.8ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (3.3ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (2.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-08-08 05:09:57.519403"], ["updated_at", "2023-08-08 05:09:57.519403"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-08-08 05:09:57.523881"], ["updated_at", "2023-08-08 05:09:57.523881"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-08-08 05:09:57.527348"], ["updated_at", "2023-08-08 05:09:57.527348"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-08-08 05:09:57.531061"], ["updated_at", "2023-08-08 05:09:57.531061"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-08-08 05:09:57.534144"], ["updated_at", "2023-08-08 05:09:57.534144"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-08-08 05:09:57.537326"], ["updated_at", "2023-08-08 05:09:57.537326"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-08-08 05:09:57.542589"], ["updated_at", "2023-08-08 05:09:57.542589"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-08-08 05:09:57.546533"], ["updated_at", "2023-08-08 05:09:57.546533"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.9ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:57.571190"], ["updated_at", "2023-08-08 05:09:57.571190"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.7ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:57.577270"], ["updated_at", "2023-08-08 05:09:57.577270"], ["user_id", 6]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:57.588315"], ["updated_at", "2023-08-08 05:09:57.588315"], ["user_id", 7]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:57.592330"], ["updated_at", "2023-08-08 05:09:57.592330"], ["user_id", 8]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:57.596980"], ["updated_at", "2023-08-08 05:09:57.596980"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-08-08 05:09:57.601197"], ["updated_at", "2023-08-08 05:09:57.601197"], ["user_id", 2]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:57.606049"], ["updated_at", "2023-08-08 05:09:57.606049"], ["user_id", 3]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:57.610293"], ["updated_at", "2023-08-08 05:09:57.610293"], ["user_id", 4]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.5ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-08-08 05:09:57.614954"], ["updated_at", "2023-08-08 05:09:57.614954"], ["user_id", 5]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.5ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888887"], ["created_at", "2023-08-08 05:09:57.629156"], ["updated_at", "2023-08-08 05:09:57.629156"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888888"], ["created_at", "2023-08-08 05:09:57.633150"], ["updated_at", "2023-08-08 05:09:57.633150"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888886"], ["created_at", "2023-08-08 05:09:57.636886"], ["updated_at", "2023-08-08 05:09:57.636886"], ["accnum", "539-23421-5"], ["bank", "DBS"], ["nickname", "vin"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888885"], ["created_at", "2023-08-08 05:09:57.640849"], ["updated_at", "2023-08-08 05:09:57.640849"], ["accnum", "539-23421-6"], ["bank", "DBS"], ["nickname", "bright"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888884"], ["created_at", "2023-08-08 05:09:57.644159"], ["updated_at", "2023-08-08 05:09:57.644159"], ["accnum", "539-23421-7"], ["bank", "DBS"], ["nickname", "tris"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-08-08 05:09:57.660045"], ["updated_at", "2023-08-08 05:09:57.660045"], ["account_id", 19], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-08-08 05:09:57.664561"], ["updated_at", "2023-08-08 05:09:57.664561"], ["account_id", 19], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-08-08 05:09:57.670737"], ["updated_at", "2023-08-08 05:09:57.670737"], ["account_id", 19], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-08-08 05:09:57.674645"], ["updated_at", "2023-08-08 05:09:57.674645"], ["account_id", 19], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-08-08 05:09:57.679447"], ["updated_at", "2023-08-08 05:09:57.679447"], ["account_id", 19], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-08-08 05:09:57.684287"], ["updated_at", "2023-08-08 05:09:57.684287"], ["account_id", 19], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-08-08 05:09:57.688371"], ["updated_at", "2023-08-08 05:09:57.688371"], ["account_id", 24], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.5ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-08-08 05:09:57.693170"], ["updated_at", "2023-08-08 05:09:57.693170"], ["account_id", 26], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-08-08 05:09:57.698107"], ["updated_at", "2023-08-08 05:09:57.698107"], ["account_id", 23], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-08-08 05:09:57.702419"], ["updated_at", "2023-08-08 05:09:57.702419"], ["account_id", 23], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-08-08 05:09:57.706709"], ["updated_at", "2023-08-08 05:09:57.706709"], ["account_id", 27], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-02 05:09:57.709915"], ["updated_at", "2023-08-08 05:09:57.710196"], ["date_time", "Wed, 02 Aug 2023 13:09"], ["id", 30]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-02 05:09:57.715909"], ["updated_at", "2023-08-08 05:09:57.716289"], ["date_time", "Wed, 02 Aug 2023 13:09"], ["id", 31]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-05 05:09:57.719870"], ["updated_at", "2023-08-08 05:09:57.720236"], ["date_time", "Sat, 05 Aug 2023 13:09"], ["id", 32]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-03 05:09:57.723739"], ["updated_at", "2023-08-08 05:09:57.724018"], ["date_time", "Thu, 03 Aug 2023 13:09"], ["id", 33]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-04 05:09:57.727441"], ["updated_at", "2023-08-08 05:09:57.727760"], ["date_time", "Fri, 04 Aug 2023 13:09"], ["id", 34]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-02 05:09:57.730900"], ["updated_at", "2023-08-08 05:09:57.731177"], ["date_time", "Wed, 02 Aug 2023 13:09"], ["id", 35]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-03 05:09:57.736164"], ["updated_at", "2023-08-08 05:09:57.736482"], ["date_time", "Thu, 03 Aug 2023 13:09"], ["id", 36]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-01 05:09:57.739572"], ["updated_at", "2023-08-08 05:09:57.739825"], ["date_time", "Tue, 01 Aug 2023 13:09"], ["id", 37]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-04 05:09:57.743587"], ["updated_at", "2023-08-08 05:09:57.743932"], ["date_time", "Fri, 04 Aug 2023 13:09"], ["id", 38]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-04 05:09:57.748220"], ["updated_at", "2023-08-08 05:09:57.748554"], ["date_time", "Fri, 04 Aug 2023 13:09"], ["id", 39]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-08-01 05:09:57.751583"], ["updated_at", "2023-08-08 05:09:57.751820"], ["date_time", "Tue, 01 Aug 2023 13:09"], ["id", 40]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-08-08 05:09:57.755422"], ["updated_at", "2023-08-08 05:09:57.755422"], ["account_id", 23], ["comments", "new trf"], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-08-08 05:09:57.759297"], ["updated_at", "2023-08-08 05:09:57.759297"], ["account_id", 23], ["comments", ""], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-12 05:09:57.762780"], ["updated_at", "2023-08-08 05:09:57.763086"], ["date_time", "Wed, 12 Jul 2023 13:09"], ["id", 41]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-13 05:09:57.766637"], ["updated_at", "2023-08-08 05:09:57.767077"], ["date_time", "Thu, 13 Jul 2023 13:09"], ["id", 42]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for 127.0.0.1 at 2023-08-08 13:10:08 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (2.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 152.1ms | Allocations: 37049)
+  Rendered layout layouts/application.html.erb (Duration: 254.7ms | Allocations: 72107)
+Completed 200 OK in 297ms (Views: 242.4ms | ActiveRecord: 21.6ms | Allocations: 78966)
+
+

@@ -5,7 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+table_name = 'users' 
+column_name = 'id' 
+starting_value = 1 # so as to start user id from 0 after reseeding 
+ActiveRecord::Base.connection.execute( "ALTER SEQUENCE #{table_name}_#{column_name}_seq RESTART WITH #{starting_value}" )
 #just to reset database
 Paynow.delete_all
 Dispute.delete_all
