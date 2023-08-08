@@ -94,10 +94,11 @@
     padding: 0;
 }
 
-.senderboxER{
+.senderboxERflex{
     flex-direction: column;
     width: 100vw;
     background-color: transparent;
+    height: 75vh;
 }
 
 .recipientdeets{
@@ -151,4 +152,11 @@
     margin: auto;
     font-size: 14px;
     color: #FF2C4E;
+}
+
+.autofillpaynow {
+    background-color: white;
+    width: 30vw;
+    margin-top: -2.5vh;
+    margin-left: 20vw;
 }

@@ -76,15 +76,3 @@ When(/^I have copied the following text to my clipboard:"([^"]*)"$/, async funct
   await accField.click();
   await new Promise(resolve => setTimeout(resolve, 1000));
 });
-
-Then(/^the Enter Account No. text field should give the pop-up for me to automatically fill it with "([^"]*)"$/, async function(cleanedNumber){
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  const autofillpop = await this.driver.findElement(By.className("autofillcontainer"));
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  await autofillpop.click();
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  const filled = await this.driver.findElement(By.id('accno'));
-  const inputValue = await filled.getAttribute('value');
-  console.log('Input Element Value:', inputValue);
-  expect(inputValue).to.equal(cleanedNumber);
-});

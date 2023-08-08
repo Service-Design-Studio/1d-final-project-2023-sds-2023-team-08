@@ -1,7 +1,7 @@
 const { Before, After, setDefaultTimeout } = require("@cucumber/cucumber")
 const { Builder } = require("selenium-webdriver")
 var chrome = require("selenium-webdriver/chrome")
-// var options = new chrome.Options().headless();
+var options = new chrome.Options().headless();
 var options = new chrome.Options()
 
 const width = 800
