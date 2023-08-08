@@ -29,7 +29,8 @@ def generate_detailed_status(user)
     when "Dispute Filed"
         dispute_date=Date.strptime(self.date_time.split(', ').last, '%d %B %Y')
         if (self.disputer_id == user.id)  
-            days= 3 - ( Date.today-dispute_date ).to_i
+            days= 3 - ( Date.today-dispute_date ).to_i-1 # -1 due to time zone  difference error
+            
             return "Recipient has #{days} working days left before this dispute is automatically raised to DBS"
         else
             date= dispute_date + 3.days

@@ -549,3 +549,424 @@ Processing by UsersController#login as HTML
   [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 AND "users"."password" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["LIMIT", 1]]
 Completed 422 Unprocessable Entity in 30ms (Views: 0.3ms | ActiveRecord: 11.8ms | Allocations: 5166)
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (1.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:38:33.936426"], ["updated_at", "2023-08-08 16:38:33.936426"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.8ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "98765432"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (1.0ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:38:33.949178"], ["updated_at", "2023-08-08 16:38:33.949178"], ["accnum", nil], ["bank", nil], ["nickname", "John"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "98765432"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:38:33.958135"], ["updated_at", "2023-08-08 16:38:33.958135"], ["accnum", nil], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '98765432'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:38:33.963280"], ["updated_at", "2023-08-08 16:38:33.963280"], ["accnum", nil], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '98765432'\n"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.7ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:38:33.970138"], ["updated_at", "2023-08-08 16:38:33.970138"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '98765432'\n"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Update (0.3ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-08-08 16:38:33.974136"], ["paid_bef_phone_num", nil], ["id", 32]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.5ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:38:33.983279"], ["updated_at", "2023-08-08 16:38:33.983279"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:38:33.986193"], ["updated_at", "2023-08-08 16:38:33.986193"], ["accnum", "9876543210"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Update (0.2ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-08-08 16:38:33.990012"], ["paid_bef_phone_num", "---\n- '12345678'\n"], ["id", 33]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:38:33.993430"], ["updated_at", "2023-08-08 16:38:33.993430"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '12345678'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:38:33.995065"], ["updated_at", "2023-08-08 16:38:33.995065"], ["accnum", "9876543210"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.9ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9999999999"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (1.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:40:27.404000"], ["updated_at", "2023-08-08 16:40:27.404000"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (1.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "98765432"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:40:27.455086"], ["updated_at", "2023-08-08 16:40:27.455086"], ["accnum", nil], ["bank", nil], ["nickname", "John"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "98765432"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:40:27.460332"], ["updated_at", "2023-08-08 16:40:27.460332"], ["accnum", nil], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '98765432'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:40:27.465780"], ["updated_at", "2023-08-08 16:40:27.465780"], ["accnum", nil], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '98765432'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "12345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:40:27.469436"], ["updated_at", "2023-08-08 16:40:27.469436"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '98765432'\n"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Update (0.3ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-08-08 16:40:27.473165"], ["paid_bef_phone_num", nil], ["id", 41]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:40:27.481686"], ["updated_at", "2023-08-08 16:40:27.481686"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:40:27.483141"], ["updated_at", "2023-08-08 16:40:27.483141"], ["accnum", "9876543210"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Update (0.2ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-08-08 16:40:27.486525"], ["paid_bef_phone_num", "---\n- '12345678'\n"], ["id", 42]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:40:27.490881"], ["updated_at", "2023-08-08 16:40:27.490881"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '12345678'\n"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "12345678"], ["created_at", "2023-08-08 16:40:27.493579"], ["updated_at", "2023-08-08 16:40:27.493579"], ["accnum", "9876543210"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9999999999"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (1.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "85473263"], ["created_at", "2023-08-08 16:40:56.988614"], ["updated_at", "2023-08-08 16:40:56.988614"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (1.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "85473263"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "97614621"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "82121751"], ["created_at", "2023-08-08 16:40:57.043877"], ["updated_at", "2023-08-08 16:40:57.043877"], ["accnum", nil], ["bank", nil], ["nickname", "John"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "82121751"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "81396938"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "83269945"], ["created_at", "2023-08-08 16:40:57.050604"], ["updated_at", "2023-08-08 16:40:57.050604"], ["accnum", nil], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '99743237'\n"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "83269945"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "98939577"], ["created_at", "2023-08-08 16:40:57.057464"], ["updated_at", "2023-08-08 16:40:57.057464"], ["accnum", nil], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '87371743'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "98939577"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:40:57.061200"], ["updated_at", "2023-08-08 16:40:57.061200"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '97517738'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Update (0.4ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-08-08 16:40:57.064838"], ["paid_bef_phone_num", nil], ["id", 50]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:40:57.073968"], ["updated_at", "2023-08-08 16:40:57.073968"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "88928968"], ["created_at", "2023-08-08 16:40:57.075877"], ["updated_at", "2023-08-08 16:40:57.075877"], ["accnum", "9876543210"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Update (0.5ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-08-08 16:40:57.079734"], ["paid_bef_phone_num", "---\n- '88928968'\n"], ["id", 51]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.4ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", nil], ["created_at", "2023-08-08 16:40:57.085577"], ["updated_at", "2023-08-08 16:40:57.085577"], ["accnum", "1234567890"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", "---\n- '96114488'\n"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "96114488"], ["created_at", "2023-08-08 16:40:57.088088"], ["updated_at", "2023-08-08 16:40:57.088088"], ["accnum", "9876543210"], ["bank", nil], ["nickname", nil], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "1234567890"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9999999999"], ["LIMIT", 1]]
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "9876543210"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (2.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
