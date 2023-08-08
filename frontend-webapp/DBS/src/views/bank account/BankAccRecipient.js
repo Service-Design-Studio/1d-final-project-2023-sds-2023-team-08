@@ -42,7 +42,7 @@ const BankAccRecipientScreen = () => {
         if (recipientName.length == 0) {
             setWarningMessage('* Please fill in your Recipient Name')
         } else if (bankType == '') {
-            setWarningMessage('* Please chose a Bank')
+            setWarningMessage('* Please choose a Bank')
         } else if (recipientAccNum.length == 0) {
             setWarningMessage('* Please fill in your Recipient Bank Account Number')
         } else {

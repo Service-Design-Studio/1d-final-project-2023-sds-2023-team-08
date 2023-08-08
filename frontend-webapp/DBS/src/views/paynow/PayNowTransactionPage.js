@@ -101,7 +101,7 @@ const PayNowTransactionPage = () => {
                 <div className='rightside'>
                     <form className='barrrar'>
                         <input
-                            type="number"
+                            type="numeric"
                             id = "keyInAmtPaynow"
                             className="refundamount"
                             placeholder='0.00'

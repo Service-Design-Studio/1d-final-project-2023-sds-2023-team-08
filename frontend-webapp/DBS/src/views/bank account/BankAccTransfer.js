@@ -10,7 +10,7 @@ const BankTransferTransactionPage = () => {
     const location = useLocation();
     const bankrecipientdetails = location.state
 
-    const [transactionamount, setTransactionAmount] = useState(bankrecipientdetails.total_amount || '')
+    const [transactionamount, setTransactionAmount] = useState(bankrecipientdetails?.total_amount || '')
     const [transfercomment, setTransferComment] = useState('Transfer')
     const [emptyamount, setemptyamount] = useState('')
     const [userAcc, setUserAcc] = useState('')
@@ -38,12 +38,12 @@ const BankTransferTransactionPage = () => {
     newtransactiondata['dispute'] = false
     newtransactiondata['transfer_from_acc_name'] = userAccName
     newtransactiondata['transfer_from_acc_number'] = userAcc
-    newtransactiondata['recipient_name'] = bankrecipientdetails['name']
-    newtransactiondata['recipient_acc'] = bankrecipientdetails['acc']
+    newtransactiondata['recipient_name'] = (bankrecipientdetails?.name || 'valencia')
+    newtransactiondata['recipient_acc'] = (bankrecipientdetails?.acc || 342454350)
     newtransactiondata['mode_of_payment'] = 'Account Transfer'
     newtransactiondata['transfer_type'] = "FAST/IMMEDIATE"
-    newtransactiondata['recipient_bank'] = bankrecipientdetails['bank']
-    newtransactiondata['acc_no_hash'] = bankrecipientdetails['acc']
+    newtransactiondata['recipient_bank'] = (bankrecipientdetails?.bank || 'DBS/POSB')
+    newtransactiondata['acc_no_hash'] = (bankrecipientdetails?.acc || 342454350)
 
 
     const blockInvalidChar = e => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
@@ -94,9 +94,9 @@ const BankTransferTransactionPage = () => {
                 <div className = 'recipient_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p id='recipientName' className= 'accountname1'>{bankrecipientdetails['name']}</p>
+                        <p id='recipientName' className= 'accountname1'>{bankrecipientdetails?.name || 'valencia'}</p>
                         <div className= 'accountnumber1'>
-                            <p id = 'recipientAccNumber' className= 'accountnumber1'>{bankrecipientdetails['acc']}</p>
+                            <p id = 'recipientAccNumber' className= 'accountnumber1'>{bankrecipientdetails?.acc || 342454350}</p>
                         </div>  
                     </div>
                 </div>

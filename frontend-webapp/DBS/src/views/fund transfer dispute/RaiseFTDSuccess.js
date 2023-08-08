@@ -55,7 +55,7 @@ const RaiseFTDSuccess = () => {
                 </div>
             </div>
             
-            <p className='tncforrefund'>The other party will be notified of your Fund Transfer Dispute. No further action is required on your part.</p>
+            <p className='tncforrefund'>The other party has been notified of your Fund Transfer Dispute. No further action is required on your part.</p>
             <button id='closebutton' className='submitbutton1' onClick={()=>{}}>SHARE DISPUTE DETAILS</button>
         </div>
 

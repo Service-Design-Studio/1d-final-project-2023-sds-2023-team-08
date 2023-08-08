@@ -39,7 +39,7 @@ const FTDTransactionScreen = () => {
     },
     "Raised to DBS": {
       bgcolor: "#066DAF",
-      statustext: "PENDING"
+      statustext: "PENDING DBS ACTION"
     },
     "Resolved": {
       bgcolor: "#007D23",
