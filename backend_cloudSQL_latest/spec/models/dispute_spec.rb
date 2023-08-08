@@ -45,7 +45,7 @@ RSpec.describe Dispute, type: :model do
 
     it 'returns the correct detailed status for "Raised to DBS" status' do
       dispute = Dispute.create(status: 'Raised to DBS', dispute_reason: 'Unknown Transaction', date_time: 3.days.ago.to_date.strftime('%d %B %Y'))
-      expect(dispute.generate_detailed_status(user)).to eq("This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by #{(Date.strptime(dispute.date_time, '%d %B %Y') + 30.days).strftime('%a, %d %B %Y')}")
+      expect(dispute.generate_detailed_status(user)).to eq("This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by #{(Date.strptime(dispute.date_time, '%d %B %Y') + 30.days).strftime('%a, %d %B %Y')} ")
     end
   end
 end

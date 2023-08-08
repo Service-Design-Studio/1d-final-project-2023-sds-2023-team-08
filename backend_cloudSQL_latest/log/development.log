@@ -2083,3 +2083,111 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 297ms (Views: 242.4ms | ActiveRecord: 21.6ms | Allocations: 78966)
 
 
+Started GET "/users/32/home" for 127.0.0.1 at 2023-08-09 00:06:29 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+Completed 404 Not Found in 33ms (ActiveRecord: 8.4ms | Allocations: 7453)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:128:in `rescue in set_user'
+app/controllers/users_controller.rb:125:in `set_user'
+Started GET "/users/32/all_transactions" for 127.0.0.1 at 2023-08-09 00:06:31 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/32/all_transactions"):
+  
+Started GET "/users/32/home10" for 127.0.0.1 at 2023-08-09 00:06:31 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/32/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-08-09 00:06:31 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms | Allocations: 1247)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:128:in `rescue in set_user'
+app/controllers/users_controller.rb:125:in `set_user'
+Started GET "/users/32/home" for 127.0.0.1 at 2023-08-09 00:07:41 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms | Allocations: 1244)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:128:in `rescue in set_user'
+app/controllers/users_controller.rb:125:in `set_user'
+Started GET "/users/32/all-transactions-7-days" for 127.0.0.1 at 2023-08-09 00:07:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/32/all-transactions-7-days"):
+  
+Started GET "/users/32/home10" for 127.0.0.1 at 2023-08-09 00:07:41 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/32/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-08-09 00:07:41 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms | Allocations: 1241)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:128:in `rescue in set_user'
+app/controllers/users_controller.rb:125:in `set_user'
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-09 00:09:11 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+  [1m[36mAccount Load (2.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (1.7ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = $1[0m  [["account_id", 19]]
+  ↳ app/models/account.rb:11:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = $1[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:15:in `net_deposits'
+  [1m[36mTransaction Sum (0.3ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = $1[0m  [["account_id", 23]]
+  ↳ app/models/account.rb:11:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = $1[0m  [["recipient_account_number", "234-43941-0"]]
+  ↳ app/models/account.rb:15:in `net_deposits'
+Completed 200 OK in 273ms (Views: 0.4ms | ActiveRecord: 12.2ms | Allocations: 37243)
+
+
+Started GET "/users/1/all-transactions-7-days" for 127.0.0.1 at 2023-08-09 00:09:11 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/all-transactions-7-days"):
+  
+Started GET "/users/32/home10" for 127.0.0.1 at 2023-08-09 00:09:11 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/32/home10"):
+  
+Started GET "/users/999/home" for 127.0.0.1 at 2023-08-09 00:09:12 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"999"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 999], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.3ms | Allocations: 1243)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:128:in `rescue in set_user'
+app/controllers/users_controller.rb:125:in `set_user'
