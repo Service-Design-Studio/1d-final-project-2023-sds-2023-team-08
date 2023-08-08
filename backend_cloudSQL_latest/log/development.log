@@ -1,0 +1,1666 @@
+  [1m[35m (1063.8ms)[0m  [1m[35mCREATE DATABASE "backend_cloudSQL_development" ENCODING = 'unicode'[0m
+  [1m[35m (1032.7ms)[0m  [1m[35mCREATE DATABASE "backend_cloudSQL_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2023-07-24 13:55:06 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 37.5ms | Allocations: 695)
+Completed 200 OK in 225ms (Views: 73.2ms | ActiveRecord: 0.0ms | Allocations: 8236)
+
+
+  [1m[35m (42.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6232747740020114250)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230617181609)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password" character varying, "phone" character varying, "email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230617181609"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTransactions (20230617181656)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "transcation_name" character varying, "transaction_type" character varying, "recipient_account_number" character varying, "datetime" timestamp(6), "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230617181656"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAccounts (20230617181730)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "account_number" character varying, "initial_deposit" integer, "bank" character varying, "account_type" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230617181730"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdToAccounts (20230617182309)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_accounts_on_user_id" ON "accounts" ("user_id")[0m
+  [1m[35m (10.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230617182309"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAccountIdToTransactions (20230617182343)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "transactions" ADD "account_id" bigint NOT NULL[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_account_id" ON "transactions" ("account_id")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_01f020e267"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230617182343"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CorrectColNameTransaction (20230617184332)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "transactions" RENAME COLUMN "transcation_name" TO "transaction_name"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230617184332"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDisputes (20230703071436)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "disputes" ("id" bigserial primary key, "status" character varying, "disputer_id" character varying, "disputee_id" character varying, "dispute_reason" character varying, "dispute_reason_details" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703071436"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdateDisputeTable (20230703075513)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "disputes" RENAME COLUMN "disputer_id" TO "disputer_acc_id"[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "disputes" DROP COLUMN "disputee_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703075513"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdateDisputeTableAgain (20230703080732)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "disputes" ADD "disputee_id" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "disputes" ADD "disputer_id" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703080732"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddForeignKeys (20230703082730)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "disputes" ADD "associated_transaction_id" bigint[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_disputes_on_associated_transaction_id" ON "disputes" ("associated_transaction_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "disputes" ADD CONSTRAINT "fk_rails_9effd5fee3"
+FOREIGN KEY ("associated_transaction_id")
+  REFERENCES "transactions" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "transactions" ADD "dispute_id" bigint[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_dispute_id" ON "transactions" ("dispute_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_7f7f0e0eda"
+FOREIGN KEY ("dispute_id")
+  REFERENCES "disputes" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703082730"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdateDisputes (20230703093506)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "disputes" DROP CONSTRAINT "fk_rails_9effd5fee3"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "disputes" DROP COLUMN "associated_transaction_id"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "disputes" ADD "transaction_id" bigint[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE INDEX "index_disputes_on_transaction_id" ON "disputes" ("transaction_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "disputes" ADD CONSTRAINT "fk_rails_44ee96640f"
+FOREIGN KEY ("transaction_id")
+  REFERENCES "transactions" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703093506"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdateTransactionRemoveForeignKey (20230703100608)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "transactions" DROP CONSTRAINT "fk_rails_7f7f0e0eda"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "transactions" DROP COLUMN "dispute_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703100608"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeColType (20230703195217)
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "disputes" ALTER COLUMN "disputee_id" TYPE integer[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6232747740020114250)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6232747740020114250)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColType (20230703195217)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.2ms)[0m  [1m[35mALTER TABLE "disputes" ALTER COLUMN "disputee_id" TYPE integer USING disputee_id::integer[0m
+  [1m[35m (8.2ms)[0m  [1m[35mALTER TABLE "disputes" ALTER COLUMN "disputer_id" TYPE integer USING disputer_id::integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230703195217"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFieldsTransactionTable (20230710070004)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "transactions" ADD "comments" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "transactions" ADD "date_time" character varying[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "transactions" ADD "intrabank" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230710070004"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFieldsToDisputeTable (20230710070731)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "disputes" ADD "date_time" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "disputes" ADD "day_time" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "disputes" ADD "further_action" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230710070731"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RenameColInDispute (20230710080320)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "disputes" RENAME COLUMN "day_time" TO "day_date"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230710080320"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePaynows (20230712083945)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "paynows" ("id" bigserial primary key, "phone" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230712083945"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddForeignKeyPaynow (20230712133739)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "paynows" ADD "account_id" bigint NOT NULL[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE INDEX "index_paynows_on_account_id" ON "paynows" ("account_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mALTER TABLE "paynows" ADD CONSTRAINT "fk_rails_4a992f461c"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230712133739"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdatePaynowTable (20230712183303)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "paynows" ADD "accnum" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "paynows" ADD "bank" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "paynows" ADD "nickname" character varying[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "paynows" DROP CONSTRAINT "fk_rails_4a992f461c"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "paynows" DROP COLUMN "account_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230712183303"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdateIntToFloatTransactions (20230713092525)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.7ms)[0m  [1m[35mALTER TABLE "transactions" ALTER COLUMN "amount" TYPE float[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230713092525"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdateFloatToDecimalTransaction (20230713093804)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.7ms)[0m  [1m[35mALTER TABLE "transactions" ALTER COLUMN "amount" TYPE decimal(20,2)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230713093804"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Rollbaack1 (20230713094619)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.9ms)[0m  [1m[35mALTER TABLE "transactions" ALTER COLUMN "amount" TYPE float[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230713094619"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnPaynow (20230717171117)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "paynows" ADD "paid_bef_phone_num" character varying[] DEFAULT '{}'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230717171117"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to EditColPaynowTable (20230717175117)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.9ms)[0m  [1m[35mALTER TABLE "paynows" ALTER COLUMN "paid_bef_phone_num" TYPE text, ALTER COLUMN "paid_bef_phone_num" SET DEFAULT '[]'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230717175117"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdatePaidBefPaynowTable (20230717182400)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230717182400"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdatePaidBefPaynowTable2 (20230717184507)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "paynows" ALTER COLUMN "paid_bef_phone_num" TYPE text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230717184507"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-07-24 07:05:55.629834"], ["updated_at", "2023-07-24 07:05:55.629834"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6232747740020114250)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPaynow Delete All (1.3ms)[0m  [1m[31mDELETE FROM "paynows"[0m
+  [1m[36mDispute Delete All (1.6ms)[0m  [1m[31mDELETE FROM "disputes"[0m
+  [1m[36mTransaction Delete All (1.6ms)[0m  [1m[31mDELETE FROM "transactions"[0m
+  [1m[36mAccount Delete All (1.4ms)[0m  [1m[31mDELETE FROM "accounts"[0m
+  [1m[36mUser Delete All (1.0ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "junxiang"], ["password", "[FILTERED]"], ["phone", "+6588888888"], ["email", "junxiang@gmail.com"], ["created_at", "2023-07-24 07:06:17.345635"], ["updated_at", "2023-07-24 07:06:17.345635"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "wei xuan"], ["password", "[FILTERED]"], ["phone", "+6588888887"], ["email", "wx@gmail.com"], ["created_at", "2023-07-24 07:06:17.351577"], ["updated_at", "2023-07-24 07:06:17.351577"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "vinny"], ["password", "[FILTERED]"], ["phone", "+6588888886"], ["email", "vinny@gmail.com"], ["created_at", "2023-07-24 07:06:17.355133"], ["updated_at", "2023-07-24 07:06:17.355133"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "brighton"], ["password", "[FILTERED]"], ["phone", "+6588888885"], ["email", "brighton@gmail.com"], ["created_at", "2023-07-24 07:06:17.358382"], ["updated_at", "2023-07-24 07:06:17.358382"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "tristan"], ["password", "[FILTERED]"], ["phone", "+6588888884"], ["email", "tristan@gmail.com"], ["created_at", "2023-07-24 07:06:17.361406"], ["updated_at", "2023-07-24 07:06:17.361406"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "SEA KING SEAFOOD @ HOUGANG"], ["password", "[FILTERED]"], ["phone", "+6588888883"], ["email", "SEAKING@gmail.com"], ["created_at", "2023-07-24 07:06:17.364468"], ["updated_at", "2023-07-24 07:06:17.364468"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "SHOPEEPAY PRIVATE LIMITED OTHR"], ["password", "[FILTERED]"], ["phone", "+6588888882"], ["email", "SHOPEEPAY@gmail.com"], ["created_at", "2023-07-24 07:06:17.368187"], ["updated_at", "2023-07-24 07:06:17.368187"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "phone", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "PRINCE NOODLES"], ["password", "[FILTERED]"], ["phone", "+6588888881"], ["email", "PRINCE NOODLES@gmail.com"], ["created_at", "2023-07-24 07:06:17.372802"], ["updated_at", "2023-07-24 07:06:17.372802"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (1.1ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-2"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-24 07:06:17.554774"], ["updated_at", "2023-07-24 07:06:17.554774"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-5"], ["initial_deposit", 10034], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-24 07:06:17.568154"], ["updated_at", "2023-07-24 07:06:17.568154"], ["user_id", 6]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-6"], ["initial_deposit", 234870], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-24 07:06:17.572951"], ["updated_at", "2023-07-24 07:06:17.572951"], ["user_id", 7]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-20001-7"], ["initial_deposit", 2247980], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-24 07:06:17.577307"], ["updated_at", "2023-07-24 07:06:17.577307"], ["user_id", 8]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "234-43941-0"], ["initial_deposit", 12042], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-24 07:06:17.581041"], ["updated_at", "2023-07-24 07:06:17.581041"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-4"], ["initial_deposit", 1003], ["bank", "DBS"], ["account_type", "DBS Savings Account"], ["created_at", "2023-07-24 07:06:17.585208"], ["updated_at", "2023-07-24 07:06:17.585208"], ["user_id", 2]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-5"], ["initial_deposit", 1008], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-24 07:06:17.589677"], ["updated_at", "2023-07-24 07:06:17.589677"], ["user_id", 3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-6"], ["initial_deposit", 100], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-24 07:06:17.593736"], ["updated_at", "2023-07-24 07:06:17.593736"], ["user_id", 4]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "accounts" ("account_number", "initial_deposit", "bank", "account_type", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["account_number", "539-23421-7"], ["initial_deposit", 1060], ["bank", "DBS"], ["account_type", "DBS Multiplier Account"], ["created_at", "2023-07-24 07:06:17.597893"], ["updated_at", "2023-07-24 07:06:17.597893"], ["user_id", 5]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.7ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888887"], ["created_at", "2023-07-24 07:06:17.608657"], ["updated_at", "2023-07-24 07:06:17.608657"], ["accnum", "539-23421-4"], ["bank", "DBS"], ["nickname", "wx"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.2ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888888"], ["created_at", "2023-07-24 07:06:17.613195"], ["updated_at", "2023-07-24 07:06:17.613195"], ["accnum", "539-23421-2"], ["bank", "DBS"], ["nickname", "jx"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888886"], ["created_at", "2023-07-24 07:06:17.616254"], ["updated_at", "2023-07-24 07:06:17.616254"], ["accnum", "539-23421-5"], ["bank", "DBS"], ["nickname", "vin"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888885"], ["created_at", "2023-07-24 07:06:17.620746"], ["updated_at", "2023-07-24 07:06:17.620746"], ["accnum", "539-23421-6"], ["bank", "DBS"], ["nickname", "bright"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPaynow Create (0.3ms)[0m  [1m[32mINSERT INTO "paynows" ("phone", "created_at", "updated_at", "accnum", "bank", "nickname", "paid_bef_phone_num") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["phone", "+6588888884"], ["created_at", "2023-07-24 07:06:17.624062"], ["updated_at", "2023-07-24 07:06:17.624062"], ["accnum", "539-23421-7"], ["bank", "DBS"], ["nickname", "tris"], ["paid_bef_phone_num", nil]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (1.0ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-5"], ["datetime", nil], ["amount", 5.0], ["created_at", "2023-07-24 07:06:17.637290"], ["updated_at", "2023-07-24 07:06:17.637290"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 10.15], ["created_at", "2023-07-24 07:06:17.644298"], ["updated_at", "2023-07-24 07:06:17.644298"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", nil], ["amount", 16.15], ["created_at", "2023-07-24 07:06:17.648546"], ["updated_at", "2023-07-24 07:06:17.648546"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-5"], ["datetime", nil], ["amount", 12.23], ["created_at", "2023-07-24 07:06:17.653269"], ["updated_at", "2023-07-24 07:06:17.653269"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-6"], ["datetime", nil], ["amount", 23.2], ["created_at", "2023-07-24 07:06:17.657410"], ["updated_at", "2023-07-24 07:06:17.657410"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "NETS QR PAYMENT"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-20001-7"], ["datetime", nil], ["amount", 4.2], ["created_at", "2023-07-24 07:06:17.662071"], ["updated_at", "2023-07-24 07:06:17.662071"], ["account_id", 1], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 20.15], ["created_at", "2023-07-24 07:06:17.666586"], ["updated_at", "2023-07-24 07:06:17.666586"], ["account_id", 6], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", nil], ["amount", 15.0], ["created_at", "2023-07-24 07:06:17.671397"], ["updated_at", "2023-07-24 07:06:17.671397"], ["account_id", 8], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 7.0], ["created_at", "2023-07-24 07:06:17.675225"], ["updated_at", "2023-07-24 07:06:17.675225"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.2ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 30.0], ["created_at", "2023-07-24 07:06:17.678514"], ["updated_at", "2023-07-24 07:06:17.678514"], ["account_id", 5], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.2ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "234-43941-0"], ["datetime", nil], ["amount", 150.0], ["created_at", "2023-07-24 07:06:17.681762"], ["updated_at", "2023-07-24 07:06:17.681762"], ["account_id", 9], ["comments", " "], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-19 07:06:17.684947"], ["updated_at", "2023-07-24 07:06:17.685908"], ["date_time", "Wed, 19 Jul 2023 15:06"], ["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-19 07:06:17.690535"], ["updated_at", "2023-07-24 07:06:17.690817"], ["date_time", "Wed, 19 Jul 2023 15:06"], ["id", 2]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-20 07:06:17.693155"], ["updated_at", "2023-07-24 07:06:17.693360"], ["date_time", "Thu, 20 Jul 2023 15:06"], ["id", 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-18 07:06:17.696038"], ["updated_at", "2023-07-24 07:06:17.696249"], ["date_time", "Tue, 18 Jul 2023 15:06"], ["id", 4]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-18 07:06:17.700506"], ["updated_at", "2023-07-24 07:06:17.700825"], ["date_time", "Tue, 18 Jul 2023 15:06"], ["id", 5]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-21 07:06:17.703687"], ["updated_at", "2023-07-24 07:06:17.703965"], ["date_time", "Fri, 21 Jul 2023 15:06"], ["id", 6]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-17 07:06:17.706660"], ["updated_at", "2023-07-24 07:06:17.706886"], ["date_time", "Mon, 17 Jul 2023 15:06"], ["id", 7]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-17 07:06:17.709417"], ["updated_at", "2023-07-24 07:06:17.709627"], ["date_time", "Mon, 17 Jul 2023 15:06"], ["id", 8]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-20 07:06:17.711824"], ["updated_at", "2023-07-24 07:06:17.711993"], ["date_time", "Thu, 20 Jul 2023 15:06"], ["id", 9]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.2ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-20 07:06:17.714648"], ["updated_at", "2023-07-24 07:06:17.714876"], ["date_time", "Thu, 20 Jul 2023 15:06"], ["id", 10]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-21 07:06:17.717374"], ["updated_at", "2023-07-24 07:06:17.717956"], ["date_time", "Fri, 21 Jul 2023 15:06"], ["id", 11]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 56.0], ["created_at", "2023-07-24 07:06:17.721139"], ["updated_at", "2023-07-24 07:06:17.721139"], ["account_id", 5], ["comments", "new trf"], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "Account Transfer"], ["transaction_type", "Account Transfer"], ["recipient_account_number", "539-23421-7"], ["datetime", nil], ["amount", 78.0], ["created_at", "2023-07-24 07:06:17.724319"], ["updated_at", "2023-07-24 07:06:17.724319"], ["account_id", 5], ["comments", ""], ["date_time", nil], ["intrabank", true]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.3ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-07-08 07:06:17.727116"], ["updated_at", "2023-07-24 07:06:17.727361"], ["date_time", "Sat, 08 Jul 2023 15:06"], ["id", 12]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTransaction Update (0.4ms)[0m  [1m[33mUPDATE "transactions" SET "datetime" = $1, "updated_at" = $2, "date_time" = $3 WHERE "transactions"."id" = $4[0m  [["datetime", "2023-06-26 07:06:17.729656"], ["updated_at", "2023-07-24 07:06:17.729866"], ["date_time", "Mon, 26 Jun 2023 15:06"], ["id", 13]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2023-07-24 15:06:32 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.8ms | Allocations: 523)
+Completed 200 OK in 36ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 4763)
+
+
+Started GET "/users/9/all_transactions" for 127.0.0.1 at 2023-07-24 15:06:36 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/9/all_transactions"):
+  
+Started GET "/users" for 127.0.0.1 at 2023-07-24 15:06:38 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users" for 127.0.0.1 at 2023-07-24 15:06:44 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/user" for 127.0.0.1 at 2023-07-24 15:06:56 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+Started GET "/user" for 127.0.0.1 at 2023-07-24 15:07:54 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+Started GET "/user" for 127.0.0.1 at 2023-07-24 15:08:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+Started GET "/users/9/all_transactions" for 127.0.0.1 at 2023-07-24 15:08:19 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 39ms (ActiveRecord: 8.9ms | Allocations: 7288)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/users" for 127.0.0.1 at 2023-07-24 15:08:21 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (1.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 156.1ms | Allocations: 34194)
+  Rendered layout layouts/application.html.erb (Duration: 1425.1ms | Allocations: 127674)
+Completed 200 OK in 1463ms (Views: 1443.1ms | ActiveRecord: 15.4ms | Allocations: 128742)
+
+
+Started GET "/csrf_token" for 127.0.0.1 at 2023-07-24 15:23:30 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CsrfController#fetch_csrf_token as */*
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1919)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-07-24 15:23:50 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (2.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.6ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 146.5ms | Allocations: 36884)
+  Rendered layout layouts/application.html.erb (Duration: 397.2ms | Allocations: 78129)
+Completed 200 OK in 435ms (Views: 385.7ms | ActiveRecord: 21.3ms | Allocations: 83648)
+
+
+Started POST "/users/1/transactions?transfer_from_acc_number=539-23421-2&recipient_acc=539-23421-4&recipient_bank=DBS&total_amount=29&comments=jx%20to%20wx&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=23%20July%202023%2015:22&day_and_date=Sun,%2023%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-24 15:24:04 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"29", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"23 July 2023 15:22", "day_and_date"=>"Sun, 23 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"1"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000022f89a8a470>, params: {"transfer_from_acc_number"=>"539-23421-2", "recipient_acc"=>"539-23421-4", "recipient_bank"=>"DBS", "total_amount"=>"29", "comments"=>"jx to wx", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"23 July 2023 15:22", "day_and_date"=>"Sun, 23 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"1"} }[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mTransaction Create (1.7ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-4"], ["datetime", "2023-07-23 00:00:00"], ["amount", 29.0], ["created_at", "2023-07-24 07:24:04.149670"], ["updated_at", "2023-07-24 07:24:04.149670"], ["account_id", 1], ["comments", "jx to wx"], ["date_time", "23 July 2023 15:22"], ["intrabank", true]]
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:52:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:53:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Update (0.6ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-07-24 07:24:04.170077"], ["paid_bef_phone_num", "---\n- \"+6588888887\"\n"], ["id", 2]]
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 67ms (Views: 0.3ms | ActiveRecord: 9.3ms | Allocations: 17293)
+
+
+Started POST "/users/2/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=90&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2006:30&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-24 15:24:12 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"2"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000022f8932b558>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"2"} }[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-18 00:00:00"], ["amount", 90.0], ["created_at", "2023-07-24 07:24:12.789851"], ["updated_at", "2023-07-24 07:24:12.789851"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 06:30"], ["intrabank", true]]
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mPaynow Load (0.6ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:52:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:53:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Update (0.4ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-07-24 07:24:12.807081"], ["paid_bef_phone_num", "---\n- \"+6588888888\"\n"], ["id", 1]]
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 36ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 6676)
+
+
+Started POST "/users/1/transactions/14/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-24 15:24:29 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"1", "transaction_id"=>"14"}
+[31mUnpermitted parameters: :user_id, :transaction_id. Context: { controller: DisputesController, action: create, request: #<ActionDispatch::Request:0x0000022f88deb908>, params: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "controller"=>"disputes", "action"=>"create", "user_id"=>"1", "transaction_id"=>"14"} }[0m
+  [1m[36mTransaction Load (2.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:223:in `create'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:240:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:241:in `create'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `remove_from_paid_before'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mPaynow Update (0.5ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-07-24 07:24:29.376345"], ["paid_bef_phone_num", nil], ["id", 2]]
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mAccount Load (2.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE (account_number == '539-23421-4') ORDER BY "accounts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:249:in `create'
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 8.3ms | Allocations: 9528)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedFunction: ERROR:  operator does not exist: character varying == unknown
+LINE 1: ...accounts".* FROM "accounts" WHERE (account_number == '539-23...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+):
+  
+app/controllers/disputes_controller.rb:249:in `create'
+Started POST "/users/1/transactions/14/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-24 15:27:41 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"1", "transaction_id"=>"14"}
+[31mUnpermitted parameters: :user_id, :transaction_id. Context: { controller: DisputesController, action: create, request: #<ActionDispatch::Request:0x0000022f89a8baf0>, params: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "controller"=>"disputes", "action"=>"create", "user_id"=>"1", "transaction_id"=>"14"} }[0m
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:223:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:240:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:241:in `create'
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `remove_from_paid_before'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:249:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:271:in `create'
+  [1m[36mDispute Load (1.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mDispute Create (1.5ms)[0m  [1m[32mINSERT INTO "disputes" ("status", "disputer_acc_id", "dispute_reason", "dispute_reason_details", "created_at", "updated_at", "disputee_id", "disputer_id", "transaction_id", "date_time", "day_date", "further_action") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["status", "Dispute Filed"], ["disputer_acc_id", "1"], ["dispute_reason", "Transfer Wrong Amount"], ["dispute_reason_details", "{\"comments\":\"trf wrong amnt la\",\"contact_details\":\"88888888\",\"correct_amount\":20.0}"], ["created_at", "2023-07-24 07:27:43.315068"], ["updated_at", "2023-07-24 07:27:43.315068"], ["disputee_id", 2], ["disputer_id", 1], ["transaction_id", 14], ["date_time", "23 July 2023 04:22"], ["day_date", "Sun, 23 July 2023"], ["further_action", "{}"]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+Completed 200 OK in 150ms (Views: 0.2ms | ActiveRecord: 27.2ms | Allocations: 35684)
+
+
+Started POST "/users/2/transactions/14/refute_dispute" for 127.0.0.1 at 2023-07-24 15:27:57 +0800
+Processing by DisputesController#refute_dispute as */*
+  Parameters: {"refutereason"=>"“XXXX”", "date_and_time"=>"\"6 July 2023 04:22\"", "day_and_date"=>"\"Thu, 6 July 2023\"", "id"=>"2", "transactions_id"=>"14"}
+[31mUnpermitted parameters: :id, :transactions_id. Context: { controller: DisputesController, action: refute_dispute, request: #<ActionDispatch::Request:0x0000022f891cbeb0>, params: {"refutereason"=>"“XXXX”", "date_and_time"=>"\"6 July 2023 04:22\"", "day_and_date"=>"\"Thu, 6 July 2023\"", "controller"=>"disputes", "action"=>"refute_dispute", "id"=>"2", "transactions_id"=>"14"} }[0m
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputee_id = '2'  AND transaction_id = '14') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:60:in `refute_dispute'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:70:in `refute_dispute'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:70:in `refute_dispute'
+  [1m[36mDispute Update (0.4ms)[0m  [1m[33mUPDATE "disputes" SET "status" = $1, "updated_at" = $2, "further_action" = $3 WHERE "disputes"."id" = $4[0m  [["status", "Refuted"], ["updated_at", "2023-07-24 07:27:57.569636"], ["further_action", "{\"refute_date_time\":\"\\\"6 July 2023 04:22\\\"\",\"refute_day_date\":\"\\\"Thu, 6 July 2023\\\"\",\"refutereason\":\"“XXXX”\"}"], ["id", 1]]
+  ↳ app/controllers/disputes_controller.rb:70:in `refute_dispute'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:70:in `refute_dispute'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 4030)
+
+
+Started GET "/users/1/transactions/15/refund_details" for 127.0.0.1 at 2023-07-24 15:28:37 +0800
+Processing by DisputesController#refund_details as */*
+  Parameters: {"id"=>"1", "transactions_id"=>"15"}
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:135:in `refund_details'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:136:in `refund_details'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:145:in `refund_details'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.0ms | Allocations: 2363)
+
+
+  
+NoMethodError (undefined method `dispute_reason_details' for nil:NilClass):
+  
+app/controllers/disputes_controller.rb:146:in `refund_details'
+Started GET "/disputes" for 127.0.0.1 at 2023-07-24 15:33:06 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1201)
+  Rendered layout layouts/application.html.erb (Duration: 39.2ms | Allocations: 14835)
+Completed 200 OK in 48ms (Views: 43.9ms | ActiveRecord: 0.5ms | Allocations: 15498)
+
+
+Started POST "/users/2/transactions/15/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-24 15:33:23 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"2", "transaction_id"=>"15"}
+[31mUnpermitted parameters: :user_id, :transaction_id. Context: { controller: DisputesController, action: create, request: #<ActionDispatch::Request:0x0000022f899be118>, params: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "controller"=>"disputes", "action"=>"create", "user_id"=>"2", "transaction_id"=>"15"} }[0m
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:223:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:240:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:241:in `create'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `remove_from_paid_before'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mPaynow Update (1.0ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-07-24 07:33:23.792192"], ["paid_bef_phone_num", nil], ["id", 1]]
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:249:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:271:in `create'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTransaction Load (0.7ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mDispute Create (0.6ms)[0m  [1m[32mINSERT INTO "disputes" ("status", "disputer_acc_id", "dispute_reason", "dispute_reason_details", "created_at", "updated_at", "disputee_id", "disputer_id", "transaction_id", "date_time", "day_date", "further_action") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["status", "Dispute Filed"], ["disputer_acc_id", "6"], ["dispute_reason", "Transfer Wrong Amount"], ["dispute_reason_details", "{\"comments\":\"trf wrong amnt la\",\"contact_details\":\"88888888\",\"correct_amount\":20.0}"], ["created_at", "2023-07-24 07:33:23.820384"], ["updated_at", "2023-07-24 07:33:23.820384"], ["disputee_id", 1], ["disputer_id", 2], ["transaction_id", 15], ["date_time", "23 July 2023 04:22"], ["day_date", "Sun, 23 July 2023"], ["further_action", "{}"]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+Completed 200 OK in 63ms (Views: 0.3ms | ActiveRecord: 10.0ms | Allocations: 11365)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-07-24 15:33:31 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.3ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 878)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 3094)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.3ms | Allocations: 3389)
+
+
+Started GET "/users/1/transactions/15/refund_details" for 127.0.0.1 at 2023-07-24 15:34:21 +0800
+Processing by DisputesController#refund_details as */*
+  Parameters: {"id"=>"1", "transactions_id"=>"15"}
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:135:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:136:in `refund_details'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:145:in `refund_details'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 4131)
+
+
+Started POST "/users/1/transactions/15/resolve_dispute" for 127.0.0.1 at 2023-07-24 15:34:51 +0800
+Processing by DisputesController#resolve_dispute as */*
+  Parameters: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"1", "transactions_id"=>"15"}
+[31mUnpermitted parameters: :id, :transactions_id. Context: { controller: DisputesController, action: resolve_dispute, request: #<ActionDispatch::Request:0x0000022f89324618>, params: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "controller"=>"disputes", "action"=>"resolve_dispute", "id"=>"1", "transactions_id"=>"15"} }[0m
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputee_id = '1'  AND transaction_id = '15') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:101:in `resolve_dispute'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:112:in `resolve_dispute'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:112:in `resolve_dispute'
+  [1m[36mDispute Update (0.7ms)[0m  [1m[33mUPDATE "disputes" SET "status" = $1, "updated_at" = $2, "further_action" = $3 WHERE "disputes"."id" = $4[0m  [["status", "Resolved"], ["updated_at", "2023-07-24 07:34:51.854908"], ["further_action", "{\"resolve_date_time\":\"'6 July 2023 04:22'\",\"resolve_day_date\":\"'Thu, 6 July 2023'\"}"], ["id", 2]]
+  ↳ app/controllers/disputes_controller.rb:112:in `resolve_dispute'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:112:in `resolve_dispute'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 3813)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-07-24 15:34:56 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 889)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3072)
+Completed 200 OK in 17ms (Views: 12.5ms | ActiveRecord: 0.4ms | Allocations: 3367)
+
+
+Started POST "/users/2/transactions?transfer_from_acc_number=539-23421-4&recipient_acc=539-23421-2&recipient_bank=DBS&total_amount=90&comments=new%20trf&mode_of_payment=FAST%20/%20PayNow%20Transfer&date_and_time=18%20July%202023%2006:30&day_and_date=Tue,%2018%20July%202023&transfer_type=FAST%20/%20PayNow%20Transfer" for 127.0.0.1 at 2023-07-24 15:35:08 +0800
+Processing by TransactionsController#create as */*
+  Parameters: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "user_id"=>"2"}
+[31mUnpermitted parameter: :user_id. Context: { controller: TransactionsController, action: create, request: #<ActionDispatch::Request:0x0000022f87cb8348>, params: {"transfer_from_acc_number"=>"539-23421-4", "recipient_acc"=>"539-23421-2", "recipient_bank"=>"DBS", "total_amount"=>"90", "comments"=>"new trf", "mode_of_payment"=>"FAST / PayNow Transfer", "date_and_time"=>"18 July 2023 06:30", "day_and_date"=>"Tue, 18 July 2023", "transfer_type"=>"FAST / PayNow Transfer", "controller"=>"transactions", "action"=>"create", "user_id"=>"2"} }[0m
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:69:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mTransaction Create (0.6ms)[0m  [1m[32mINSERT INTO "transactions" ("transaction_name", "transaction_type", "recipient_account_number", "datetime", "amount", "created_at", "updated_at", "account_id", "comments", "date_time", "intrabank") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["transaction_name", "FAST / PayNow Transfer"], ["transaction_type", "FAST / PayNow Transfer"], ["recipient_account_number", "539-23421-2"], ["datetime", "2023-07-18 00:00:00"], ["amount", 90.0], ["created_at", "2023-07-24 07:35:08.962403"], ["updated_at", "2023-07-24 07:35:08.962403"], ["account_id", 6], ["comments", "new trf"], ["date_time", "18 July 2023 06:30"], ["intrabank", true]]
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/transactions_controller.rb:93:in `create'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:52:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:53:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+  [1m[36mPaynow Update (0.7ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-07-24 07:35:08.981176"], ["paid_bef_phone_num", "---\n- \"+6588888888\"\n"], ["id", 1]]
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/paynow.rb:62:in `update_if_not_paid_before_else_nothing'
+Completed 200 OK in 41ms (Views: 0.3ms | ActiveRecord: 4.0ms | Allocations: 7318)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-07-24 15:35:28 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16"}
+[31mUnpermitted parameters: :id, :transactions_id. Context: { controller: DisputesController, action: withdraw_dispute, request: #<ActionDispatch::Request:0x0000022f88afe100>, params: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "controller"=>"disputes", "action"=>"withdraw_dispute", "id"=>"2", "transactions_id"=>"16"} }[0m
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = '2'  AND transaction_id = '16') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:25:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 898)
+
+
+Started POST "/users/2/transactions/16/disputes?date_and_time=23%20July%202023%2004:22&day_and_date=Sun,%2023%20July%202023&reason=Transfer%20Wrong%20Amount&comments=trf%20wrong%20amnt%20la&user=Recipient&contact_details=88888888&correct_amount=20" for 127.0.0.1 at 2023-07-24 15:35:54 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "user_id"=>"2", "transaction_id"=>"16"}
+[31mUnpermitted parameters: :user_id, :transaction_id. Context: { controller: DisputesController, action: create, request: #<ActionDispatch::Request:0x0000022f89226860>, params: {"date_and_time"=>"23 July 2023 04:22", "day_and_date"=>"Sun, 23 July 2023", "reason"=>"Transfer Wrong Amount", "comments"=>"trf wrong amnt la", "user"=>"Recipient", "contact_details"=>"88888888", "correct_amount"=>"20", "controller"=>"disputes", "action"=>"create", "user_id"=>"2", "transaction_id"=>"16"} }[0m
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:223:in `create'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:240:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:241:in `create'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."accnum" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["accnum", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:35:in `remove_from_paid_before'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mPaynow Update (0.5ms)[0m  [1m[33mUPDATE "paynows" SET "updated_at" = $1, "paid_bef_phone_num" = $2 WHERE "paynows"."id" = $3[0m  [["updated_at", "2023-07-24 07:35:54.498869"], ["paid_bef_phone_num", nil], ["id", 1]]
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/paynow.rb:40:in `remove_from_paid_before'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:249:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:271:in `create'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mDispute Create (0.6ms)[0m  [1m[32mINSERT INTO "disputes" ("status", "disputer_acc_id", "dispute_reason", "dispute_reason_details", "created_at", "updated_at", "disputee_id", "disputer_id", "transaction_id", "date_time", "day_date", "further_action") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["status", "Dispute Filed"], ["disputer_acc_id", "6"], ["dispute_reason", "Transfer Wrong Amount"], ["dispute_reason_details", "{\"comments\":\"trf wrong amnt la\",\"contact_details\":\"88888888\",\"correct_amount\":20.0}"], ["created_at", "2023-07-24 07:35:54.528468"], ["updated_at", "2023-07-24 07:35:54.528468"], ["disputee_id", 1], ["disputer_id", 2], ["transaction_id", 16], ["date_time", "23 July 2023 04:22"], ["day_date", "Sun, 23 July 2023"], ["further_action", "{}"]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+Completed 200 OK in 61ms (Views: 0.2ms | ActiveRecord: 9.2ms | Allocations: 11337)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-07-24 15:35:57 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 952)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 3169)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.4ms | Allocations: 3464)
+
+
+Started POST "/users/2/transactions/16/withdraw_dispute?date_and_time=%276%20July%202023%2004:22%27&day_and_date=%27Thu,%206%20July%202023%27" for 127.0.0.1 at 2023-07-24 15:36:16 +0800
+Processing by DisputesController#withdraw_dispute as */*
+  Parameters: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "id"=>"2", "transactions_id"=>"16"}
+[31mUnpermitted parameters: :id, :transactions_id. Context: { controller: DisputesController, action: withdraw_dispute, request: #<ActionDispatch::Request:0x0000022f89325a18>, params: {"date_and_time"=>"'6 July 2023 04:22'", "day_and_date"=>"'Thu, 6 July 2023'", "controller"=>"disputes", "action"=>"withdraw_dispute", "id"=>"2", "transactions_id"=>"16"} }[0m
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = '2'  AND transaction_id = '16') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:25:in `withdraw_dispute'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+  [1m[36mDispute Update (0.4ms)[0m  [1m[33mUPDATE "disputes" SET "status" = $1, "updated_at" = $2, "further_action" = $3 WHERE "disputes"."id" = $4[0m  [["status", "Withdrawn"], ["updated_at", "2023-07-24 07:36:16.072103"], ["further_action", "{\"withdraw_date_time\":\"'6 July 2023 04:22'\",\"withdraw_day_date\":\"'Thu, 6 July 2023'\"}"], ["id", 3]]
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 3904)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-07-24 15:36:18 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 957)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 3140)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.4ms | Allocations: 3435)
+
+
+Started GET "/user/2/transaction_detail_for_disputes_involving_user" for 127.0.0.1 at 2023-07-24 15:36:57 +0800
+Processing by DisputesController#transaction_detail_for_disputes_involving_user as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:179:in `transaction_detail_for_disputes_involving_user'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputee_id = 2 OR disputer_id = 2)[0m
+  ↳ app/models/dispute.rb:96:in `sort_by'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/dispute.rb:102:in `block in transaction_detail_for_disputes_involving_user'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:37:in `generate_transaction_details'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:37:in `generate_transaction_details'
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 14], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:38:in `generate_transaction_details'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/dispute.rb:102:in `block in transaction_detail_for_disputes_involving_user'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:37:in `generate_transaction_details'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:37:in `generate_transaction_details'
+  [1m[36mDispute Load (0.3ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 16], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:38:in `generate_transaction_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/dispute.rb:102:in `block in transaction_detail_for_disputes_involving_user'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:37:in `generate_transaction_details'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:37:in `generate_transaction_details'
+  [1m[36mDispute Load (0.3ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 15], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:38:in `generate_transaction_details'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-2"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+Completed 200 OK in 59ms (Views: 0.7ms | ActiveRecord: 4.3ms | Allocations: 13066)
+
+
+Started GET "/users/541/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-24 15:37:09 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"541", "phonenumber"=>"+6588888887"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 541], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:62:in `search_by_phone'
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1463)
+
+
+Started GET "/users/1/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-24 15:37:18 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"1", "phonenumber"=>"+6588888887"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:62:in `search_by_phone'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-2"], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:65:in `search_by_phone'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:15:in `get_nickname'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:21:in `paid_before'
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 3875)
+
+
+Started GET "/users/2/paynows/search_by_phone/+6588888887" for 127.0.0.1 at 2023-07-24 15:37:26 +0800
+Processing by PaynowsController#search_by_phone as */*
+  Parameters: {"id"=>"2", "phonenumber"=>"+6588888887"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:62:in `search_by_phone'
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-4"], ["LIMIT", 1]]
+  ↳ app/controllers/paynows_controller.rb:65:in `search_by_phone'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:9:in `get_accnum'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:15:in `get_nickname'
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/models/paynow.rb:21:in `paid_before'
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 3750)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-07 01:37:36 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 47.9ms | Allocations: 522)
+Completed 200 OK in 302ms (Views: 99.6ms | ActiveRecord: 0.0ms | Allocations: 4896)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-07 01:37:43 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (3.9ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (2.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 402.8ms | Allocations: 36973)
+  Rendered layout layouts/application.html.erb (Duration: 1011.2ms | Allocations: 73465)
+Completed 200 OK in 1088ms (Views: 987.2ms | ActiveRecord: 30.8ms | Allocations: 76966)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-07 05:02:44 +0800
+Started GET "/users" for 127.0.0.1 at 2023-08-07 05:02:45 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 14.7ms | Allocations: 1121)
+Completed 200 OK in 193ms (Views: 48.7ms | ActiveRecord: 0.0ms | Allocations: 8931)
+
+
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (2.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.6ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.3ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 375.0ms | Allocations: 41021)
+  Rendered layout layouts/application.html.erb (Duration: 494.1ms | Allocations: 76279)
+Completed 200 OK in 692ms (Views: 480.2ms | ActiveRecord: 41.3ms | Allocations: 84429)
+
+
+Started GET "/users/1/all-transactions-7-days" for 127.0.0.1 at 2023-08-07 05:02:56 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/all-transactions-7-days"):
+  
+Started GET "/users/1/transactions/all-transactions-7-days" for 127.0.0.1 at 2023-08-07 05:03:04 +0800
+Processing by TransactionsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"all-transactions-7-days"}
+  [1m[36mTransaction Load (3.7ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:156:in `set_transaction'
+Completed 404 Not Found in 43ms (ActiveRecord: 7.4ms | Allocations: 3839)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Transaction with 'id'=all-transactions-7-days):
+  
+app/controllers/transactions_controller.rb:156:in `set_transaction'
+Started GET "/users/1/transactions/all-transactions-7-days" for 127.0.0.1 at 2023-08-07 05:07:51 +0800
+Processing by TransactionsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"all-transactions-7-days"}
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:199:in `set_transaction'
+Completed 404 Not Found in 17ms (ActiveRecord: 4.7ms | Allocations: 3487)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Transaction with 'id'=all-transactions-7-days):
+  
+app/controllers/transactions_controller.rb:199:in `set_transaction'
+Started GET "/users/1/all-transactions-7-days" for 127.0.0.1 at 2023-08-07 05:10:10 +0800
+Processing by TransactionsController#all_transactions as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:38:in `all_transactions'
+  [1m[36mAccount Pluck (0.3ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (7.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = $1 AND (datetime >= '2023-07-30')[0m  [["user_id", 1]]
+  ↳ app/controllers/transactions_controller.rb:169:in `all_transactions_desc'
+  [1m[36mTransaction Load (1.0ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN ($1, $2) AND (datetime >= '2023-07-30')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/transactions_controller.rb:169:in `all_transactions_desc'
+Completed 200 OK in 107ms (Views: 0.3ms | ActiveRecord: 17.0ms | Allocations: 14905)
+
+
+Started GET "/users/1/number-disputes-filed" for 127.0.0.1 at 2023-08-07 05:22:12 +0800
+Processing by DisputesController#new_disputes_received as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDispute Load (12.8ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputee_id = '1' AND status = 'Dispute Filed')[0m
+  ↳ app/controllers/disputes_controller.rb:9:in `new_disputes_received'
+Completed 200 OK in 164ms (Views: 0.4ms | ActiveRecord: 33.5ms | Allocations: 5210)
+
+
+Started GET "/users/1/transactions/all-transactions-7-days" for 127.0.0.1 at 2023-08-07 05:29:38 +0800
+  
+NoMethodError (undefined method `get' for main:Object):
+  
+config/routes.rb:1:in `<main>'
+Started GET "/users/1/transactions/all-transactions-7-days" for 127.0.0.1 at 2023-08-07 05:30:06 +0800
+Processing by TransactionsController#all_transactions as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/transactions_controller.rb:38:in `all_transactions'
+  [1m[36mAccount Pluck (1.8ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (2.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = $1 AND (datetime >= '2023-07-30')[0m  [["user_id", 1]]
+  ↳ app/controllers/transactions_controller.rb:169:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.8ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" IN ($1, $2) AND (datetime >= '2023-07-30')[0m  [["recipient_account_number", "539-23421-2"], ["recipient_account_number", "234-43941-0"]]
+  ↳ app/controllers/transactions_controller.rb:169:in `all_transactions_desc'
+Completed 200 OK in 145ms (Views: 0.2ms | ActiveRecord: 18.1ms | Allocations: 13518)
+
+
+Started GET "/users/1/disputes/number-disputes-filed" for 127.0.0.1 at 2023-08-07 05:31:18 +0800
+Processing by DisputesController#new_disputes_received as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDispute Load (2.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputee_id = '1' AND status = 'Dispute Filed')[0m
+  ↳ app/controllers/disputes_controller.rb:9:in `new_disputes_received'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 1887)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-08-07 05:34:46 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 44.7ms | Allocations: 7970)
+  Rendered layout layouts/application.html.erb (Duration: 102.7ms | Allocations: 21717)
+Completed 200 OK in 124ms (Views: 89.7ms | ActiveRecord: 22.8ms | Allocations: 23639)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2023-08-07 05:36:39 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:126:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.9ms | Allocations: 152)
+  Rendered users/show.html.erb within layouts/application (Duration: 23.7ms | Allocations: 1399)
+  Rendered layout layouts/application.html.erb (Duration: 38.6ms | Allocations: 3647)
+Completed 200 OK in 76ms (Views: 47.9ms | ActiveRecord: 5.2ms | Allocations: 8501)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-07 05:36:43 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (2.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.7ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (3.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.7ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.6ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.6ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 201.6ms | Allocations: 24163)
+  Rendered layout layouts/application.html.erb (Duration: 216.5ms | Allocations: 26381)
+Completed 200 OK in 224ms (Views: 193.1ms | ActiveRecord: 25.9ms | Allocations: 26758)
+
+
+Started GET "/users/1/accounts/5/transactions" for 127.0.0.1 at 2023-08-07 05:36:45 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"1", "account_id"=>"5"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (4.1ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1[0m  [["account_id", 5]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = $1[0m  [["recipient_account_number", "234-43941-0"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 83.2ms | Allocations: 20230)
+  Rendered layout layouts/application.html.erb (Duration: 98.6ms | Allocations: 22499)
+Completed 200 OK in 117ms (Views: 95.0ms | ActiveRecord: 11.4ms | Allocations: 24216)
+
+
+Started POST "/users/289/transactions/13/disputes?date_and_time=8%20Aug%202023%2004:22&day_and_date=Mon,%208%20Aug%202023&reason=Transfer%20to%20Wrong%20Account&comments=trf%20wrong%20la&user=Sender" for 127.0.0.1 at 2023-08-07 05:37:38 +0800
+Processing by DisputesController#create as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "reason"=>"Transfer to Wrong Account", "comments"=>"trf wrong la", "user"=>"Sender", "user_id"=>"289", "transaction_id"=>"13"}
+[31mUnpermitted parameters: :user_id, :transaction_id. Context: { controller: DisputesController, action: create, request: #<ActionDispatch::Request:0x000001e4f1798178>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "reason"=>"Transfer to Wrong Account", "comments"=>"trf wrong la", "user"=>"Sender", "controller"=>"disputes", "action"=>"create", "user_id"=>"289", "transaction_id"=>"13"} }[0m
+  [1m[36mTransaction Load (0.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:223:in `create'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:231:in `create'
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-7"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:249:in `create'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mDispute Create (13.9ms)[0m  [1m[32mINSERT INTO "disputes" ("status", "disputer_acc_id", "dispute_reason", "dispute_reason_details", "created_at", "updated_at", "disputee_id", "disputer_id", "transaction_id", "date_time", "day_date", "further_action") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["status", "Dispute Filed"], ["disputer_acc_id", "9"], ["dispute_reason", "Transfer to Wrong Account"], ["dispute_reason_details", "{\"comments\":\"trf wrong la\",\"contact_details\":null,\"correct_amount\":null}"], ["created_at", "2023-08-06 21:37:39.075698"], ["updated_at", "2023-08-06 21:37:39.075698"], ["disputee_id", 1], ["disputer_id", 289], ["transaction_id", 13], ["date_time", "8 Aug 2023 04:22"], ["day_date", "Mon, 8 Aug 2023"], ["further_action", "{}"]]
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:267:in `create'
+Completed 200 OK in 73ms (Views: 0.2ms | ActiveRecord: 18.3ms | Allocations: 11149)
+
+
+Started GET "/users/1/transactions/13/dispute/refund_details" for 127.0.0.1 at 2023-08-07 05:38:24 +0800
+Processing by DisputesController#refund_details as HTML
+  Parameters: {"id"=>"1", "transactions_id"=>"13"}
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:135:in `refund_details'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-7"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:136:in `refund_details'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:145:in `refund_details'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "234-43941-0"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 4136)
+
+
+Started GET "/users/5/transactions/13/dispute/refund_details" for 127.0.0.1 at 2023-08-07 05:38:43 +0800
+Processing by DisputesController#refund_details as HTML
+  Parameters: {"id"=>"5", "transactions_id"=>"13"}
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:135:in `refund_details'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-7"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:136:in `refund_details'
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:145:in `refund_details'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mAccount Load (0.8ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "234-43941-0"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 4111)
+
+
+Started GET "/users/1/transactions/13/dispute/refund_details" for 127.0.0.1 at 2023-08-07 05:38:55 +0800
+Processing by DisputesController#refund_details as HTML
+  Parameters: {"id"=>"1", "transactions_id"=>"13"}
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:135:in `refund_details'
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-7"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:136:in `refund_details'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:145:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "234-43941-0"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+Completed 200 OK in 24ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 4111)
+
+
+Started GET "/users/5/transactions/13/dispute/refund_details" for 127.0.0.1 at 2023-08-07 05:39:01 +0800
+Processing by DisputesController#refund_details as HTML
+  Parameters: {"id"=>"5", "transactions_id"=>"13"}
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:135:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "539-23421-7"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:136:in `refund_details'
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE "disputes"."transaction_id" = $1 LIMIT $2[0m  [["transaction_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:145:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1 ORDER BY "accounts"."id" ASC LIMIT $2[0m  [["account_number", "234-43941-0"], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:153:in `refund_details'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 4111)
+
+
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 05:58:11 +0800
+  
+ActionController::RoutingError (uninitialized constant DisputeController):
+  
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 05:58:49 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 8ms (ActiveRecord: 10.8ms | Allocations: 503)
+
+
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:00:01 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 12.4ms | Allocations: 269)
+
+
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:01:33 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 2.4ms | Allocations: 267)
+
+
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:01:51 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 5ms (ActiveRecord: 0.0ms | Allocations: 174)
+
+
+Started PUT "/users/5/transactions/13/dispute/status?action=refute" for 127.0.0.1 at 2023-08-07 06:03:34 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 174)
+
+
+Started PUT "/users/5/transactions/13/dispute/status?further=refute" for 127.0.0.1 at 2023-08-07 06:04:41 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "further"=>"refute", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 174)
+
+
+Started PUT "/users/5/transactions/13/dispute/status?further=refute" for 127.0.0.1 at 2023-08-07 06:05:00 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "further"=>"refute", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 3ms (ActiveRecord: 2.1ms | Allocations: 267)
+
+
+Started PUT "/users/5/transactions/13/dispute/status?further=refute" for 127.0.0.1 at 2023-08-07 06:05:29 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"reson"=>"", "further"=>"refute", "id"=>"13", "dispute"=>{}}
+No template found for DisputesController#update_status, rendering head :no_content
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 174)
+
+
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:08:07 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4edac8ea0>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (2.1ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = '13'  AND transaction_id = NULL) ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.2ms | ActiveRecord: 8.3ms | Allocations: 1321)
+
+
+Started PUT "/users/5/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:10:44 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"5", "transactions_id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :transactions_id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4f38c3de8>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"5", "transactions_id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = '5'  AND transaction_id = '13') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 1246)
+
+
+Started PUT "/users/1/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:11:08 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :transactions_id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4f2ddb7c8>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = '1'  AND transaction_id = '13') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 8ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 909)
+
+
+Started PUT "/users/1/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:12:34 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :transactions_id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4f3a9a018>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = '1'  AND transaction_id = '13') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:33:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 12ms (Views: 0.3ms | ActiveRecord: 4.1ms | Allocations: 1246)
+
+
+Started PUT "/users/1/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:14:17 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :transactions_id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4f39ca840>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (0.3ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = 1  AND transaction_id = '13') ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:35:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 8ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 1249)
+
+
+Started PUT "/users/1/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:14:54 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :transactions_id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4f2bd4740>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"1", "transactions_id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = 1  AND transaction_id = 13) ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:37:in `withdraw_dispute'
+Completed 422 Unprocessable Entity in 8ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 1244)
+
+
+Started GET "/users/5/transactions/13/dispute/refund_details" for 127.0.0.1 at 2023-08-07 06:15:34 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/5/transactions/13/dispute/refund_details"):
+  
+Started GET "/users" for 127.0.0.1 at 2023-08-07 06:15:40 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (2.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (1.8ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.5ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = $1 ORDER BY "paynows"."id" ASC LIMIT $2[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 134.6ms | Allocations: 25757)
+  Rendered layout layouts/application.html.erb (Duration: 194.0ms | Allocations: 39293)
+Completed 200 OK in 207ms (Views: 171.4ms | ActiveRecord: 25.1ms | Allocations: 41060)
+
+
+Started GET "/users/1/accounts/1/transactions" for 127.0.0.1 at 2023-08-07 06:15:43 +0800
+Processing by TransactionsController#index as HTML
+  Parameters: {"user_id"=>"1", "account_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering transactions/index.html.erb within layouts/application
+  [1m[36mTransaction Load (6.0ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = $1[0m  [["account_id", 1]]
+  ↳ app/views/transactions/index.html.erb:24
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-5"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-20001-5"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-20001-6"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-20001-7"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."account_number" = $1[0m  [["account_number", "539-23421-4"]]
+  ↳ app/models/transaction.rb:9:in `get_other_party_name'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/transaction.rb:10:in `block in get_other_party_name'
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:30
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mTransaction Load (0.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = $1[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/views/transactions/index.html.erb:57
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mAccount Load (0.6ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE Account Load (0.0ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/transactions/index.html.erb:62
+  Rendered transactions/index.html.erb within layouts/application (Duration: 146.7ms | Allocations: 27391)
+  Rendered layout layouts/application.html.erb (Duration: 159.7ms | Allocations: 29689)
+Completed 200 OK in 172ms (Views: 143.7ms | ActiveRecord: 18.5ms | Allocations: 31252)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-08-07 06:15:46 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 3600)
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 5877)
+Completed 200 OK in 28ms (Views: 23.8ms | ActiveRecord: 0.5ms | Allocations: 6384)
+
+
+Started PUT "/users/289/transactions/13/dispute/status" for 127.0.0.1 at 2023-08-07 06:16:49 +0800
+Processing by DisputesController#update_status as */*
+  Parameters: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "id"=>"289", "transactions_id"=>"13", "dispute"=>{}}
+[31mUnpermitted parameters: :further, :id, :transactions_id, :dispute. Context: { controller: DisputesController, action: update_status, request: #<ActionDispatch::Request:0x000001e4f2e173b8>, params: {"date_and_time"=>"8 Aug 2023 04:22", "day_and_date"=>"Mon, 8 Aug 2023", "further"=>"withdraw", "controller"=>"disputes", "action"=>"update_status", "id"=>"289", "transactions_id"=>"13", "dispute"=>{}} }[0m
+  [1m[36mDispute Load (0.5ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes" WHERE (disputer_id = 289  AND transaction_id = 13) ORDER BY "disputes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:37:in `withdraw_dispute'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/disputes_controller.rb:45:in `withdraw_dispute'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/disputes_controller.rb:45:in `withdraw_dispute'
+  [1m[36mDispute Update (3.0ms)[0m  [1m[33mUPDATE "disputes" SET "status" = $1, "updated_at" = $2, "further_action" = $3 WHERE "disputes"."id" = $4[0m  [["status", "Withdrawn"], ["updated_at", "2023-08-06 22:16:49.873700"], ["further_action", "{\"withdraw_date_time\":\"8 Aug 2023 04:22\",\"withdraw_day_date\":\"Mon, 8 Aug 2023\"}"], ["id", 4]]
+  ↳ app/controllers/disputes_controller.rb:45:in `withdraw_dispute'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/disputes_controller.rb:45:in `withdraw_dispute'
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 5.3ms | Allocations: 5442)
+
+
+Started GET "/disputes" for 127.0.0.1 at 2023-08-07 06:16:54 +0800
+Processing by DisputesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering disputes/index.html.erb within layouts/application
+  [1m[36mDispute Load (0.4ms)[0m  [1m[34mSELECT "disputes".* FROM "disputes"[0m
+  ↳ app/views/disputes/index.html.erb:28
+  Rendered disputes/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 992)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3175)
+Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.4ms | Allocations: 3470)
+
+
