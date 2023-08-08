@@ -84,7 +84,7 @@ Then(/^I will be directed to the Bank Transfer page$/, async function() {
   await new Promise(resolve => setTimeout(resolve, 1000))
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/4/accounttransfer');
+  assert.strictEqual(currentUrl, baseUrl + '/25/accounttransfer');
 })
 
 
@@ -120,7 +120,7 @@ Then(/^I enter "([^"]*)" as the comments for recipient$/, async function(comment
 Then(/^I will be directed to the Review Bank Acc page$/, async function() {
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/4/review');
+  assert.strictEqual(currentUrl, baseUrl + '/25/review');
 })
 
 Then(/^I should see "([^"]*)" as the amount of dollars I want to transfer$/, async function(amount) {
@@ -162,7 +162,7 @@ Then('I click the Next button to confirm the bank transfer', async function(){
 Then('I will be directed to the Successful page', async function (){
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/4/success');
+  assert.strictEqual(currentUrl, baseUrl + '/25/success');
 })
 
 Then(/^I should see "([^"]*)" as the confirmed recipient name$/, async function (name){

@@ -1,4 +1,4 @@
-Feature: Payniw Warning
+Feature: Paynow Transfer
 
     Scenario: Verify that a warning is shown when transferring to a new mobile number
         Given that I am on the Paynow Contact page
@@ -15,3 +15,20 @@ Feature: Payniw Warning
         And I will see a red Swipe To Pay button
         When I swipe the Swipe to Pay button
         Then I will be directed to the Succesful page
+    
+    Scenario: Initiate Paynow Transfer
+        Given that I have logged in
+        When I click on the Paynow icon
+        Then I am directed to the Paynow Recipient Details page
+    
+    Scenario: Paynow Recipient Details page Warning
+        Given that I am on the Paynow Recipient Details page
+        When I enter the number "88888884"
+        Then I should see Recipient's Nickname as "tris"
+        And a warning will be displayed under the name
+        And I will see a red Submit button
+        When I click the Submit button
+        Then I will be directed to the Paynow to Mobile page
+        
+    Scenario: Paynow to Mobile page Warning
+
