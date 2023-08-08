@@ -25,8 +25,8 @@ tristan=User.create(username: 'tristan',password: 'password123',phone: '+6588888
 seaKing=User.create(username: 'SEA KING SEAFOOD @ HOUGANG',password: 'password123',phone: '+6588888883',email: 'SEAKING@gmail.com')
 shopeePay=User.create(username: 'SHOPEEPAY PRIVATE LIMITED OTHR',password: 'password123',phone: '+6588888882',email: 'SHOPEEPAY@gmail.com')
 princeNoodles=User.create(username: 'PRINCE NOODLES',password: 'password123',phone: '+6588888881',email: 'PRINCE NOODLES@gmail.com')
-
-
+john=User.create!(username:'john', password:'password123', phone:'+6588888881', email:'john@gmail.com')
+chloe=User.create!(username:'chloe', password:'password123', phone:'+6588888889', email:'chloe@gmail.com')
 seed_transactions=[]
 
 # Create Accounts for User
@@ -35,6 +35,30 @@ jx_savings_acc=junxiang.accounts.create(
   initial_deposit: 10034.2356,
   bank: 'DBS',
   account_type: 'DBS Savings Account'
+)
+john_savings_acc=john.accounts.create(
+  account_number: '539-46543-6',
+  initial_deposit: 10743.50,
+  bank: 'DBS',
+  account_type: 'DBS Savings Account'
+)
+john_mult_acc=john.accounts.create(
+  account_number: '539-23524-3',
+  initial_deposit: 10157.20,
+  bank: 'DBS',
+  account_type: 'DBS Multiplier Account'
+)
+chloe_savings_acc=chloe.accounts.create(
+  account_number: '539-40073-4',
+  initial_deposit: 17740.50,
+  bank: 'DBS',
+  account_type: 'DBS Savings Account'
+)
+chloe_mult_acc=chloe.accounts.create(
+  account_number: '539-53576-3',
+  initial_deposit: 12156.20,
+  bank: 'DBS',
+  account_type: 'DBS Multiplier Account'
 )
 seaKing_savings_acc=seaKing.accounts.create(
   account_number: '539-20001-5',
@@ -136,6 +160,22 @@ Paynow.new(
   paid_bef_phone_num: []
 ).save
 
+#paynow john
+Paynow.new(
+  phone:john.phone,
+  accnum:john_savings_acc.account_number,
+  bank:john_savings_acc.bank,
+  nickname:"johnny",
+  paid_bef_phone_num: []
+).save
+#paynow chloe
+Paynow.new(
+  phone:chloe.phone,
+  accnum:chloe_savings_acc.account_number,
+  bank:chloe_savings_acc.bank,
+  nickname:"chlo",
+  paid_bef_phone_num: []
+).save
 
 # Create Transactions for Account 1
 
