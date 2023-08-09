@@ -124,7 +124,7 @@ When("I click the Submit button", async function () {
 
 });
 
-Then("I will be directed to the Paynow Warning page", async function () {
+Then("I will be directed to the Paynow to Mobile page", async function () {
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, 'http://localhost:3000' + '/4/paynow');
 });
