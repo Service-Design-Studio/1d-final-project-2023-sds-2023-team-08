@@ -1,3 +1,4 @@
+import React from 'react';
 import RecentTransactionsButton from "../../src/components/widgets/RecentTransactionsButton"
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -7,11 +8,19 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     }
     return true;
   });
+
 describe('RecentTransactionsButton.cy.js', () => {
-  it('checks that button routes to the correct page', () => {
+  beforeEach(() => {
     cy.viewport(400, 800);
     cy.mount(<RecentTransactionsButton/>)
-    cy.get('#transaction').click();
-    //cy.location('pathname').eq ('/${userID}/recenttransaction');
-  })
+  });
+
+  it('Check button clicks', () => {
+    cy.get('.transparent').click();
+  });
+
+  it('Check button text', () => {
+    cy.get('.transparent').should('have.text','Recent Transactions')
+  });
+
 })

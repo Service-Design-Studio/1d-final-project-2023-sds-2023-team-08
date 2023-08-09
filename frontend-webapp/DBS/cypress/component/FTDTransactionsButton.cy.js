@@ -8,11 +8,19 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     }
     return true;
   });
+
 describe('FTDTransactionsButton.cy.js', () => {
-  it('checks that button routes to the correct page', () => {
+  beforeEach(() => {
     cy.viewport(400, 800);
     cy.mount(<FTDTransactionsButton/>)
-    cy.get('.transparent').click();
-    //cy.location('pathname').eq ('/${userID}/recenttransaction');
   })
+
+  it('Check button clicks', () => {
+    cy.get('.transparent').click();
+  });
+
+  it('Check button text', () => {
+    cy.get('.transparent').should('have.text','Fund Transfer Dispute Transactions')
+  });
+
 })
