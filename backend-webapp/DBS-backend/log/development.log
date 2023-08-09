@@ -29521,3 +29521,388 @@ Completed 200 OK in 225ms (Views: 211.6ms | ActiveRecord: 6.5ms | Allocations: 5
 
 
 >>>>>>> 6da52f47160fc2cd72709df5898561f9e5116bf1
+Started GET "/" for 127.0.0.1 at 2023-08-03 16:41:03 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.8ms | Allocations: 522)
+Completed 200 OK in 50ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 4839)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-03 16:41:10 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:24
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 549]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888888"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 550]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888887"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 551]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888886"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 552]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888885"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 553]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mCACHE Paynow Load (0.0ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888884"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 554]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.1ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888883"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 555]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.4ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888882"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 556]]
+  ↳ app/views/users/index.html.erb:32
+  [1m[36mPaynow Load (0.2ms)[0m  [1m[34mSELECT "paynows".* FROM "paynows" WHERE "paynows"."phone" = ? ORDER BY "paynows"."id" ASC LIMIT ?[0m  [["phone", "+6588888881"], ["LIMIT", 1]]
+  ↳ app/views/users/index.html.erb:37
+  Rendered users/index.html.erb within layouts/application (Duration: 138.3ms | Allocations: 35577)
+  Rendered layout layouts/application.html.erb (Duration: 300.5ms | Allocations: 73450)
+Completed 200 OK in 339ms (Views: 301.9ms | ActiveRecord: 5.3ms | Allocations: 76811)
+
+
+Started GET "/users/549/home" for 127.0.0.1 at 2023-08-03 16:42:00 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"549"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 549], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 549]]
+  ↳ app/models/user.rb:10:in `list_of_acc_infos'
+  [1m[36mTransaction Sum (0.5ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 1]]
+  ↳ app/models/account.rb:11:in `net_deposits'
+  [1m[36mTransaction Load (0.3ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "539-23421-2"]]
+  ↳ app/models/account.rb:15:in `net_deposits'
+  [1m[36mTransaction Sum (0.3ms)[0m  [1m[34mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."account_id" = ?[0m  [["account_id", 5]]
+  ↳ app/models/account.rb:11:in `net_deposits'
+  [1m[36mTransaction Load (0.4ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ?[0m  [["recipient_account_number", "234-43941-0"]]
+  ↳ app/models/account.rb:15:in `net_deposits'
+Completed 200 OK in 334ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 28933)
+
+
+Started GET "/users/550/all_transactions" for 127.0.0.1 at 2023-08-03 16:42:00 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"550"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 550], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+  [1m[36mAccount Pluck (0.2ms)[0m  [1m[34mSELECT "accounts"."account_number" FROM "accounts" WHERE "accounts"."user_id" = ?[0m  [["user_id", 550]]
+  ↳ app/models/user.rb:27:in `incoming_transactions'
+  [1m[36mTransaction Load (0.2ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" INNER JOIN "accounts" ON "transactions"."account_id" = "accounts"."id" WHERE "accounts"."user_id" = ? AND (datetime >= '2023-07-27')[0m  [["user_id", 550]]
+  ↳ app/controllers/users_controller.rb:153:in `all_transactions_desc'
+  [1m[36mTransaction Load (0.5ms)[0m  [1m[34mSELECT "transactions".* FROM "transactions" WHERE "transactions"."recipient_account_number" = ? AND (datetime >= '2023-07-27')[0m  [["recipient_account_number", "539-23421-4"]]
+  ↳ app/controllers/users_controller.rb:153:in `all_transactions_desc'
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 5376)
+
+
+Started GET "/users/549/home10" for 127.0.0.1 at 2023-08-03 16:42:00 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/549/home10"):
+  
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-03 16:42:00 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1224)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/" for 127.0.0.1 at 2023-08-08 12:57:31 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.1ms | Allocations: 694)
+Completed 200 OK in 87ms (Views: 23.3ms | ActiveRecord: 0.0ms | Allocations: 8250)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-08 12:57:37 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 3143)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 3238)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms | Allocations: 4253)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/" for 127.0.0.1 at 2023-08-08 15:46:37 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.4ms | Allocations: 522)
+Completed 200 OK in 60ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 4839)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-08 15:46:48 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2399)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 2494)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms | Allocations: 3503)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/users" for 127.0.0.1 at 2023-08-08 15:46:49 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1159)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1241)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 1513)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/user" for 127.0.0.1 at 2023-08-08 15:46:54 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+Started GET "/users" for 127.0.0.1 at 2023-08-08 15:47:01 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1157)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1239)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 1510)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/users" for 127.0.0.1 at 2023-08-08 15:47:01 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1154)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1235)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 1505)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/" for 127.0.0.1 at 2023-08-08 15:47:48 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.2ms | Allocations: 522)
+Completed 200 OK in 41ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 4839)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-08-08 15:47:55 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2399)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2494)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 3503)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/users" for 127.0.0.1 at 2023-08-08 15:47:55 +0800
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1159)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1241)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1513)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    21:     </tr>
+    22:   </thead>
+    23:   <tbody>
+    24:     <% @users.each do |user| %>
+    25:       <tr>
+    26:         <td><%= user.id %></td>
+    27:         <td><%= user.username %></td>
+  
+app/views/users/index.html.erb:24
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-08 15:50:53 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 132ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1465)
+
+
+Started GET "/users/2/all_transactions" for 127.0.0.1 at 2023-08-08 15:51:10 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"2"}
+Completed 200 OK in 107ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 975)
+
+
+Started GET "/users/1/all_transactions" for 127.0.0.1 at 2023-08-08 15:51:52 +0800
+Processing by UsersController#all_transactions as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 145ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 976)
+
+
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-08 16:18:20 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 197ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 3010)
+
+
+Started GET "/users/1/all_transactions" for 127.0.0.1 at 2023-08-08 16:18:21 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 161ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 983)
+
+
+Started GET "/users/555/home10" for 127.0.0.1 at 2023-08-08 16:18:21 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/555/home10"):
+  
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-08 16:18:21 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 74ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 986)
+
+
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-08 16:19:05 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 93ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 960)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2023-08-08 16:19:14 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 145.5ms | Allocations: 14589)
+  Rendered layout layouts/application.html.erb (Duration: 146.6ms | Allocations: 14673)
+Completed 500 Internal Server Error in 156ms (ActiveRecord: 0.0ms | Allocations: 15379)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    1: <p style="color: green"><%= notice %></p>
+    2: 
+    3: <%= render @user %>
+    4: 
+    5: <div>
+    6:   <%= link_to "Edit this user", edit_user_path(@user) %> |
+  
+app/views/users/show.html.erb:3
+Started GET "/users/1/home" for 127.0.0.1 at 2023-08-08 16:19:38 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 95ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 986)
+
+
+Started GET "/users/1/all_transactions" for 127.0.0.1 at 2023-08-08 16:19:38 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 135ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 975)
+
+
+Started GET "/users/1/home10" for 127.0.0.1 at 2023-08-08 16:19:38 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/home10"):
+  
+Started GET "/users/555/home" for 127.0.0.1 at 2023-08-08 16:19:38 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"555"}
+Completed 200 OK in 58ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 757)
+
+
+Started GET "/users/555/home" for 127.0.0.1 at 2023-08-08 16:20:25 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"555"}
+Completed 200 OK in 78ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 713)
+
+
+Started GET "/users/5556/home" for 127.0.0.1 at 2023-08-08 16:20:37 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"5556"}
+Completed 200 OK in 62ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 714)
+
+
+Started GET "/users/0/home" for 127.0.0.1 at 2023-08-08 16:20:46 +0800
+Processing by UsersController#home as HTML
+  Parameters: {"id"=>"0"}
+Completed 200 OK in 127ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 713)
+
+

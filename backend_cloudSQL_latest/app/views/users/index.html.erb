@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+
+
+<%= link_to "New user", new_user_path %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+    <th>id</th>
+      <th>user name</th>
+      <th>password</th>
+      <th>phone</th>
+      <th>email</th>
+      <th>link</th>
+      <th>paid bef paynow</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.password %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% user.accounts.each do |acc| %>
+            <%= link_to "account: #{acc.account_number} ", user_account_transactions_path(user, acc) %>
+          <% end %>
+
+        </td>
+        <td><%= "#{Paynow.where(phone: user.phone).first ? Paynow.where(phone: user.phone).first.paid_bef_phone_num : ""}"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

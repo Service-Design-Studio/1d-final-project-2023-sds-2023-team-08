@@ -87,12 +87,12 @@ When("I click the Submit button", async function () {
 
 });
 
-Then("I will be directed to the Paynow Warning page", async function () {
+Then("I will be directed to the Paynow to Mobile page", async function () {
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, 'http://localhost:3000' + '/4/paynow');
 });
 
-Then("a warning will be displayed above the blue box", async function (){
+Then("I should see a warning displayed above the blue box", async function (){
   const warning = await this.driver.findElement(By.className("WarningNoAmountPaynow"));
   const warningText = await warning.getText();
 
@@ -135,7 +135,7 @@ Then("I will be directed to the Swipe To Confirm page", async function (){
   assert.strictEqual(currentUrl, 'http://localhost:3000' + '/4/review');
 });
 
-Then("I will see a red Swipe To Pay button", async function (){
+Then("I should see a red Swipe To Pay button", async function (){
   const redSwiper = await this.driver.findElement(By.className("BasedContainer"));
   const backgroundColor = await redSwiper.getCssValue('background-color');
 
