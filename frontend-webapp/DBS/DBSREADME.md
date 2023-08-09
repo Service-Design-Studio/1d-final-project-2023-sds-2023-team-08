@@ -1,22 +1,3 @@
-![projectlogo](Group37.png)
-
-# **Kopilo Fund Transfer Dispute Resolution**
-
-## **Useful Links**
-  1. [digiBank](https://dbsservice-zwrzqgoagq-as.a.run.app/) 
-  2. [Figma Board](https://www.figma.com/file/WkGoaInNq3u3Roneu88PwL/Service-Design-Studio?type=design&mode=design&t=FPdOO8D8DAoc3PY8-0)
-  3. [Design Workbook](https://docs.google.com/document/d/18kb1gEeE0T5lsJ9isN1ms7r1HdiIQdBYnW9oUsV7_Ck/edit)
-  4. [Google Site](#insert link !!)
-
-## **About the project**
-This project aims to enhance the existing DBS digiBank mobile application by introducing a streamlined and user-friendly process for resolving fund transfer disputes (FTDs). <br>
-Our goal is to provide an efficient and reliable online service that simplifies the dispute resolution procedure, benefiting both users and DBS Bank.
-
-## **Technology Stack**
-- Frontend: The application's frontend is built using the [React.js](https://react.dev/) framework, ensuring a responsive and intuitive user interface.
-- Backend: The backend is developed using [Ruby on Rails](https://rubyonrails.org/), providing a robust and scalable foundation for data processing and business logic.
-- Deployment: The application is deployed on [Google Cloud](https://cloud.google.com/), ensuring reliable and secure access.
-
 # **Table of Contents**
 
 - [Getting Started](#getting-started)
@@ -185,11 +166,11 @@ Checking on status
 16. Click on the tab 'Fund Transfer Dispute Transactions'. <br>
 17. You will see the status of the FTD. There are 5 statuses: <br>
     
-- Awaiting Action - Awaiting for recipient's action.
-- Action Required - By the recipient. Will be seen on their account.
-- Resolved - FTD has been resolved by recipient.
-- Refuted - FTD has been refuted by recipient. 
-- Pending DBS - Pending DBS action. 
+  - Awaiting Action - Awaiting for recipient's action.
+  - Action Required - By the recipient. Will be seen on their account.
+  - Resolved - FTD has been resolved by recipient.
+  - Refuted - FTD has been refuted by recipient. 
+  - Pending DBS - Pending DBS action. 
 
 Recepient actions
 
@@ -200,8 +181,7 @@ Recepient actions
 22. You will be redirected to the Fund Dispute page with all the statuses.  <br>
 23. Click on Action Required button.<br>
 24. Decide on whether you want to refund or refute. <br>
-    a. Refund: You will not be able to change the amount transacted as the refund amount. <br> 
-    It will be a full refund. <br>
+    a. Refund: You will not be able to change the amount transacted as the refund amount. It will be a full refund. <br>
     b. Refute: Provide a reason for the sender as to why you decide to refute the dispute. <br>
 25. Verify the dispute details and confirm your choice. <br>
 
