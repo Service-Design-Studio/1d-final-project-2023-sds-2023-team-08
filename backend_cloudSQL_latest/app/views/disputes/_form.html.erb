@@ -1,0 +1,17 @@
+<%= form_with(model: dispute) do |form| %>
+  <% if dispute.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(dispute.errors.count, "error") %> prohibited this dispute from being saved:</h2>
+
+      <ul>
+        <% dispute.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

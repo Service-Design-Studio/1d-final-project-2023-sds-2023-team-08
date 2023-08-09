@@ -23,12 +23,6 @@ Feature: Vertex AI
         When I click on the star button on the top-right corner of the textbox
         Then I will see loading prompt with the words "AI is Working"
         And I will see another prompt saying "Comment is cleaned!"
-
-#                       == Clarify on how to test this part ==
-
-    Scenario: AI Vertex completed 
-        Given that the AI has cleaned my comments
-        When I see the "Comment is cleaned"
         Then I will see a different comment compared to the original comment
         And the comments should not exceed "250" characters
 

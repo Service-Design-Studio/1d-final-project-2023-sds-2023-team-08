@@ -4,6 +4,7 @@ import '../components/styles/others/NormalTransactionDetailsStyles.css';
 import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import LoadingScreen from './others/Loader';
+import RaiseFTDButton from '../components/widgets/RaiseFTDButton';
 
 const RaiseFTDScreen = () => {
     const {userID, transactionID} = useParams();
@@ -53,34 +54,34 @@ const RaiseFTDScreen = () => {
         updateCharacterCount(textarea)
       }, [comment]);
 
-    const handleSubmit = async(event) => {
-        event.preventDefault(); 
+    // const handleSubmit = async(event) => {
+    //     event.preventDefault(); 
 
-        if (reason === ''){
-            setemptyComment(false);
-            setemptyCheckbox(true);
-        }
-        else if (comment.length === 0) {
-            setemptyComment(true);
-            setemptyCheckbox(false);
-        } 
-        else if (reason === 'Transfer Wrong Amount' && (correctAmount.length == 0 || contactDetails.length == 0 )) {
-            setemptyDetails(true)
-        }
-        else if (reason === 'Transfer Wrong Amount' && (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6 )) {
-            setinvalidContact(true)
-        }
-        else {
-            TransactionDataOver.transaction['user'] = totalAmount > 0 ? "Recipient" : "Sender"
-            TransactionDataOver.transaction['reason'] = reason
-            TransactionDataOver.transaction['comments'] = comment
-            TransactionDataOver.transaction['raiseFTD'] = true
-            TransactionDataOver.transaction['transaction ID'] = transactionID
-            TransactionDataOver.transaction['correct amount'] = correctAmount
-            TransactionDataOver.transaction['contact details'] = contactDetails
-            navigate(`/${userID}/review`, {state: TransactionDataOver})
-        }
-    };
+    //     if (reason === ''){
+    //         setemptyComment(false);
+    //         setemptyCheckbox(true);
+    //     }
+    //     else if (comment.length === 0) {
+    //         setemptyComment(true);
+    //         setemptyCheckbox(false);
+    //     } 
+    //     else if (reason === 'Transfer Wrong Amount' && (correctAmount.length == 0 || contactDetails.length == 0 )) {
+    //         setemptyDetails(true)
+    //     }
+    //     else if (reason === 'Transfer Wrong Amount' && (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6 )) {
+    //         setinvalidContact(true)
+    //     }
+    //     else {
+    //         TransactionDataOver.transaction['user'] = totalAmount > 0 ? "Recipient" : "Sender"
+    //         TransactionDataOver.transaction['reason'] = reason
+    //         TransactionDataOver.transaction['comments'] = comment
+    //         TransactionDataOver.transaction['raiseFTD'] = true
+    //         TransactionDataOver.transaction['transaction ID'] = transactionID
+    //         TransactionDataOver.transaction['correct amount'] = correctAmount
+    //         TransactionDataOver.transaction['contact details'] = contactDetails
+    //         navigate(`/${userID}/review`, {state: TransactionDataOver})
+    //     }
+    // };
 
     const adjustTextareaHeight = (textarea) => {
         textarea.style.height = '20px';
@@ -355,7 +356,21 @@ const RaiseFTDScreen = () => {
             </div>
             )}
 
-            <button className='RaiseFTDButton' onClick={handleSubmit}>RAISE FUND TRANSFER DISPUTE</button>
+            <RaiseFTDButton
+                reason={reason}
+                comment={comment}
+                correctAmount={correctAmount}
+                contactDetails={contactDetails}
+                TransactionDataOver={TransactionDataOver}
+                userID={userID}
+                navigate={navigate}
+                transactionID={transactionID}
+                totalAmount={totalAmount}
+                setemptyComment={setemptyComment}
+                setemptyCheckbox={setemptyCheckbox}
+                setemptyDetails={setemptyDetails}
+                setinvalidContact={setinvalidContact}
+            />
 
         </div>
     
