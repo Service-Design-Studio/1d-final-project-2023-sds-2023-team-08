@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginScreen from '../../src/views/LoginScreen';
+import HomeScreen from '../../src/views/HomeScreen';
+
 
 describe('Test Login Page', () => {
   it('should render', () => {
@@ -11,7 +13,7 @@ describe('Test Login Page', () => {
     cy.mount(
       <Router>
         <Routes>
-            <Route path="/" element={<LoginScreen key="login" />} />
+          <Route path="/:userID/home" element={<HomeScreen key="home"/>} />
         </Routes>
       </Router>
     );

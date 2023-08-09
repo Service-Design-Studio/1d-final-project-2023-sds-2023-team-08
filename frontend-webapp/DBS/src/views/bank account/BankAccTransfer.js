@@ -94,7 +94,7 @@ const BankTransferTransactionPage = () => {
                 <div className = 'recipient_container1'>
                     <div className= 'profile2'></div>
                     <div className='account_right1'>
-                        <p id='recipientName' className= 'accountname1'>{bankrecipientdetails?.name || 'valencia'}</p>
+                        <p id='recipientName' className= 'accountname1'>{bankrecipientdetails?.npmname || 'valencia'}</p>
                         <div className= 'accountnumber1'>
                             <p id = 'recipientAccNumber' className= 'accountnumber1'>{bankrecipientdetails?.acc || 342454350}</p>
                         </div>  
