@@ -40,9 +40,9 @@ RSpec.describe Dispute, type: :model do
   describe '#generate_detailed_status' do
     it 'returns the correct detailed status for "Dispute Filed" status' do
       dispute = Dispute.create(status: 'Dispute Filed', disputer_id: user.id, date_time: (Date.today - 1).strftime('%d %B %Y'))
-      expect(dispute.generate_detailed_status(user)).to eq("Recipient has 1 working days left before this dispute is automatically raised to DBS")
+      expect(dispute.generate_detailed_status(user)).to eq("Recipient has 2 working days left before this dispute is automatically raised to DBS")
     end
-#changed to 1 instd of 2 working day to account for time difference error in deployed version 
+ 
     it 'returns the correct detailed status for "Raised to DBS" status' do
       dispute = Dispute.create(status: 'Raised to DBS', dispute_reason: 'Unknown Transaction', date_time: (Date.today - 3).strftime('%d %B %Y'))
       expect(dispute.generate_detailed_status(user)).to eq("This dispute is currently being investigated by the DBS claims team. You will hear back from us latest by #{(Date.strptime(dispute.date_time, '%d %B %Y') + 30.days).strftime('%a, %d %B %Y')} ")
