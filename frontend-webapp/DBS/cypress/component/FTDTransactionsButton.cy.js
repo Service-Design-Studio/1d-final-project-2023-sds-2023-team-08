@@ -22,5 +22,4 @@ describe('FTDTransactionsButton.cy.js', () => {
   it('Check button text', () => {
     cy.get('.transparent').should('have.text','Fund Transfer Dispute Transactions')
   });
-
 })
