@@ -1,37 +1,37 @@
-// const assert = require('assert');
-// const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
-// const { Builder, By, Key, until } = require('selenium-webdriver');
-// const { useEffect } = require('react');
-// const { expect } = require('chai');
-// const readline = require('readline');
+const assert = require('assert');
+const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
+const { Builder, By, Key, until } = require('selenium-webdriver');
+const { useEffect } = require('react');
+const { expect } = require('chai');
+const readline = require('readline');
 
 
 
 
 
-// async function pauseTest() {
-//   // Log a message to prompt the tester to manually continue the test
-//   console.log('Test execution paused. Type "S" and press "Enter" to continue...');
+async function pauseTest() {
+  // Log a message to prompt the tester to manually continue the test
+  console.log('Test execution paused. Type "S" and press "Enter" to continue...');
 
-//   const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-//   });
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
 
-//   return new Promise((resolve) => {
-//     const onData = (input) => {
-//       const trimmedInput = input.trim().toLowerCase();
-//       if (trimmedInput === 's') {
-//         rl.off('line', onData); // Remove the event listener
-//         rl.close(); // Close the readline interface
-//         resolve();
-//       } else {
-//         console.log('Invalid input. Type "S" and press "Enter" to continue...');
-//       }
-//     };
-//     rl.on('line', onData);
-//   });
-// }
+  return new Promise((resolve) => {
+    const onData = (input) => {
+      const trimmedInput = input.trim().toLowerCase();
+      if (trimmedInput === 's') {
+        rl.off('line', onData); // Remove the event listener
+        rl.close(); // Close the readline interface
+        resolve();
+      } else {
+        console.log('Invalid input. Type "S" and press "Enter" to continue...');
+      }
+    };
+    rl.on('line', onData);
+  });
+}
 
 
 
