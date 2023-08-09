@@ -22,22 +22,22 @@ async function loginJunxiang(driver){
 
 async function navigateToPaynowToMobilePage(driver){
   await loginJunxiang(driver)
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
-  const paynowIcon = await driver.findElement(By.id('paynowbutton')); 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
-  await paynowIcon.click(); 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const paynowIcon = await driver.findElement(By.id('paynowbutton')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await paynowIcon.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
   const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
   phoneNumberField.sendKeys("88888886") 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
+  await new Promise(resolve => setTimeout(resolve, 1000))
   const clickAway = await driver.findElement(By.className("overall")) 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
-  await clickAway.click(); 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
-  const submitButtonRed = await driver.findElement(By.className('pntsubmitbuttonER')); 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
-  await submitButtonRed.click(); 
-  await new Promise(resolve => setTimeout(resolve, 1000)); 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await clickAway.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const submitButtonRed = await driver.findElement(By.className('pntsubmitbuttonER'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await submitButtonRed.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
 }
 
 async function navigateToSwipeToConfirmPage(driver){
@@ -52,29 +52,6 @@ async function navigateToSwipeToConfirmPage(driver){
   await new Promise(resolve => setTimeout(resolve, 1000)); 
 }
 
-async function pauseTest() {
-  // Log a message to prompt the tester to manually continue the test
-  console.log('Test execution paused. Type "S" and press "Enter" to continue...');
-
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
-  return new Promise((resolve) => {
-    const onData = (input) => {
-      const trimmedInput = input.trim().toLowerCase();
-      if (trimmedInput === 's') {
-        rl.off('line', onData); // Remove the event listener
-        rl.close(); // Close the readline interface
-        resolve();
-      } else {
-        console.log('Invalid input. Type "S" and press "Enter" to continue...');
-      }
-    };
-    rl.on('line', onData);
-  });
-}
 
 
 
@@ -87,14 +64,9 @@ async function pauseTest() {
 
 
 
+/////////// VERIFY THAT A WARNING IS SHOWN WHEN SUBMITTING NO INPUT ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-
-
-
-
-/////////// VERIFY THAT A WARNING IS SHOWN WHEN TRANSFERRING TO A NEW MOBILE NUMBER ////////////////////////////////////////////////////////////////////////////////////////////// 
- 
-Given('that I am on the Paynow Contact page', async function () { 
+Given('that I am on the Paynow Contact Page', async function () { 
   await loginJunxiang(this.driver)
   await new Promise(resolve => setTimeout(resolve, 1000))
   const paynowIcon = await this.driver.findElement(By.id('paynowbutton')) 
@@ -106,7 +78,38 @@ Given('that I am on the Paynow Contact page', async function () {
   await paynowIcon.click(); 
   await new Promise(resolve => setTimeout(resolve, 1000))
  
-}); 
+})
+
+When('I click "SUBMIT" before keying in a valid recipient', async function () {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  const loginButton = await this.driver.findElement(By.id('pntsubmitbutton'))
+  // Add a delay of 1 second before clicking the button
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  // Click the button
+  await loginButton.click();
+});
+
+Then('I will see a warning to key in a valid phone number', async function () {
+  // Check if there is a warning
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  const noRecipientWarning = await this.driver.findElement(By.className('WarningMessagePaynow'));
+  const warningText = await noRecipientWarning.getText()
+
+  // Assert the text content matches a particular string
+  expect(warningText).to.equal('* Please Enter A Phone Number')
+})
+
+
+
+
+
+
+
+/////////// VERIFY THAT A WARNING IS SHOWN WHEN TRANSFERRING TO A NEW MOBILE NUMBER ////////////////////////////////////////////////////////////////////////////////////////////// 
+ 
+// GIVEN has been defined above
  
 When(/^I enter a mobile number "([^"]*)" that I have never transferred to before$/, async function (newNumber) { 
   const phoneNumberField = await this.driver.findElement(By.className('eightdigitER')) 
