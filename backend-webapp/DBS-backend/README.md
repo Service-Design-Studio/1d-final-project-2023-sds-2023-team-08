@@ -5,7 +5,7 @@ application up and running.
 This README also explains the project usage.
 
 ### Introduction
-This is the service broker of the banking app to redirect incoming requests to the respective microservice. Built using Ruby On Rails.
+This is the reverse proxy of the banking app to redirect incoming requests to the respective microservice. Built using Ruby On Rails.
 
 ### Prerequisites
 * Ensure you have ruby installed. This project uses ruby version 3.2.2 . run `ruby -v` in your terminal to check
