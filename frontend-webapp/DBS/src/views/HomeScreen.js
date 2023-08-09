@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import RecentTransactionsButton from '../components/widgets/RecentTransactionsButton';
 
 const HomeScreen = () => {
   const navigate = useNavigate();
@@ -168,6 +169,12 @@ const HomeScreen = () => {
             </div>
           </div>
 
+          <RecentTransactionsButton
+            userID={userID}
+            navigate={navigate}
+          />
+
+{/*
           <div className="containerfour">
             <button id='transaction' className='transparent' onClick={() => navigate(`/${userID}/recenttransaction`)}>
               <div className="recenttransaction">
@@ -176,6 +183,7 @@ const HomeScreen = () => {
               </div>
             </button>
           </div>
+*/}
 
           <NavigationContainer>
             <TopNavigator></TopNavigator>
