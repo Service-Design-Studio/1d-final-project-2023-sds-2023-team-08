@@ -1,3 +1,5 @@
+// COMPLETED
+
 const assert = require('assert');
 const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const { Builder, By, Key, until } = require('selenium-webdriver');
@@ -236,7 +238,7 @@ Then(/^I am directed to the Bank Transfer page$/, async function() {
   await new Promise(resolve => setTimeout(resolve, 1000))
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/1/accounttransfer');
+  assert.strictEqual(currentUrl, baseUrl + '/4/accounttransfer');
 })
 
 
@@ -307,7 +309,7 @@ Before({tags: "@onReviewBankAccountPage"}, async function(){
 Given(/^I am on the Review Bank Account page$/, async function() {
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/1/review');
+  assert.strictEqual(currentUrl, baseUrl + '/4/review');
 })
 
 Then(/^I should see "([^"]*)" as the amount to be transacted$/, async function(amount) {
@@ -376,7 +378,7 @@ Before({tags: "@onSuccessfulBankTransferPage"}, async function(){
 Given("I am on the Successful page", async function(){
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/1/success');
+  assert.strictEqual(currentUrl, baseUrl + '/4/success');
 })
 
 Then(/^I should see "([^"]*)" as the confirmed recipient name$/, async function (name){
