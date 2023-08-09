@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../components/styles/fund transfer dispute/ReviewRefuteStyles.css';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
-import ReviewFTDSubmitButton from '../../components/widgets/SubmitButtonRed';
+import SubmitButtonRed from '../../components/widgets/SubmitButtonRed';
 
 const ReviewFTD = () => {
     const navigate = useNavigate();
