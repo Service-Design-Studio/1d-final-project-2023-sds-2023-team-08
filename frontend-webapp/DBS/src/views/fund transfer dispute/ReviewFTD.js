@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../components/styles/fund transfer dispute/ReviewRefuteStyles.css';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
+import ReviewFTDSubmitButton from '../../components/widgets/SubmitButtonRed';
 
 const ReviewFTD = () => {
     const navigate = useNavigate();
@@ -127,7 +128,7 @@ const ReviewFTD = () => {
                 <p className='rereboxtextcontentbottom'> {RaiseFTDdata["comments"]}</p>
             </div>
 
-            <button onClick={handleSubmit} className='SubmitButton'>RAISE DISPUTE</button>
+            <SubmitButtonRed onClick={handleSubmit} />
         </div>
     )
     );
