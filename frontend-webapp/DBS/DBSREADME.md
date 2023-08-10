@@ -66,7 +66,7 @@ webpack compiled successfully
 
 Open http://localhost:3000 to view it in your browser.
 
-You have now lauched the app on your web browser! To simulate the experience of using this webapp on a mobile device, you can install [Android Studios](https://developer.android.com/studio) and run the app on an emulator instead.
+You have now lauched the app on your web browser! To simulate the experience of using this webapp on a mobile device, you can install [Android Studios](https://developer.android.com/studio) and run the app on an emulator instead. <br> Alternatively, you may enable the mobile view on your browser through inspect element.
 
 # **Files**
 
