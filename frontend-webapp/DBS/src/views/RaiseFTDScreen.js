@@ -10,7 +10,6 @@ const RaiseFTDScreen = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const TransactionDataOver = location.state
-    console.log(TransactionDataOver)
     const TransactionData = TransactionDataOver.transaction
     const totalAmount = TransactionData['total amount']
     const commentsInputRef = useRef(null);
@@ -28,6 +27,8 @@ const RaiseFTDScreen = () => {
     const [wrongAmount, setWrongAmount] = useState(false);
     const [correctAmount, setCorrectAmount] = useState('');
     const [contactDetails, setContactDetails] = useState('');
+
+    const [isProfanity, setIsProfanity] = useState(false);
 
     
     useEffect(() => {
@@ -53,9 +54,36 @@ const RaiseFTDScreen = () => {
         updateCharacterCount(textarea)
       }, [comment]);
 
+    const profanityChecker = async () => {
+        console.log('checking for profanities')
+        try {
+            const response = await axios.post('https://dbs-backend-service-ga747cgfta-as.a.run.app/disputes/check_for_profanity',
+            JSON.stringify({'comment' : comment}),
+            {
+                headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+                'X-Requested-With': 'XMLHttpRequest',
+            }})
+            console.log(response)
+            if (response.data.profanity_detected) {
+                console.log(response.data)
+                setIsProfanity(true)
+                }   
+            else {
+                setIsProfanity(false)
+            }}
+        catch (error) {
+            console.log('Error:', error.toJSON());
+            setIsProfanity(true)
+        }
+    }
+
     const handleSubmit = async(event) => {
         event.preventDefault(); 
+        await profanityChecker();
 
+        console.log(isProfanity)
         if (reason === ''){
             setemptyComment(false);
             setemptyCheckbox(true);
@@ -69,6 +97,9 @@ const RaiseFTDScreen = () => {
         }
         else if (reason === 'Transfer Wrong Amount' && (contactDetails.length < 8  && contactDetails.length > 0 || contactDetails[0] != 9 && contactDetails[0] != 8 && contactDetails[0] != 6 )) {
             setinvalidContact(true)
+        }
+        else if (isProfanity === true) {
+            return null
         }
         else {
             TransactionDataOver.transaction['user'] = totalAmount > 0 ? "Recipient" : "Sender"
@@ -157,6 +188,7 @@ const RaiseFTDScreen = () => {
                     );
                     if (response.data.success) {
                         console.log(response.data)
+                        setIsProfanity(false)
                         sleep(2000).then(() => {
                             document.getElementById('loadingcursor').style.visibility = 'hidden';
                             document.getElementById('Aitext').textContent = 'Comments is cleaned!';
@@ -284,9 +316,12 @@ const RaiseFTDScreen = () => {
                     </div>
                 }
 
-                {emptyComment && (
+                {emptyComment ? (
                     <p className='flashmessagetextcomments'>* COMMENTS FIELD CANNOT BE LEFT BLANK</p>
-                )}
+                ) : isProfanity ? (
+                    <p className='flashmessagetextcomments'>* We detected sensitive language in your comment. Please amend or use our AI assist feature to help you.</p>
+                ) : (null)}
+
 
                 
                 <div className='commentsBox' style={{position: 'relative'}}>
@@ -303,6 +338,7 @@ const RaiseFTDScreen = () => {
                     value={comment}
                     onInput={(event) => setComment(event.target.value)}
                     maxLength={250}
+                    onBlur={profanityChecker}
                     ></textarea>
                     <div className='AIassist' onClick={cleanComments}>
                         <span className="hovertext">AI assist: Help me refine</span>
@@ -329,7 +365,7 @@ const RaiseFTDScreen = () => {
                 <label className="checkboxtext" htmlFor='unknowntransaction'>Unknown Transaction</label>
                 </div>
 
-                <div className='commentsBox'>
+                <div className='commentsBox' style={{position: 'relative'}}>
                     <div className='loadingScreen' id='loadingOverlay' style={{visibility: cleaningComments ? 'visible' : 'hidden'}}> 
                         <div id='loadingcursor'><LoadingScreen/></div>
                         <p className='Aitext' id='Aitext'>AI is working <span className="dotAnimation" id='dotanimation'> </span></p>
@@ -346,8 +382,9 @@ const RaiseFTDScreen = () => {
                         setComment(event.target.value);
                     }}
                     maxLength={250}
+                    onBlur={profanityChecker}
                     ></textarea>
-                    <div className='AIassist' style={{top: '60.5vh'}} onClick={cleanComments}>
+                    <div className='AIassist' onClick={cleanComments}>
                         <span className="hovertext">AI Assist: Help me clean</span>
                     </div>
                     <p className="commentcharacterCount">/<span id="characterCount">250</span></p>
@@ -355,7 +392,7 @@ const RaiseFTDScreen = () => {
             </div>
             )}
 
-            <button className='RaiseFTDButton' onClick={handleSubmit}>RAISE FUND TRANSFER DISPUTE</button>
+            <button className='RaiseFTDButton' style={{backgroundColor: isProfanity ? '#7A7A7A' : '#1D0C86'}} onClick={handleSubmit}>RAISE FUND TRANSFER DISPUTE</button>
 
         </div>
     
