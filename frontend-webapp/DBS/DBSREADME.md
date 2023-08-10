@@ -223,7 +223,7 @@ This is to aid user's who have a language barrier or those that made a wrong tra
 
 Guide:
 
-1. Raise a FTD (refer to the guide under [Fund Transfer Dispuite](#fund-transfer-dispute)) <br> 
+1. Raise a FTD (refer to the guide under [Fund Transfer Dispute](#fund-transfer-dispute)) <br> 
 2. At Step 10, click on the `AI Assists` button after keying in a comment that elaborates on the reason of the wrong transfer.<br> 
 3. The AI will take in your input comment and output a polite and structured reply with details such as the wrong amount.<br>
 4. Upon clicking next, you will see the generated comment as part of the FTD details that the recipient will see. <br>
