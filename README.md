@@ -4,7 +4,7 @@
   1. [digiBank](https://dbsservice-zwrzqgoagq-as.a.run.app/) 
   2. [Figma Board](https://www.figma.com/file/WkGoaInNq3u3Roneu88PwL/Service-Design-Studio?type=design&mode=design&t=FPdOO8D8DAoc3PY8-0)
   3. [Design Workbook](https://docs.google.com/document/d/18kb1gEeE0T5lsJ9isN1ms7r1HdiIQdBYnW9oUsV7_Ck/edit)
-  4. [Google Site](#insert link !!)
+  4. [Google Site](https://sites.google.com/mymail.sutd.edu.sg/kopilo/home?authuser=6)
 
 ### **About the project**
 This project aims to enhance the existing DBS digiBank mobile application by introducing a streamlined and user-friendly process for resolving fund transfer disputes (FTDs). <br>
