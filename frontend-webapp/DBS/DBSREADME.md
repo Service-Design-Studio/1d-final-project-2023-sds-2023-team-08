@@ -104,7 +104,7 @@ Step_defintion folder
 
 The Step definition folder contains the actual automation code that implements the behavior described in the .feature files. Each step in a .feature scenario corresponds to a step definition in a JavaScript. 
 
-More information about Cucumber Testing can be found under the [Cucumber Testing](#Cucumber Testing) page. 
+More information about Cucumber Testing can be found under the [Cucumber Testing](##Cucumber-Testing) page. 
 
 # **Features**
 
