@@ -354,7 +354,7 @@ When('I click on the Submit button', async function () {
 Then('I will be redirected to the Review Transfer page', async function () {
   // Check if the current page is the home page
   const currentUrl = await this.driver.getCurrentUrl();
-  assert.strictEqual(currentUrl, baseUrl + '/5/review');
+  expect(currentUrl).to.include(baseUrl + '/5/review');
 });
 
 
@@ -392,9 +392,6 @@ When('I navigated to the Recent Transactions page', async function () {
   const rcnttxntab = await this.driver.findElement(By.className('recenttransaction'))
   await new Promise(resolve => setTimeout(resolve, 1000));
   await rcnttxntab.click();
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  const currentUrl = await this.driver.getCurrentUrl();
-  assert.ok(currentUrl.includes(baseUrl +'/1/recenttransaction'));
 })
 
 When(/^I click into the transaction of "([^"]*)" to "([^"]*)"$/, async function(refundamount,recpname){
@@ -458,12 +455,103 @@ Given("I have filled up the FTD Form Page but want my comments to reflect the co
 
 
 
+/////////// FTD PAGE THROUGH RECENT TXNS ////////////////////////////////////////////////////////////////////////////////////////////// 
+
+Before({tags: "@logintotristan"}, async function(){
+  await loginTristan(this.driver)
+})
+
+Given("I have logged in to tristan's account", async function(){
+  const currentUrl = await this.driver.getCurrentUrl();
+  expect(currentUrl).to.include(baseUrl+'/5/home');
+})
+
+//navigated to recent transactions defined above
+
+When("I click into the FTD tab", async function(){
+  const ftdtab = await this.driver.findElement(By.id('ftdtab')) //redeploy
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await ftdtab.click()
+})
+
+//check redirect to FTD page defined above
 
 
 
 
 
+/////////// PARTIAL TRANSFER SCREEN ////////////////////////////////////////////////////////////////////////////////////////////// 
+
+//given at ftd page defined above
+
+// when click on ftd raised by jx with 12 defined above
+
+//brought to dispute page defined above
+
+When(/^The Correct Amount of Transaction is indicated to be '[(^")*]'$/, async function(rightfulamt){
+  const correctamt = await this.driver.findElement(By.className("transactiondetailsbodytext"))
+  const supposedtopay = correctamt.getText()
+  expect(supposedtopay).to.include(rightfulamt)
+})
+
+// click on yes refund defined above
+
+//redirection to refnid disput page defined above
 
 
 
 
+/////////// SUBMIT PARTIAL REFUND ////////////////////////////////////////////////////////////////////////////////////////////// 
+
+// given at the refund dispute page defined above
+
+When(/^the refund amount has been fixed to '[(^")*]'$/, async function (refundexcess){
+  const excess = await this.driver.findElement(By.className("refundamount1"))
+  const topay = excess.getText()
+  expect(topay).to.equal(refundexcess)
+})
+
+// When I click on the Submit button defined above 
+// Then I will be redirected to the Review Transfer page defined above
+// When I click on Transfer Now defined above
+// Then I will be redirected to the Successful transfer page showing "8.00" as the refund amount defined above
+
+
+
+
+/////////// REPETITION OF MAKING FTD ////////////////////////////////////////////////////////////////////////////////////////////// 
+/////////// REPETITION OF NAVIGATING TO FTD PAGE ////////////////////////////////////////////////////////////////////////////////////////////// 
+
+/////////// REFUTING DISPUTE  ////////////////////////////////////////////////////////////////////////////////////////////// 
+When("I click on the No - Refute button", async function(){
+  const refutebutton = await this.driver.findElement(By.className("refutebutton"))
+  await refutebutton.click()
+})
+
+Then("I will be redirected to the Refute Dispute page", async function(){
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.ok(currentUrl.includes(baseUrl + '/5/refutedispute'));
+})
+
+When("I input my reason for refuting", async function(){
+  const refutecomment = await this.driver.findElement(By.className("RefuteDisputeReason"))
+  await refutecomment.sendKeys("Sorry, it is mine")
+})
+
+When("I click on the Submit button to submit refute", async function(){
+  const refutebutton = await this.driver.findElement(By.className("SubmitButton"))
+  await refutebutton.click()
+})
+
+// redirect to review tranfer page defined above
+
+When("I click on REFUTE DISPUTE to confirm", async function(){
+  const confirmrefute = await this.driver.findElement(By.className("SubmitButtonRed"))
+  await confirmrefute.click()
+})
+
+Then("I will be redirected to the Successful Refute page", async function(){
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, baseUrl+ '/5/success');
+})

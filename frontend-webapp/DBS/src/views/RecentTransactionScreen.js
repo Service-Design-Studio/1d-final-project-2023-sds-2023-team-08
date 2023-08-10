@@ -80,7 +80,7 @@ const RecentTransactionScreen = () => {
               </div>
           </button> }
 
-        <button className='transparent' onClick={() => navigate(`/${userID}/FTDtransactionsall`)}>
+        <button id='ftdtab' className='transparent' onClick={() => navigate(`/${userID}/FTDtransactionsall`)}>
           <div className='ftd'>
             <p className='ftdtext'>Fund Transfer Dispute Transactions</p>
             <img src='/assets/expand.png' className='expand'/>
