@@ -100,7 +100,7 @@ The Routes folder stores the Route.js file, which is responsible for routing bet
 
 The features folder stores the .feature files that is required for Cucumber testing. Each feature file describe the behavior of the software through scenarios. Each scenario outlines a specific use case or test case. The purpose of these files are to provide a clear and common understanding of how the software should behave from a functional standpoint.
 
-`Step_defintion folder`
+`Step_definition folder`
 
 The Step definition folder contains the actual automation code that implements the behavior described in the .feature files. Each step in a .feature scenario corresponds to a step definition in a JavaScript. 
 
@@ -112,11 +112,11 @@ This section encompasses a guided demonstration of the four primary features tha
 For the purpose of demonstration, use the following credentials to log into the app: 
 
 **Sender:** <br>
-    `username: wei xuan` <br>
+    `username: chloe` <br>
     `password: password123`
 
 **Recipient:** <br> 
-    `username: junxiang`<br>
+    `username: john`<br>
     `password: password123`
 
 ## Recent Transaction Page
@@ -140,7 +140,7 @@ Guide:
 Making a PayNow Transfer
 
 1. While logged in, click on the PayNow icon to make a transfer.
-2. For simulation purposes, enter `88888887` into the Recipient's Mobile No.
+2. For simulation purposes, enter `88888881` into the Recipient's Mobile No.
 3. Click away from the box to allow for the recipient's nickname to appear.
 4. Click on Submit.
 5. Enter any amount of your choice. Click on Next.
@@ -198,7 +198,7 @@ PayNow Warnings
 
 1. Log in with the Sender's credentials.
 2. Make a PayNow transfer (refer to the guide under [Recent Transactions](#recent-transaction-page)).
-3. For this case, use the phone number `88888886`. You should see `vin` as the nickname. 
+3. For this case, use the phone number `88888881`. You should see `Johnny` as the nickname. 
 4. An alert text in red will also be shown below the Recipient's Nickname, warning you that this is a new payee.
 5. The button 'Submit' as well as 'Next' in the next page are now red to warn you of your actions. 
 6. Then final layer of warning is a Swipe to Pay function. It requires you to consciously make the decision to swipe and make the transfer.
@@ -212,19 +212,20 @@ Autofill & Fuzzy Search
 11. In the search bar, enter `OCBC` and you will see the list of banks that go by this acronym.
 12. Select `OVERSEA-CHINESE BANKING CORPORATION LTD`.
 13. Copy the following bank account number: `860-345-34`
-14. When you click on Enter account number textbox, there will be a dropdown that automatically shows the number that is copied on your clipboard. 
+14. When you click on Enter account number textbox, there will be a dropdown that automatically shows the number that is copied on your clipboard. (Note: You might need to click into the textbox a few times before the autofill appears. This is due to the browser checking your permissions to read the clipboard which takes some time)
 15. Click on the autofill box to enter the copied number.
 16. The rest of the procedure are the same steps as making a PayNow transfer.
 
 ## AI Written Comments
 As part of our module to implement a feature driven by AI, we have chosen to use AI in the comments that senders will write to inform recipients about a FTD. <br>
 By utilizing Google's Vertex AI and its Large Language Model, the AI will be able to take in a short comment and convert it into a polite one for the recipient to read. <br>
-This is to aid user's who have a language barrier or those that made a wrong transfer and are momentarily too emotional to craft a polite message.
+This is to aid user's who have a language barrier or those that made a wrong transfer and are momentarily too emotional to craft a polite message. <br>
+Furthermore, a profanity checker has been integrated to the comments. Once users has wrote finished the comment and tap away from the screen, a background profanity checker will run to check if there is any profanities. An alert will show in the presence of any profanity and the Raise A Dispute button will turn gray and users are not allowed to submit. This is done to protect users from receiving harmful languages. 
 
 Guide:
 
 1. Raise a FTD (refer to the guide under [Fund Transfer Dispute](#fund-transfer-dispute)) <br> 
-2. At Step 10, click on the `AI Assists` button after keying in a comment that elaborates on the reason of the wrong transfer.<br> 
+2. At Step 10, click on the `AI Assists` glitter icon after keying in a comment that elaborates on the reason of the wrong transfer.<br> 
 3. The AI will take in your input comment and output a polite and structured reply with details such as the wrong amount.<br>
 4. Upon clicking next, you will see the generated comment as part of the FTD details that the recipient will see. <br>
 
