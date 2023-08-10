@@ -9,9 +9,9 @@ async function loginJunxiang(driver){
   await driver.get(baseUrl)
   await driver.manage().window().setRect({ width: 393, height: 851 })
   const usernameField = await driver.findElement(By.id('username'))
-  usernameField.sendKeys("junxiang")
+  await usernameField.sendKeys("junxiang")
   const passwordField = await driver.findElement(By.id('pin'))
-  passwordField.sendKeys("password123")
+  await passwordField.sendKeys("password123")
   const loginButton = await driver.findElement(By.className('login'))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await loginButton.click()
@@ -22,7 +22,7 @@ async function loginTristan(driver){
   await driver.get(baseUrl)
   await driver.manage().window().setRect({ width: 393, height: 851 })
   const usernameField = await driver.findElement(By.id('username'))
-  usernameField.sendKeys("tristan")
+  await usernameField.sendKeys("tristan")
   const passwordField = await driver.findElement(By.id('pin'))
   await passwordField.sendKeys("password123")
   const loginButton = await driver.findElement(By.className('login'))
@@ -83,24 +83,31 @@ async function manualFillingUpFTDForm(driver){
 
 async function fillFTDFormPartialTransfer(driver){
   await wrongPaynowMade(driver)
-  const rcnttxntab = await driver.findElement(By.className('recenttransaction'))
+  const exit = await driver.findElement(By.className("successtxtransparent"))
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  await exit.click()
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const rcnttxntab = await driver.findElement(By.id('transaction'))
   await new Promise(resolve => setTimeout(resolve, 1000));
   await rcnttxntab.click();
+  await new Promise(resolve => setTimeout(resolve, 1000));
   const container = await driver.findElements(By.className("transaction"));
   for (const transaction of container) {
       const recipient = await transaction.findElement(By.className("transactiontitletext"));
       const recipientName = await recipient.getText();
       const amountDetails = await transaction.findElement(By.className("moneyout"));
       const ftdAmt = await amountDetails.getText();
-      if (recipientName.includes("tristan") && ftdAmt.to.equal("-12.00")) {
+      if (recipientName.includes("tristan") && ftdAmt.toString() === ("-12.00")) {
           await transaction.click()
           await new Promise(resolve => setTimeout(resolve, 2000));
           break
       }
   }
+  await new Promise(resolve => setTimeout(resolve, 1000));
   const confirmbutton = await driver.findElement(By.className('FTDbutton1'))
   await new Promise(resolve => setTimeout(resolve, 1000));
   await confirmbutton.click();
+  await new Promise(resolve => setTimeout(resolve, 1000));
   const checkbox = await driver.findElement(By.id('transferWrongAmountCheckbox'))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await checkbox.click()
@@ -108,10 +115,33 @@ async function fillFTDFormPartialTransfer(driver){
   await blank.sendKeys("1.2")
   const contact = await driver.findElement(By.id("contactDetails"))
   await contact.sendKeys("88888888")
-
+  const comments = await driver.findElement(By.className('commentsTextBox'))
+  comments.sendKeys("Sorry! Supposed to send to someone else")
 }
 
 
+async function ensureFTDCreated(driver){
+  await manualFillingUpFTDForm(driver)
+  const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
+  await raiseFTD.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const confirmRaise = await driver.findElement(By.className("SubmitButton"))
+  await confirmRaise.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await driver.navigate().to(baseUrl + '/1/home')
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const logout = await driver.findElement(By.id("logoutButton"))
+  await logout.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const usernameField = await driver.findElement(By.id('username'))
+  await usernameField.sendKeys("tristan")
+  const passwordField = await driver.findElement(By.id('pin'))
+  await passwordField.sendKeys("password123")
+  const loginButton = await driver.findElement(By.className('login'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await loginButton.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+}
 
 
 async function pauseTest() {
@@ -290,32 +320,19 @@ Then(/^the comments should not exceed "([^"]*)" characters$/, async function(max
   expect(cleanedComment.length).to.be.at.most(Number(maxLength))
 })
 
-Then("I can submit the FTD", async function(){
+Then("I submit the FTD", async function(){
   const raiseFTD = await this.driver.findElement(By.className("RaiseFTDButton"))
   await raiseFTD.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const confirmRaise= await this.driver.findElement(By.className("SubmitButton"))
+  await confirmRaise.click()
 })
 
 
 /////////// FTD PAGE THROUGH DASHBOARD ////////////////////////////////////////////////////////////////////////////////////////////// 
 
 Before({tags: "@logintotristan"}, async function(){
-  await manualFillingUpFTDForm(this.driver)
-  const raiseFTD = await this.driver.findElement(By.className("RaiseFTDButton"))
-  await raiseFTD.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await this.driver.navigate().to(baseUrl + '/1/home')
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const logout = await this.drive.findElement(By.id("logoutButton"))
-  await logout.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const usernameField = await driver.findElement(By.id('username'))
-  usernameField.sendKeys("tristan")
-  const passwordField = await driver.findElement(By.id('pin'))
-  await passwordField.sendKeys("password123")
-  const loginButton = await driver.findElement(By.className('login'))
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await loginButton.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await ensureFTDCreated(this.driver)
 })
 
 
@@ -342,24 +359,35 @@ Then('I will be redirected to the FTD Page', async function () {
 /////////// REFUND FULLY  ////////////////////////////////////////////////////////////////////////////////////////////// 
 
 Given("I am at the FTD Page", async function(){
-  await this.driver.get(baseUrl + '/5/FTDtransactionsall')
-  await pauseTest()
+
+  const resolveNowButton = await this.driver.findElement(By.className('buttonText'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await resolveNowButton.click()
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, baseUrl+'/5/FTDtransactionsall');
 })
 
 When(/^I click on the FTD raised from "([^"]*)" with amount "([^"]*)" and status button "([^"]*)"$/, async function (sender, refundAmt, status) {
-  
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, baseUrl+'/5/FTDtransactionsall');
   const container = await this.driver.findElements(By.id("txncontainer"));
   for (const transaction of container) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
       const ftdRaiser = await transaction.findElement(By.className("transactiontitle"));
       const senderName = await ftdRaiser.getText();
-      const amountDetails = await transaction.findElement(By.className("moneyin2"));
-      const ftdAmt = await amountDetails.getText();
+      console.log(senderName)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const amountDetails = await transaction.findElement(By.className("moneyin2"))
+      const ftdAmt = await amountDetails.getText()
+      console.log(ftdAmt)
+      await new Promise(resolve => setTimeout(resolve, 1000));
       const statusbutton = await transaction.findElement(By.className("statustext"));
       const statustext= await statusbutton.getText();
-      if (senderName.includes(sender) && ftdAmt.to.equal(refundAmt) && status.to.equal(statustext)) {
-          await transaction.click()
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          break
+      if (senderName.includes(sender) && Number(ftdAmt) === Number(refundAmt) && statustext === status) {
+        await transaction.click()
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        break
       }
   }
 })
@@ -425,8 +453,9 @@ Then(/^I will be redirected to the Successful transfer page showing "([^"]*)" as
   const currentUrl = await this.driver.getCurrentUrl();
   assert.strictEqual(currentUrl, baseUrl+ '/5/success');
   const amount = await this.driver.findElement(By.className("successtxdescriptboxtransparentright"))
-  const number = amount.getText()
-  expect(number).to.equal(refundamount)
+  const number = await amount.getText()
+  const refundAmountString = refundamount.toString();
+  assert.equal(number, refundAmountString)
 });
 
 
@@ -439,19 +468,29 @@ Then(/^I will be redirected to the Successful transfer page showing "([^"]*)" as
 // given above in :Raising a FTD through redirect
 
 When('I navigated to the Recent Transactions page', async function () {
-  const rcnttxntab = await this.driver.findElement(By.className('recenttransaction'))
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  await pauseTest()
+  const recent = await this.driver.findElement(By.className("recenttransaction"))
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  await recent.click()
+  await pauseTest()
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const rcnttxntab = await this.driver.findElement(By.id('transaction'))
   await new Promise(resolve => setTimeout(resolve, 1000));
   await rcnttxntab.click();
+  await new Promise(resolve => setTimeout(resolve, 1000));
 })
 
 When(/^I click into the transaction of "([^"]*)" to "([^"]*)"$/, async function(refundamount,recpname){
+  const currentUrl = await this.driver.getCurrentUrl();
+  assert.strictEqual(currentUrl, baseUrl+'/1/recenttransaction');
   const container = await this.driver.findElements(By.className("transaction"));
   for (const transaction of container) {
       const recipient = await transaction.findElement(By.className("transactiontitletext"));
       const recipientName = await recipient.getText();
       const amountDetails = await transaction.findElement(By.className("moneyout"));
       const ftdAmt = await amountDetails.getText();
-      if (recipientName.includes(recpname) && ftdAmt.to.equal(refundamount)) {
+      if (recipientName.includes(recpname) && Number(ftdAmt) === Number(refundamount)) {
           await transaction.click()
           await new Promise(resolve => setTimeout(resolve, 2000));
           break
@@ -466,10 +505,13 @@ When('I click the "Raise a Fund Dispute button" to proceed', async function () {
   const confirmbutton = await this.driver.findElement(By.className('FTDbutton1'))
   await new Promise(resolve => setTimeout(resolve, 1000));
   await confirmbutton.click();
+  await new Promise(resolve => setTimeout(resolve, 1000));
 });
 
 Then("I will be directed to the FTD Form page", async function(){
+  await new Promise(resolve => setTimeout(resolve, 1000));
   const currentUrl = await this.driver.getCurrentUrl();
+  console.log(currentUrl)
   expect(currentUrl).to.include(baseUrl+'/1/raiseFTD');
 })
 
@@ -477,10 +519,11 @@ Then('I check the box for "Transfer Wrong Amount"', async function(){
   const checkbox = await this.driver.findElement(By.id('transferWrongAmountCheckbox'))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await checkbox.click()
+  await new Promise(resolve => setTimeout(resolve, 1000));
 })
 
 
-Then(/^I can indicate that "[(^")*]" is the correct amount, and my phone number is "[(^")*]"$/, async function(rightfulAmount, phone){
+Then(/^I can indicate that "([^"]*)" is the correct amount, and my phone number is "([^"]*)"$/, async function(rightfulAmount, phone){
   const blank = await this.driver.findElement(By.id("correctAmount"))
   await blank.sendKeys(rightfulAmount)
   const contact = await this.driver.findElement(By.id("contactDetails"))
@@ -495,6 +538,7 @@ Then(/^I can indicate that "[(^")*]" is the correct amount, and my phone number 
 
 /////////// USING VERTEXAI - WRONG AMOUNT ////////////////////////////////////////////////////////////////////////////////////////////// 
 
+
 Given("I have filled up the FTD Form Page but want my comments to reflect the correct amount professionally", async function(){
   await fillFTDFormPartialTransfer(this.driver)
 })
@@ -507,11 +551,11 @@ Given("I have filled up the FTD Form Page but want my comments to reflect the co
 
 /////////// FTD PAGE THROUGH RECENT TXNS ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-Before({tags: "@logintotristan"}, async function(){
-  await loginTristan(this.driver)
+Before({tags: "@ensureFTDCreated"}, async function(){
+  await ensureFTDCreated(this.driver)
 })
 
-Given("I have logged in to tristan's account", async function(){
+When("I have logged in to tristan's account", async function(){
   const currentUrl = await this.driver.getCurrentUrl();
   expect(currentUrl).to.include(baseUrl+'/5/home');
 })
@@ -522,6 +566,7 @@ When("I click into the FTD tab", async function(){
   const ftdtab = await this.driver.findElement(By.id('ftdtab')) //redeploy
   await new Promise(resolve => setTimeout(resolve, 1000))
   await ftdtab.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
 })
 
 //check redirect to FTD page defined above
@@ -538,7 +583,7 @@ When("I click into the FTD tab", async function(){
 
 //brought to dispute page defined above
 
-When(/^The Correct Amount of Transaction is indicated to be '[(^")*]'$/, async function(rightfulamt){
+When(/^The Correct Amount of Transaction is indicated to be '([^"]*)'$/, async function(rightfulamt){
   const correctamt = await this.driver.findElement(By.className("transactiondetailsbodytext"))
   const supposedtopay = correctamt.getText()
   expect(supposedtopay).to.include(rightfulamt)
