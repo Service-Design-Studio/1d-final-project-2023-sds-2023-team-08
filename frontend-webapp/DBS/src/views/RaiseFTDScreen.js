@@ -329,7 +329,7 @@ const RaiseFTDScreen = () => {
                 <label className="checkboxtext" htmlFor='unknowntransaction'>Unknown Transaction</label>
                 </div>
 
-                <div className='commentsBox'>
+                <div className='commentsBox' style={{position: 'relative'}}>
                     <div className='loadingScreen' id='loadingOverlay' style={{visibility: cleaningComments ? 'visible' : 'hidden'}}> 
                         <div id='loadingcursor'><LoadingScreen/></div>
                         <p className='Aitext' id='Aitext'>AI is working <span className="dotAnimation" id='dotanimation'> </span></p>
@@ -347,7 +347,7 @@ const RaiseFTDScreen = () => {
                     }}
                     maxLength={250}
                     ></textarea>
-                    <div className='AIassist' style={{top: '60.5vh'}} onClick={cleanComments}>
+                    <div className='AIassist' onClick={cleanComments}>
                         <span className="hovertext">AI Assist: Help me clean</span>
                     </div>
                     <p className="commentcharacterCount">/<span id="characterCount">250</span></p>

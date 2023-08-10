@@ -118,7 +118,7 @@ const ReviewFTD = () => {
                 {RaiseFTDdata["contact details"].length > 0 && (
                 <div>
                     <p className='rereboxtextheader'> Correct Amount Of Transaction</p>
-                    <p className='rereboxtextcontent'> SGD { parseInt(RaiseFTDdata['correct amount']).toFixed(2)}</p>
+                    <p className='rereboxtextcontent'> SGD { parseFloat(RaiseFTDdata['correct amount']).toFixed(2)}</p>
                     <p className='rereboxtextheader'> Disputee's Contact Details</p>
                     <p className='rereboxtextcontent'> {RaiseFTDdata['contact details']}</p>
                 </div>

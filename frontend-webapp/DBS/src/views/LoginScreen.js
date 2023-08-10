@@ -53,19 +53,19 @@ const Loginscreen = () => {
               'X-CSRF-Token': csrfToken,
               'X-Requested-With': 'XMLHttpRequest',
             }})
-      
+            console.log(response.data)
             if (response.data.success) {
               const UserID = response.data.userid;
               navigate(`/${UserID}/home`);
             } 
             
             else {
+              SetEmpty(true)
+              SetFlashMessage("Incorrect username or pin.")
             }
           } 
           
           catch (error) {
-            SetEmpty(true)
-            SetFlashMessage("Incorrect username or pin.")
             console.log('Error:', error.toJSON());
           }
         }
