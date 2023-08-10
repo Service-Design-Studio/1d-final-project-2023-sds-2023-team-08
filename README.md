@@ -1,4 +1,4 @@
-# **Kopilo Fund Transfer Dispute Resolution**
+# **Kopilo Digitalizing Fund Transfer Dispute**
 
 ### **Useful Links**
   1. [digiBank](https://dbsservice-zwrzqgoagq-as.a.run.app/) 
