@@ -83,7 +83,6 @@ const EnterRecipient = () => {
                 }
 
             } catch (error) {
-                console.log('Error:', error.toJSON());
                 setinvalidmessage('* Please Enter A Valid PayNow Phone Number')
             }
         } 
