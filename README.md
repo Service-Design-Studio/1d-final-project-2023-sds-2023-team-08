@@ -18,7 +18,7 @@
 ### **Features**
 There are 4 primary features that has been implemented into our app:
 1. Recent Transcation Page
-2. Fund Transfer Dispute Form
+2. DIgitalising Fund Transfer Dispute (From raising to resolving)
 3. Autofill, Fuzzy Search and PayNow Warnings
 4. AI Written Comments
 
