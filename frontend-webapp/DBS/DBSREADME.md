@@ -23,10 +23,7 @@ Install Ruby
 
 ##### `rvm install ruby`
 
-Install React.js 
-
-##### `????`
-
+Install [Node.js](https://nodejs.org/en)
 
 # **Installation**
 
@@ -92,16 +89,16 @@ Fonts - Stores the fonts used for the app <br>
 Styles - Stores the CSS files that stylize the HTML pages of the app. <br>
 
 ## Views
-The Views folder stores the templates and files that are responsible for generating the HTML content that is sent to the client's browser. In other words, it contains the code for the differnt webpages the app has.
+The Views folder stores the templates and files that are responsible for generating the HTML content that is sent to the client's browser. In other words, it contains the code for the different webpages the app has.
 
 ## Routes
-The Routes folder stores the Route.js file, which is responsible for routing between the differnt webpages in the app, allowing for navigation between pages upon clicks or other actions. 
+The Routes folder stores the Route.js file, which is responsible for routing between the different webpages in the app, allowing for navigation between pages upon clicks or other actions. 
 
 ## Cucumber Features
 
 .feature folder
 
-The features folder stores the .feature files that is required for Cucumber testing. Each feature file cdescribe the behavior of the software through scenarios. Each scenario outlines a specific use case or test case. The purpose of these files are to provide a clear and common understanding of how the software should behave from a functional standpoint.
+The features folder stores the .feature files that is required for Cucumber testing. Each feature file describe the behavior of the software through scenarios. Each scenario outlines a specific use case or test case. The purpose of these files are to provide a clear and common understanding of how the software should behave from a functional standpoint.
 
 Step_defintion folder
 
@@ -123,8 +120,8 @@ For the purpose of demonstration, use the following credentials to log into the 
     `password: password123`
 
 ## Recent Transaction Page
-The Recent Transaction page allows users access their most recent transactions up to 7 days based on their account activity. <br>
-Users will be able to view the recent transactions of every account they have. 
+The Recent Transaction page allows users to access their most recent transactions of up to 7 days based on their account activity. <br>
+Users will also be able to view the recent transactions of each individual account they have. 
 
 Guide: 
 
@@ -164,13 +161,14 @@ Checking on status
 
 15. Back at the homepage, navigate to the Recent Transaction page. <br>
 16. Click on the tab 'Fund Transfer Dispute Transactions'. <br>
-17. You will see the status of the FTD. There are 5 statuses: <br>
+17. You will see the status of the FTD. There are 6 statuses: <br>
     
   - Awaiting Action - Awaiting for recipient's action.
   - Action Required - By the recipient. Will be seen on their account.
   - Resolved - FTD has been resolved by recipient.
   - Refuted - FTD has been refuted by recipient. 
-  - Pending DBS - Pending DBS action. 
+  - Pending DBS - Pending DBS action.
+  - Withdrawn - FTD has been withdrawn by sender
 
 Recepient actions
 
@@ -181,7 +179,7 @@ Recepient actions
 22. You will be redirected to the Fund Dispute page with all the statuses.  <br>
 23. Click on Action Required button.<br>
 24. Decide on whether you want to refund or refute. <br>
-    a. Refund: You will not be able to change the amount transacted as the refund amount. It will be a full refund. <br>
+    a. Refund: You will not be able to change the amount transacted as the refund amount. It will either be a full or partial refund depending on the fund transfer dispute reason: wrong account or wrong amount respectively. <br>
     b. Refute: Provide a reason for the sender as to why you decide to refute the dispute. <br>
 25. Verify the dispute details and confirm your choice. <br>
 
@@ -203,7 +201,7 @@ PayNow Warnings
 3. For this case, use the phone number `88888886`. You should see `vin` as the nickname. 
 4. An alert text in red will also be shown below the Recipient's Nickname, warning you that this is a new payee.
 5. The button 'Submit' as well as 'Next' in the next page are now red to warn you of your actions. 
-6. Then final layer of warning is a Swipe to Pay function. It involves the you to consciously make the decision to swipe and make the transfer.
+6. Then final layer of warning is a Swipe to Pay function. It requires you to consciously make the decision to swipe and make the transfer.
 7. Return to homepage.
 
 Autofill & Fuzzy Search 
