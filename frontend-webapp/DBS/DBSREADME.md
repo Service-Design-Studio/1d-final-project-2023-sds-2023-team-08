@@ -96,11 +96,11 @@ The Routes folder stores the Route.js file, which is responsible for routing bet
 
 ## Cucumber Features
 
-.feature folder
+`.feature folder`
 
 The features folder stores the .feature files that is required for Cucumber testing. Each feature file describe the behavior of the software through scenarios. Each scenario outlines a specific use case or test case. The purpose of these files are to provide a clear and common understanding of how the software should behave from a functional standpoint.
 
-Step_defintion folder
+`Step_defintion folder`
 
 The Step definition folder contains the actual automation code that implements the behavior described in the .feature files. Each step in a .feature scenario corresponds to a step definition in a JavaScript. 
 
