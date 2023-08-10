@@ -7,8 +7,8 @@
   4. [Google Site](https://sites.google.com/mymail.sutd.edu.sg/kopilo/home?authuser=6)
 
 ### **About the project**
-This project aims to enhance the existing DBS digiBank mobile application by introducing a streamlined and user-friendly process for resolving fund transfer disputes (FTDs). <br>
-Our goal is to provide an efficient and reliable online service that simplifies the dispute resolution procedure, benefiting both users and DBS Bank.
+- This project aims to enhance the existing DBS digiBank mobile application by introducing a streamlined and user-friendly process for resolving fund transfer disputes (FTDs). <br>
+- Our goal is to provide an efficient and reliable online service that simplifies the dispute resolution procedure, benefiting both users and DBS Bank.
 
 ### **Technology Stack**
 - Frontend: The application's frontend is built using the [React.js](https://react.dev/) framework, ensuring a responsive and intuitive user interface.
