@@ -5,6 +5,8 @@
   2. [Figma Board](https://www.figma.com/file/WkGoaInNq3u3Roneu88PwL/Service-Design-Studio?type=design&mode=design&t=FPdOO8D8DAoc3PY8-0)
   3. [Design Workbook](https://docs.google.com/document/d/18kb1gEeE0T5lsJ9isN1ms7r1HdiIQdBYnW9oUsV7_Ck/edit)
   4. [Google Site](https://sites.google.com/mymail.sutd.edu.sg/kopilo/home?authuser=6)
+  5. [Deployed transactions and disputes service-> not our feature but just to show backend is deployed](https://dbs-cloudsql-service-5qwlwvimaq-as.a.run.app/users)
+  6. [Deployed reverse proxy->has no interface but this is just to prove that it is deployed](https://dbs-backend-service-ga747cgfta-as.a.run.app)
 
 ### **READMEs to each individual portion**
 1. [frontend](https://github.com/Service-Design-Studio/1d-final-project-2023-sds-2023-team-08/blob/main/frontend-webapp/DBS/DBSREADME.md)
