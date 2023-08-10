@@ -23,10 +23,9 @@
 - Deployment: The application is deployed on [Google Cloud](https://cloud.google.com/), ensuring reliable and secure access.
 
 ### **Testing overview**
--Cucumber with Selenium for System testing
--Rspec for backend unit testing 
--Cypress for frontend unit testing
--Postman for API integration testing
+- Cucumber with Selenium for System testing
+- Rspec for backend unit testing 
+- Postman for API integration testing
 
 ### **Features**
 There are 4 primary features that has been implemented into our app:
