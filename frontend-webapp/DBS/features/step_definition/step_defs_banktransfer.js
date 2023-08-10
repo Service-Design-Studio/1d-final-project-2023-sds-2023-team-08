@@ -12,6 +12,7 @@ const readline = require('readline');
 Before(async function () {
   // Set up the Selenium WebDriver
   this.driver = await new Builder().forBrowser('chrome').build();
+  await this.driver.manage().window().setRect({ width: 393, height: 851 })
 });
 
 After(async function () {
