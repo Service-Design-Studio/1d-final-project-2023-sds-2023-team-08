@@ -239,7 +239,7 @@ Then(/^I am directed to the Bank Transfer page$/, async function() {
   await new Promise(resolve => setTimeout(resolve, 1000))
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/4/accounttransfer');
+  assert.strictEqual(currentUrl, baseUrl + '/1/accounttransfer');
 })
 
 
@@ -310,7 +310,7 @@ Before({tags: "@onReviewBankAccountPage"}, async function(){
 Given(/^I am on the Review Bank Account page$/, async function() {
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/4/review');
+  assert.strictEqual(currentUrl, baseUrl + '/1/review');
 })
 
 Then(/^I should see "([^"]*)" as the amount to be transacted$/, async function(amount) {
@@ -379,7 +379,7 @@ Before({tags: "@onSuccessfulBankTransferPage"}, async function(){
 Given("I am on the Successful page", async function(){
   const currentUrl = await this.driver.getCurrentUrl();
   await new Promise(resolve => setTimeout(resolve, 1000))
-  assert.strictEqual(currentUrl, baseUrl + '/4/success');
+  assert.strictEqual(currentUrl, baseUrl + '/1/success');
 })
 
 Then(/^I should see "([^"]*)" as the confirmed recipient name$/, async function (name){

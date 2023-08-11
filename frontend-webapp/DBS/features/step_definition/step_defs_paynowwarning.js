@@ -52,7 +52,125 @@ async function navigateToSwipeToConfirmPage(driver){
   await new Promise(resolve => setTimeout(resolve, 1000)); 
 }
 
+async function wrongPaynowMade(driver){
+  await driver.navigate().to(baseUrl+'/1/home')
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const paynowIcon = await driver.findElement(By.id('paynowbutton')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await paynowIcon.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
+  await phoneNumberField.sendKeys("88888886") 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const clickAway = await driver.findElement(By.className("overall")) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await clickAway.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const submitButtonRed = await driver.findElement(By.className('pntsubmitbuttonER'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await submitButtonRed.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const transactionAmount = await driver.findElement(By.id('keyInAmtPaynow')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await transactionAmount.sendKeys("12") 
+  const nextButton = await driver.findElement(By.id('submitrefund1'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await nextButton.click(); 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const next = await driver.findElement(By.id('reviewTransferNextButton'))
+  await next.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+}
 
+
+async function navigateToFTDForm(driver){
+  await wrongPaynowMade(driver)
+  await new Promise(resolve => setTimeout(resolve,2000))
+  const wrongTransferLink = await driver.findElement(By.className('successtxclicklink'))
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  await wrongTransferLink.click()
+  await new Promise(resolve => setTimeout(resolve, 3000))
+}
+async function manualFillingUpFTDForm(driver){
+  await navigateToFTDForm(driver)
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const checkbox = await driver.findElement(By.id('transferWrongAccountCheckbox'))
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  await checkbox.click();
+  const comments = await driver.findElement(By.className('commentsTextBox'))
+  comments.sendKeys("Sorry! Supposed to send to someone else")
+}
+
+
+async function ensureFTDCreated(driver){
+  await manualFillingUpFTDForm(driver)
+  const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
+  await raiseFTD.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const confirmRaise = await driver.findElement(By.className("SubmitButton"))
+  await confirmRaise.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await driver.navigate().to(baseUrl + '/1/home')
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const logout = await driver.findElement(By.id("logoutButton"))
+  await logout.click()
+}
+
+
+
+async function pauseTest() {
+  // Log a message to prompt the tester to manually continue the test
+  console.log('Test execution paused. Type "s" and press "Enter" to continue...');
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  return new Promise((resolve) => {
+    const onData = (input) => {
+      const trimmedInput = input.trim().toLowerCase();
+      if (trimmedInput === 's') {
+        rl.off('line', onData); // Remove the event listener
+        rl.close(); // Close the readline interface
+        resolve();
+      } else {
+        console.log('Invalid input. Type "s" and press "Enter" to continue...');
+      }
+    };
+    rl.on('line', onData);
+  });
+}
+
+Before({tags: "@removingseedpaynow"}, async function(){
+  for (const transaction of container){
+      await loginJunxiang(this.driver)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const recenttransaction  = await this.driver.findElement(By.className("transaction"))
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await recenttransaction.click()
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      const container = await this.driver.findElements(By.className("transactiontitletext"));
+      if (inHistory.includes("vinny")){
+        await transaction.click()
+        const confirmbutton = await this.driver.findElement(By.className('FTDbutton1'))
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await confirmbutton.click();
+        const checkbox = await this.driver.findElement(By.id('transferWrongAccountCheckbox'))
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await checkbox.click();
+        const comments = await this.driver.findElement(By.className('commentsTextBox'))
+        await comments.sendKeys("Sorry! Supposed to send to someone else")
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const raiseFTD = await this.driver.findElement(By.className("RaiseFTDButton"))
+        await raiseFTD.click()
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        const confirmRaise= await this.driver.findElement(By.className("SubmitButton"))
+        await confirmRaise.click()
+      }
+      await pauseTest()
+    }
+})
 
 
 
