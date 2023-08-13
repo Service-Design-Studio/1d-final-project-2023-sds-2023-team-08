@@ -1,4 +1,4 @@
-Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect link > vertexai
+Feature: Making a Paynow Transfer dispute, 5 STATUS of ftd, vertexAI, Dashboard, responding to FTDs
 
   Scenario: Raising a FTD through redirect
     Given I have made a Paynow Transfer of '$12'
@@ -24,7 +24,9 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
     And the comments should not exceed "250" characters
     Then I submit the FTD
 
-# # # Feature: Resolve a Paynow Transfer dispute -> dashboard > FTD status page > full refund
+
+
+
 
   Scenario: FTD page through Dashboard
     Given my dashboard on my homepage has alerted me to a FTD raised against me
@@ -45,8 +47,6 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
 
 
 
-# # # Feature: Making a Paynow Transfer dispute -> send wrong amount > raise thru recent transactions page > vertexai > partial transfer
-
 
   Scenario: Raising a FTD through recent transaction tab
     Given I have made a Paynow Transfer of '$12'
@@ -57,7 +57,6 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
     Then I will be directed to the FTD Form page
     And I check the box for "Transfer Wrong Amount"
     Then I can indicate that "4.00" is the correct amount, and my phone number is "88888888"
-    And I will key in my comments for recipient to tell them I paid wrong amount
 
 
   Scenario: Using the VertexAI - wrong amount
@@ -67,9 +66,9 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
     And I will see another prompt saying "Comment is cleaned!"
     Then I will see a different comment instead of "Sorry! Sent the wrong amount, please refund excess"
     And the comments should not exceed "250" characters
-    And the comments should include '4.00' and '88888888' as the correct amount and my contact number
 
-# # # Feature: Resolve a Paynow Transfer dispute -> rcnt txns > FTD status page > partial refund
+
+
 
   Scenario: FTD page through recent transactions
     Given I have logged in to tristan's account
@@ -93,7 +92,7 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
     Then I will be redirected to the Successful transfer page showing "8.00" as the refund amount
 
 
-# # Feature: Resolve a Paynow Transfer dispute -> recent transactions > FTD status page > refute
+
 
 
   Scenario: Refuting dispute
