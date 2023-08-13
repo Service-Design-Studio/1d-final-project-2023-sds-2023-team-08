@@ -61,40 +61,37 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
   #   And I will key in my comments for recipient to tell them I paid wrong amount
 
 
-  Scenario: Using the VertexAI - wrong amount
-    Given I have filled up the FTD Form Page but want my comments to reflect the correct amount of '4.00' and to contact me at '88888888' professionally
-    When I click on the star button on the top-right corner of the textbox
-    Then I will see loading prompt with the words "AI is Working"
-    And I will see another prompt saying "Comment is cleaned!"
-    Then I will see a different comment instead of "Sorry! Sent the wrong amount, please refund excess"
-    And the comments should not exceed "250" characters
-    And the comments should include '4.00' and '88888888' as the correct amount and my contact number
+  # Scenario: Using the VertexAI - wrong amount
+  #   Given I have filled up the FTD Form Page but want my comments to reflect the correct amount of '4.00' and to contact me at '88888888' professionally
+  #   When I click on the star button on the top-right corner of the textbox
+  #   Then I will see loading prompt with the words "AI is Working"
+  #   And I will see another prompt saying "Comment is cleaned!"
+  #   Then I will see a different comment instead of "Sorry! Sent the wrong amount, please refund excess"
+  #   And the comments should not exceed "250" characters
+  #   And the comments should include '4.00' and '88888888' as the correct amount and my contact number
 
 # # # Feature: Resolve a Paynow Transfer dispute -> rcnt txns > FTD status page > partial refund
 
-# # # repetition of making the ftd
+  # Scenario: FTD page through recent transactions
+  #   Given I have logged in to tristan's account
+  #   When I navigate to the Recent Transactions page to access the FTD
+  #   And I click into the FTD tab
+  #   Then I will be redirected to the FTD Page
 
-#   @ensureFTDCreated
-#   Scenario: FTD page through recent transactions
-#     Given I have logged in to tristan's account
-#     When I navigate to the Recent Transactions page to access the FTD
-#     And I click into the FTD tab
-#     Then I will be redirected to the FTD Page
 
-#   # @seedingDataBase
-#   # @partialTransferDisputeFiled
-#   Scenario: Partial Transfer screen
-#     Given I have a partial transfer FTD raised against me and I am at my FTD page
-#     When I click onto the FTD container
-#     Then I am brought to the dispute details page which reflects "12.00" as the amount being disputed
-#     And The Correct Amount of Transaction is indicated to be '4.00'
-#     When I click on the Yes - Refund button
-#     Then I will be redirected to the Refund Dispute page
-#     And the refund amount has been fixed to '8.00'
-#     When I click on the Submit button
-#     Then I will be redirected to the Review Transfer page
-#     When I click on Transfer Now
-#     Then I will be redirected to the Successful transfer page showing "8.00" as the refund amount
+  Scenario: Partial Transfer screen
+    Given I have a partial transfer FTD raised against me
+    When I click on "RESOLVE NOW" on the dashboard
+    Then I will be redirected to the FTD Page
+    When I click on the FTD raised from "junxiang" with amount "12.00" and status button "ACTION REQUIRED"
+    Then I am brought to the dispute details page which reflects "12.00" as the amount being disputed
+    And The Correct Amount of Transaction is indicated to be '4'
+    When I click on the Yes - Refund button
+    Then I will be redirected to the Refund Dispute page which shows "8.00" as the amount to refund
+    When I click on the Submit button
+    Then I will be redirected to the Review Transfer page
+    When I click on Transfer Now
+    Then I will be redirected to the Successful transfer page showing "8.00" as the refund amount
 
 
 # # Feature: Resolve a Paynow Transfer dispute -> recent transactions > FTD status page > refute

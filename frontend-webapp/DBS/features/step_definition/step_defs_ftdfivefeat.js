@@ -279,6 +279,54 @@ async function pauseTest() {
 //     }
 // })
 
+async function raiseFTDWrongAmount(driver){
+  await checkForPaynowHistory(driver)
+  await new Promise(resolve => setTimeout(resolve,2000))
+  const wrongTransferLink = await driver.findElement(By.className('successtxclicklink'))
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  await wrongTransferLink.click()
+  await new Promise(resolve => setTimeout(resolve, 3000))
+  //on ftd form page now
+  const checkbox = await driver.findElement(By.id('transferWrongAmountCheckbox'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await checkbox.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const blank = await driver.findElement(By.id("correctAmount"))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await blank.sendKeys('4.00')
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const contact = await driver.findElement(By.id("contactDetails"))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await contact.sendKeys('88888888')
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const comments = await driver.findElement(By.className('commentsTextBox'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await comments.sendKeys("Sorry! Sent the wrong amount, please refund excess")
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
+  await raiseFTD.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const confirmRaise= await driver.findElement(By.className("SubmitButton"))
+  await confirmRaise.click()
+  //filed FTD for wrong amount, at ftd successfully raised page
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  const exit = await driver.findElement(By.className("successtxtransparent"))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await exit.click() //exit the success ftdsuccess to homescreen
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const logout = await driver.findElement(By.id("logoutButton"))
+  await logout.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  //logged out
+  const usernameField = await driver.findElement(By.id('username'))
+  await usernameField.sendKeys("tristan") //log into tristan, the recipient
+  const passwordField = await driver.findElement(By.id('pin'))
+  await passwordField.sendKeys("password123")
+  const loginButton = await driver.findElement(By.className('login'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await loginButton.click()
+  //home page of tristan
+}
 
 
 
@@ -505,6 +553,7 @@ Given('my dashboard on my homepage has alerted me to a FTD raised against me', a
 })
 
 When('I click on "RESOLVE NOW" on the dashboard', async function () {
+  await new Promise(resolve => setTimeout(resolve, 1000))
   const resolveNowButton = await this.driver.findElement(By.className('buttonText'))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await resolveNowButton.click()
@@ -556,7 +605,6 @@ When(/^I click on the FTD raised from "([^"]*)" with amount "([^"]*)" and status
   const container = await this.driver.findElements(By.className("transactiontitle"))
     for (const transaction of container) {
         await new Promise(resolve => setTimeout(resolve, 2000))
-        // const recipient = await transaction.findElement(By.className("transactiontitletext"))
         const senderName = await transaction.getText()
         const amount = await this.driver.findElement(By.className('moneyin2'))
         const ftdAmt = await amount.getText()
@@ -776,18 +824,15 @@ Then(/^the comments should include '([^"]*)' and '([^"]*)' as the correct amount
 
 /////////// FTD PAGE THROUGH RECENT TXNS ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-Before({tags: "@ensureFTDCreated"}, async function(){
-  await ensureFTDCreated(this.driver)
-})
-
 When("I have logged in to tristan's account", async function(){
+  await loginTristan(this.driver)
   const currentUrl = await this.driver.getCurrentUrl()
   expect(currentUrl).to.include(baseUrl+'/5/home')
 })
 
 When('I navigate to the Recent Transactions page to access the FTD', async function () {
   await new Promise(resolve => setTimeout(resolve, 1000))
-  const recent = await this.driver.findElement(By.className("recenttransaction"))
+  const recent = await this.driver.findElement(By.id("transaction"))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await recent.click()
   await new Promise(resolve => setTimeout(resolve, 1000))
@@ -808,69 +853,20 @@ When("I click into the FTD tab", async function(){
 
 
 /////////// PARTIAL TRANSFER SCREEN ////////////////////////////////////////////////////////////////////////////////////////////// 
-Before({tags: "@partialTransferDisputeFiled"}, async function(){
-  await fillFTDFormPartialTransfer(this.driver)
-  const raiseFTD = await this.driver.findElement(By.className("RaiseFTDButton"))
-  await raiseFTD.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const confirmRaise= await this.driver.findElement(By.className("SubmitButton"))
-  await confirmRaise.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await this.driver.navigate().to(baseUrl + '/1/home')
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const logout = await this.driver.findElement(By.id("logoutButton"))
-  await logout.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const usernameField = await this.driver.findElement(By.id('username'))
-  await usernameField.sendKeys("tristan")
-  const passwordField = await this.driver.findElement(By.id('pin'))
-  await passwordField.sendKeys("password123")
-  const loginButton = await this.driver.findElement(By.className('login'))
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await loginButton.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-})
 
-Given("I have a partial transfer FTD raised against me and I am at my FTD page", async function(){
-  const recenttab = await this.driver.findElement(By.id("transaction"))
-  await recenttab.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const ftdtab = await this.driver.findElement(By.id("ftdtab"))
-  await ftdtab.click()
+Given("I have a partial transfer FTD raised against me", async function(){
+  await raiseFTDWrongAmount(this.driver)
 })
-//given at ftd page defined above
 
 // when click on ftd raised by jx with 12 defined above
-When("I click onto the FTD container", async function(){
-  const currentUrl = await this.driver.getCurrentUrl()
-  assert.strictEqual(currentUrl, baseUrl+'/5/FTDtransactionsall')
-  const containers = await this.driver.findElement(By.id("txncontainer"))
-
-  // Check if there are any instances
-  if (containers.length > 0) {
-    // Click on the first instance
-    const firstContainer = containers[0]
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    await firstContainer.click()
-    await new Promise(resolve => setTimeout(resolve, 1000))
-  } else {
-    throw new Error("No txncontainer element found on the page.")
-  }
-
-
-
-  // const container = await this.driver.findElement(By.id("txncontainer"))
-  // await new Promise(resolve => setTimeout(resolve, 1000))
-  // await container.click()
-  // await new Promise(resolve => setTimeout(resolve, 1000))
-})
 
 //brought to dispute page defined above
 
 When(/^The Correct Amount of Transaction is indicated to be '([^"]*)'$/, async function(rightfulamt){
   const correctamt = await this.driver.findElement(By.className("transactiondetailsbodytext"))
-  const supposedtopay = correctamt.getText()
-  expect(Number(supposedtopay) === rightfulamt)
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const supposedtopay = await correctamt.getText()
+  expect(String(supposedtopay)).to.include(rightfulamt)
 })
 
 // click on yes refund defined above
@@ -880,9 +876,8 @@ When(/^The Correct Amount of Transaction is indicated to be '([^"]*)'$/, async f
 
 
 
+
 /////////// SUBMIT PARTIAL REFUND ////////////////////////////////////////////////////////////////////////////////////////////// 
-
-
 
 // given at the refund dispute page defined above
 

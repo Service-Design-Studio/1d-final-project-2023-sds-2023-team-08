@@ -70,7 +70,7 @@ const FTDTransactionDetails = ({FTDtransactions, prevpathname}) => {
                 
                 <div>
                     <p className='transactiondetailstitlestext'>Correct Amount Of Transaction</p>
-                    <p className='transactiondetailsbodytext'>SGD {partialrefund}</p>
+                    <p id = 'correctamount' className='transactiondetailsbodytext'>SGD {partialrefund}</p>
 
                     <p className='transactiondetailstitlestext'>Disputee's Contact Details</p>
                     <p className='transactiondetailsbodytext'>{contact_details}</p>
