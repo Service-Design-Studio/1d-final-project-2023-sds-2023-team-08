@@ -80,11 +80,13 @@ const RaiseFTDScreen = () => {
         }
     }
 
-    {/*
+    
     const handleSubmit = async(event) => {
         event.preventDefault(); 
         await profanityChecker();
+    }
 
+    {/*
         console.log(isProfanity)
         if (reason === ''){
             setemptyComment(false);
@@ -395,7 +397,26 @@ const RaiseFTDScreen = () => {
             </div>
             )}
 
+            <RaiseFTDButton
+                reason={reason}
+                comment={comment}
+                correctAmount={correctAmount}
+                contactDetails={contactDetails}
+                TransactionDataOver={TransactionDataOver}
+                userID={userID}
+                navigate={navigate}
+                transactionID={transactionID}
+                totalAmount={totalAmount}
+                setemptyComment={setemptyComment}
+                setemptyCheckbox={setemptyCheckbox}
+                setemptyDetails={setemptyDetails}
+                setinvalidContact={setinvalidContact}
+                isProfanity={isProfanity}
+                setIsProfanity={setIsProfanity}
+            />
+            {/*
             <button className='RaiseFTDButton' onClick={handleSubmit}>RAISE FUND TRANSFER DISPUTE</button>
+            
             <RaiseFTDButton
                 reason={reason}
                 comment={comment}
@@ -411,6 +432,7 @@ const RaiseFTDScreen = () => {
                 setemptyDetails={setemptyDetails}
                 setinvalidContact={setinvalidContact}
             />
+            */}
 
         </div>
     
