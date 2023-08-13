@@ -29906,3 +29906,89 @@ Processing by UsersController#home as HTML
 Completed 200 OK in 127ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 713)
 
 
+Started GET "/users/393/home" for 127.0.0.1 at 2023-08-10 03:44:39 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"393"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 393], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 50ms (ActiveRecord: 4.8ms | Allocations: 6647)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/users/393/all_transactions" for 127.0.0.1 at 2023-08-10 03:44:41 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"393"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 393], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1203)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/users/393/home10" for 127.0.0.1 at 2023-08-10 03:44:42 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/393/home10"):
+  
+Started GET "/users/32/home" for 127.0.0.1 at 2023-08-10 03:44:42 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1202)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/users/393/home" for 127.0.0.1 at 2023-08-10 03:45:02 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"393"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 393], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1204)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/users/393/all_transactions" for 127.0.0.1 at 2023-08-10 03:45:02 +0800
+Processing by UsersController#all_transactions as */*
+  Parameters: {"id"=>"393"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 393], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1193)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
+Started GET "/users/393/home10" for 127.0.0.1 at 2023-08-10 03:45:03 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/users/393/home10"):
+  
+Started GET "/users/32/home" for 127.0.0.1 at 2023-08-10 03:45:03 +0800
+Processing by UsersController#home as */*
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:137:in `set_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms | Allocations: 1193)
+
+
+  
+ActionController::RoutingError (User Not Found):
+  
+app/controllers/users_controller.rb:139:in `rescue in set_user'
+app/controllers/users_controller.rb:136:in `set_user'
