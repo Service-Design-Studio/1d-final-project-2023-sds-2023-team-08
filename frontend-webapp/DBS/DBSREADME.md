@@ -250,7 +250,7 @@ npm install @cucumber/cucumber
 npx cucumber-js
 ```
 
-Allow the webdriver to run and test the different feature files. 
+Allow the webdriver to run and test the different feature files. <br> 
 *Note: For the auto-fill feature, the webdriver will not have permission to access your clipboard. You will have to manaully enter a bank account number before continuing with the automated Cucumber test.* 
 
 # **Contributions**
