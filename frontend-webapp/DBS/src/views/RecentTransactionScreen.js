@@ -3,6 +3,7 @@ import '../components/styles/RecentTransactionStylesScreen.css';
 import { useLocation, useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
+import FTDTransactionsButton from '../components/widgets/FTDTransactionsButton';
 
 // import transactionJSON from '../testdata/transactiondate.json'
 
@@ -80,12 +81,19 @@ const RecentTransactionScreen = () => {
               </div>
           </button> }
 
+        <FTDTransactionsButton
+          userID={userID}
+          navigate={navigate}
+        />  
+
+{/*
         <button className='transparent' onClick={() => navigate(`/${userID}/FTDtransactionsall`)}>
           <div className='ftd'>
             <p className='ftdtext'>Fund Transfer Dispute Transactions</p>
             <img src='/assets/expand.png' className='expand'/>
           </div>
         </button>
+*/}
 
       </div>
 

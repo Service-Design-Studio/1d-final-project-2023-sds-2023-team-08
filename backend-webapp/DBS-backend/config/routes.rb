@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'user/:id/transaction_detail_for_disputes_involving_user', to: 'disputes#transaction_detail_for_disputes_involving_user'
   get 'users/:id/transactions/:transactions_id/refund_details', to: 'disputes#refund_details'
   post 'disputes/generate_dispute_comment',to: 'disputes#generate_dispute_comment'
+  post 'disputes/check_for_profanity',to: 'disputes#check_for_profanity'
   #for paynow
   get 'users/:id/paynows/search_by_phone/:phonenumber', to: 'paynows#search_by_phone'
  

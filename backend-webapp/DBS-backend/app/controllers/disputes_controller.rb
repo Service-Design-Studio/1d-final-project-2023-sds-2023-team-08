@@ -332,5 +332,41 @@ class DisputesController < ApplicationController
   end
 
 
+    #post 'disputes/check_for_profanity',to: 'disputes#check_for_profanity'
+    def check_for_profanity
+   
 
+      raw=request.raw_post
+   
+      # Assuming you have the URL for the GET request
+  
+  
+      #url and http setup
+      url = URI("https://hello-zf2sgw655q-uc.a.run.app/check_profanities")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      
+      
+      
+      #create post req
+      request = Net::HTTP::Post.new(url)
+      request['Content-Type'] = 'application/json'
+      
+      request.body = raw
+  
+      #send POST and get response
+    begin
+      response = http.request(request)
+      render json: response.body
+    rescue => e
+      data={
+        
+        result:"error occured"
+      }
+      render json: data
+    end
+  
+      
+      
+    end
 end
