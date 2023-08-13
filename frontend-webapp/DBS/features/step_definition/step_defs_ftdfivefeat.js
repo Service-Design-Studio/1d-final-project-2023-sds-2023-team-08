@@ -116,7 +116,7 @@ async function raiseFTDAgainstTristan(driver){
   await manualFTDWrongAccount(driver)
   const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
   await raiseFTD.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const confirmRaise= await driver.findElement(By.className("SubmitButton"))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await confirmRaise.click()
@@ -305,7 +305,7 @@ async function raiseFTDWrongAmount(driver){
   await new Promise(resolve => setTimeout(resolve, 1000))
   const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
   await raiseFTD.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const confirmRaise= await driver.findElement(By.className("SubmitButton"))
   await confirmRaise.click()
   //filed FTD for wrong amount, at ftd successfully raised page
@@ -339,10 +339,7 @@ async function raiseFTDWrongAmount(driver){
 
 
 /////////// RAISING A FTD THROUGH REDIRECT ////////////////////////////////////////////////////////////////////////////////////////////// 
-Before({tags: "@logintojunxiang"}, async function(){
-  await loginJunxiang(this.driver)
-  
-})
+
 
 Given(/^I have made a Paynow Transfer of '([^"]*)'$/, async function (paid){
   await checkForPaynowHistory(this.driver)
@@ -367,6 +364,7 @@ Then('I will be redirected to a "Raise A Fund Transfer Dispute" page', async fun
 
 
 Then(/^it will reflect '([^"]*)' as the amount transferred$/, async function (wrongamt) {
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const disputeamt = await this.driver.findElement(By.className('moneytext2spend'))
   const amt = await disputeamt.getText()
 
@@ -863,7 +861,7 @@ Given("I have a partial transfer FTD raised against me", async function(){
 //brought to dispute page defined above
 
 When(/^The Correct Amount of Transaction is indicated to be '([^"]*)'$/, async function(rightfulamt){
-  const correctamt = await this.driver.findElement(By.className("transactiondetailsbodytext"))
+  const correctamt = await this.driver.findElement(By.id("correctamount"))
   await new Promise(resolve => setTimeout(resolve, 1000))
   const supposedtopay = await correctamt.getText()
   expect(String(supposedtopay)).to.include(rightfulamt)
@@ -900,6 +898,7 @@ When(/^the refund amount has been fixed to '([^"]*)'$/, async function (refundex
 
 /////////// REFUTING DISPUTE  ////////////////////////////////////////////////////////////////////////////////////////////// 
 When("I click on the No - Refute button", async function(){
+  await new Promise(resolve => setTimeout(resolve, 1000))
   const refutebutton = await this.driver.findElement(By.className("refutebutton"))
   await refutebutton.click()
 })
