@@ -3,22 +3,22 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
 
 #   # @removingseed
 #   # @seedingDataBase
-  Scenario: Raising a FTD through redirect
-    Given I have made a Paynow Transfer of '$12'
-    When I click on "Made a wrong transfer?" at the review page
-    Then I will be redirected to a "Raise A Fund Transfer Dispute" page
-    And it will reflect '-12.00' as the amount transferred
+  # Scenario: Raising a FTD through redirect
+  #   Given I have made a Paynow Transfer of '$12'
+  #   When I click on "Made a wrong transfer?" at the review page
+  #   Then I will be redirected to a "Raise A Fund Transfer Dispute" page
+  #   And it will reflect '-12.00' as the amount transferred
 
 # # #   @removingseed
 # # #   @seedingDataBase
-#   Scenario: Filling up FTD
-#     Given I am on the Raise FTD Form Page
-#     When I click the "Raise Fund Transfer Dispute button" to confirm
-#     Then I will receive a warning to select a valid reason
-#     When I check the box for "Transfer to Wrong Account"
-#     And I click the "Raise Fund Transfer Dispute button" to confirm
-#     Then I will see a warning that the comments field cannot be blank
-#     And I will key in my comments for recipient
+  Scenario: Filling up FTD
+    Given I am on the Raise FTD Form Page
+    When I click the "Raise Fund Transfer Dispute button" to confirm
+    Then I will receive a warning to select a valid reason
+    When I check the box for "Transfer to Wrong Account"
+    And I click the "Raise Fund Transfer Dispute button" to confirm
+    Then I will see a warning that the comments field cannot be blank
+    And I will key in my comments for recipient
 
 # # #   @removingseed
 # # #   @seedingDataBase
