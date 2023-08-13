@@ -102,7 +102,7 @@ const RecentTransactionScreen = () => {
 
               {transactionsWithSpecificDate.map((transactiondata, index) => {
                 return(
-                <button className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["transaction ID"]}`, {state:location.pathname})}>
+                <button id= 'recentTransactionEntries' className='transparent' onClick={() =>  navigate(`/${userID}/${transactiondata.transaction["transaction ID"]}`, {state:location.pathname})}>
                 <div className='transaction'>
                   <div className='transactionheadercontainer'>
                     <p className='transactiontitletext'>{transactiondata.transaction["transaction name"]}</p>
