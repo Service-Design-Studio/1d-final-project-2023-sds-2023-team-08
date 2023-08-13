@@ -15,7 +15,7 @@ async function navigateToPaynowToMobilePage(driver){
   await paynowIcon.click()
   await new Promise(resolve => setTimeout(resolve, 1000))
   const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
-  phoneNumberField.sendKeys("88888886") 
+  phoneNumberField.sendKeys("88888884") 
   await new Promise(resolve => setTimeout(resolve, 1000))
   const clickAway = await driver.findElement(By.className("overall")) 
   await new Promise(resolve => setTimeout(resolve, 1000))
@@ -132,7 +132,7 @@ async function makePaynowToNewbie(driver){
 
 async function needsNewPayee(driver){
   await loginJunxiang(driver)
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const paynowIcon = await driver.findElement(By.id('paynowbutton')) 
   await new Promise(resolve => setTimeout(resolve, 1000))
   await paynowIcon.click()
@@ -170,7 +170,7 @@ async function raiseFTDToClearSeed(driver){
   const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
   await new Promise(resolve => setTimeout(resolve, 1000))
   await raiseFTD.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve => setTimeout(resolve, 3000))
   const confirmRaise= await driver.findElement(By.className("SubmitButton"))
   await confirmRaise.click() //success screen of ftd
 }
@@ -337,11 +337,9 @@ Then("I will be directed to the Paynow to Mobile page", async function () {
 
 /////////// PAYNOW TO MOBILE PAGE WARNING ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-Before({tags: "@onPaynowToMobilePage"}, async function(){
-  await navigateToPaynowToMobilePage(this.driver)
-})
 
 Given("that I am on the Paynow to Mobile page", async function(){
+  await navigateToPaynowToMobilePage(this.driver)
   const currentUrl = await this.driver.getCurrentUrl()
   await new Promise(resolve => setTimeout(resolve, 1000))
   assert.strictEqual(currentUrl, baseUrl + '/1/paynow')
@@ -383,12 +381,11 @@ Then("I will be directed to the Swipe To Confirm page", async function (){
 
 
 /////////// SWIPE TO CONFIRM PAGE WARNING ////////////////////////////////////////////////////////////////////////////////////////////// 
-Before({tags: "@onSwipeToConfirmPage"}, async function(){
-  await navigateToSwipeToConfirmPage(this.driver)
-})
+
 
 
 Given("that I am on the Swipe to Confirm page", async function(){
+  await navigateToSwipeToConfirmPage(this.driver)
   const currentUrl = await this.driver.getCurrentUrl()
   await new Promise(resolve => setTimeout(resolve, 1000))
   assert.strictEqual(currentUrl, baseUrl + '/1/review')
@@ -421,36 +418,6 @@ Then("I will be directed to the Succesful page", async function(){
 
 /////////// VERIFY THAT NO WARNING SHOWS UP WHEN TRANSFERRING TO A MOBILE NUMBER I HAVE TRANSFERRED TO BEFORE ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-Before({tags: "@onHomePage"}, async function(){
-  await loginJunxiang(this.driver)
-})
-
-Given(/^I have transferred to "([^"]*)" which is someone I have transferred to before$/, async function(oldName){
-  const rcnttxntab = await this.driver.findElement(By.className('recenttransaction'))
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  await rcnttxntab.click();
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const currentUrl = await this.driver.getCurrentUrl()
-  assert.ok(currentUrl.includes(baseUrl +'/1/recenttransaction'))
-  const container = await this.driver.findElements(By.className("transactionheadercontainer"));
-  let nameFound = false
-  for (const transaction of container) {
-      const recipient = await transaction.findElement(By.className("transactiontitletext"));
-      const inHistory = await recipient.getText()
-      if (inHistory.includes(oldName)){
-        nameFound = true
-        break
-      }
-  }
-})
-
-
-When("I am on the Paynow Contact Page", async function(){
-  await this.driver.navigate().to(baseUrl + '/1/paynowrecipient')
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const currentUrl = await this.driver.getCurrentUrl()
-  assert.strictEqual(currentUrl, baseUrl + '/1/paynowrecipient')
-})
 
 When(/^I enter the same number "([^"]*)"$/, async function (oldNumber) {
   console.log(oldNumber)
