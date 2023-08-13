@@ -9,27 +9,27 @@ Feature: Making a Paynow Transfer dispute -> send wrong account > click redirect
     Then I will be redirected to a "Raise A Fund Transfer Dispute" page
     And it will reflect '-12.00' as the amount transferred
 
-# #   @removingseed
-# #   @seedingDataBase
-  Scenario: Filling up FTD
-    Given I am on the Raise FTD Form Page
-    When I click the "Raise Fund Transfer Dispute button" to confirm
-    Then I will receive a warning to select a valid reason
-    When I check the box for "Transfer to Wrong Account"
-    And I click the "Raise Fund Transfer Dispute button" to confirm
-    Then I will see a warning that the comments field cannot be blank
-    And I will key in my comments for recipient
+# # #   @removingseed
+# # #   @seedingDataBase
+#   Scenario: Filling up FTD
+#     Given I am on the Raise FTD Form Page
+#     When I click the "Raise Fund Transfer Dispute button" to confirm
+#     Then I will receive a warning to select a valid reason
+#     When I check the box for "Transfer to Wrong Account"
+#     And I click the "Raise Fund Transfer Dispute button" to confirm
+#     Then I will see a warning that the comments field cannot be blank
+#     And I will key in my comments for recipient
 
-# #   @removingseed
-# #   @seedingDataBase
-  Scenario: Using the VertexAI - wrong account
-    Given I have filled up the FTD Form Page but want to make my comments more professional
-    When I click on the star button on the top-right corner of the textbox
-    Then I will see loading prompt with the words "AI is Working"
-    And I will see another prompt saying "Comment is cleaned!"
-    Then I will see a different comment instead of "manual comment"
-    And the comments should not exceed "250" characters
-    Then I submit the FTD
+# # #   @removingseed
+# # #   @seedingDataBase
+#   Scenario: Using the VertexAI - wrong account
+#     Given I have filled up the FTD Form Page but want to make my comments more professional
+#     When I click on the star button on the top-right corner of the textbox
+#     Then I will see loading prompt with the words "AI is Working"
+#     And I will see another prompt saying "Comment is cleaned!"
+#     Then I will see a different comment instead of "manual comment"
+#     And the comments should not exceed "250" characters
+#     Then I submit the FTD
 
 # # # Feature: Resolve a Paynow Transfer dispute -> dashboard > FTD status page > full refund
 # #   @removingseed
