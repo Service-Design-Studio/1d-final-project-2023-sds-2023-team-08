@@ -6,19 +6,6 @@ const { useEffect } = require('react');
 const { expect } = require('chai');
 const readline = require('readline');
 
-async function loginJunxiang(driver){
-  await driver.get(baseUrl)
-  await driver.manage().window().setRect({ width: 393, height: 851 })
-  const usernameField = await driver.findElement(By.id('username'))
-  usernameField.sendKeys("junxiang")
-  const passwordField = await driver.findElement(By.id('pin'))
-  passwordField.sendKeys("password123")
-
-  const loginButton = await driver.findElement(By.className('login'))
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await loginButton.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-}
 
 async function navigateToPaynowToMobilePage(driver){
   await loginJunxiang(driver)
@@ -28,7 +15,7 @@ async function navigateToPaynowToMobilePage(driver){
   await paynowIcon.click()
   await new Promise(resolve => setTimeout(resolve, 1000))
   const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
-  phoneNumberField.sendKeys("88888886") 
+  phoneNumberField.sendKeys("88888884") 
   await new Promise(resolve => setTimeout(resolve, 1000))
   const clickAway = await driver.findElement(By.className("overall")) 
   await new Promise(resolve => setTimeout(resolve, 1000))
@@ -51,71 +38,6 @@ async function navigateToSwipeToConfirmPage(driver){
   await nextButton.click(); 
   await new Promise(resolve => setTimeout(resolve, 1000)); 
 }
-
-async function wrongPaynowMade(driver){
-  await driver.navigate().to(baseUrl+'/1/home')
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const paynowIcon = await driver.findElement(By.id('paynowbutton')) 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await paynowIcon.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
-  await phoneNumberField.sendKeys("88888886") 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const clickAway = await driver.findElement(By.className("overall")) 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await clickAway.click() 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const submitButtonRed = await driver.findElement(By.className('pntsubmitbuttonER'))
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await submitButtonRed.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const transactionAmount = await driver.findElement(By.id('keyInAmtPaynow')) 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await transactionAmount.sendKeys("12") 
-  const nextButton = await driver.findElement(By.id('submitrefund1'))
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await nextButton.click(); 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const next = await driver.findElement(By.id('reviewTransferNextButton'))
-  await next.click() 
-  await new Promise(resolve => setTimeout(resolve, 1000))
-}
-
-
-async function navigateToFTDForm(driver){
-  await wrongPaynowMade(driver)
-  await new Promise(resolve => setTimeout(resolve,2000))
-  const wrongTransferLink = await driver.findElement(By.className('successtxclicklink'))
-  await new Promise(resolve => setTimeout(resolve, 2000))
-  await wrongTransferLink.click()
-  await new Promise(resolve => setTimeout(resolve, 3000))
-}
-async function manualFillingUpFTDForm(driver){
-  await navigateToFTDForm(driver)
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  const checkbox = await driver.findElement(By.id('transferWrongAccountCheckbox'))
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  await checkbox.click();
-  const comments = await driver.findElement(By.className('commentsTextBox'))
-  comments.sendKeys("Sorry! Supposed to send to someone else")
-}
-
-
-async function ensureFTDCreated(driver){
-  await manualFillingUpFTDForm(driver)
-  const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
-  await raiseFTD.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const confirmRaise = await driver.findElement(By.className("SubmitButton"))
-  await confirmRaise.click()
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  await driver.navigate().to(baseUrl + '/1/home')
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const logout = await driver.findElement(By.id("logoutButton"))
-  await logout.click()
-}
-
 
 
 async function pauseTest() {
@@ -142,35 +64,157 @@ async function pauseTest() {
   });
 }
 
-Before({tags: "@removingseedpaynow"}, async function(){
-  for (const transaction of container){
-      await loginJunxiang(this.driver)
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      const recenttransaction  = await this.driver.findElement(By.className("transaction"))
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      await recenttransaction.click()
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      const container = await this.driver.findElements(By.className("transactiontitletext"));
-      if (inHistory.includes("vinny")){
-        await transaction.click()
-        const confirmbutton = await this.driver.findElement(By.className('FTDbutton1'))
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        await confirmbutton.click();
-        const checkbox = await this.driver.findElement(By.id('transferWrongAccountCheckbox'))
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        await checkbox.click();
-        const comments = await this.driver.findElement(By.className('commentsTextBox'))
-        await comments.sendKeys("Sorry! Supposed to send to someone else")
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        const raiseFTD = await this.driver.findElement(By.className("RaiseFTDButton"))
-        await raiseFTD.click()
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        const confirmRaise= await this.driver.findElement(By.className("SubmitButton"))
-        await confirmRaise.click()
-      }
-      await pauseTest()
-    }
+
+async function loginJunxiang(driver){
+  await driver.get(baseUrl)
+  await driver.manage().window().setRect({ width: 393, height: 851 })
+  const usernameField = await driver.findElement(By.id('username'))
+  await usernameField.sendKeys("junxiang")
+  const passwordField = await driver.findElement(By.id('pin'))
+  await passwordField.sendKeys("password123")
+  const loginButton = await driver.findElement(By.className('login'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await loginButton.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+}
+
+async function loginTristan(driver){
+  await driver.get(baseUrl)
+  await driver.manage().window().setRect({ width: 393, height: 851 })
+  const usernameField = await driver.findElement(By.id('username'))
+  await usernameField.sendKeys("tristan")
+  const passwordField = await driver.findElement(By.id('pin'))
+  await passwordField.sendKeys("password123")
+  const loginButton = await driver.findElement(By.className('login'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await loginButton.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+}
+
+async function makePaynowToOldie(driver){
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const submitButtonRed = await driver.findElement(By.className('pntsubmitbuttonER'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await submitButtonRed.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const transactionAmount = await driver.findElement(By.id('keyInAmtPaynow')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await transactionAmount.sendKeys("12") 
+  const nextButton = await driver.findElement(By.id('submitrefund1'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await nextButton.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const next = await driver.findElement(By.id('reviewTransferNextButton'))
+  await next.click() 
+  await new Promise(resolve => setTimeout(resolve, 2000)) //end up on success page
+}
+
+
+async function makePaynowToNewbie(driver){
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const submitButtonRed = await driver.findElement(By.className('pntsubmitbuttonER'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await submitButtonRed.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const transactionAmount = await driver.findElement(By.id('keyInAmtPaynow')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  transactionAmount.sendKeys("12") 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const nextButton = await driver.findElement(By.id('submitrefund1'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await nextButton.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const inputSlider = await driver.findElement(By.id('inputslider'))
+  inputSlider.sendKeys(100) 
+  await new Promise(resolve => setTimeout(resolve, 2000)) //end up on success page
+}
+
+
+async function needsNewPayee(driver){
+  await loginJunxiang(driver)
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  const paynowIcon = await driver.findElement(By.id('paynowbutton')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await paynowIcon.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
+  await phoneNumberField.sendKeys("88888884") 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const clickAway = await driver.findElement(By.className("overall")) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await clickAway.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  try{
+    const condition = await driver.findElement(By.className('warningtextalert'))
+    return //exit try catch
+  } catch (error){
+    //make a FTD, call the function again
+    await makePaynowToOldie(driver) 
+    await raiseFTDToClearSeed(driver) //success screen of ftd
+  }
+}
+
+async function raiseFTDToClearSeed(driver){
+  await new Promise(resolve => setTimeout(resolve,2000))
+  const wrongTransferLink = await driver.findElement(By.className('successtxclicklink'))
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  await wrongTransferLink.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const checkbox = await driver.findElement(By.id('transferWrongAccountCheckbox'))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await checkbox.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const comments = await driver.findElement(By.className('commentsTextBox'))
+  comments.sendKeys("Sorry! Supposed to send to someone else") //never press submit, still on ftd form
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  const raiseFTD = await driver.findElement(By.className("RaiseFTDButton"))
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await raiseFTD.click()
+  await new Promise(resolve => setTimeout(resolve, 3000))
+  const confirmRaise= await driver.findElement(By.className("SubmitButton"))
+  await confirmRaise.click() //success screen of ftd
+}
+
+
+async function needsOldPayee(driver){
+  await loginJunxiang(driver)
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const paynowIcon = await driver.findElement(By.id('paynowbutton')) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await paynowIcon.click()
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const phoneNumberField = await driver.findElement(By.className('eightdigitER')) 
+  await phoneNumberField.sendKeys("88888884") 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  const clickAway = await driver.findElement(By.className("overall")) 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  await clickAway.click() 
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  try{
+    const condition = await driver.findElement(By.className('warningtextalert'))
+    await makePaynowToNewbie(driver) //send a paymenent if history does not exist, end up on success page
+  } catch (error){
+    //exit try catch
+    return
+  }
+}
+
+Before({tags: "@newPayee"}, async function(){
+  await needsNewPayee(this.driver)
 })
+
+Before({tags: "@oldPayee"}, async function(){
+  await needsOldPayee(this.driver)
+})
+
+
+
+
+
+
+
+
+
 
 
 
@@ -293,11 +337,9 @@ Then("I will be directed to the Paynow to Mobile page", async function () {
 
 /////////// PAYNOW TO MOBILE PAGE WARNING ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-Before({tags: "@onPaynowToMobilePage"}, async function(){
-  await navigateToPaynowToMobilePage(this.driver)
-})
 
 Given("that I am on the Paynow to Mobile page", async function(){
+  await navigateToPaynowToMobilePage(this.driver)
   const currentUrl = await this.driver.getCurrentUrl()
   await new Promise(resolve => setTimeout(resolve, 1000))
   assert.strictEqual(currentUrl, baseUrl + '/1/paynow')
@@ -339,12 +381,11 @@ Then("I will be directed to the Swipe To Confirm page", async function (){
 
 
 /////////// SWIPE TO CONFIRM PAGE WARNING ////////////////////////////////////////////////////////////////////////////////////////////// 
-Before({tags: "@onSwipeToConfirmPage"}, async function(){
-  await navigateToSwipeToConfirmPage(this.driver)
-})
+
 
 
 Given("that I am on the Swipe to Confirm page", async function(){
+  await navigateToSwipeToConfirmPage(this.driver)
   const currentUrl = await this.driver.getCurrentUrl()
   await new Promise(resolve => setTimeout(resolve, 1000))
   assert.strictEqual(currentUrl, baseUrl + '/1/review')
@@ -377,36 +418,6 @@ Then("I will be directed to the Succesful page", async function(){
 
 /////////// VERIFY THAT NO WARNING SHOWS UP WHEN TRANSFERRING TO A MOBILE NUMBER I HAVE TRANSFERRED TO BEFORE ////////////////////////////////////////////////////////////////////////////////////////////// 
 
-Before({tags: "@onHomePage"}, async function(){
-  await loginJunxiang(this.driver)
-})
-
-Given(/^I have transferred to "([^"]*)" which is someone I have transferred to before$/, async function(oldName){
-  const rcnttxntab = await this.driver.findElement(By.className('recenttransaction'))
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  await rcnttxntab.click();
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const currentUrl = await this.driver.getCurrentUrl()
-  assert.ok(currentUrl.includes(baseUrl +'/1/recenttransaction'))
-  const container = await this.driver.findElements(By.className("transactionheadercontainer"));
-  let nameFound = false
-  for (const transaction of container) {
-      const recipient = await transaction.findElement(By.className("transactiontitletext"));
-      const inHistory = await recipient.getText()
-      if (inHistory.includes(oldName)){
-        nameFound = true
-        break
-      }
-  }
-})
-
-
-When("I am on the Paynow Contact Page", async function(){
-  await this.driver.navigate().to(baseUrl + '/1/paynowrecipient')
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  const currentUrl = await this.driver.getCurrentUrl()
-  assert.strictEqual(currentUrl, baseUrl + '/1/paynowrecipient')
-})
 
 When(/^I enter the same number "([^"]*)"$/, async function (oldNumber) {
   console.log(oldNumber)

@@ -250,8 +250,21 @@ npm install @cucumber/cucumber
 npx cucumber-js
 ```
 
-Allow the webdriver to run and test the different feature files. 
-*Note: For the auto-fill feature, the webdriver will not have permission to access your clipboard. You will have to manaully enter a bank account number before continuing with the automated Cucumber test.* 
+Allow the webdriver to run and test the different feature files. <br> 
+
+_*Note: For the paynow_warning.feature file, manual intervention is required due to Chrome's permission alerts. Follow the instruction in the terminal to proceed with the test. There will be 3 interruptions. One of which will be to copy the bank number "342-454-350" to clipboard which can be found in the feature file._
+
+_You can run each feature file independently by running the following lines in your terminal:_
+```
+npx cucumber-js ./features/[feature_file]
+```
+
+_Below are the file names for the features and their corresponding report links: <br>
+./features/bank_transfer.feature - https://reports.cucumber.io/reports/f7752827-76bc-47d1-8057-2027f7d31024  <br> 
+./features/paynow_warning.feature - https://reports.cucumber.io/reports/f5c37592-d2c1-4487-94bc-cf19b55f73f6 <br> 
+./features/ftd_fivefeatures.feature - https://reports.cucumber.io/reports/b653c618-1a6f-4796-8907-0f478899239b <br>_
+
+
 
 # **Contributions**
 
