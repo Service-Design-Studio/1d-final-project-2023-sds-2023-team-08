@@ -79,6 +79,28 @@ This is the Transaction and Disputes microservice which is linked to the main po
 |--- | --- | --- |--- |
 | GET | users/:id/paynows/details/:phonenumber | paynows#search_by_phone | Returns details required for paynow page based on user with :id when user searches for phone number :phonenumber |
 
+# **RSpec Testing**
+
+RSpec is a testing tool for Ruby, designed for unit testing. Unit testing involves testing individual units or components of software in isolation to ensure their correctness and reliability. RSpec provides a structured and expressive syntax for writing tests, that verify the behavior of our code's smaller units, such as methods and functions. We have created RSpec tests for our paynow and dispute model files to test that the methods called within them work as intended.<br>
+
+To run these tests, follow the steps shown:
+
+1. Enter your project directory
+```shell
+cd 1d-final-project-2023-sds-2023-team-08\backend_cloudSQL_latest
+```
+
+2. Install project dependencies using bundler
+```shell
+bundle install
+```
+
+3. Run the tests
+```shell
+bundle exec rspec
+```
+
+Allow the RSpec tests to run and return the results. <br> 
 
 ### Technologies Used
 * [RubyOnRails](https://rubyonrails.org/).
