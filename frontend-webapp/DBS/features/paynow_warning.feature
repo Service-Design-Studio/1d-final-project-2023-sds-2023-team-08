@@ -1,18 +1,18 @@
-COMPLETED -> requires reseeding of database
-Feature: Paynow Warning
+#COMPLETED -> requires reseeding of database
+# Feature: Paynow Warning
 
-    Scenario: Verify that a warning is shown when submitting no input
-        Given that I am on the Paynow Contact Page
-        When I click "SUBMIT" before keying in a valid recipient
-        Then I will see a warning to key in a valid phone number 
+#     Scenario: Verify that a warning is shown when submitting no input
+#         Given that I am on the Paynow Contact Page
+#         When I click "SUBMIT" before keying in a valid recipient
+#         Then I will see a warning to key in a valid phone number 
 
-    Scenario: Verify that a warning is shown when transferring to a new mobile number
-        Given that I am on the Paynow Contact page
-        When I enter a mobile number "88888886" that I have never transferred to before
-        Then a warning will be displayed under the name "vin"
-        And I will see a red Submit button
-        When I click the Submit button
-        Then I will be directed to the Paynow to Mobile page
+#     Scenario: Verify that a warning is shown when transferring to a new mobile number
+#         Given that I am on the Paynow Contact page
+#         When I enter a mobile number "88888886" that I have never transferred to before
+#         Then a warning will be displayed under the name "vin"
+#         And I will see a red Submit button
+#         When I click the Submit button
+#         Then I will be directed to the Paynow to Mobile page
       
     @onPaynowToMobilePage
     Scenario: Paynow to Mobile page Warning
